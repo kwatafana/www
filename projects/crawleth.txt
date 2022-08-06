@@ -1,0 +1,64 @@
+``` console
+█▀▀ █▀▀█ █▀▀█ █───█ █── █▀▀ ▀▀█▀▀ █──█ 
+█── █▄▄▀ █▄▄█ █▄█▄█ █── █▀▀ ──█── █▀▀█ 
+▀▀▀ ▀─▀▀ ▀──▀ ─▀─▀─ ▀▀▀ ▀▀▀ ──▀── ▀──▀
+```
+
+> Ethereum crawler
+
+## Features
+
+- [x] Crawl transactions of an address between a specified block range
+- [ ] Crawl the value of an address depending on a specified date
+- [ ] Crawl Tokens
+- [x] Cross platform client
+
+## Components
+
+- [Client](components/client/): A cross-platform client written in Dart with the [flutter](https://flutter.dev/) framework
+- [Crawler](components/crawler/): The core Ethereum crawling logic, written in Rust
+- [Server](components/server/): A web server, written in Rust with [axum](https://github.com/tokio-rs/axum/) framework
+
+## Scripts
+
+- [Web builder](scripts/build_web.sh): A shell script to build the 
+  flutter client to web and copy it to the web server's static directory
+  to be served.
+
+## Usage
+
+### Client
+
+There is a pre-build client in the server's static directory, but if 
+you wish to build it yourself or try it out on other platforms (Android,
+Desktop, IOS) simply run:
+
+``` bash
+$ flutter run
+```
+Flutter will automatically detect the available platform.
+
+### Server
+
+To start the server it requires a configuration in `toml` format. 
+Below is an example of such a file:
+
+``` toml
+# Server configuration example
+
+# Port used by the server
+port = 8080
+
+# Url to the Ethereum RPC node
+rpc_url = "http://localhost:8545"
+```
+
+Once you have this file, you can start the sever with Rust's cargo:
+
+``` bash
+$ cd ./components/server/ && cargo run -- config.toml
+```
+After the server is started navigate to http://localhost:8080 (if you 
+configured it to run on that port) and the client will be running there.
+The web client takes a few seconds to load up, it will show a white 
+screen while it loads up (it has not yet been optimized).
