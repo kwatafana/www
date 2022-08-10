@@ -16,4 +16,4 @@ __[projects]__
 *__email:  seestem (at) merely (dot) tech__*
 
 ---
-Last updated: 2022-08-08
+Last updated: 2022-08-10
