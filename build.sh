@@ -26,4 +26,4 @@ pandoc -s --metadata title="cyrtophora" -i ../cyrtophora/README.md -o projects/c
 
 
 ###################### Writings ######################
-pandoc -i ../cyrtophora/doc/password-hashing.md -o writings/password-hashing.html --self-contained --css=../cyrtophora/doc/style.css
+pandoc -i ../cyrtophora/doc/password-hashing.md -o writings/password-hashing.html --self-contained --css=../cyrtophora/doc/style.css --toc
