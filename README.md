@@ -12,8 +12,11 @@ __[projects]__
 - [h4](./projects/h4.html): 700l$ 4 h4cking.
 - [cyrtophora](./projects/cyrtophora.html): User management protocol.
 
+__[writtings]__
+
+- [Password Hashing](./writings/password-hashing.html)
 
 *__email:  seestem (at) merely (dot) tech__*
 
 ---
-Last updated: 2022-08-10
+Last updated: 2022-08-14
