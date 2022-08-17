@@ -20,4 +20,4 @@ __[writtings]__
 *__email:  seestem (at) merely (dot) tech__*
 
 ---
-Last updated: 2022-08-17
+Last updated: 2022-08-18
