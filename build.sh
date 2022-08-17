@@ -24,6 +24,9 @@ pandoc -s --metadata title="h4" -i ../h4ck1ng/README.md -o projects/h4.html  --s
 # build cyrtophora
 pandoc -s --metadata title="cyrtophora" -i ../cyrtophora/README.md -o projects/cyrtophora.html  --self-contained --css=code.css
 
+# build emerald
+pandoc -s --metadata title="emerald" -i ../emerald/README.md -o projects/emerald.html  --self-contained --css=code.css
+
 
 ###################### Writings ######################
 pandoc -i ../cyrtophora/doc/password-hashing.md -o writings/password-hashing.html --self-contained --css=../cyrtophora/doc/style.css --toc

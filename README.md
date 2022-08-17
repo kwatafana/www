@@ -11,6 +11,7 @@ __[projects]__
 - [crawleth](./projects/crawleth.html): Ethereum crawler.
 - [h4](./projects/h4.html): 700l$ 4 h4cking.
 - [cyrtophora](./projects/cyrtophora.html): User management protocol.
+- [emerald](./projects/emerald.html): Work In Progress, implementation of Matrix
 
 __[writtings]__
 
@@ -19,4 +20,4 @@ __[writtings]__
 *__email:  seestem (at) merely (dot) tech__*
 
 ---
-Last updated: 2022-08-14
+Last updated: 2022-08-17

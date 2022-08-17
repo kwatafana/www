@@ -289,19 +289,24 @@ font-size: 7px;
 title = &quot;Homepage&quot;
 
 # Path to html output
-output = &quot;index.html&quot;
+output = &quot;publish/index.html&quot;
 
 # Different sections for the HTML document
 [sections]
 
 # Navigation section [Optional]
 [sections.navbar]
-
 # Variant to use
 variant = &quot;basic&quot;
-
 # Links for the navigation
-links = [{url= &quot;/&quot;, text= &quot;Home&quot;}, {url= &quot;/about&quot;, text= &quot;About&quot;},]</code></pre>
+links = [{url= &quot;/&quot;, text= &quot;Home&quot;}, {url= &quot;/about&quot;, text= &quot;About&quot;}, {url= &quot;/contact&quot;, text= &quot;Contact Us&quot;}]
+
+# Hero section [Optional]
+[sections.hero]
+# Variant to use
+variant = &quot;basic&quot;
+heading = &quot;Awesome Hero&quot;
+sub_heading = &quot;This is a cool sub heading&quot;</code></pre>
 <h2 id="usage">Usage</h2>
 <p>To generate .html files from .toml files run the following command:</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a><span class="co"># This an example, use your own .toml files</span></span>
