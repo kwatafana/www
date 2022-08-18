@@ -1,15 +1,23 @@
 
 ---
 
-*ephemeral permanence*
+#privacy, #freedom, #decentralization, #AI-safety, #virtual-machines
 
 ---
 
-__[deployed]__
+__[software]__
 
 - [oryx](https://play.google.com/store/apps/details?id=com.kwatafana.org.oryx)
 
-__[wip]__
+__[notes]__
+
+- [Password Hashing](./writings/password-hashing.html)
+- [ISPs and Tunnel Vision](./writings/tunnel_vision.html)
+- [Solana Algo-rythm](./writings/solana-algo-rythm.html)
+- [Systems Coding](./writings/systems-coding.html)
+- [SQLite Transactions](./writings/sqlite-transactions.html)
+
+__[code]__
 
 - [htoml](./projects/htoml.html): HTML page templates described with a toml config.
 - [crawleth](./projects/crawleth.html): Ethereum crawler.
@@ -17,12 +25,7 @@ __[wip]__
 - [cyrtophora](./projects/cyrtophora.html): User management protocol.
 - [emerald](./projects/emerald.html): Work In Progress, implementation of Matrix
 
-__[privacy]__
-
-- [Password Hashing](./writings/password-hashing.html)
-- [ISPs and Tunnel Vision](./writings/tunnel_vision.html)
-
-*__email:  seestem (at) merely (dot) tech__*
+*__email:  kaindume (at) kwatafana (dot) org__*
 
 ---
 by Jackson G. Kaindume | Last updated: 2022-08-18

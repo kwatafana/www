@@ -2,8 +2,8 @@ html {
     line-height: 1.5;
     font-family: Georgia, serif;
     font-size: 20px;
-    color: #1a1a1a;
-    background-color: #fdfdfd;
+    color: cyan;
+    background-color: #222D31;
 }
 .title{
     font-size: 1.5em;
@@ -45,10 +45,10 @@ p {
     margin: 1em 0;
 }
 a {
-    color: #1a1a1a;
+    color: cyan;
 }
 a:visited {
-    color: #1a1a1a;
+    color: cyan;
 }
 img {
     max-width: 100%;
@@ -95,7 +95,7 @@ pre code {
     overflow: visible;
 }
 hr {
-    background-color: #1a1a1a;
+    background-color: cyan;
     border: none;
     height: 1px;
     margin: 1em 0;
@@ -113,11 +113,11 @@ table caption {
 }
 tbody {
     margin-top: 0.5em;
-    border-top: 1px solid #1a1a1a;
-    border-bottom: 1px solid #1a1a1a;
+    border-top: 1px solid cyan;
+    border-bottom: 1px solid cyan;
 }
 th {
-    border-top: 1px solid #1a1a1a;
+    border-top: 1px solid cyan;
     padding: 0.25em 0.5em 0.25em 0.5em;
 }
 td {
