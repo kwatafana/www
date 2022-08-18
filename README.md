@@ -5,11 +5,11 @@
 
 ---
 
-__[projects]__
+__[deployed]__
 
 - [oryx](https://play.google.com/store/apps/details?id=com.kwatafana.org.oryx)
 
-__[code]__
+__[wip]__
 
 - [htoml](./projects/htoml.html): HTML page templates described with a toml config.
 - [crawleth](./projects/crawleth.html): Ethereum crawler.
@@ -20,8 +20,9 @@ __[code]__
 __[privacy]__
 
 - [Password Hashing](./writings/password-hashing.html)
+- [ISPs and Tunnel Vision](./writings/tunnel_vision.html)
 
 *__email:  seestem (at) merely (dot) tech__*
 
 ---
-Last updated: 2022-08-18
+by Jackson G. Kaindume | Last updated: 2022-08-18
