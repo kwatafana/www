@@ -1,13 +1,11 @@
 
 ---
 
-#privacy, #freedom, #decentralization, #AI-safety, #virtual-machines
-
----
-
 __[software]__
 
 - [oryx](https://play.google.com/store/apps/details?id=com.kwatafana.org.oryx)
+
+___
 
 __[code]__
 
@@ -17,15 +15,25 @@ __[code]__
 - [cyrtophora](./projects/cyrtophora.html): User management protocol.
 - [emerald](./projects/emerald.html): Work In Progress, implementation of Matrix
 
-__[notes]__
+___
+
+__[privacy notes]__
 
 - [Password Hashing](./writings/password-hashing.html)
 - [ISPs and Tunnel Vision](./writings/tunnel_vision.html)
+
+__[blockchain notes]__
+
 - [Solana Algo-rythm](./writings/solana-algo-rythm.html)
+
+__[programming notes]__
+
 - [Systems Coding](./writings/systems-coding.html)
 - [SQLite Transactions](./writings/sqlite-transactions.html)
+
+___
 
 *__email:  kaindume (at) kwatafana (dot) org__*
 
 ---
-by Jackson G. Kaindume | Last updated: 2022-08-18
+By Jackson G. Kaindume | Last updated: 2022-08-18
