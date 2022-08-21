@@ -11,8 +11,8 @@ __[code]__
 
 - [htoml](./projects/htoml.html): HTML page templates described with a toml config.
 - [crawleth](./projects/crawleth.html): Ethereum crawler.
-- [h4](./projects/h4.html): 700l$ 4 h4cking.
-- [cyrtophora](./projects/cyrtophora.html): User management protocol.
+- [h4](./projects/h4.html): h4cking 700l$.
+- [cyrtophora](./projects/cyrtophora.html): Work in Progress.
 - [emerald](./projects/emerald.html): Work In Progress, implementation of Matrix
 
 ___
