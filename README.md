@@ -15,21 +15,23 @@ __[code]__
 - [cyrtophora](./projects/cyrtophora.html): Work in Progress.
 - [emerald](./projects/emerald.html): Work In Progress, implementation of Matrix
 
-___
+---
 
-__[privacy notes]__
+__[notes]__
 
 - [Password Hashing](./writings/password-hashing.html)
 - [ISPs and Tunnel Vision](./writings/tunnel_vision.html)
-
-__[blockchain notes]__
-
 - [Solana Algo-rythm](./writings/solana-algo-rythm.html)
-
-__[programming notes]__
-
 - [Systems Coding](./writings/systems-coding.html)
 - [SQLite Transactions](./writings/sqlite-transactions.html)
+
+---
+
+<div style="text-align: right;">
+  <a style="color: teal" href="./scripts.html">
+    Short Scripts and Snippets
+  </a>
+</div>
 
 ___
 
@@ -52,4 +54,4 @@ ___
 
 ---
 
-By Jackson G. Kaindume | Last updated: 2022-08-21
+By Jackson G. Kaindume | Last updated: 2022-08-22

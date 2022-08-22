@@ -9,6 +9,9 @@ echo "By Jackson G. Kaindume | Last updated: $(date -I)" >> README.md
 # Build home page
 pandoc -s --metadata title="kwatafana.org" -i README.md -o index.html  --css=style.css
 
+# Build scripts.md
+pandoc -s --metadata title="Code Snippets" -i scripts.md -o scripts.html  --css=style.css --toc
+
 # Build oryx-privacy policy
 pandoc -s --metadata title="Oryx App Privacy Policy" -i oryx-privacy.md  -o projects/oryx/index.html  --self-contained --css=style.css
 
@@ -31,7 +34,7 @@ pandoc -s --metadata title="emerald" -i ../emerald/README.md -o projects/emerald
 ###################### Writings ######################
 
 # Password Hashing
-pandoc -i ../cyrtophora/doc/password-hashing.md -o writings/password-hashing.html --self-contained --css=./style.css --toc
+pandoc -i ../cyrtophora/spec/password-hashing.md -o writings/password-hashing.html --self-contained --css=./style.css --toc
 
 # ISPs and Tunnel Vision
 pandoc -s --metadata title="ISPs and Tunnel Vision" -i ../writings/hmm/essays/DONE/tunnel_vision.md -o writings/tunnel_vision.html --self-contained --css=./style.css --toc
