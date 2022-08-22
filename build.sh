@@ -4,7 +4,7 @@
 sed -i '$ d' README.md
 
 # Append date to README
-echo "*__email:  kaindume (at) kwatafana (dot) org__* | Last updated: $(date -I)" >> README.md
+echo "*__email:  kaindume (at) kwatafana (dot) org__* | updated: $(date -I)" >> README.md
 
 # Build home page
 pandoc -s --metadata title="kwatafana.org" -i README.md -o index.html  --css=style.css

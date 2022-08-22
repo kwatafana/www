@@ -1,5 +1,4 @@
 
----
 
 __[software]__
 
@@ -48,4 +47,4 @@ __[notes]__
 </a>
 </div>
 
-*__email:  kaindume (at) kwatafana (dot) org__* | Last updated: 2022-08-22
+*__email:  kaindume (at) kwatafana (dot) org__* | updated: 2022-08-22
