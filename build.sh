@@ -52,3 +52,6 @@ pandoc -s --metadata title="SQLite Transactions" -i ../writings/hmm/sqlite_trans
 
 # Solana Algo-rythm
 pandoc -s --metadata title="Solana Algo-rythm" -i ../writings/solana/README.md -o ./kaindume/writings/solana-algo-rythm.html --self-contained --css=./style.css --toc
+
+###################### strim ######################
+pandoc -s --metadata title="strim" -i ./kaindume/strim.md -o ./kaindume/strim.html --self-contained --css=./style.css --toc
