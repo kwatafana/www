@@ -2,7 +2,6 @@
 
 __[software]__
 
-- [oryx](https://play.google.com/store/apps/details?id=com.kwatafana.org.oryx): Pomodoro Timer
 - [htoml](./projects/htoml.html): HTML page templates described with a toml config.
 - [crawleth](./projects/crawleth.html): Ethereum crawler.
 - [h4](./projects/h4.html): h4cking 700l$.
@@ -47,4 +46,4 @@ __[notes]__
 </a>
 </div>
 
-*__email:  kaindume (at) kwatafana (dot) org__* | updated: 2022-08-22
+*__email:  kaindume (at) kwatafana (dot) org__* | updated: 2022-08-30
