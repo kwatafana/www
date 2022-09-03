@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>[phora] remove unneeded file - cyrtophora - Unnamed repository; edit this file &#39;description&#39; to name the repository.
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="cyrtophora Atom Feed" href="../atom.xml" />
+<link rel="alternate" type="application/atom+xml" title="cyrtophora Atom Feed (tags)" href="../tags.xml" />
+<link rel="stylesheet" type="text/css" href="/git.css" />
+</head>
+<body>
+<table><tr><td><a href="/index.html"><img src="/logo.png" alt="" width="32" height="32" /></a></td><td><h1>cyrtophora</h1><span class="desc">Unnamed repository; edit this file &#39;description&#39; to name the repository.
+</span></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a> | <a href="../file/README.md.pretty.html">README</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/6220a2685d2bed7f9ba1ae0a5c81534db0fb6b47.html">6220a2685d2bed7f9ba1ae0a5c81534db0fb6b47</a>
+<b>parent</b> <a href="../commit/6a5cc7e7251db3ccd0be39355336c5601345d14c.html">6a5cc7e7251db3ccd0be39355336c5601345d14c</a>
+<b>Author:</b> Jackson G. Kaindume &lt;<a href="mailto:kaindume@kwatafana.org">kaindume@kwatafana.org</a>&gt;
+<b>Date:</b>   Wed, 31 Aug 2022 19:47:06 +0200
+
+[phora] remove unneeded file
+
+<b>Diffstat:</b>
+<table><tr><td class="D">D</td><td><a href="#h0">phora/src/database/#error.rs#</a></td><td> | </td><td class="num">22</td><td><span class="i"></span><span class="d">----------------------</span></td></tr>
+</table></pre><pre>1 file changed, 0 insertions(+), 22 deletions(-)
+<hr/><b>diff --git a/<a id="h0" href="../file/phora/src/database/%23error.rs%23.html">phora/src/database/#error.rs#</a> b/<a href="../file/phora/src/database/%23error.rs%23.html">phora/src/database/#error.rs#</a></b>
+<a href="#h0-0" id="h0-0" class="h">@@ -1,22 +0,0 @@
+</a><a href="#h0-0-0" id="h0-0-0" class="d">-use std::fmt;
+</a><a href="#h0-0-1" id="h0-0-1" class="d">-
+</a><a href="#h0-0-2" id="h0-0-2" class="d">-#[derive(Debug)]
+</a><a href="#h0-0-3" id="h0-0-3" class="d">-pub enum DatabaseError {
+</a><a href="#h0-0-4" id="h0-0-4" class="d">-    ConnectionError,
+</a><a href="#h0-0-5" id="h0-0-5" class="d">-}
+</a><a href="#h0-0-6" id="h0-0-6" class="d">-
+</a><a href="#h0-0-7" id="h0-0-7" class="d">-impl std::error::Error for DatabaseError {}
+</a><a href="#h0-0-8" id="h0-0-8" class="d">-
+</a><a href="#h0-0-9" id="h0-0-9" class="d">-impl fmt::Display for DatabaseError {
+</a><a href="#h0-0-10" id="h0-0-10" class="d">-    fn fmt(&amp;self, f: &amp;mut fmt::Formatter) -&gt; fmt::Result {
+</a><a href="#h0-0-11" id="h0-0-11" class="d">-        match self {
+</a><a href="#h0-0-12" id="h0-0-12" class="d">-            DatabaseError::ConnectionError =&gt; write!(f, &quot;Database connection error&quot;),
+</a><a href="#h0-0-13" id="h0-0-13" class="d">-        }
+</a><a href="#h0-0-14" id="h0-0-14" class="d">-    }
+</a><a href="#h0-0-15" id="h0-0-15" class="d">-}
+</a><a href="#h0-0-16" id="h0-0-16" class="d">-
+</a><a href="#h0-0-17" id="h0-0-17" class="d">-impl From&lt;rusqlite::&gt; for CrawlError {
+</a><a href="#h0-0-18" id="h0-0-18" class="d">-    fn from(_: web3::error::Error) -&gt; Self {
+</a><a href="#h0-0-19" id="h0-0-19" class="d">-        CrawlError::RPCConnection
+</a><a href="#h0-0-20" id="h0-0-20" class="d">-    }
+</a><a href="#h0-0-21" id="h0-0-21" class="d">-}
+</a></pre>
+</div>
+</body>
+</html>

@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>[spec] use mdbook - cyrtophora - Unnamed repository; edit this file &#39;description&#39; to name the repository.
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="cyrtophora Atom Feed" href="../atom.xml" />
+<link rel="alternate" type="application/atom+xml" title="cyrtophora Atom Feed (tags)" href="../tags.xml" />
+<link rel="stylesheet" type="text/css" href="/git.css" />
+</head>
+<body>
+<table><tr><td><a href="/index.html"><img src="/logo.png" alt="" width="32" height="32" /></a></td><td><h1>cyrtophora</h1><span class="desc">Unnamed repository; edit this file &#39;description&#39; to name the repository.
+</span></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a> | <a href="../file/README.md.pretty.html">README</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/71f5ea8885f845b5bb99263345c65e409e60f2e2.html">71f5ea8885f845b5bb99263345c65e409e60f2e2</a>
+<b>parent</b> <a href="../commit/2c117e973f53efd01e40a29d5ffad9bc499e7c6a.html">2c117e973f53efd01e40a29d5ffad9bc499e7c6a</a>
+<b>Author:</b> Jackson G. Kaindume &lt;<a href="mailto:kaindume@kwatafana.org">kaindume@kwatafana.org</a>&gt;
+<b>Date:</b>   Thu,  1 Sep 2022 14:27:02 +0200
+
+[spec] use mdbook
+
+<b>Diffstat:</b>
+<table><tr><td class="M">M</td><td><a href="#h0">README.md</a></td><td> | </td><td class="num">10</td><td><span class="i">++</span><span class="d">--------</span></td></tr>
+<tr><td class="A">A</td><td><a href="#h1">spec/.gitignore</a></td><td> | </td><td class="num">1</td><td><span class="i">+</span><span class="d"></span></td></tr>
+<tr><td class="A">A</td><td><a href="#h2">spec/book.toml</a></td><td> | </td><td class="num">6</td><td><span class="i">++++++</span><span class="d"></span></td></tr>
+<tr><td class="D">D</td><td><a href="#h3">spec/database.md</a></td><td> | </td><td class="num">12</td><td><span class="i"></span><span class="d">------------</span></td></tr>
+<tr><td class="D">D</td><td><a href="#h4">spec/password-hashing.md</a></td><td> | </td><td class="num">77</td><td><span class="i"></span><span class="d">-----------------------------------------------------------------------------</span></td></tr>
+<tr><td class="D">D</td><td><a href="#h5">spec/sqlite-support.md</a></td><td> | </td><td class="num">17</td><td><span class="i"></span><span class="d">-----------------</span></td></tr>
+<tr><td class="A">A</td><td><a href="#h6">spec/src/SUMMARY.md</a></td><td> | </td><td class="num">7</td><td><span class="i">+++++++</span><span class="d"></span></td></tr>
+<tr><td class="R">R</td><td><a href="#h7">spec/accounts.md -&gt; spec/src/accounts.md</a></td><td> | </td><td class="num">0</td><td><span class="i"></span><span class="d"></span></td></tr>
+<tr><td class="A">A</td><td><a href="#h8">spec/src/cyrtophora.md</a></td><td> | </td><td class="num">3</td><td><span class="i">+++</span><span class="d"></span></td></tr>
+<tr><td class="A">A</td><td><a href="#h9">spec/src/database.md</a></td><td> | </td><td class="num">6</td><td><span class="i">++++++</span><span class="d"></span></td></tr>
+<tr><td class="A">A</td><td><a href="#h10">spec/src/password-hashing.md</a></td><td> | </td><td class="num">71</td><td><span class="i">+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++</span><span class="d"></span></td></tr>
+<tr><td class="A">A</td><td><a href="#h11">spec/src/sqlite-support.md</a></td><td> | </td><td class="num">11</td><td><span class="i">+++++++++++</span><span class="d"></span></td></tr>
+</table></pre><pre>12 files changed, 107 insertions(+), 114 deletions(-)
+<hr/><b>diff --git a/<a id="h0" href="../file/README.md.html">README.md</a> b/<a href="../file/README.md.html">README.md</a></b>
+<a href="#h0-0" id="h0-0" class="h">@@ -12,17 +12,11 @@ ___
+</a>        ░█░░░░█░░█▀▄░░█░░█░█░█▀▀░█▀█░█░█░█▀▄░█▀█
+        ░▀▀▀░░▀░░▀░▀░░▀░░▀▀▀░▀░░░▀░▀░▀▀▀░▀░▀░▀░▀
+ ```
+<a href="#h0-0-3" id="h0-0-3" class="d">-
+</a><a href="#h0-0-4" id="h0-0-4" class="d">-Depends on:
+</a><a href="#h0-0-5" id="h0-0-5" class="d">-
+</a><a href="#h0-0-6" id="h0-0-6" class="d">-- [scrypt](https://github.com/RustCrypto/password-hashes/tree/master/scrypt): Used for password hashing.
+</a><a href="#h0-0-7" id="h0-0-7" class="d">-- [ed25519 from the ring crate](https://github.com/briansmith/ring): Digital Signatures
+</a><a href="#h0-0-8" id="h0-0-8" class="d">-- [XChaCha20-Poly1305](https://github.com/RustCrypto/AEADs/tree/master/chacha20poly1305): Symmetric Encryption 
+</a><a href="#h0-0-9" id="h0-0-9" class="d">-
+</a> ## Features
+ 
+<a href="#h0-0-12" id="h0-0-12" class="d">-- Accounts
+</a><a href="#h0-0-13" id="h0-0-13" class="i">+- Account Management
+</a> - Input validation
+<a href="#h0-0-15" id="h0-0-15" class="i">+- Database
+</a> 
+ ## Unlicense
+ 
+<b>diff --git a/<a id="h1" href="../file/spec/.gitignore.html">spec/.gitignore</a> b/<a href="../file/spec/.gitignore.html">spec/.gitignore</a></b>
+<a href="#h1-0" id="h1-0" class="h">@@ -0,0 +1 @@
+</a><a href="#h1-0-0" id="h1-0-0" class="i">+book
+</a><b>diff --git a/<a id="h2" href="../file/spec/book.toml.html">spec/book.toml</a> b/<a href="../file/spec/book.toml.html">spec/book.toml</a></b>
+<a href="#h2-0" id="h2-0" class="h">@@ -0,0 +1,6 @@
+</a><a href="#h2-0-0" id="h2-0-0" class="i">+[book]
+</a><a href="#h2-0-1" id="h2-0-1" class="i">+authors = [&quot;Jackson G. Kaindume&quot;]
+</a><a href="#h2-0-2" id="h2-0-2" class="i">+language = &quot;en&quot;
+</a><a href="#h2-0-3" id="h2-0-3" class="i">+multilingual = false
+</a><a href="#h2-0-4" id="h2-0-4" class="i">+src = &quot;src&quot;
+</a><a href="#h2-0-5" id="h2-0-5" class="i">+title = &quot;cyrtophora&quot;
+</a><b>diff --git a/<a id="h3" href="../file/spec/database.md.html">spec/database.md</a> b/<a href="../file/spec/database.md.html">spec/database.md</a></b>
+<a href="#h3-0" id="h3-0" class="h">@@ -1,12 +0,0 @@
+</a><a href="#h3-0-0" id="h3-0-0" class="d">----
+</a><a href="#h3-0-1" id="h3-0-1" class="d">-title: Database
+</a><a href="#h3-0-2" id="h3-0-2" class="d">-subtitle: 
+</a><a href="#h3-0-3" id="h3-0-3" class="d">-author: Jackson G. Kaindume
+</a><a href="#h3-0-4" id="h3-0-4" class="d">-date: 2022-08-31
+</a><a href="#h3-0-5" id="h3-0-5" class="d">-...
+</a><a href="#h3-0-6" id="h3-0-6" class="d">----
+</a><a href="#h3-0-7" id="h3-0-7" class="d">-
+</a><a href="#h3-0-8" id="h3-0-8" class="d">-Cyrtophora stores structured data in a database. The following data is
+</a><a href="#h3-0-9" id="h3-0-9" class="d">-is stored:
+</a><a href="#h3-0-10" id="h3-0-10" class="d">-
+</a><a href="#h3-0-11" id="h3-0-11" class="d">-1. Accounts
+</a><b>diff --git a/<a id="h4" href="../file/spec/password-hashing.md.html">spec/password-hashing.md</a> b/<a href="../file/spec/password-hashing.md.html">spec/password-hashing.md</a></b>
+<a href="#h4-0" id="h4-0" class="h">@@ -1,77 +0,0 @@
+</a><a href="#h4-0-0" id="h4-0-0" class="d">----
+</a><a href="#h4-0-1" id="h4-0-1" class="d">-title: Password Hashing
+</a><a href="#h4-0-2" id="h4-0-2" class="d">-subtitle: 🔐
+</a><a href="#h4-0-3" id="h4-0-3" class="d">-author: Jackson G. Kaindume
+</a><a href="#h4-0-4" id="h4-0-4" class="d">-date: 2022-08-14
+</a><a href="#h4-0-5" id="h4-0-5" class="d">-...
+</a><a href="#h4-0-6" id="h4-0-6" class="d">----
+</a><a href="#h4-0-7" id="h4-0-7" class="d">-
+</a><a href="#h4-0-8" id="h4-0-8" class="d">-## Why hash?
+</a><a href="#h4-0-9" id="h4-0-9" class="d">-
+</a><a href="#h4-0-10" id="h4-0-10" class="d">-It is only a matter of time until your server gets hacked, and
+</a><a href="#h4-0-11" id="h4-0-11" class="d">-when that happens you don&#39;t want the users passwords to be leaked --
+</a><a href="#h4-0-12" id="h4-0-12" class="d">-this will allow the attacker to gain access to the users resources.
+</a><a href="#h4-0-13" id="h4-0-13" class="d">-Some users also use the same password across many services, your 
+</a><a href="#h4-0-14" id="h4-0-14" class="d">-web-server can be the root cause of a chain of breaches.
+</a><a href="#h4-0-15" id="h4-0-15" class="d">-
+</a><a href="#h4-0-16" id="h4-0-16" class="d">-A cool way to prevent this type of leak is by __obfuscating__ the 
+</a><a href="#h4-0-17" id="h4-0-17" class="d">-users password with a [__hash function__](https://en.wikipedia.org/wiki/Hash_function).
+</a><a href="#h4-0-18" id="h4-0-18" class="d">-
+</a><a href="#h4-0-19" id="h4-0-19" class="d">-There are lots of hash functions that can be used, but most of these 
+</a><a href="#h4-0-20" id="h4-0-20" class="d">-will be a bad idea to use. For example if you use SHA-256 or other 
+</a><a href="#h4-0-21" id="h4-0-21" class="d">-computationally cheap functions (hash function without a __work factor__ 
+</a><a href="#h4-0-22" id="h4-0-22" class="d">-parameter), they are vulnerable to rainbow table attacks.
+</a><a href="#h4-0-23" id="h4-0-23" class="d">-Bruteforce is also possible if the password length is short/known, 
+</a><a href="#h4-0-24" id="h4-0-24" class="d">-asic miners can generate 100 TeraHashes PER Second.
+</a><a href="#h4-0-25" id="h4-0-25" class="d">-
+</a><a href="#h4-0-26" id="h4-0-26" class="d">-The server can increase the passwords entropy by concatenating it with
+</a><a href="#h4-0-27" id="h4-0-27" class="d">-a random string aka the __salt__. Users can also protect themselves 
+</a><a href="#h4-0-28" id="h4-0-28" class="d">-by using longer passwords.
+</a><a href="#h4-0-29" id="h4-0-29" class="d">-
+</a><a href="#h4-0-30" id="h4-0-30" class="d">-The best method to use against plaintext password leaks and rainbow
+</a><a href="#h4-0-31" id="h4-0-31" class="d">-table attacks is to use a __Password Hash Function__. Which is a hash 
+</a><a href="#h4-0-32" id="h4-0-32" class="d">-function specially designed to be slow/expensive to compute even on
+</a><a href="#h4-0-33" id="h4-0-33" class="d">-specialized hardware.
+</a><a href="#h4-0-34" id="h4-0-34" class="d">-
+</a><a href="#h4-0-35" id="h4-0-35" class="d">-## Scrypt [recommended]
+</a><a href="#h4-0-36" id="h4-0-36" class="d">-
+</a><a href="#h4-0-37" id="h4-0-37" class="d">-The [scrypt](https://www.tarsnap.com/scrypt.html) hash function uses large amounts of memory when hashing 
+</a><a href="#h4-0-38" id="h4-0-38" class="d">-making it expensive to scale to the point of reasonable bruteforce 
+</a><a href="#h4-0-39" id="h4-0-39" class="d">-attacks. Secure against hardware brute-force attacks.
+</a><a href="#h4-0-40" id="h4-0-40" class="d">-
+</a><a href="#h4-0-41" id="h4-0-41" class="d">-A number of cryptocurrencies use __scrypt__ for proof of work.
+</a><a href="#h4-0-42" id="h4-0-42" class="d">-
+</a><a href="#h4-0-43" id="h4-0-43" class="d">-Created by Colin Percival of [Tarsnap](https://en.wikipedia.org/wiki/Tarsnap)
+</a><a href="#h4-0-44" id="h4-0-44" class="d">-
+</a><a href="#h4-0-45" id="h4-0-45" class="d">-## Argon2d [recommended]
+</a><a href="#h4-0-46" id="h4-0-46" class="d">-
+</a><a href="#h4-0-47" id="h4-0-47" class="d">-The [Argon2d](https://en.wikipedia.org/wiki/Argon2) function is 
+</a><a href="#h4-0-48" id="h4-0-48" class="d">-designed to resist GPU cracking attacks. Secure against hardware 
+</a><a href="#h4-0-49" id="h4-0-49" class="d">-brute-force attacks.
+</a><a href="#h4-0-50" id="h4-0-50" class="d">-
+</a><a href="#h4-0-51" id="h4-0-51" class="d">-It is the winner of [Password Hashing Competition](https://www.password-hashing.net/).
+</a><a href="#h4-0-52" id="h4-0-52" class="d">-
+</a><a href="#h4-0-53" id="h4-0-53" class="d">-## Bcrypt
+</a><a href="#h4-0-54" id="h4-0-54" class="d">-
+</a><a href="#h4-0-55" id="h4-0-55" class="d">-[Bcrypt](https://en.wikipedia.org/wiki/Bcrypt) is based on the 
+</a><a href="#h4-0-56" id="h4-0-56" class="d">-[blowfish](https://en.wikipedia.org/wiki/Blowfish_(cipher)) cipher.
+</a><a href="#h4-0-57" id="h4-0-57" class="d">-
+</a><a href="#h4-0-58" id="h4-0-58" class="d">-Vulnerable against hardware brute-force attacks.
+</a><a href="#h4-0-59" id="h4-0-59" class="d">-
+</a><a href="#h4-0-60" id="h4-0-60" class="d">-## PBKDF2
+</a><a href="#h4-0-61" id="h4-0-61" class="d">-
+</a><a href="#h4-0-62" id="h4-0-62" class="d">-[PBKDF2](https://en.wikipedia.org/wiki/PBKDF2) is an key derivation
+</a><a href="#h4-0-63" id="h4-0-63" class="d">-function with a sliding computational cost to reduce bruteforce 
+</a><a href="#h4-0-64" id="h4-0-64" class="d">-search.
+</a><a href="#h4-0-65" id="h4-0-65" class="d">-
+</a><a href="#h4-0-66" id="h4-0-66" class="d">-Vulnerable against hardware brute-force attacks.
+</a><a href="#h4-0-67" id="h4-0-67" class="d">-
+</a><a href="#h4-0-68" id="h4-0-68" class="d">-## Conclusion
+</a><a href="#h4-0-69" id="h4-0-69" class="d">-
+</a><a href="#h4-0-70" id="h4-0-70" class="d">-A cool way to prevent password leaks is by __obfuscating__ them
+</a><a href="#h4-0-71" id="h4-0-71" class="d">-with a password hash functions which offer additional security 
+</a><a href="#h4-0-72" id="h4-0-72" class="d">-against bruteforce from specialliazed hardware such as asics. If 
+</a><a href="#h4-0-73" id="h4-0-73" class="d">-password hash functions are used and implemented correctly even the 
+</a><a href="#h4-0-74" id="h4-0-74" class="d">-administrators of the server will not be able to read the users 
+</a><a href="#h4-0-75" id="h4-0-75" class="d">-passwords especially if the server is open source and the users can
+</a><a href="#h4-0-76" id="h4-0-76" class="d">-audit the code for themselves.
+</a><b>diff --git a/<a id="h5" href="../file/spec/sqlite-support.md.html">spec/sqlite-support.md</a> b/<a href="../file/spec/sqlite-support.md.html">spec/sqlite-support.md</a></b>
+<a href="#h5-0" id="h5-0" class="h">@@ -1,17 +0,0 @@
+</a><a href="#h5-0-0" id="h5-0-0" class="d">----
+</a><a href="#h5-0-1" id="h5-0-1" class="d">-title: Sqlite Support
+</a><a href="#h5-0-2" id="h5-0-2" class="d">-subtitle: 
+</a><a href="#h5-0-3" id="h5-0-3" class="d">-author: Jackson G. Kaindume
+</a><a href="#h5-0-4" id="h5-0-4" class="d">-date: 2022-08-31
+</a><a href="#h5-0-5" id="h5-0-5" class="d">-...
+</a><a href="#h5-0-6" id="h5-0-6" class="d">----
+</a><a href="#h5-0-7" id="h5-0-7" class="d">-
+</a><a href="#h5-0-8" id="h5-0-8" class="d">-Sqlite is supported in cyrtophora as an optional feature:
+</a><a href="#h5-0-9" id="h5-0-9" class="d">-
+</a><a href="#h5-0-10" id="h5-0-10" class="d">-```toml
+</a><a href="#h5-0-11" id="h5-0-11" class="d">-cyrtophora = { path = &quot;../../cyrtophora/phora&quot;, features = [&quot;sqlite&quot;] }
+</a><a href="#h5-0-12" id="h5-0-12" class="d">-```
+</a><a href="#h5-0-13" id="h5-0-13" class="d">-When the sqlite feature is enabled user account data will be saved in
+</a><a href="#h5-0-14" id="h5-0-14" class="d">-a sqlite database.
+</a><a href="#h5-0-15" id="h5-0-15" class="d">-
+</a><a href="#h5-0-16" id="h5-0-16" class="d">-
+</a><b>diff --git a/<a id="h6" href="../file/spec/src/SUMMARY.md.html">spec/src/SUMMARY.md</a> b/<a href="../file/spec/src/SUMMARY.md.html">spec/src/SUMMARY.md</a></b>
+<a href="#h6-0" id="h6-0" class="h">@@ -0,0 +1,7 @@
+</a><a href="#h6-0-0" id="h6-0-0" class="i">+# Summary
+</a><a href="#h6-0-1" id="h6-0-1" class="i">+
+</a><a href="#h6-0-2" id="h6-0-2" class="i">+- [Cyrtophora](./cyrtophora.md)
+</a><a href="#h6-0-3" id="h6-0-3" class="i">+- [Accounts](./accounts.md)
+</a><a href="#h6-0-4" id="h6-0-4" class="i">+- [Database](./database.md)
+</a><a href="#h6-0-5" id="h6-0-5" class="i">+  - [SQLite Support](./sqlite-support.md)
+</a><a href="#h6-0-6" id="h6-0-6" class="i">+  - [Password-hashing](./password-hashing.md)
+</a><b>diff --git a/<a id="h7" href="../file/spec/accounts.md.html">spec/accounts.md</a> b/<a href="../file/spec/src/accounts.md.html">spec/src/accounts.md</a></b>
+<b>diff --git a/<a id="h8" href="../file/spec/src/cyrtophora.md.html">spec/src/cyrtophora.md</a> b/<a href="../file/spec/src/cyrtophora.md.html">spec/src/cyrtophora.md</a></b>
+<a href="#h8-0" id="h8-0" class="h">@@ -0,0 +1,3 @@
+</a><a href="#h8-0-0" id="h8-0-0" class="i">+# Cyrtophora
+</a><a href="#h8-0-1" id="h8-0-1" class="i">+
+</a><a href="#h8-0-2" id="h8-0-2" class="i">+Full-stack users-first web framework.
+</a><b>diff --git a/<a id="h9" href="../file/spec/src/database.md.html">spec/src/database.md</a> b/<a href="../file/spec/src/database.md.html">spec/src/database.md</a></b>
+<a href="#h9-0" id="h9-0" class="h">@@ -0,0 +1,6 @@
+</a><a href="#h9-0-0" id="h9-0-0" class="i">+# Database
+</a><a href="#h9-0-1" id="h9-0-1" class="i">+
+</a><a href="#h9-0-2" id="h9-0-2" class="i">+Cyrtophora stores structured data in a database. The following data is
+</a><a href="#h9-0-3" id="h9-0-3" class="i">+is stored:
+</a><a href="#h9-0-4" id="h9-0-4" class="i">+
+</a><a href="#h9-0-5" id="h9-0-5" class="i">+1. Accounts
+</a><b>diff --git a/<a id="h10" href="../file/spec/src/password-hashing.md.html">spec/src/password-hashing.md</a> b/<a href="../file/spec/src/password-hashing.md.html">spec/src/password-hashing.md</a></b>
+<a href="#h10-0" id="h10-0" class="h">@@ -0,0 +1,71 @@
+</a><a href="#h10-0-0" id="h10-0-0" class="i">+# Password Hashing
+</a><a href="#h10-0-1" id="h10-0-1" class="i">+
+</a><a href="#h10-0-2" id="h10-0-2" class="i">+## Why hash?
+</a><a href="#h10-0-3" id="h10-0-3" class="i">+
+</a><a href="#h10-0-4" id="h10-0-4" class="i">+It is only a matter of time until your server gets hacked, and
+</a><a href="#h10-0-5" id="h10-0-5" class="i">+when that happens you don&#39;t want the users passwords to be leaked --
+</a><a href="#h10-0-6" id="h10-0-6" class="i">+this will allow the attacker to gain access to the users resources.
+</a><a href="#h10-0-7" id="h10-0-7" class="i">+Some users also use the same password across many services, your 
+</a><a href="#h10-0-8" id="h10-0-8" class="i">+web-server can be the root cause of a chain of breaches.
+</a><a href="#h10-0-9" id="h10-0-9" class="i">+
+</a><a href="#h10-0-10" id="h10-0-10" class="i">+A cool way to prevent this type of leak is by __obfuscating__ the 
+</a><a href="#h10-0-11" id="h10-0-11" class="i">+users password with a [__hash function__](https://en.wikipedia.org/wiki/Hash_function).
+</a><a href="#h10-0-12" id="h10-0-12" class="i">+
+</a><a href="#h10-0-13" id="h10-0-13" class="i">+There are lots of hash functions that can be used, but most of these 
+</a><a href="#h10-0-14" id="h10-0-14" class="i">+will be a bad idea to use. For example if you use SHA-256 or other 
+</a><a href="#h10-0-15" id="h10-0-15" class="i">+computationally cheap functions (hash function without a __work factor__ 
+</a><a href="#h10-0-16" id="h10-0-16" class="i">+parameter), they are vulnerable to rainbow table attacks.
+</a><a href="#h10-0-17" id="h10-0-17" class="i">+Bruteforce is also possible if the password length is short/known, 
+</a><a href="#h10-0-18" id="h10-0-18" class="i">+asic miners can generate 100 TeraHashes PER Second.
+</a><a href="#h10-0-19" id="h10-0-19" class="i">+
+</a><a href="#h10-0-20" id="h10-0-20" class="i">+The server can increase the passwords entropy by concatenating it with
+</a><a href="#h10-0-21" id="h10-0-21" class="i">+a random string aka the __salt__. Users can also protect themselves 
+</a><a href="#h10-0-22" id="h10-0-22" class="i">+by using longer passwords.
+</a><a href="#h10-0-23" id="h10-0-23" class="i">+
+</a><a href="#h10-0-24" id="h10-0-24" class="i">+The best method to use against plaintext password leaks and rainbow
+</a><a href="#h10-0-25" id="h10-0-25" class="i">+table attacks is to use a __Password Hash Function__. Which is a hash 
+</a><a href="#h10-0-26" id="h10-0-26" class="i">+function specially designed to be slow/expensive to compute even on
+</a><a href="#h10-0-27" id="h10-0-27" class="i">+specialized hardware.
+</a><a href="#h10-0-28" id="h10-0-28" class="i">+
+</a><a href="#h10-0-29" id="h10-0-29" class="i">+## Scrypt [recommended]
+</a><a href="#h10-0-30" id="h10-0-30" class="i">+
+</a><a href="#h10-0-31" id="h10-0-31" class="i">+The [scrypt](https://www.tarsnap.com/scrypt.html) hash function uses large amounts of memory when hashing 
+</a><a href="#h10-0-32" id="h10-0-32" class="i">+making it expensive to scale to the point of reasonable bruteforce 
+</a><a href="#h10-0-33" id="h10-0-33" class="i">+attacks. Secure against hardware brute-force attacks.
+</a><a href="#h10-0-34" id="h10-0-34" class="i">+
+</a><a href="#h10-0-35" id="h10-0-35" class="i">+A number of cryptocurrencies use __scrypt__ for proof of work.
+</a><a href="#h10-0-36" id="h10-0-36" class="i">+
+</a><a href="#h10-0-37" id="h10-0-37" class="i">+Created by Colin Percival of [Tarsnap](https://en.wikipedia.org/wiki/Tarsnap)
+</a><a href="#h10-0-38" id="h10-0-38" class="i">+
+</a><a href="#h10-0-39" id="h10-0-39" class="i">+## Argon2d [recommended]
+</a><a href="#h10-0-40" id="h10-0-40" class="i">+
+</a><a href="#h10-0-41" id="h10-0-41" class="i">+The [Argon2d](https://en.wikipedia.org/wiki/Argon2) function is 
+</a><a href="#h10-0-42" id="h10-0-42" class="i">+designed to resist GPU cracking attacks. Secure against hardware 
+</a><a href="#h10-0-43" id="h10-0-43" class="i">+brute-force attacks.
+</a><a href="#h10-0-44" id="h10-0-44" class="i">+
+</a><a href="#h10-0-45" id="h10-0-45" class="i">+It is the winner of [Password Hashing Competition](https://www.password-hashing.net/).
+</a><a href="#h10-0-46" id="h10-0-46" class="i">+
+</a><a href="#h10-0-47" id="h10-0-47" class="i">+## Bcrypt
+</a><a href="#h10-0-48" id="h10-0-48" class="i">+
+</a><a href="#h10-0-49" id="h10-0-49" class="i">+[Bcrypt](https://en.wikipedia.org/wiki/Bcrypt) is based on the 
+</a><a href="#h10-0-50" id="h10-0-50" class="i">+[blowfish](https://en.wikipedia.org/wiki/Blowfish_(cipher)) cipher.
+</a><a href="#h10-0-51" id="h10-0-51" class="i">+
+</a><a href="#h10-0-52" id="h10-0-52" class="i">+Vulnerable against hardware brute-force attacks.
+</a><a href="#h10-0-53" id="h10-0-53" class="i">+
+</a><a href="#h10-0-54" id="h10-0-54" class="i">+## PBKDF2
+</a><a href="#h10-0-55" id="h10-0-55" class="i">+
+</a><a href="#h10-0-56" id="h10-0-56" class="i">+[PBKDF2](https://en.wikipedia.org/wiki/PBKDF2) is an key derivation
+</a><a href="#h10-0-57" id="h10-0-57" class="i">+function with a sliding computational cost to reduce bruteforce 
+</a><a href="#h10-0-58" id="h10-0-58" class="i">+search.
+</a><a href="#h10-0-59" id="h10-0-59" class="i">+
+</a><a href="#h10-0-60" id="h10-0-60" class="i">+Vulnerable against hardware brute-force attacks.
+</a><a href="#h10-0-61" id="h10-0-61" class="i">+
+</a><a href="#h10-0-62" id="h10-0-62" class="i">+## Conclusion
+</a><a href="#h10-0-63" id="h10-0-63" class="i">+
+</a><a href="#h10-0-64" id="h10-0-64" class="i">+A cool way to prevent password leaks is by __obfuscating__ them
+</a><a href="#h10-0-65" id="h10-0-65" class="i">+with a password hash functions which offer additional security 
+</a><a href="#h10-0-66" id="h10-0-66" class="i">+against bruteforce from specialliazed hardware such as asics. If 
+</a><a href="#h10-0-67" id="h10-0-67" class="i">+password hash functions are used and implemented correctly even the 
+</a><a href="#h10-0-68" id="h10-0-68" class="i">+administrators of the server will not be able to read the users 
+</a><a href="#h10-0-69" id="h10-0-69" class="i">+passwords especially if the server is open source and the users can
+</a><a href="#h10-0-70" id="h10-0-70" class="i">+audit the code for themselves.
+</a><b>diff --git a/<a id="h11" href="../file/spec/src/sqlite-support.md.html">spec/src/sqlite-support.md</a> b/<a href="../file/spec/src/sqlite-support.md.html">spec/src/sqlite-support.md</a></b>
+<a href="#h11-0" id="h11-0" class="h">@@ -0,0 +1,11 @@
+</a><a href="#h11-0-0" id="h11-0-0" class="i">+# Sqlite Support
+</a><a href="#h11-0-1" id="h11-0-1" class="i">+
+</a><a href="#h11-0-2" id="h11-0-2" class="i">+Sqlite is supported in cyrtophora as an optional feature:
+</a><a href="#h11-0-3" id="h11-0-3" class="i">+
+</a><a href="#h11-0-4" id="h11-0-4" class="i">+```toml
+</a><a href="#h11-0-5" id="h11-0-5" class="i">+cyrtophora = { path = &quot;../../cyrtophora/phora&quot;, features = [&quot;sqlite&quot;] }
+</a><a href="#h11-0-6" id="h11-0-6" class="i">+```
+</a><a href="#h11-0-7" id="h11-0-7" class="i">+When the sqlite feature is enabled user account data will be saved in
+</a><a href="#h11-0-8" id="h11-0-8" class="i">+a sqlite database.
+</a><a href="#h11-0-9" id="h11-0-9" class="i">+
+</a><a href="#h11-0-10" id="h11-0-10" class="i">+
+</a></pre>
+</div>
+</body>
+</html>

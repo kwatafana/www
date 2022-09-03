@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>[phora] rename AccountRegistrationData to AccountRegistration - cyrtophora - Unnamed repository; edit this file &#39;description&#39; to name the repository.
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="cyrtophora Atom Feed" href="../atom.xml" />
+<link rel="alternate" type="application/atom+xml" title="cyrtophora Atom Feed (tags)" href="../tags.xml" />
+<link rel="stylesheet" type="text/css" href="/git.css" />
+</head>
+<body>
+<table><tr><td><a href="/index.html"><img src="/logo.png" alt="" width="32" height="32" /></a></td><td><h1>cyrtophora</h1><span class="desc">Unnamed repository; edit this file &#39;description&#39; to name the repository.
+</span></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a> | <a href="../file/README.md.pretty.html">README</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/050349634ee1917642db92aa0f3056ed51bd81de.html">050349634ee1917642db92aa0f3056ed51bd81de</a>
+<b>parent</b> <a href="../commit/f284058dcae3d30a826021bda4c293299ece999d.html">f284058dcae3d30a826021bda4c293299ece999d</a>
+<b>Author:</b> Jackson G. Kaindume &lt;<a href="mailto:seestem@merely.tech">seestem@merely.tech</a>&gt;
+<b>Date:</b>   Mon, 29 Aug 2022 12:59:29 +0200
+
+[phora] rename AccountRegistrationData to AccountRegistration
+
+<b>Diffstat:</b>
+<table><tr><td class="M">M</td><td><a href="#h0">phora/src/data.rs</a></td><td> | </td><td class="num">4</td><td><span class="i">++</span><span class="d">--</span></td></tr>
+</table></pre><pre>1 file changed, 2 insertions(+), 2 deletions(-)
+<hr/><b>diff --git a/<a id="h0" href="../file/phora/src/data.rs.html">phora/src/data.rs</a> b/<a href="../file/phora/src/data.rs.html">phora/src/data.rs</a></b>
+<a href="#h0-0" id="h0-0" class="h">@@ -3,14 +3,14 @@ use serde::Deserialize;
+</a> 
+ /// User registration Data
+ #[derive(Deserialize)]
+<a href="#h0-0-3" id="h0-0-3" class="d">-pub struct AccountRegistrationData {
+</a><a href="#h0-0-4" id="h0-0-4" class="i">+pub struct AccountRegistration {
+</a>     pub username: String,
+     pub password: String,
+     pub retyped_password: String,
+     pub email: Option&lt;String&gt;,
+ }
+ 
+<a href="#h0-0-11" id="h0-0-11" class="d">-impl AccountRegistrationData {
+</a><a href="#h0-0-12" id="h0-0-12" class="i">+impl AccountRegistration {
+</a>     pub fn is_valid(&amp;self) -&gt; Result&lt;(), ValidationError&gt; {
+         if self.password != self.retyped_password {
+             return Err(ValidationError::Password);
+</pre>
+</div>
+</body>
+</html>

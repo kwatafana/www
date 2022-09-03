@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>[phora] update API - cyrtophora - Unnamed repository; edit this file &#39;description&#39; to name the repository.
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="cyrtophora Atom Feed" href="../atom.xml" />
+<link rel="alternate" type="application/atom+xml" title="cyrtophora Atom Feed (tags)" href="../tags.xml" />
+<link rel="stylesheet" type="text/css" href="/git.css" />
+</head>
+<body>
+<table><tr><td><a href="/index.html"><img src="/logo.png" alt="" width="32" height="32" /></a></td><td><h1>cyrtophora</h1><span class="desc">Unnamed repository; edit this file &#39;description&#39; to name the repository.
+</span></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a> | <a href="../file/README.md.pretty.html">README</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/28861b3e04445e54bbbf3415a8ab7db0a59e93ed.html">28861b3e04445e54bbbf3415a8ab7db0a59e93ed</a>
+<b>parent</b> <a href="../commit/f8536ee0becc7d590f82fa436de8089a5f4aa3cb.html">f8536ee0becc7d590f82fa436de8089a5f4aa3cb</a>
+<b>Author:</b> Jackson G. Kaindume &lt;<a href="mailto:seestem@merely.tech">seestem@merely.tech</a>&gt;
+<b>Date:</b>   Mon, 29 Aug 2022 12:17:12 +0200
+
+[phora] update API
+
+<b>Diffstat:</b>
+<table><tr><td class="M">M</td><td><a href="#h0">phora/src/api.rs</a></td><td> | </td><td class="num">6</td><td><span class="i">++++</span><span class="d">--</span></td></tr>
+</table></pre><pre>1 file changed, 4 insertions(+), 2 deletions(-)
+<hr/><b>diff --git a/<a id="h0" href="../file/phora/src/api.rs.html">phora/src/api.rs</a> b/<a href="../file/phora/src/api.rs.html">phora/src/api.rs</a></b>
+<a href="#h0-0" id="h0-0" class="h">@@ -1,13 +1,15 @@
+</a> use url::Url;
+ 
+ pub struct API {
+<a href="#h0-0-3" id="h0-0-3" class="d">-    pub register: Url,
+</a><a href="#h0-0-4" id="h0-0-4" class="i">+    pub version: String,
+</a><a href="#h0-0-5" id="h0-0-5" class="i">+    pub accounts: Url,
+</a> }
+ 
+ impl Default for API {
+     fn default() -&gt; Self {
+         API {
+<a href="#h0-0-11" id="h0-0-11" class="d">-            register: Url::parse(&quot;/register&quot;).unwrap(),
+</a><a href="#h0-0-12" id="h0-0-12" class="i">+            version: &quot;v0&quot;.to_string(),
+</a><a href="#h0-0-13" id="h0-0-13" class="i">+            accounts: Url::parse(&quot;v0/accounts&quot;).unwrap(),
+</a>         }
+     }
+ }
+</pre>
+</div>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>[phora] add store_account and get_public_account trait functions for DB trait - cyrtophora - Unnamed repository; edit this file &#39;description&#39; to name the repository.
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="cyrtophora Atom Feed" href="../atom.xml" />
+<link rel="alternate" type="application/atom+xml" title="cyrtophora Atom Feed (tags)" href="../tags.xml" />
+<link rel="stylesheet" type="text/css" href="/git.css" />
+</head>
+<body>
+<table><tr><td><a href="/index.html"><img src="/logo.png" alt="" width="32" height="32" /></a></td><td><h1>cyrtophora</h1><span class="desc">Unnamed repository; edit this file &#39;description&#39; to name the repository.
+</span></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a> | <a href="../file/README.md.pretty.html">README</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/2c117e973f53efd01e40a29d5ffad9bc499e7c6a.html">2c117e973f53efd01e40a29d5ffad9bc499e7c6a</a>
+<b>parent</b> <a href="../commit/597e01b0d5bd6a4e9b2f01258597b2f98b424a44.html">597e01b0d5bd6a4e9b2f01258597b2f98b424a44</a>
+<b>Author:</b> Jackson G. Kaindume &lt;<a href="mailto:kaindume@kwatafana.org">kaindume@kwatafana.org</a>&gt;
+<b>Date:</b>   Thu,  1 Sep 2022 14:26:24 +0200
+
+[phora] add store_account and get_public_account trait functions for DB trait
+
+<b>Diffstat:</b>
+<table><tr><td class="M">M</td><td><a href="#h0">phora/src/database/mod.rs</a></td><td> | </td><td class="num">11</td><td><span class="i">++++++++</span><span class="d">---</span></td></tr>
+</table></pre><pre>1 file changed, 8 insertions(+), 3 deletions(-)
+<hr/><b>diff --git a/<a id="h0" href="../file/phora/src/database/mod.rs.html">phora/src/database/mod.rs</a> b/<a href="../file/phora/src/database/mod.rs.html">phora/src/database/mod.rs</a></b>
+<a href="#h0-0" id="h0-0" class="h">@@ -1,12 +1,17 @@
+</a><a href="#h0-0-0" id="h0-0-0" class="i">+use crate::account::{Account, PublicAccount};
+</a> use error::DatabaseError;
+<a href="#h0-0-2" id="h0-0-2" class="i">+
+</a> pub mod error;
+<a href="#h0-0-4" id="h0-0-4" class="i">+#[cfg(feature = &quot;sqlite&quot;)]
+</a><a href="#h0-0-5" id="h0-0-5" class="i">+pub mod sqlite;
+</a> 
+ pub trait DB {
+     /// New database instance
+     fn new(path: &amp;str) -&gt; Self;
+     /// Connect to database
+     fn connect(&amp;mut self) -&gt; Result&lt;(), DatabaseError&gt;;
+<a href="#h0-0-12" id="h0-0-12" class="i">+    /// Store user account
+</a><a href="#h0-0-13" id="h0-0-13" class="i">+    fn store_account(&amp;self, account: Account) -&gt; Result&lt;(), DatabaseError&gt;;
+</a><a href="#h0-0-14" id="h0-0-14" class="i">+    /// Get account public data
+</a><a href="#h0-0-15" id="h0-0-15" class="i">+    fn get_public_account(&amp;self, username: &amp;str) -&gt; Result&lt;PublicAccount, DatabaseError&gt;;
+</a> }
+<a href="#h0-0-17" id="h0-0-17" class="d">-
+</a><a href="#h0-0-18" id="h0-0-18" class="d">-#[cfg(feature = &quot;sqlite&quot;)]
+</a><a href="#h0-0-19" id="h0-0-19" class="d">-pub mod sqlite;
+</a></pre>
+</div>
+</body>
+</html>

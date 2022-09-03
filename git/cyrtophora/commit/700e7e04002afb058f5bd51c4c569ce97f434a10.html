@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>fix comment - cyrtophora - Unnamed repository; edit this file &#39;description&#39; to name the repository.
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="cyrtophora Atom Feed" href="../atom.xml" />
+<link rel="alternate" type="application/atom+xml" title="cyrtophora Atom Feed (tags)" href="../tags.xml" />
+<link rel="stylesheet" type="text/css" href="/git.css" />
+</head>
+<body>
+<table><tr><td><a href="/index.html"><img src="/logo.png" alt="" width="32" height="32" /></a></td><td><h1>cyrtophora</h1><span class="desc">Unnamed repository; edit this file &#39;description&#39; to name the repository.
+</span></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a> | <a href="../file/README.md.pretty.html">README</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/700e7e04002afb058f5bd51c4c569ce97f434a10.html">700e7e04002afb058f5bd51c4c569ce97f434a10</a>
+<b>parent</b> <a href="../commit/81af424e52bab8230621e47c360f9ca1061bdd9a.html">81af424e52bab8230621e47c360f9ca1061bdd9a</a>
+<b>Author:</b> Jackson G. Kaindume &lt;<a href="mailto:seestem@merely.tech">seestem@merely.tech</a>&gt;
+<b>Date:</b>   Sun, 21 Aug 2022 14:31:25 +0200
+
+fix comment
+
+<b>Diffstat:</b>
+<table><tr><td class="M">M</td><td><a href="#h0">src/validate.rs</a></td><td> | </td><td class="num">4</td><td><span class="i">++</span><span class="d">--</span></td></tr>
+</table></pre><pre>1 file changed, 2 insertions(+), 2 deletions(-)
+<hr/><b>diff --git a/<a id="h0" href="../file/src/validate.rs.html">src/validate.rs</a> b/<a href="../file/src/validate.rs.html">src/validate.rs</a></b>
+<a href="#h0-0" id="h0-0" class="h">@@ -28,12 +28,12 @@ impl Validate {
+</a>                     return false;
+                 }
+             } else {
+<a href="#h0-0-3" id="h0-0-3" class="d">-                // Count underscores because username can have only one [ _ ] underscore
+</a><a href="#h0-0-4" id="h0-0-4" class="i">+                // Count underscores because username can have only one (_) underscore
+</a>                 underscore_count += 1;
+             }
+         }
+ 
+<a href="#h0-0-9" id="h0-0-9" class="d">-        // Username can have only one [ _ ] underscore
+</a><a href="#h0-0-10" id="h0-0-10" class="i">+        // Username can have only one (_) underscore
+</a>         if underscore_count &gt; 1 {
+             return false;
+         }
+</pre>
+</div>
+</body>
+</html>

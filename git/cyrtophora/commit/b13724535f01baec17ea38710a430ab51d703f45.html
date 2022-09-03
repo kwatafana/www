@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>add docs for accounts - cyrtophora - Unnamed repository; edit this file &#39;description&#39; to name the repository.
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="cyrtophora Atom Feed" href="../atom.xml" />
+<link rel="alternate" type="application/atom+xml" title="cyrtophora Atom Feed (tags)" href="../tags.xml" />
+<link rel="stylesheet" type="text/css" href="/git.css" />
+</head>
+<body>
+<table><tr><td><a href="/index.html"><img src="/logo.png" alt="" width="32" height="32" /></a></td><td><h1>cyrtophora</h1><span class="desc">Unnamed repository; edit this file &#39;description&#39; to name the repository.
+</span></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a> | <a href="../file/README.md.pretty.html">README</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/b13724535f01baec17ea38710a430ab51d703f45.html">b13724535f01baec17ea38710a430ab51d703f45</a>
+<b>parent</b> <a href="../commit/1bcc17bd5f823044936021baf3dace23bd4e0239.html">1bcc17bd5f823044936021baf3dace23bd4e0239</a>
+<b>Author:</b> Jackson G. Kaindume &lt;<a href="mailto:seestem@merely.tech">seestem@merely.tech</a>&gt;
+<b>Date:</b>   Sun, 21 Aug 2022 14:32:50 +0200
+
+add docs for accounts
+
+<b>Diffstat:</b>
+<table><tr><td class="A">A</td><td><a href="#h0">doc/accounts.md</a></td><td> | </td><td class="num">37</td><td><span class="i">+++++++++++++++++++++++++++++++++++++</span><span class="d"></span></td></tr>
+</table></pre><pre>1 file changed, 37 insertions(+), 0 deletions(-)
+<hr/><b>diff --git a/<a id="h0" href="../file/doc/accounts.md.html">doc/accounts.md</a> b/<a href="../file/doc/accounts.md.html">doc/accounts.md</a></b>
+<a href="#h0-0" id="h0-0" class="h">@@ -0,0 +1,37 @@
+</a><a href="#h0-0-0" id="h0-0-0" class="i">+# Accounts
+</a><a href="#h0-0-1" id="h0-0-1" class="i">+
+</a><a href="#h0-0-2" id="h0-0-2" class="i">+```rust
+</a><a href="#h0-0-3" id="h0-0-3" class="i">+pub struct Account {
+</a><a href="#h0-0-4" id="h0-0-4" class="i">+    /// The username of the user, also used as an unique identifier
+</a><a href="#h0-0-5" id="h0-0-5" class="i">+    pub username: String,
+</a><a href="#h0-0-6" id="h0-0-6" class="i">+    /// The password of the user
+</a><a href="#h0-0-7" id="h0-0-7" class="i">+    pub password: String,
+</a><a href="#h0-0-8" id="h0-0-8" class="i">+    /// The email address the user
+</a><a href="#h0-0-9" id="h0-0-9" class="i">+    pub email: Option&lt;String&gt;,
+</a><a href="#h0-0-10" id="h0-0-10" class="i">+}
+</a><a href="#h0-0-11" id="h0-0-11" class="i">+```
+</a><a href="#h0-0-12" id="h0-0-12" class="i">+
+</a><a href="#h0-0-13" id="h0-0-13" class="i">+## Mandatory Fields
+</a><a href="#h0-0-14" id="h0-0-14" class="i">+
+</a><a href="#h0-0-15" id="h0-0-15" class="i">+An `Account` contains two mandatory fields.
+</a><a href="#h0-0-16" id="h0-0-16" class="i">+
+</a><a href="#h0-0-17" id="h0-0-17" class="i">+### `username`
+</a><a href="#h0-0-18" id="h0-0-18" class="i">+
+</a><a href="#h0-0-19" id="h0-0-19" class="i">+Used as a user identifier.
+</a><a href="#h0-0-20" id="h0-0-20" class="i">+
+</a><a href="#h0-0-21" id="h0-0-21" class="i">+- cannot start with a underscore (_)
+</a><a href="#h0-0-22" id="h0-0-22" class="i">+- can only contain letters, numbers, and one underscore
+</a><a href="#h0-0-23" id="h0-0-23" class="i">+- can have only one (_) underscore
+</a><a href="#h0-0-24" id="h0-0-24" class="i">+
+</a><a href="#h0-0-25" id="h0-0-25" class="i">+
+</a><a href="#h0-0-26" id="h0-0-26" class="i">+### `password`
+</a><a href="#h0-0-27" id="h0-0-27" class="i">+
+</a><a href="#h0-0-28" id="h0-0-28" class="i">+Users master key.
+</a><a href="#h0-0-29" id="h0-0-29" class="i">+
+</a><a href="#h0-0-30" id="h0-0-30" class="i">+- should be at least 10 characters long
+</a><a href="#h0-0-31" id="h0-0-31" class="i">+
+</a><a href="#h0-0-32" id="h0-0-32" class="i">+## Optional Fields
+</a><a href="#h0-0-33" id="h0-0-33" class="i">+
+</a><a href="#h0-0-34" id="h0-0-34" class="i">+### `email`
+</a><a href="#h0-0-35" id="h0-0-35" class="i">+
+</a><a href="#h0-0-36" id="h0-0-36" class="i">+The email address the user.
+</a></pre>
+</div>
+</body>
+</html>

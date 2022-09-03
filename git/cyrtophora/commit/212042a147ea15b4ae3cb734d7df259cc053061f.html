@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>[phora] remove url crate and use Strings for API url - cyrtophora - Unnamed repository; edit this file &#39;description&#39; to name the repository.
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="cyrtophora Atom Feed" href="../atom.xml" />
+<link rel="alternate" type="application/atom+xml" title="cyrtophora Atom Feed (tags)" href="../tags.xml" />
+<link rel="stylesheet" type="text/css" href="/git.css" />
+</head>
+<body>
+<table><tr><td><a href="/index.html"><img src="/logo.png" alt="" width="32" height="32" /></a></td><td><h1>cyrtophora</h1><span class="desc">Unnamed repository; edit this file &#39;description&#39; to name the repository.
+</span></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a> | <a href="../file/README.md.pretty.html">README</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/212042a147ea15b4ae3cb734d7df259cc053061f.html">212042a147ea15b4ae3cb734d7df259cc053061f</a>
+<b>parent</b> <a href="../commit/911f6df79fe9097ea176547c68cb8e7eaa663971.html">911f6df79fe9097ea176547c68cb8e7eaa663971</a>
+<b>Author:</b> Jackson G. Kaindume &lt;<a href="mailto:seestem@merely.tech">seestem@merely.tech</a>&gt;
+<b>Date:</b>   Mon, 29 Aug 2022 14:18:00 +0200
+
+[phora] remove url crate and use Strings for API url
+
+<b>Diffstat:</b>
+<table><tr><td class="M">M</td><td><a href="#h0">phora/Cargo.lock</a></td><td> | </td><td class="num">76</td><td><span class="i"></span><span class="d">----------------------------------------------------------------------------</span></td></tr>
+<tr><td class="M">M</td><td><a href="#h1">phora/Cargo.toml</a></td><td> | </td><td class="num">1</td><td><span class="i"></span><span class="d">-</span></td></tr>
+<tr><td class="M">M</td><td><a href="#h2">phora/src/api.rs</a></td><td> | </td><td class="num">6</td><td><span class="i">++</span><span class="d">----</span></td></tr>
+</table></pre><pre>3 files changed, 2 insertions(+), 81 deletions(-)
+<hr/><b>diff --git a/<a id="h0" href="../file/phora/Cargo.lock.html">phora/Cargo.lock</a> b/<a href="../file/phora/Cargo.lock.html">phora/Cargo.lock</a></b>
+<a href="#h0-0" id="h0-0" class="h">@@ -129,7 +129,6 @@ dependencies = [
+</a>  &quot;ring&quot;,
+  &quot;scrypt&quot;,
+  &quot;serde&quot;,
+<a href="#h0-0-3" id="h0-0-3" class="d">- &quot;url&quot;,
+</a> ]
+ 
+ [[package]]
+<a href="#h0-1" id="h0-1" class="h">@@ -144,16 +143,6 @@ dependencies = [
+</a> ]
+ 
+ [[package]]
+<a href="#h0-1-3" id="h0-1-3" class="d">-name = &quot;form_urlencoded&quot;
+</a><a href="#h0-1-4" id="h0-1-4" class="d">-version = &quot;1.0.1&quot;
+</a><a href="#h0-1-5" id="h0-1-5" class="d">-source = &quot;registry+https://github.com/rust-lang/crates.io-index&quot;
+</a><a href="#h0-1-6" id="h0-1-6" class="d">-checksum = &quot;5fc25a87fa4fd2094bffb06925852034d90a17f0d1e05197d4956d3555752191&quot;
+</a><a href="#h0-1-7" id="h0-1-7" class="d">-dependencies = [
+</a><a href="#h0-1-8" id="h0-1-8" class="d">- &quot;matches&quot;,
+</a><a href="#h0-1-9" id="h0-1-9" class="d">- &quot;percent-encoding&quot;,
+</a><a href="#h0-1-10" id="h0-1-10" class="d">-]
+</a><a href="#h0-1-11" id="h0-1-11" class="d">-
+</a><a href="#h0-1-12" id="h0-1-12" class="d">-[[package]]
+</a> name = &quot;generic-array&quot;
+ version = &quot;0.14.6&quot;
+ source = &quot;registry+https://github.com/rust-lang/crates.io-index&quot;
+<a href="#h0-2" id="h0-2" class="h">@@ -184,17 +173,6 @@ dependencies = [
+</a> ]
+ 
+ [[package]]
+<a href="#h0-2-3" id="h0-2-3" class="d">-name = &quot;idna&quot;
+</a><a href="#h0-2-4" id="h0-2-4" class="d">-version = &quot;0.2.3&quot;
+</a><a href="#h0-2-5" id="h0-2-5" class="d">-source = &quot;registry+https://github.com/rust-lang/crates.io-index&quot;
+</a><a href="#h0-2-6" id="h0-2-6" class="d">-checksum = &quot;418a0a6fab821475f634efe3ccc45c013f742efe03d853e8d3355d5cb850ecf8&quot;
+</a><a href="#h0-2-7" id="h0-2-7" class="d">-dependencies = [
+</a><a href="#h0-2-8" id="h0-2-8" class="d">- &quot;matches&quot;,
+</a><a href="#h0-2-9" id="h0-2-9" class="d">- &quot;unicode-bidi&quot;,
+</a><a href="#h0-2-10" id="h0-2-10" class="d">- &quot;unicode-normalization&quot;,
+</a><a href="#h0-2-11" id="h0-2-11" class="d">-]
+</a><a href="#h0-2-12" id="h0-2-12" class="d">-
+</a><a href="#h0-2-13" id="h0-2-13" class="d">-[[package]]
+</a> name = &quot;inout&quot;
+ version = &quot;0.1.3&quot;
+ source = &quot;registry+https://github.com/rust-lang/crates.io-index&quot;
+<a href="#h0-3" id="h0-3" class="h">@@ -228,12 +206,6 @@ dependencies = [
+</a> ]
+ 
+ [[package]]
+<a href="#h0-3-3" id="h0-3-3" class="d">-name = &quot;matches&quot;
+</a><a href="#h0-3-4" id="h0-3-4" class="d">-version = &quot;0.1.9&quot;
+</a><a href="#h0-3-5" id="h0-3-5" class="d">-source = &quot;registry+https://github.com/rust-lang/crates.io-index&quot;
+</a><a href="#h0-3-6" id="h0-3-6" class="d">-checksum = &quot;a3e378b66a060d48947b590737b30a1be76706c8dd7b8ba0f2fe3989c68a853f&quot;
+</a><a href="#h0-3-7" id="h0-3-7" class="d">-
+</a><a href="#h0-3-8" id="h0-3-8" class="d">-[[package]]
+</a> name = &quot;once_cell&quot;
+ version = &quot;1.13.0&quot;
+ source = &quot;registry+https://github.com/rust-lang/crates.io-index&quot;
+<a href="#h0-4" id="h0-4" class="h">@@ -266,12 +238,6 @@ dependencies = [
+</a> ]
+ 
+ [[package]]
+<a href="#h0-4-3" id="h0-4-3" class="d">-name = &quot;percent-encoding&quot;
+</a><a href="#h0-4-4" id="h0-4-4" class="d">-version = &quot;2.1.0&quot;
+</a><a href="#h0-4-5" id="h0-4-5" class="d">-source = &quot;registry+https://github.com/rust-lang/crates.io-index&quot;
+</a><a href="#h0-4-6" id="h0-4-6" class="d">-checksum = &quot;d4fd5641d01c8f18a23da7b6fe29298ff4b55afcccdf78973b24cf3175fee32e&quot;
+</a><a href="#h0-4-7" id="h0-4-7" class="d">-
+</a><a href="#h0-4-8" id="h0-4-8" class="d">-[[package]]
+</a> name = &quot;poly1305&quot;
+ version = &quot;0.7.2&quot;
+ source = &quot;registry+https://github.com/rust-lang/crates.io-index&quot;
+<a href="#h0-5" id="h0-5" class="h">@@ -401,48 +367,18 @@ dependencies = [
+</a> ]
+ 
+ [[package]]
+<a href="#h0-5-3" id="h0-5-3" class="d">-name = &quot;tinyvec&quot;
+</a><a href="#h0-5-4" id="h0-5-4" class="d">-version = &quot;1.6.0&quot;
+</a><a href="#h0-5-5" id="h0-5-5" class="d">-source = &quot;registry+https://github.com/rust-lang/crates.io-index&quot;
+</a><a href="#h0-5-6" id="h0-5-6" class="d">-checksum = &quot;87cc5ceb3875bb20c2890005a4e226a4651264a5c75edb2421b52861a0a0cb50&quot;
+</a><a href="#h0-5-7" id="h0-5-7" class="d">-dependencies = [
+</a><a href="#h0-5-8" id="h0-5-8" class="d">- &quot;tinyvec_macros&quot;,
+</a><a href="#h0-5-9" id="h0-5-9" class="d">-]
+</a><a href="#h0-5-10" id="h0-5-10" class="d">-
+</a><a href="#h0-5-11" id="h0-5-11" class="d">-[[package]]
+</a><a href="#h0-5-12" id="h0-5-12" class="d">-name = &quot;tinyvec_macros&quot;
+</a><a href="#h0-5-13" id="h0-5-13" class="d">-version = &quot;0.1.0&quot;
+</a><a href="#h0-5-14" id="h0-5-14" class="d">-source = &quot;registry+https://github.com/rust-lang/crates.io-index&quot;
+</a><a href="#h0-5-15" id="h0-5-15" class="d">-checksum = &quot;cda74da7e1a664f795bb1f8a87ec406fb89a02522cf6e50620d016add6dbbf5c&quot;
+</a><a href="#h0-5-16" id="h0-5-16" class="d">-
+</a><a href="#h0-5-17" id="h0-5-17" class="d">-[[package]]
+</a> name = &quot;typenum&quot;
+ version = &quot;1.15.0&quot;
+ source = &quot;registry+https://github.com/rust-lang/crates.io-index&quot;
+ checksum = &quot;dcf81ac59edc17cc8697ff311e8f5ef2d99fcbd9817b34cec66f90b6c3dfd987&quot;
+ 
+ [[package]]
+<a href="#h0-5-24" id="h0-5-24" class="d">-name = &quot;unicode-bidi&quot;
+</a><a href="#h0-5-25" id="h0-5-25" class="d">-version = &quot;0.3.8&quot;
+</a><a href="#h0-5-26" id="h0-5-26" class="d">-source = &quot;registry+https://github.com/rust-lang/crates.io-index&quot;
+</a><a href="#h0-5-27" id="h0-5-27" class="d">-checksum = &quot;099b7128301d285f79ddd55b9a83d5e6b9e97c92e0ea0daebee7263e932de992&quot;
+</a><a href="#h0-5-28" id="h0-5-28" class="d">-
+</a><a href="#h0-5-29" id="h0-5-29" class="d">-[[package]]
+</a> name = &quot;unicode-ident&quot;
+ version = &quot;1.0.3&quot;
+ source = &quot;registry+https://github.com/rust-lang/crates.io-index&quot;
+ checksum = &quot;c4f5b37a154999a8f3f98cc23a628d850e154479cd94decf3414696e12e31aaf&quot;
+ 
+ [[package]]
+<a href="#h0-5-36" id="h0-5-36" class="d">-name = &quot;unicode-normalization&quot;
+</a><a href="#h0-5-37" id="h0-5-37" class="d">-version = &quot;0.1.21&quot;
+</a><a href="#h0-5-38" id="h0-5-38" class="d">-source = &quot;registry+https://github.com/rust-lang/crates.io-index&quot;
+</a><a href="#h0-5-39" id="h0-5-39" class="d">-checksum = &quot;854cbdc4f7bc6ae19c820d44abdc3277ac3e1b2b93db20a636825d9322fb60e6&quot;
+</a><a href="#h0-5-40" id="h0-5-40" class="d">-dependencies = [
+</a><a href="#h0-5-41" id="h0-5-41" class="d">- &quot;tinyvec&quot;,
+</a><a href="#h0-5-42" id="h0-5-42" class="d">-]
+</a><a href="#h0-5-43" id="h0-5-43" class="d">-
+</a><a href="#h0-5-44" id="h0-5-44" class="d">-[[package]]
+</a> name = &quot;universal-hash&quot;
+ version = &quot;0.4.1&quot;
+ source = &quot;registry+https://github.com/rust-lang/crates.io-index&quot;
+<a href="#h0-6" id="h0-6" class="h">@@ -459,18 +395,6 @@ source = &quot;registry+https://github.com/rust-lang/crates.io-index&quot;
+</a> checksum = &quot;a156c684c91ea7d62626509bce3cb4e1d9ed5c4d978f7b4352658f96a4c26b4a&quot;
+ 
+ [[package]]
+<a href="#h0-6-3" id="h0-6-3" class="d">-name = &quot;url&quot;
+</a><a href="#h0-6-4" id="h0-6-4" class="d">-version = &quot;2.2.2&quot;
+</a><a href="#h0-6-5" id="h0-6-5" class="d">-source = &quot;registry+https://github.com/rust-lang/crates.io-index&quot;
+</a><a href="#h0-6-6" id="h0-6-6" class="d">-checksum = &quot;a507c383b2d33b5fc35d1861e77e6b383d158b2da5e14fe51b83dfedf6fd578c&quot;
+</a><a href="#h0-6-7" id="h0-6-7" class="d">-dependencies = [
+</a><a href="#h0-6-8" id="h0-6-8" class="d">- &quot;form_urlencoded&quot;,
+</a><a href="#h0-6-9" id="h0-6-9" class="d">- &quot;idna&quot;,
+</a><a href="#h0-6-10" id="h0-6-10" class="d">- &quot;matches&quot;,
+</a><a href="#h0-6-11" id="h0-6-11" class="d">- &quot;percent-encoding&quot;,
+</a><a href="#h0-6-12" id="h0-6-12" class="d">-]
+</a><a href="#h0-6-13" id="h0-6-13" class="d">-
+</a><a href="#h0-6-14" id="h0-6-14" class="d">-[[package]]
+</a> name = &quot;version_check&quot;
+ version = &quot;0.9.4&quot;
+ source = &quot;registry+https://github.com/rust-lang/crates.io-index&quot;
+<b>diff --git a/<a id="h1" href="../file/phora/Cargo.toml.html">phora/Cargo.toml</a> b/<a href="../file/phora/Cargo.toml.html">phora/Cargo.toml</a></b>
+<a href="#h1-0" id="h1-0" class="h">@@ -9,5 +9,4 @@ ring = &quot;0.16.20&quot;
+</a> chacha20poly1305 = &quot;0.9.0&quot;
+ base64 = &quot;0.13.0&quot;
+ scrypt = &quot;0.10.0&quot;
+<a href="#h1-0-3" id="h1-0-3" class="d">-url = &quot;2.2.2&quot;
+</a> serde = { version = &quot;1.0.144&quot;, features = [&quot;derive&quot;] }
+ \ No newline at end of file
+<b>diff --git a/<a id="h2" href="../file/phora/src/api.rs.html">phora/src/api.rs</a> b/<a href="../file/phora/src/api.rs.html">phora/src/api.rs</a></b>
+<a href="#h2-0" id="h2-0" class="h">@@ -1,15 +1,13 @@
+</a><a href="#h2-0-0" id="h2-0-0" class="d">-use url::Url;
+</a><a href="#h2-0-1" id="h2-0-1" class="d">-
+</a> pub struct API {
+     pub version: String,
+<a href="#h2-0-4" id="h2-0-4" class="d">-    pub accounts: Url,
+</a><a href="#h2-0-5" id="h2-0-5" class="i">+    pub accounts: String,
+</a> }
+ 
+ impl Default for API {
+     fn default() -&gt; Self {
+         API {
+             version: &quot;v0&quot;.to_string(),
+<a href="#h2-0-12" id="h2-0-12" class="d">-            accounts: Url::parse(&quot;v0/accounts&quot;).unwrap(),
+</a><a href="#h2-0-13" id="h2-0-13" class="i">+            accounts: &quot;v0/accounts&quot;.to_string(),
+</a>         }
+     }
+ }
+</pre>
+</div>
+</body>
+</html>

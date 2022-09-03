@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Merge pull request &#39;seting up client (cyrto)&#39; (#3) from dev into root - cyrtophora - Unnamed repository; edit this file &#39;description&#39; to name the repository.
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="cyrtophora Atom Feed" href="../atom.xml" />
+<link rel="alternate" type="application/atom+xml" title="cyrtophora Atom Feed (tags)" href="../tags.xml" />
+<link rel="stylesheet" type="text/css" href="/git.css" />
+</head>
+<body>
+<table><tr><td><a href="/index.html"><img src="/logo.png" alt="" width="32" height="32" /></a></td><td><h1>cyrtophora</h1><span class="desc">Unnamed repository; edit this file &#39;description&#39; to name the repository.
+</span></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a> | <a href="../file/README.md.pretty.html">README</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/21d82c8b7c83fd7e70caa8f05873d456a6e7e4b6.html">21d82c8b7c83fd7e70caa8f05873d456a6e7e4b6</a>
+<b>parent</b> <a href="../commit/97188539648fba10f120be9ef12ae3cb182aa1e2.html">97188539648fba10f120be9ef12ae3cb182aa1e2</a>
+<b>Author:</b> seestem &lt;<a href="mailto:seestem@noreply.codeberg.org">seestem@noreply.codeberg.org</a>&gt;
+<b>Date:</b>   Wed, 31 Aug 2022 16:55:31 +0200
+
+Merge pull request &#39;seting up client (cyrto)&#39; (#3) from dev into root
+
+Reviewed-on: https://codeberg.org/seestem/cyrtophora/pulls/3
+
+<b>Diffstat:</b>
+<table><tr><td class="A">A</td><td><a href="#h0">cyrto/.gitignore</a></td><td> | </td><td class="num">10</td><td><span class="i">++++++++++</span><span class="d"></span></td></tr>
+<tr><td class="A">A</td><td><a href="#h1">cyrto/CHANGELOG.md</a></td><td> | </td><td class="num">3</td><td><span class="i">+++</span><span class="d"></span></td></tr>
+<tr><td class="A">A</td><td><a href="#h2">cyrto/README.md</a></td><td> | </td><td class="num">1</td><td><span class="i">+</span><span class="d"></span></td></tr>
+<tr><td class="A">A</td><td><a href="#h3">cyrto/analysis_options.yaml</a></td><td> | </td><td class="num">30</td><td><span class="i">++++++++++++++++++++++++++++++</span><span class="d"></span></td></tr>
+<tr><td class="A">A</td><td><a href="#h4">cyrto/example/cyrtophora_example.dart</a></td><td> | </td><td class="num">6</td><td><span class="i">++++++</span><span class="d"></span></td></tr>
+<tr><td class="A">A</td><td><a href="#h5">cyrto/lib/cyrtophora.dart</a></td><td> | </td><td class="num">9</td><td><span class="i">+++++++++</span><span class="d"></span></td></tr>
+<tr><td class="A">A</td><td><a href="#h6">cyrto/lib/src/account.dart</a></td><td> | </td><td class="num">10</td><td><span class="i">++++++++++</span><span class="d"></span></td></tr>
+<tr><td class="A">A</td><td><a href="#h7">cyrto/lib/src/api.dart</a></td><td> | </td><td class="num">30</td><td><span class="i">++++++++++++++++++++++++++++++</span><span class="d"></span></td></tr>
+<tr><td class="A">A</td><td><a href="#h8">cyrto/lib/src/data.dart</a></td><td> | </td><td class="num">64</td><td><span class="i">++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++</span><span class="d"></span></td></tr>
+<tr><td class="A">A</td><td><a href="#h9">cyrto/lib/src/utils.dart</a></td><td> | </td><td class="num">75</td><td><span class="i">+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++</span><span class="d"></span></td></tr>
+<tr><td class="A">A</td><td><a href="#h10">cyrto/lib/src/validate.dart</a></td><td> | </td><td class="num">80</td><td><span class="i">+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++</span><span class="d"></span></td></tr>
+<tr><td class="A">A</td><td><a href="#h11">cyrto/pubspec.yaml</a></td><td> | </td><td class="num">14</td><td><span class="i">++++++++++++++</span><span class="d"></span></td></tr>
+<tr><td class="A">A</td><td><a href="#h12">cyrto/test/cyrtophora_test.dart</a></td><td> | </td><td class="num">5</td><td><span class="i">+++++</span><span class="d"></span></td></tr>
+<tr><td class="A">A</td><td><a href="#h13">cyrto/test/utils_test.dart</a></td><td> | </td><td class="num">100</td><td><span class="i">+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++</span><span class="d"></span></td></tr>
+<tr><td class="A">A</td><td><a href="#h14">cyrto/test/validate_test.dart</a></td><td> | </td><td class="num">66</td><td><span class="i">++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++</span><span class="d"></span></td></tr>
+<tr><td class="M">M</td><td><a href="#h15">phora/Cargo.lock</a></td><td> | </td><td class="num">21</td><td><span class="i">+++++++++++++++++++++</span><span class="d"></span></td></tr>
+<tr><td class="M">M</td><td><a href="#h16">phora/Cargo.toml</a></td><td> | </td><td class="num">5</td><td><span class="i">+++</span><span class="d">--</span></td></tr>
+<tr><td class="M">M</td><td><a href="#h17">phora/src/account.rs</a></td><td> | </td><td class="num">56</td><td><span class="i">++++++++++++++++++++++++++++</span><span class="d">----------------------------</span></td></tr>
+<tr><td class="A">A</td><td><a href="#h18">phora/src/api.rs</a></td><td> | </td><td class="num">13</td><td><span class="i">+++++++++++++</span><span class="d"></span></td></tr>
+<tr><td class="M">M</td><td><a href="#h19">phora/src/crypto.rs</a></td><td> | </td><td class="num">3</td><td><span class="i"></span><span class="d">---</span></td></tr>
+<tr><td class="A">A</td><td><a href="#h20">phora/src/data.rs</a></td><td> | </td><td class="num">35</td><td><span class="i">+++++++++++++++++++++++++++++++++++</span><span class="d"></span></td></tr>
+<tr><td class="M">M</td><td><a href="#h21">phora/src/lib.rs</a></td><td> | </td><td class="num">8</td><td><span class="i">+++++</span><span class="d">---</span></td></tr>
+</table></pre><pre>22 files changed, 608 insertions(+), 36 deletions(-)
+<hr/><b>diff --git a/<a id="h0" href="../file/cyrto/.gitignore.html">cyrto/.gitignore</a> b/<a href="../file/cyrto/.gitignore.html">cyrto/.gitignore</a></b>
+<a href="#h0-0" id="h0-0" class="h">@@ -0,0 +1,10 @@
+</a><a href="#h0-0-0" id="h0-0-0" class="i">+# Files and directories created by pub.
+</a><a href="#h0-0-1" id="h0-0-1" class="i">+.dart_tool/
+</a><a href="#h0-0-2" id="h0-0-2" class="i">+.packages
+</a><a href="#h0-0-3" id="h0-0-3" class="i">+
+</a><a href="#h0-0-4" id="h0-0-4" class="i">+# Conventional directory for build outputs.
+</a><a href="#h0-0-5" id="h0-0-5" class="i">+build/
+</a><a href="#h0-0-6" id="h0-0-6" class="i">+
+</a><a href="#h0-0-7" id="h0-0-7" class="i">+# Omit committing pubspec.lock for library packages; see
+</a><a href="#h0-0-8" id="h0-0-8" class="i">+# https://dart.dev/guides/libraries/private-files#pubspeclock.
+</a><a href="#h0-0-9" id="h0-0-9" class="i">+pubspec.lock
+</a><b>diff --git a/<a id="h1" href="../file/cyrto/CHANGELOG.md.html">cyrto/CHANGELOG.md</a> b/<a href="../file/cyrto/CHANGELOG.md.html">cyrto/CHANGELOG.md</a></b>
+<a href="#h1-0" id="h1-0" class="h">@@ -0,0 +1,3 @@
+</a><a href="#h1-0-0" id="h1-0-0" class="i">+## 1.0.0
+</a><a href="#h1-0-1" id="h1-0-1" class="i">+
+</a><a href="#h1-0-2" id="h1-0-2" class="i">+- Initial version.
+</a><b>diff --git a/<a id="h2" href="../file/cyrto/README.md.html">cyrto/README.md</a> b/<a href="../file/cyrto/README.md.html">cyrto/README.md</a></b>
+<a href="#h2-0" id="h2-0" class="h">@@ -0,0 +1 @@
+</a><a href="#h2-0-0" id="h2-0-0" class="i">+# cyrtophora client
+</a><b>diff --git a/<a id="h3" href="../file/cyrto/analysis_options.yaml.html">cyrto/analysis_options.yaml</a> b/<a href="../file/cyrto/analysis_options.yaml.html">cyrto/analysis_options.yaml</a></b>
+<a href="#h3-0" id="h3-0" class="h">@@ -0,0 +1,30 @@
+</a><a href="#h3-0-0" id="h3-0-0" class="i">+# This file configures the static analysis results for your project (errors,
+</a><a href="#h3-0-1" id="h3-0-1" class="i">+# warnings, and lints).
+</a><a href="#h3-0-2" id="h3-0-2" class="i">+#
+</a><a href="#h3-0-3" id="h3-0-3" class="i">+# This enables the &#39;recommended&#39; set of lints from `package:lints`.
+</a><a href="#h3-0-4" id="h3-0-4" class="i">+# This set helps identify many issues that may lead to problems when running
+</a><a href="#h3-0-5" id="h3-0-5" class="i">+# or consuming Dart code, and enforces writing Dart using a single, idiomatic
+</a><a href="#h3-0-6" id="h3-0-6" class="i">+# style and format.
+</a><a href="#h3-0-7" id="h3-0-7" class="i">+#
+</a><a href="#h3-0-8" id="h3-0-8" class="i">+# If you want a smaller set of lints you can change this to specify
+</a><a href="#h3-0-9" id="h3-0-9" class="i">+# &#39;package:lints/core.yaml&#39;. These are just the most critical lints
+</a><a href="#h3-0-10" id="h3-0-10" class="i">+# (the recommended set includes the core lints).
+</a><a href="#h3-0-11" id="h3-0-11" class="i">+# The core lints are also what is used by pub.dev for scoring packages.
+</a><a href="#h3-0-12" id="h3-0-12" class="i">+
+</a><a href="#h3-0-13" id="h3-0-13" class="i">+include: package:lints/recommended.yaml
+</a><a href="#h3-0-14" id="h3-0-14" class="i">+
+</a><a href="#h3-0-15" id="h3-0-15" class="i">+# Uncomment the following section to specify additional rules.
+</a><a href="#h3-0-16" id="h3-0-16" class="i">+
+</a><a href="#h3-0-17" id="h3-0-17" class="i">+# linter:
+</a><a href="#h3-0-18" id="h3-0-18" class="i">+#   rules:
+</a><a href="#h3-0-19" id="h3-0-19" class="i">+#     - camel_case_types
+</a><a href="#h3-0-20" id="h3-0-20" class="i">+
+</a><a href="#h3-0-21" id="h3-0-21" class="i">+# analyzer:
+</a><a href="#h3-0-22" id="h3-0-22" class="i">+#   exclude:
+</a><a href="#h3-0-23" id="h3-0-23" class="i">+#     - path/to/excluded/files/**
+</a><a href="#h3-0-24" id="h3-0-24" class="i">+
+</a><a href="#h3-0-25" id="h3-0-25" class="i">+# For more information about the core and recommended set of lints, see
+</a><a href="#h3-0-26" id="h3-0-26" class="i">+# https://dart.dev/go/core-lints
+</a><a href="#h3-0-27" id="h3-0-27" class="i">+
+</a><a href="#h3-0-28" id="h3-0-28" class="i">+# For additional information about configuring this file, see
+</a><a href="#h3-0-29" id="h3-0-29" class="i">+# https://dart.dev/guides/language/analysis-options
+</a><b>diff --git a/<a id="h4" href="../file/cyrto/example/cyrtophora_example.dart.html">cyrto/example/cyrtophora_example.dart</a> b/<a href="../file/cyrto/example/cyrtophora_example.dart.html">cyrto/example/cyrtophora_example.dart</a></b>
+<a href="#h4-0" id="h4-0" class="h">@@ -0,0 +1,6 @@
+</a><a href="#h4-0-0" id="h4-0-0" class="i">+import &#39;package:cyrtophora/cyrtophora.dart&#39;;
+</a><a href="#h4-0-1" id="h4-0-1" class="i">+
+</a><a href="#h4-0-2" id="h4-0-2" class="i">+void main() {
+</a><a href="#h4-0-3" id="h4-0-3" class="i">+  var awesome = Awesome();
+</a><a href="#h4-0-4" id="h4-0-4" class="i">+  print(&#39;awesome: ${awesome.isAwesome}&#39;);
+</a><a href="#h4-0-5" id="h4-0-5" class="i">+}
+</a><b>diff --git a/<a id="h5" href="../file/cyrto/lib/cyrtophora.dart.html">cyrto/lib/cyrtophora.dart</a> b/<a href="../file/cyrto/lib/cyrtophora.dart.html">cyrto/lib/cyrtophora.dart</a></b>
+<a href="#h5-0" id="h5-0" class="h">@@ -0,0 +1,9 @@
+</a><a href="#h5-0-0" id="h5-0-0" class="i">+/// cyrtophora client
+</a><a href="#h5-0-1" id="h5-0-1" class="i">+
+</a><a href="#h5-0-2" id="h5-0-2" class="i">+library cyrtophora;
+</a><a href="#h5-0-3" id="h5-0-3" class="i">+
+</a><a href="#h5-0-4" id="h5-0-4" class="i">+export &#39;src/utils.dart&#39;;
+</a><a href="#h5-0-5" id="h5-0-5" class="i">+export &#39;src/validate.dart&#39;;
+</a><a href="#h5-0-6" id="h5-0-6" class="i">+export &#39;src/data.dart&#39;;
+</a><a href="#h5-0-7" id="h5-0-7" class="i">+export &#39;src/api.dart&#39;;
+</a><a href="#h5-0-8" id="h5-0-8" class="i">+export &#39;src/account.dart&#39;;
+</a><b>diff --git a/<a id="h6" href="../file/cyrto/lib/src/account.dart.html">cyrto/lib/src/account.dart</a> b/<a href="../file/cyrto/lib/src/account.dart.html">cyrto/lib/src/account.dart</a></b>
+<a href="#h6-0" id="h6-0" class="h">@@ -0,0 +1,10 @@
+</a><a href="#h6-0-0" id="h6-0-0" class="i">+/// Account Public Data
+</a><a href="#h6-0-1" id="h6-0-1" class="i">+class PublicAccount {
+</a><a href="#h6-0-2" id="h6-0-2" class="i">+  String username;
+</a><a href="#h6-0-3" id="h6-0-3" class="i">+  PublicAccount(this.username);
+</a><a href="#h6-0-4" id="h6-0-4" class="i">+
+</a><a href="#h6-0-5" id="h6-0-5" class="i">+  /// Generate input from JSON
+</a><a href="#h6-0-6" id="h6-0-6" class="i">+  factory PublicAccount.fromJson(dynamic json) {
+</a><a href="#h6-0-7" id="h6-0-7" class="i">+    return PublicAccount(json[&#39;username&#39;] as String);
+</a><a href="#h6-0-8" id="h6-0-8" class="i">+  }
+</a><a href="#h6-0-9" id="h6-0-9" class="i">+}
+</a><b>diff --git a/<a id="h7" href="../file/cyrto/lib/src/api.dart.html">cyrto/lib/src/api.dart</a> b/<a href="../file/cyrto/lib/src/api.dart.html">cyrto/lib/src/api.dart</a></b>
+<a href="#h7-0" id="h7-0" class="h">@@ -0,0 +1,30 @@
+</a><a href="#h7-0-0" id="h7-0-0" class="i">+import &#39;package:http/http.dart&#39; as http;
+</a><a href="#h7-0-1" id="h7-0-1" class="i">+import &#39;package:cyrtophora/src/data.dart&#39;;
+</a><a href="#h7-0-2" id="h7-0-2" class="i">+import &#39;dart:convert&#39;;
+</a><a href="#h7-0-3" id="h7-0-3" class="i">+import &#39;package:cyrtophora/src/account.dart&#39;;
+</a><a href="#h7-0-4" id="h7-0-4" class="i">+
+</a><a href="#h7-0-5" id="h7-0-5" class="i">+/// Accounts API
+</a><a href="#h7-0-6" id="h7-0-6" class="i">+class CyrtophoraAPI {
+</a><a href="#h7-0-7" id="h7-0-7" class="i">+  CyrtophoraAPI(this.api);
+</a><a href="#h7-0-8" id="h7-0-8" class="i">+  final String api;
+</a><a href="#h7-0-9" id="h7-0-9" class="i">+  final Map&lt;String, String&gt; jsonHeaders = {
+</a><a href="#h7-0-10" id="h7-0-10" class="i">+    &#39;Content-Type&#39;: &#39;application/json; charset=UTF-8&#39;,
+</a><a href="#h7-0-11" id="h7-0-11" class="i">+  };
+</a><a href="#h7-0-12" id="h7-0-12" class="i">+
+</a><a href="#h7-0-13" id="h7-0-13" class="i">+  /// Create new account
+</a><a href="#h7-0-14" id="h7-0-14" class="i">+  Future&lt;PublicAccount&gt; create(AccountRegistration input) async {
+</a><a href="#h7-0-15" id="h7-0-15" class="i">+    final response = await http.post(
+</a><a href="#h7-0-16" id="h7-0-16" class="i">+      Uri.parse(&quot;$api/accounts&quot;),
+</a><a href="#h7-0-17" id="h7-0-17" class="i">+      headers: jsonHeaders,
+</a><a href="#h7-0-18" id="h7-0-18" class="i">+      body: jsonEncode(input.toJson()),
+</a><a href="#h7-0-19" id="h7-0-19" class="i">+    );
+</a><a href="#h7-0-20" id="h7-0-20" class="i">+
+</a><a href="#h7-0-21" id="h7-0-21" class="i">+    if (response.statusCode == 400) {
+</a><a href="#h7-0-22" id="h7-0-22" class="i">+      throw Exception(&#39;Invalid Input: ${response.body}&#39;);
+</a><a href="#h7-0-23" id="h7-0-23" class="i">+    } else if (response.statusCode == 201) {
+</a><a href="#h7-0-24" id="h7-0-24" class="i">+      return PublicAccount.fromJson(jsonDecode(response.body));
+</a><a href="#h7-0-25" id="h7-0-25" class="i">+    } else {
+</a><a href="#h7-0-26" id="h7-0-26" class="i">+      throw Exception(&#39;Server side error: ${response.body}&#39;);
+</a><a href="#h7-0-27" id="h7-0-27" class="i">+    }
+</a><a href="#h7-0-28" id="h7-0-28" class="i">+  }
+</a><a href="#h7-0-29" id="h7-0-29" class="i">+}
+</a><b>diff --git a/<a id="h8" href="../file/cyrto/lib/src/data.dart.html">cyrto/lib/src/data.dart</a> b/<a href="../file/cyrto/lib/src/data.dart.html">cyrto/lib/src/data.dart</a></b>
+<a href="#h8-0" id="h8-0" class="h">@@ -0,0 +1,64 @@
+</a><a href="#h8-0-0" id="h8-0-0" class="i">+import &quot;package:cyrtophora/cyrtophora.dart&quot;;
+</a><a href="#h8-0-1" id="h8-0-1" class="i">+
+</a><a href="#h8-0-2" id="h8-0-2" class="i">+/// Account registration input
+</a><a href="#h8-0-3" id="h8-0-3" class="i">+class AccountRegistration {
+</a><a href="#h8-0-4" id="h8-0-4" class="i">+  String username;
+</a><a href="#h8-0-5" id="h8-0-5" class="i">+  String email;
+</a><a href="#h8-0-6" id="h8-0-6" class="i">+  String password;
+</a><a href="#h8-0-7" id="h8-0-7" class="i">+  String retyped_password;
+</a><a href="#h8-0-8" id="h8-0-8" class="i">+
+</a><a href="#h8-0-9" id="h8-0-9" class="i">+  AccountRegistration(
+</a><a href="#h8-0-10" id="h8-0-10" class="i">+      this.username, this.email, this.password, this.retyped_password);
+</a><a href="#h8-0-11" id="h8-0-11" class="i">+
+</a><a href="#h8-0-12" id="h8-0-12" class="i">+  /// Generate input from JSON
+</a><a href="#h8-0-13" id="h8-0-13" class="i">+  factory AccountRegistration.fromJson(dynamic json) {
+</a><a href="#h8-0-14" id="h8-0-14" class="i">+    return AccountRegistration(
+</a><a href="#h8-0-15" id="h8-0-15" class="i">+        json[&#39;username&#39;] as String,
+</a><a href="#h8-0-16" id="h8-0-16" class="i">+        json[&#39;email&#39;] as String,
+</a><a href="#h8-0-17" id="h8-0-17" class="i">+        json[&#39;password&#39;] as String,
+</a><a href="#h8-0-18" id="h8-0-18" class="i">+        json[&#39;retyped_password&#39;] as String);
+</a><a href="#h8-0-19" id="h8-0-19" class="i">+  }
+</a><a href="#h8-0-20" id="h8-0-20" class="i">+
+</a><a href="#h8-0-21" id="h8-0-21" class="i">+  /// Serialize object to JSON
+</a><a href="#h8-0-22" id="h8-0-22" class="i">+  Map&lt;String, String&gt; toJson() {
+</a><a href="#h8-0-23" id="h8-0-23" class="i">+    return {
+</a><a href="#h8-0-24" id="h8-0-24" class="i">+      &#39;username&#39;: username,
+</a><a href="#h8-0-25" id="h8-0-25" class="i">+      &#39;email&#39;: email,
+</a><a href="#h8-0-26" id="h8-0-26" class="i">+      &#39;password&#39;: password,
+</a><a href="#h8-0-27" id="h8-0-27" class="i">+      &#39;retyped_password&#39;: retyped_password
+</a><a href="#h8-0-28" id="h8-0-28" class="i">+    };
+</a><a href="#h8-0-29" id="h8-0-29" class="i">+  }
+</a><a href="#h8-0-30" id="h8-0-30" class="i">+
+</a><a href="#h8-0-31" id="h8-0-31" class="i">+  /// Validate input and create
+</a><a href="#h8-0-32" id="h8-0-32" class="i">+  bool isValid() {
+</a><a href="#h8-0-33" id="h8-0-33" class="i">+    // Check if password and retyped password match
+</a><a href="#h8-0-34" id="h8-0-34" class="i">+    if (password != retyped_password) {
+</a><a href="#h8-0-35" id="h8-0-35" class="i">+      throw Exception(&#39;InvalidPasswordException\n\n- passwords do not match&#39;);
+</a><a href="#h8-0-36" id="h8-0-36" class="i">+    }
+</a><a href="#h8-0-37" id="h8-0-37" class="i">+    // Validate username
+</a><a href="#h8-0-38" id="h8-0-38" class="i">+    if (!Validate.username(username)) {
+</a><a href="#h8-0-39" id="h8-0-39" class="i">+      throw Exception(
+</a><a href="#h8-0-40" id="h8-0-40" class="i">+          &#39;InvalidUsernameException\n\n- Username cannot be empty\n- Username cannot be more than 15 characters long\n- Username cannot contain symbols expcept one _&#39;);
+</a><a href="#h8-0-41" id="h8-0-41" class="i">+    }
+</a><a href="#h8-0-42" id="h8-0-42" class="i">+
+</a><a href="#h8-0-43" id="h8-0-43" class="i">+    // Validate fullname
+</a><a href="#h8-0-44" id="h8-0-44" class="i">+    // if (!Validate.fullname(fullname)) {
+</a><a href="#h8-0-45" id="h8-0-45" class="i">+    //   //throw InvalidNameException;
+</a><a href="#h8-0-46" id="h8-0-46" class="i">+    //   throw Exception(
+</a><a href="#h8-0-47" id="h8-0-47" class="i">+    //       &#39;InvalidNameException\n\n- Name cannot be empty\n- Name cannot contain more than 70 characters&#39;);
+</a><a href="#h8-0-48" id="h8-0-48" class="i">+    // }
+</a><a href="#h8-0-49" id="h8-0-49" class="i">+
+</a><a href="#h8-0-50" id="h8-0-50" class="i">+    // Validate password
+</a><a href="#h8-0-51" id="h8-0-51" class="i">+    if (!Validate.password(password)) {
+</a><a href="#h8-0-52" id="h8-0-52" class="i">+      throw Exception(
+</a><a href="#h8-0-53" id="h8-0-53" class="i">+          &#39;InvalidPasswordException\n\n- Password length should be 10 chartcers or more&#39;);
+</a><a href="#h8-0-54" id="h8-0-54" class="i">+    }
+</a><a href="#h8-0-55" id="h8-0-55" class="i">+
+</a><a href="#h8-0-56" id="h8-0-56" class="i">+    // Validate email
+</a><a href="#h8-0-57" id="h8-0-57" class="i">+    if (!Validate.email(email)) {
+</a><a href="#h8-0-58" id="h8-0-58" class="i">+      throw Exception(&#39;InvalidEmailException\n\n- Invalid email&#39;);
+</a><a href="#h8-0-59" id="h8-0-59" class="i">+    }
+</a><a href="#h8-0-60" id="h8-0-60" class="i">+
+</a><a href="#h8-0-61" id="h8-0-61" class="i">+    return true;
+</a><a href="#h8-0-62" id="h8-0-62" class="i">+  }
+</a><a href="#h8-0-63" id="h8-0-63" class="i">+}
+</a><b>diff --git a/<a id="h9" href="../file/cyrto/lib/src/utils.dart.html">cyrto/lib/src/utils.dart</a> b/<a href="../file/cyrto/lib/src/utils.dart.html">cyrto/lib/src/utils.dart</a></b>
+<a href="#h9-0" id="h9-0" class="h">@@ -0,0 +1,75 @@
+</a><a href="#h9-0-0" id="h9-0-0" class="i">+/// utilities -- cyrtophora utility functions
+</a><a href="#h9-0-1" id="h9-0-1" class="i">+
+</a><a href="#h9-0-2" id="h9-0-2" class="i">+/// Check if a character is alphanumeric
+</a><a href="#h9-0-3" id="h9-0-3" class="i">+bool isAlphanumeric(String char) {
+</a><a href="#h9-0-4" id="h9-0-4" class="i">+  final alphanumeric = [
+</a><a href="#h9-0-5" id="h9-0-5" class="i">+    &quot;a&quot;,
+</a><a href="#h9-0-6" id="h9-0-6" class="i">+    &quot;b&quot;,
+</a><a href="#h9-0-7" id="h9-0-7" class="i">+    &quot;c&quot;,
+</a><a href="#h9-0-8" id="h9-0-8" class="i">+    &quot;d&quot;,
+</a><a href="#h9-0-9" id="h9-0-9" class="i">+    &quot;e&quot;,
+</a><a href="#h9-0-10" id="h9-0-10" class="i">+    &quot;f&quot;,
+</a><a href="#h9-0-11" id="h9-0-11" class="i">+    &quot;g&quot;,
+</a><a href="#h9-0-12" id="h9-0-12" class="i">+    &quot;h&quot;,
+</a><a href="#h9-0-13" id="h9-0-13" class="i">+    &quot;i&quot;,
+</a><a href="#h9-0-14" id="h9-0-14" class="i">+    &quot;j&quot;,
+</a><a href="#h9-0-15" id="h9-0-15" class="i">+    &quot;k&quot;,
+</a><a href="#h9-0-16" id="h9-0-16" class="i">+    &quot;l&quot;,
+</a><a href="#h9-0-17" id="h9-0-17" class="i">+    &quot;m&quot;,
+</a><a href="#h9-0-18" id="h9-0-18" class="i">+    &quot;n&quot;,
+</a><a href="#h9-0-19" id="h9-0-19" class="i">+    &quot;o&quot;,
+</a><a href="#h9-0-20" id="h9-0-20" class="i">+    &quot;p&quot;,
+</a><a href="#h9-0-21" id="h9-0-21" class="i">+    &quot;q&quot;,
+</a><a href="#h9-0-22" id="h9-0-22" class="i">+    &quot;r&quot;,
+</a><a href="#h9-0-23" id="h9-0-23" class="i">+    &quot;s&quot;,
+</a><a href="#h9-0-24" id="h9-0-24" class="i">+    &quot;t&quot;,
+</a><a href="#h9-0-25" id="h9-0-25" class="i">+    &quot;u&quot;,
+</a><a href="#h9-0-26" id="h9-0-26" class="i">+    &quot;v&quot;,
+</a><a href="#h9-0-27" id="h9-0-27" class="i">+    &quot;w&quot;,
+</a><a href="#h9-0-28" id="h9-0-28" class="i">+    &quot;x&quot;,
+</a><a href="#h9-0-29" id="h9-0-29" class="i">+    &quot;y&quot;,
+</a><a href="#h9-0-30" id="h9-0-30" class="i">+    &quot;z&quot;,
+</a><a href="#h9-0-31" id="h9-0-31" class="i">+    &quot;A&quot;,
+</a><a href="#h9-0-32" id="h9-0-32" class="i">+    &quot;B&quot;,
+</a><a href="#h9-0-33" id="h9-0-33" class="i">+    &quot;C&quot;,
+</a><a href="#h9-0-34" id="h9-0-34" class="i">+    &quot;D&quot;,
+</a><a href="#h9-0-35" id="h9-0-35" class="i">+    &quot;E&quot;,
+</a><a href="#h9-0-36" id="h9-0-36" class="i">+    &quot;F&quot;,
+</a><a href="#h9-0-37" id="h9-0-37" class="i">+    &quot;G&quot;,
+</a><a href="#h9-0-38" id="h9-0-38" class="i">+    &quot;H&quot;,
+</a><a href="#h9-0-39" id="h9-0-39" class="i">+    &quot;I&quot;,
+</a><a href="#h9-0-40" id="h9-0-40" class="i">+    &quot;J&quot;,
+</a><a href="#h9-0-41" id="h9-0-41" class="i">+    &quot;K&quot;,
+</a><a href="#h9-0-42" id="h9-0-42" class="i">+    &quot;L&quot;,
+</a><a href="#h9-0-43" id="h9-0-43" class="i">+    &quot;M&quot;,
+</a><a href="#h9-0-44" id="h9-0-44" class="i">+    &quot;N&quot;,
+</a><a href="#h9-0-45" id="h9-0-45" class="i">+    &quot;O&quot;,
+</a><a href="#h9-0-46" id="h9-0-46" class="i">+    &quot;P&quot;,
+</a><a href="#h9-0-47" id="h9-0-47" class="i">+    &quot;Q&quot;,
+</a><a href="#h9-0-48" id="h9-0-48" class="i">+    &quot;R&quot;,
+</a><a href="#h9-0-49" id="h9-0-49" class="i">+    &quot;S&quot;,
+</a><a href="#h9-0-50" id="h9-0-50" class="i">+    &quot;T&quot;,
+</a><a href="#h9-0-51" id="h9-0-51" class="i">+    &quot;U&quot;,
+</a><a href="#h9-0-52" id="h9-0-52" class="i">+    &quot;V&quot;,
+</a><a href="#h9-0-53" id="h9-0-53" class="i">+    &quot;W&quot;,
+</a><a href="#h9-0-54" id="h9-0-54" class="i">+    &quot;X&quot;,
+</a><a href="#h9-0-55" id="h9-0-55" class="i">+    &quot;Y&quot;,
+</a><a href="#h9-0-56" id="h9-0-56" class="i">+    &quot;Z&quot;,
+</a><a href="#h9-0-57" id="h9-0-57" class="i">+    &quot;1&quot;,
+</a><a href="#h9-0-58" id="h9-0-58" class="i">+    &quot;2&quot;,
+</a><a href="#h9-0-59" id="h9-0-59" class="i">+    &quot;3&quot;,
+</a><a href="#h9-0-60" id="h9-0-60" class="i">+    &quot;4&quot;,
+</a><a href="#h9-0-61" id="h9-0-61" class="i">+    &quot;5&quot;,
+</a><a href="#h9-0-62" id="h9-0-62" class="i">+    &quot;6&quot;,
+</a><a href="#h9-0-63" id="h9-0-63" class="i">+    &quot;7&quot;,
+</a><a href="#h9-0-64" id="h9-0-64" class="i">+    &quot;8&quot;,
+</a><a href="#h9-0-65" id="h9-0-65" class="i">+    &quot;9&quot;,
+</a><a href="#h9-0-66" id="h9-0-66" class="i">+    &quot;0&quot;
+</a><a href="#h9-0-67" id="h9-0-67" class="i">+  ];
+</a><a href="#h9-0-68" id="h9-0-68" class="i">+
+</a><a href="#h9-0-69" id="h9-0-69" class="i">+  if (alphanumeric.contains(char)) {
+</a><a href="#h9-0-70" id="h9-0-70" class="i">+    return true;
+</a><a href="#h9-0-71" id="h9-0-71" class="i">+  } else {
+</a><a href="#h9-0-72" id="h9-0-72" class="i">+    return false;
+</a><a href="#h9-0-73" id="h9-0-73" class="i">+  }
+</a><a href="#h9-0-74" id="h9-0-74" class="i">+}
+</a><b>diff --git a/<a id="h10" href="../file/cyrto/lib/src/validate.dart.html">cyrto/lib/src/validate.dart</a> b/<a href="../file/cyrto/lib/src/validate.dart.html">cyrto/lib/src/validate.dart</a></b>
+<a href="#h10-0" id="h10-0" class="h">@@ -0,0 +1,80 @@
+</a><a href="#h10-0-0" id="h10-0-0" class="i">+import &quot;package:cyrtophora/cyrtophora.dart&quot;;
+</a><a href="#h10-0-1" id="h10-0-1" class="i">+
+</a><a href="#h10-0-2" id="h10-0-2" class="i">+class Validate {
+</a><a href="#h10-0-3" id="h10-0-3" class="i">+  /// Validate username
+</a><a href="#h10-0-4" id="h10-0-4" class="i">+  static bool username(String username) {
+</a><a href="#h10-0-5" id="h10-0-5" class="i">+    // Username cannot be empty
+</a><a href="#h10-0-6" id="h10-0-6" class="i">+    if (username.isEmpty) {
+</a><a href="#h10-0-7" id="h10-0-7" class="i">+      return false;
+</a><a href="#h10-0-8" id="h10-0-8" class="i">+    }
+</a><a href="#h10-0-9" id="h10-0-9" class="i">+
+</a><a href="#h10-0-10" id="h10-0-10" class="i">+    // Username length cannot be greater than 15 characters
+</a><a href="#h10-0-11" id="h10-0-11" class="i">+    if (username.length &gt; 15) {
+</a><a href="#h10-0-12" id="h10-0-12" class="i">+      return false;
+</a><a href="#h10-0-13" id="h10-0-13" class="i">+    }
+</a><a href="#h10-0-14" id="h10-0-14" class="i">+
+</a><a href="#h10-0-15" id="h10-0-15" class="i">+    final chars = username.split(&quot;&quot;);
+</a><a href="#h10-0-16" id="h10-0-16" class="i">+    var underscoreCount = 0;
+</a><a href="#h10-0-17" id="h10-0-17" class="i">+
+</a><a href="#h10-0-18" id="h10-0-18" class="i">+    for (var i = 0; i &lt; chars.length; i++) {
+</a><a href="#h10-0-19" id="h10-0-19" class="i">+      // Username cannot start with a underscore (_)
+</a><a href="#h10-0-20" id="h10-0-20" class="i">+      if (i == 0 &amp;&amp; chars[i] == &#39;_&#39;) {
+</a><a href="#h10-0-21" id="h10-0-21" class="i">+        return false;
+</a><a href="#h10-0-22" id="h10-0-22" class="i">+      }
+</a><a href="#h10-0-23" id="h10-0-23" class="i">+
+</a><a href="#h10-0-24" id="h10-0-24" class="i">+      // Username can only contain letters, numbers, one dot and one underscore
+</a><a href="#h10-0-25" id="h10-0-25" class="i">+      if (chars[i] != &#39;_&#39;) {
+</a><a href="#h10-0-26" id="h10-0-26" class="i">+        if (!isAlphanumeric(chars[i])) {
+</a><a href="#h10-0-27" id="h10-0-27" class="i">+          return false;
+</a><a href="#h10-0-28" id="h10-0-28" class="i">+        }
+</a><a href="#h10-0-29" id="h10-0-29" class="i">+      } else {
+</a><a href="#h10-0-30" id="h10-0-30" class="i">+        // Count underscores because name can have only one [ _ ] underscore
+</a><a href="#h10-0-31" id="h10-0-31" class="i">+        underscoreCount += 1;
+</a><a href="#h10-0-32" id="h10-0-32" class="i">+      }
+</a><a href="#h10-0-33" id="h10-0-33" class="i">+    }
+</a><a href="#h10-0-34" id="h10-0-34" class="i">+    // Username can have only one [ _ ] underscore
+</a><a href="#h10-0-35" id="h10-0-35" class="i">+    if (underscoreCount &gt; 1) {
+</a><a href="#h10-0-36" id="h10-0-36" class="i">+      return false;
+</a><a href="#h10-0-37" id="h10-0-37" class="i">+    }
+</a><a href="#h10-0-38" id="h10-0-38" class="i">+    return true;
+</a><a href="#h10-0-39" id="h10-0-39" class="i">+  }
+</a><a href="#h10-0-40" id="h10-0-40" class="i">+
+</a><a href="#h10-0-41" id="h10-0-41" class="i">+  /// Validate fullname if it is provided
+</a><a href="#h10-0-42" id="h10-0-42" class="i">+  static bool fullname(String fullname) {
+</a><a href="#h10-0-43" id="h10-0-43" class="i">+    // Full Name cannot be empty
+</a><a href="#h10-0-44" id="h10-0-44" class="i">+    if (fullname.isEmpty) {
+</a><a href="#h10-0-45" id="h10-0-45" class="i">+      return false;
+</a><a href="#h10-0-46" id="h10-0-46" class="i">+    }
+</a><a href="#h10-0-47" id="h10-0-47" class="i">+
+</a><a href="#h10-0-48" id="h10-0-48" class="i">+    // Full Name cannot be more than 70 characters
+</a><a href="#h10-0-49" id="h10-0-49" class="i">+    if (fullname.length &gt; 70) {
+</a><a href="#h10-0-50" id="h10-0-50" class="i">+      return false;
+</a><a href="#h10-0-51" id="h10-0-51" class="i">+    }
+</a><a href="#h10-0-52" id="h10-0-52" class="i">+
+</a><a href="#h10-0-53" id="h10-0-53" class="i">+    return true;
+</a><a href="#h10-0-54" id="h10-0-54" class="i">+  }
+</a><a href="#h10-0-55" id="h10-0-55" class="i">+
+</a><a href="#h10-0-56" id="h10-0-56" class="i">+  /// Validate password
+</a><a href="#h10-0-57" id="h10-0-57" class="i">+  static bool password(String password) {
+</a><a href="#h10-0-58" id="h10-0-58" class="i">+    // Password should be at least 10 characters long
+</a><a href="#h10-0-59" id="h10-0-59" class="i">+    if (password.length &lt; 10) {
+</a><a href="#h10-0-60" id="h10-0-60" class="i">+      return false;
+</a><a href="#h10-0-61" id="h10-0-61" class="i">+    }
+</a><a href="#h10-0-62" id="h10-0-62" class="i">+    return true;
+</a><a href="#h10-0-63" id="h10-0-63" class="i">+  }
+</a><a href="#h10-0-64" id="h10-0-64" class="i">+
+</a><a href="#h10-0-65" id="h10-0-65" class="i">+  // TODO: better email verification
+</a><a href="#h10-0-66" id="h10-0-66" class="i">+  /// Validate email address
+</a><a href="#h10-0-67" id="h10-0-67" class="i">+  static bool email(String email) {
+</a><a href="#h10-0-68" id="h10-0-68" class="i">+    // Email address cannot be empty
+</a><a href="#h10-0-69" id="h10-0-69" class="i">+    if (email.isEmpty) {
+</a><a href="#h10-0-70" id="h10-0-70" class="i">+      return false;
+</a><a href="#h10-0-71" id="h10-0-71" class="i">+    }
+</a><a href="#h10-0-72" id="h10-0-72" class="i">+
+</a><a href="#h10-0-73" id="h10-0-73" class="i">+    // Email address should contain @ and . symbols
+</a><a href="#h10-0-74" id="h10-0-74" class="i">+    if (!email.contains(&#39;@&#39;) || !email.contains(&#39;.&#39;)) {
+</a><a href="#h10-0-75" id="h10-0-75" class="i">+      return false;
+</a><a href="#h10-0-76" id="h10-0-76" class="i">+    }
+</a><a href="#h10-0-77" id="h10-0-77" class="i">+    return true;
+</a><a href="#h10-0-78" id="h10-0-78" class="i">+  }
+</a><a href="#h10-0-79" id="h10-0-79" class="i">+}
+</a><b>diff --git a/<a id="h11" href="../file/cyrto/pubspec.yaml.html">cyrto/pubspec.yaml</a> b/<a href="../file/cyrto/pubspec.yaml.html">cyrto/pubspec.yaml</a></b>
+<a href="#h11-0" id="h11-0" class="h">@@ -0,0 +1,14 @@
+</a><a href="#h11-0-0" id="h11-0-0" class="i">+name: cyrtophora
+</a><a href="#h11-0-1" id="h11-0-1" class="i">+description: A starting point for Dart libraries or applications.
+</a><a href="#h11-0-2" id="h11-0-2" class="i">+version: 1.0.0
+</a><a href="#h11-0-3" id="h11-0-3" class="i">+# homepage: https://www.example.com
+</a><a href="#h11-0-4" id="h11-0-4" class="i">+
+</a><a href="#h11-0-5" id="h11-0-5" class="i">+environment:
+</a><a href="#h11-0-6" id="h11-0-6" class="i">+  sdk: &#39;&gt;=2.17.0-227.0.dev &lt;3.0.0&#39;
+</a><a href="#h11-0-7" id="h11-0-7" class="i">+
+</a><a href="#h11-0-8" id="h11-0-8" class="i">+dependencies:
+</a><a href="#h11-0-9" id="h11-0-9" class="i">+  http: ^0.13.5
+</a><a href="#h11-0-10" id="h11-0-10" class="i">+
+</a><a href="#h11-0-11" id="h11-0-11" class="i">+dev_dependencies:
+</a><a href="#h11-0-12" id="h11-0-12" class="i">+  lints: ^2.0.0
+</a><a href="#h11-0-13" id="h11-0-13" class="i">+  test: ^1.16.0
+</a><b>diff --git a/<a id="h12" href="../file/cyrto/test/cyrtophora_test.dart.html">cyrto/test/cyrtophora_test.dart</a> b/<a href="../file/cyrto/test/cyrtophora_test.dart.html">cyrto/test/cyrtophora_test.dart</a></b>
+<a href="#h12-0" id="h12-0" class="h">@@ -0,0 +1,5 @@
+</a><a href="#h12-0-0" id="h12-0-0" class="i">+import &#39;package:test/test.dart&#39;;
+</a><a href="#h12-0-1" id="h12-0-1" class="i">+
+</a><a href="#h12-0-2" id="h12-0-2" class="i">+void main() {
+</a><a href="#h12-0-3" id="h12-0-3" class="i">+  group(&#39;Tests for cyrtophora utilities&#39;, () {});
+</a><a href="#h12-0-4" id="h12-0-4" class="i">+}
+</a><b>diff --git a/<a id="h13" href="../file/cyrto/test/utils_test.dart.html">cyrto/test/utils_test.dart</a> b/<a href="../file/cyrto/test/utils_test.dart.html">cyrto/test/utils_test.dart</a></b>
+<a href="#h13-0" id="h13-0" class="h">@@ -0,0 +1,100 @@
+</a><a href="#h13-0-0" id="h13-0-0" class="i">+import &#39;package:cyrtophora/cyrtophora.dart&#39;;
+</a><a href="#h13-0-1" id="h13-0-1" class="i">+import &#39;package:test/test.dart&#39;;
+</a><a href="#h13-0-2" id="h13-0-2" class="i">+
+</a><a href="#h13-0-3" id="h13-0-3" class="i">+void main() {
+</a><a href="#h13-0-4" id="h13-0-4" class="i">+  group(&#39;Tests for cyrtophora utilities&#39;, () {
+</a><a href="#h13-0-5" id="h13-0-5" class="i">+    test(&#39;Test isAlphaNumeric function&#39;, () {
+</a><a href="#h13-0-6" id="h13-0-6" class="i">+      expect(isAlphanumeric(&quot;a&quot;), isTrue);
+</a><a href="#h13-0-7" id="h13-0-7" class="i">+      expect(isAlphanumeric(&quot;b&quot;), isTrue);
+</a><a href="#h13-0-8" id="h13-0-8" class="i">+      expect(isAlphanumeric(&quot;c&quot;), isTrue);
+</a><a href="#h13-0-9" id="h13-0-9" class="i">+      expect(isAlphanumeric(&quot;d&quot;), isTrue);
+</a><a href="#h13-0-10" id="h13-0-10" class="i">+      expect(isAlphanumeric(&quot;e&quot;), isTrue);
+</a><a href="#h13-0-11" id="h13-0-11" class="i">+      expect(isAlphanumeric(&quot;f&quot;), isTrue);
+</a><a href="#h13-0-12" id="h13-0-12" class="i">+      expect(isAlphanumeric(&quot;g&quot;), isTrue);
+</a><a href="#h13-0-13" id="h13-0-13" class="i">+      expect(isAlphanumeric(&quot;h&quot;), isTrue);
+</a><a href="#h13-0-14" id="h13-0-14" class="i">+      expect(isAlphanumeric(&quot;i&quot;), isTrue);
+</a><a href="#h13-0-15" id="h13-0-15" class="i">+      expect(isAlphanumeric(&quot;j&quot;), isTrue);
+</a><a href="#h13-0-16" id="h13-0-16" class="i">+      expect(isAlphanumeric(&quot;k&quot;), isTrue);
+</a><a href="#h13-0-17" id="h13-0-17" class="i">+      expect(isAlphanumeric(&quot;l&quot;), isTrue);
+</a><a href="#h13-0-18" id="h13-0-18" class="i">+      expect(isAlphanumeric(&quot;m&quot;), isTrue);
+</a><a href="#h13-0-19" id="h13-0-19" class="i">+      expect(isAlphanumeric(&quot;n&quot;), isTrue);
+</a><a href="#h13-0-20" id="h13-0-20" class="i">+      expect(isAlphanumeric(&quot;o&quot;), isTrue);
+</a><a href="#h13-0-21" id="h13-0-21" class="i">+      expect(isAlphanumeric(&quot;p&quot;), isTrue);
+</a><a href="#h13-0-22" id="h13-0-22" class="i">+      expect(isAlphanumeric(&quot;q&quot;), isTrue);
+</a><a href="#h13-0-23" id="h13-0-23" class="i">+      expect(isAlphanumeric(&quot;r&quot;), isTrue);
+</a><a href="#h13-0-24" id="h13-0-24" class="i">+      expect(isAlphanumeric(&quot;s&quot;), isTrue);
+</a><a href="#h13-0-25" id="h13-0-25" class="i">+      expect(isAlphanumeric(&quot;t&quot;), isTrue);
+</a><a href="#h13-0-26" id="h13-0-26" class="i">+      expect(isAlphanumeric(&quot;u&quot;), isTrue);
+</a><a href="#h13-0-27" id="h13-0-27" class="i">+      expect(isAlphanumeric(&quot;v&quot;), isTrue);
+</a><a href="#h13-0-28" id="h13-0-28" class="i">+      expect(isAlphanumeric(&quot;w&quot;), isTrue);
+</a><a href="#h13-0-29" id="h13-0-29" class="i">+      expect(isAlphanumeric(&quot;x&quot;), isTrue);
+</a><a href="#h13-0-30" id="h13-0-30" class="i">+      expect(isAlphanumeric(&quot;y&quot;), isTrue);
+</a><a href="#h13-0-31" id="h13-0-31" class="i">+      expect(isAlphanumeric(&quot;z&quot;), isTrue);
+</a><a href="#h13-0-32" id="h13-0-32" class="i">+      expect(isAlphanumeric(&quot;A&quot;), isTrue);
+</a><a href="#h13-0-33" id="h13-0-33" class="i">+      expect(isAlphanumeric(&quot;B&quot;), isTrue);
+</a><a href="#h13-0-34" id="h13-0-34" class="i">+      expect(isAlphanumeric(&quot;C&quot;), isTrue);
+</a><a href="#h13-0-35" id="h13-0-35" class="i">+      expect(isAlphanumeric(&quot;D&quot;), isTrue);
+</a><a href="#h13-0-36" id="h13-0-36" class="i">+      expect(isAlphanumeric(&quot;E&quot;), isTrue);
+</a><a href="#h13-0-37" id="h13-0-37" class="i">+      expect(isAlphanumeric(&quot;F&quot;), isTrue);
+</a><a href="#h13-0-38" id="h13-0-38" class="i">+      expect(isAlphanumeric(&quot;G&quot;), isTrue);
+</a><a href="#h13-0-39" id="h13-0-39" class="i">+      expect(isAlphanumeric(&quot;H&quot;), isTrue);
+</a><a href="#h13-0-40" id="h13-0-40" class="i">+      expect(isAlphanumeric(&quot;I&quot;), isTrue);
+</a><a href="#h13-0-41" id="h13-0-41" class="i">+      expect(isAlphanumeric(&quot;J&quot;), isTrue);
+</a><a href="#h13-0-42" id="h13-0-42" class="i">+      expect(isAlphanumeric(&quot;K&quot;), isTrue);
+</a><a href="#h13-0-43" id="h13-0-43" class="i">+      expect(isAlphanumeric(&quot;L&quot;), isTrue);
+</a><a href="#h13-0-44" id="h13-0-44" class="i">+      expect(isAlphanumeric(&quot;M&quot;), isTrue);
+</a><a href="#h13-0-45" id="h13-0-45" class="i">+      expect(isAlphanumeric(&quot;N&quot;), isTrue);
+</a><a href="#h13-0-46" id="h13-0-46" class="i">+      expect(isAlphanumeric(&quot;O&quot;), isTrue);
+</a><a href="#h13-0-47" id="h13-0-47" class="i">+      expect(isAlphanumeric(&quot;P&quot;), isTrue);
+</a><a href="#h13-0-48" id="h13-0-48" class="i">+      expect(isAlphanumeric(&quot;Q&quot;), isTrue);
+</a><a href="#h13-0-49" id="h13-0-49" class="i">+      expect(isAlphanumeric(&quot;R&quot;), isTrue);
+</a><a href="#h13-0-50" id="h13-0-50" class="i">+      expect(isAlphanumeric(&quot;S&quot;), isTrue);
+</a><a href="#h13-0-51" id="h13-0-51" class="i">+      expect(isAlphanumeric(&quot;T&quot;), isTrue);
+</a><a href="#h13-0-52" id="h13-0-52" class="i">+      expect(isAlphanumeric(&quot;U&quot;), isTrue);
+</a><a href="#h13-0-53" id="h13-0-53" class="i">+      expect(isAlphanumeric(&quot;V&quot;), isTrue);
+</a><a href="#h13-0-54" id="h13-0-54" class="i">+      expect(isAlphanumeric(&quot;W&quot;), isTrue);
+</a><a href="#h13-0-55" id="h13-0-55" class="i">+      expect(isAlphanumeric(&quot;X&quot;), isTrue);
+</a><a href="#h13-0-56" id="h13-0-56" class="i">+      expect(isAlphanumeric(&quot;Y&quot;), isTrue);
+</a><a href="#h13-0-57" id="h13-0-57" class="i">+      expect(isAlphanumeric(&quot;Z&quot;), isTrue);
+</a><a href="#h13-0-58" id="h13-0-58" class="i">+      expect(isAlphanumeric(&quot;1&quot;), isTrue);
+</a><a href="#h13-0-59" id="h13-0-59" class="i">+      expect(isAlphanumeric(&quot;2&quot;), isTrue);
+</a><a href="#h13-0-60" id="h13-0-60" class="i">+      expect(isAlphanumeric(&quot;3&quot;), isTrue);
+</a><a href="#h13-0-61" id="h13-0-61" class="i">+      expect(isAlphanumeric(&quot;4&quot;), isTrue);
+</a><a href="#h13-0-62" id="h13-0-62" class="i">+      expect(isAlphanumeric(&quot;5&quot;), isTrue);
+</a><a href="#h13-0-63" id="h13-0-63" class="i">+      expect(isAlphanumeric(&quot;6&quot;), isTrue);
+</a><a href="#h13-0-64" id="h13-0-64" class="i">+      expect(isAlphanumeric(&quot;7&quot;), isTrue);
+</a><a href="#h13-0-65" id="h13-0-65" class="i">+      expect(isAlphanumeric(&quot;8&quot;), isTrue);
+</a><a href="#h13-0-66" id="h13-0-66" class="i">+      expect(isAlphanumeric(&quot;9&quot;), isTrue);
+</a><a href="#h13-0-67" id="h13-0-67" class="i">+      expect(isAlphanumeric(&quot;0&quot;), isTrue);
+</a><a href="#h13-0-68" id="h13-0-68" class="i">+
+</a><a href="#h13-0-69" id="h13-0-69" class="i">+      expect(isAlphanumeric(&quot;!&quot;), isFalse);
+</a><a href="#h13-0-70" id="h13-0-70" class="i">+      expect(isAlphanumeric(&quot;@&quot;), isFalse);
+</a><a href="#h13-0-71" id="h13-0-71" class="i">+      expect(isAlphanumeric(&quot;#&quot;), isFalse);
+</a><a href="#h13-0-72" id="h13-0-72" class="i">+      expect(isAlphanumeric(&quot;\$&quot;), isFalse);
+</a><a href="#h13-0-73" id="h13-0-73" class="i">+      expect(isAlphanumeric(&quot;%&quot;), isFalse);
+</a><a href="#h13-0-74" id="h13-0-74" class="i">+      expect(isAlphanumeric(&quot;^&quot;), isFalse);
+</a><a href="#h13-0-75" id="h13-0-75" class="i">+      expect(isAlphanumeric(&quot;&amp;&quot;), isFalse);
+</a><a href="#h13-0-76" id="h13-0-76" class="i">+      expect(isAlphanumeric(&quot;*&quot;), isFalse);
+</a><a href="#h13-0-77" id="h13-0-77" class="i">+      expect(isAlphanumeric(&quot;(&quot;), isFalse);
+</a><a href="#h13-0-78" id="h13-0-78" class="i">+      expect(isAlphanumeric(&quot;)&quot;), isFalse);
+</a><a href="#h13-0-79" id="h13-0-79" class="i">+      expect(isAlphanumeric(&quot;-&quot;), isFalse);
+</a><a href="#h13-0-80" id="h13-0-80" class="i">+      expect(isAlphanumeric(&quot;=&quot;), isFalse);
+</a><a href="#h13-0-81" id="h13-0-81" class="i">+      expect(isAlphanumeric(&quot;+&quot;), isFalse);
+</a><a href="#h13-0-82" id="h13-0-82" class="i">+      expect(isAlphanumeric(&quot;\\&quot;), isFalse);
+</a><a href="#h13-0-83" id="h13-0-83" class="i">+      expect(isAlphanumeric(&quot;]&quot;), isFalse);
+</a><a href="#h13-0-84" id="h13-0-84" class="i">+      expect(isAlphanumeric(&quot;}&quot;), isFalse);
+</a><a href="#h13-0-85" id="h13-0-85" class="i">+      expect(isAlphanumeric(&quot;[&quot;), isFalse);
+</a><a href="#h13-0-86" id="h13-0-86" class="i">+      expect(isAlphanumeric(&quot;{&quot;), isFalse);
+</a><a href="#h13-0-87" id="h13-0-87" class="i">+      expect(isAlphanumeric(&quot;:&quot;), isFalse);
+</a><a href="#h13-0-88" id="h13-0-88" class="i">+      expect(isAlphanumeric(&quot;;&quot;), isFalse);
+</a><a href="#h13-0-89" id="h13-0-89" class="i">+      expect(isAlphanumeric(&quot;&#39;&quot;), isFalse);
+</a><a href="#h13-0-90" id="h13-0-90" class="i">+      expect(isAlphanumeric(&quot;\&quot;&quot;), isFalse);
+</a><a href="#h13-0-91" id="h13-0-91" class="i">+      expect(isAlphanumeric(&quot;&lt;&quot;), isFalse);
+</a><a href="#h13-0-92" id="h13-0-92" class="i">+      expect(isAlphanumeric(&quot;&gt;&quot;), isFalse);
+</a><a href="#h13-0-93" id="h13-0-93" class="i">+      expect(isAlphanumeric(&quot;/&quot;), isFalse);
+</a><a href="#h13-0-94" id="h13-0-94" class="i">+      expect(isAlphanumeric(&quot;?&quot;), isFalse);
+</a><a href="#h13-0-95" id="h13-0-95" class="i">+      expect(isAlphanumeric(&quot;.&quot;), isFalse);
+</a><a href="#h13-0-96" id="h13-0-96" class="i">+      expect(isAlphanumeric(&quot;,&quot;), isFalse);
+</a><a href="#h13-0-97" id="h13-0-97" class="i">+    });
+</a><a href="#h13-0-98" id="h13-0-98" class="i">+  });
+</a><a href="#h13-0-99" id="h13-0-99" class="i">+}
+</a><b>diff --git a/<a id="h14" href="../file/cyrto/test/validate_test.dart.html">cyrto/test/validate_test.dart</a> b/<a href="../file/cyrto/test/validate_test.dart.html">cyrto/test/validate_test.dart</a></b>
+<a href="#h14-0" id="h14-0" class="h">@@ -0,0 +1,66 @@
+</a><a href="#h14-0-0" id="h14-0-0" class="i">+import &#39;package:test/test.dart&#39;;
+</a><a href="#h14-0-1" id="h14-0-1" class="i">+import &#39;package:cyrtophora/cyrtophora.dart&#39;;
+</a><a href="#h14-0-2" id="h14-0-2" class="i">+
+</a><a href="#h14-0-3" id="h14-0-3" class="i">+void main() {
+</a><a href="#h14-0-4" id="h14-0-4" class="i">+  group(&#39;Test cyrtophora validator&#39;, () {
+</a><a href="#h14-0-5" id="h14-0-5" class="i">+    test(&#39;Test fullname validator&#39;, () {
+</a><a href="#h14-0-6" id="h14-0-6" class="i">+      final validName1 = &quot;John Doe&quot;;
+</a><a href="#h14-0-7" id="h14-0-7" class="i">+      final validName2 = &quot;Peter Bob Bunny Wailer&quot;;
+</a><a href="#h14-0-8" id="h14-0-8" class="i">+      final invalidName1 =
+</a><a href="#h14-0-9" id="h14-0-9" class="i">+          &quot;kdfjafdjkdf dfjfdkdfjdf fdkjfdkjf dkfdfjdkfj dfdfjdfdkjf dfkjfdjdf fdkjfdjdkf fdnfdkjfd dffd dffdkfd fkdjfdj fdfdfdfdffdfdf dfkjf&quot;;
+</a><a href="#h14-0-10" id="h14-0-10" class="i">+      final invalidName2 = &quot;&quot;;
+</a><a href="#h14-0-11" id="h14-0-11" class="i">+
+</a><a href="#h14-0-12" id="h14-0-12" class="i">+      expect(Validate.fullname(validName1), true);
+</a><a href="#h14-0-13" id="h14-0-13" class="i">+      expect(Validate.fullname(validName2), true);
+</a><a href="#h14-0-14" id="h14-0-14" class="i">+
+</a><a href="#h14-0-15" id="h14-0-15" class="i">+      // Name cannot be more than 70 characters long
+</a><a href="#h14-0-16" id="h14-0-16" class="i">+      expect(Validate.fullname(invalidName1), false);
+</a><a href="#h14-0-17" id="h14-0-17" class="i">+
+</a><a href="#h14-0-18" id="h14-0-18" class="i">+      // Name cannot be empty
+</a><a href="#h14-0-19" id="h14-0-19" class="i">+      expect(Validate.fullname(invalidName2), false);
+</a><a href="#h14-0-20" id="h14-0-20" class="i">+    });
+</a><a href="#h14-0-21" id="h14-0-21" class="i">+
+</a><a href="#h14-0-22" id="h14-0-22" class="i">+    test(&#39;Test username validator&#39;, () {
+</a><a href="#h14-0-23" id="h14-0-23" class="i">+      final validUsername1 = &quot;cy6erlion&quot;;
+</a><a href="#h14-0-24" id="h14-0-24" class="i">+      final validUsername2 = &quot;cy6er_lion&quot;;
+</a><a href="#h14-0-25" id="h14-0-25" class="i">+      final validUsername3 = &quot;cy6er1ion2022&quot;;
+</a><a href="#h14-0-26" id="h14-0-26" class="i">+      final validUsername4 = &quot;fishcanyon10&quot;;
+</a><a href="#h14-0-27" id="h14-0-27" class="i">+
+</a><a href="#h14-0-28" id="h14-0-28" class="i">+      final invalidUsername1 = &quot;_cy6erlion&quot;;
+</a><a href="#h14-0-29" id="h14-0-29" class="i">+      final invalidUsername2 = &quot;cy6er.lion&quot;;
+</a><a href="#h14-0-30" id="h14-0-30" class="i">+      final invalidUsername3 = &quot;cy6er__lion&quot;;
+</a><a href="#h14-0-31" id="h14-0-31" class="i">+      final invalidUsername4 =
+</a><a href="#h14-0-32" id="h14-0-32" class="i">+          &quot;cy6erlion1111111111111111111111111eweewewewewew&quot;;
+</a><a href="#h14-0-33" id="h14-0-33" class="i">+      final invalidUsername5 = &quot;&quot;;
+</a><a href="#h14-0-34" id="h14-0-34" class="i">+
+</a><a href="#h14-0-35" id="h14-0-35" class="i">+      expect(Validate.username(validUsername1), true);
+</a><a href="#h14-0-36" id="h14-0-36" class="i">+      expect(Validate.username(validUsername2), true);
+</a><a href="#h14-0-37" id="h14-0-37" class="i">+      expect(Validate.username(validUsername3), true);
+</a><a href="#h14-0-38" id="h14-0-38" class="i">+      expect(Validate.username(validUsername4), true);
+</a><a href="#h14-0-39" id="h14-0-39" class="i">+
+</a><a href="#h14-0-40" id="h14-0-40" class="i">+      expect(Validate.username(invalidUsername1), false);
+</a><a href="#h14-0-41" id="h14-0-41" class="i">+      expect(Validate.username(invalidUsername2), false);
+</a><a href="#h14-0-42" id="h14-0-42" class="i">+      expect(Validate.username(invalidUsername3), false);
+</a><a href="#h14-0-43" id="h14-0-43" class="i">+      expect(Validate.username(invalidUsername4), false);
+</a><a href="#h14-0-44" id="h14-0-44" class="i">+      expect(Validate.username(invalidUsername5), false);
+</a><a href="#h14-0-45" id="h14-0-45" class="i">+    });
+</a><a href="#h14-0-46" id="h14-0-46" class="i">+
+</a><a href="#h14-0-47" id="h14-0-47" class="i">+    test(&#39;Test password validator&#39;, () {
+</a><a href="#h14-0-48" id="h14-0-48" class="i">+      final validPassword = &quot;thisIs_a_P@ssword&quot;;
+</a><a href="#h14-0-49" id="h14-0-49" class="i">+      final invalidPassword = &quot;short&quot;;
+</a><a href="#h14-0-50" id="h14-0-50" class="i">+
+</a><a href="#h14-0-51" id="h14-0-51" class="i">+      expect(Validate.password(validPassword), true);
+</a><a href="#h14-0-52" id="h14-0-52" class="i">+      expect(Validate.password(invalidPassword), false);
+</a><a href="#h14-0-53" id="h14-0-53" class="i">+    });
+</a><a href="#h14-0-54" id="h14-0-54" class="i">+
+</a><a href="#h14-0-55" id="h14-0-55" class="i">+    test(&#39;Test email validator&#39;, () {
+</a><a href="#h14-0-56" id="h14-0-56" class="i">+      final validEmail = &quot;info@example.com&quot;;
+</a><a href="#h14-0-57" id="h14-0-57" class="i">+      final invalidEmail1 = &quot;wrong&quot;;
+</a><a href="#h14-0-58" id="h14-0-58" class="i">+      final invalidEmail2 = &quot;&quot;;
+</a><a href="#h14-0-59" id="h14-0-59" class="i">+
+</a><a href="#h14-0-60" id="h14-0-60" class="i">+      expect(Validate.email(validEmail), true);
+</a><a href="#h14-0-61" id="h14-0-61" class="i">+      expect(Validate.email(invalidEmail1), false);
+</a><a href="#h14-0-62" id="h14-0-62" class="i">+      expect(Validate.email(invalidEmail2), false);
+</a><a href="#h14-0-63" id="h14-0-63" class="i">+    });
+</a><a href="#h14-0-64" id="h14-0-64" class="i">+  });
+</a><a href="#h14-0-65" id="h14-0-65" class="i">+}
+</a><b>diff --git a/<a id="h15" href="../file/phora/Cargo.lock.html">phora/Cargo.lock</a> b/<a href="../file/phora/Cargo.lock.html">phora/Cargo.lock</a></b>
+<a href="#h15-0" id="h15-0" class="h">@@ -128,6 +128,7 @@ dependencies = [
+</a>  &quot;chacha20poly1305&quot;,
+  &quot;ring&quot;,
+  &quot;scrypt&quot;,
+<a href="#h15-0-3" id="h15-0-3" class="i">+ &quot;serde&quot;,
+</a> ]
+ 
+ [[package]]
+<a href="#h15-1" id="h15-1" class="h">@@ -312,6 +313,26 @@ dependencies = [
+</a> ]
+ 
+ [[package]]
+<a href="#h15-1-3" id="h15-1-3" class="i">+name = &quot;serde&quot;
+</a><a href="#h15-1-4" id="h15-1-4" class="i">+version = &quot;1.0.144&quot;
+</a><a href="#h15-1-5" id="h15-1-5" class="i">+source = &quot;registry+https://github.com/rust-lang/crates.io-index&quot;
+</a><a href="#h15-1-6" id="h15-1-6" class="i">+checksum = &quot;0f747710de3dcd43b88c9168773254e809d8ddbdf9653b84e2554ab219f17860&quot;
+</a><a href="#h15-1-7" id="h15-1-7" class="i">+dependencies = [
+</a><a href="#h15-1-8" id="h15-1-8" class="i">+ &quot;serde_derive&quot;,
+</a><a href="#h15-1-9" id="h15-1-9" class="i">+]
+</a><a href="#h15-1-10" id="h15-1-10" class="i">+
+</a><a href="#h15-1-11" id="h15-1-11" class="i">+[[package]]
+</a><a href="#h15-1-12" id="h15-1-12" class="i">+name = &quot;serde_derive&quot;
+</a><a href="#h15-1-13" id="h15-1-13" class="i">+version = &quot;1.0.144&quot;
+</a><a href="#h15-1-14" id="h15-1-14" class="i">+source = &quot;registry+https://github.com/rust-lang/crates.io-index&quot;
+</a><a href="#h15-1-15" id="h15-1-15" class="i">+checksum = &quot;94ed3a816fb1d101812f83e789f888322c34e291f894f19590dc310963e87a00&quot;
+</a><a href="#h15-1-16" id="h15-1-16" class="i">+dependencies = [
+</a><a href="#h15-1-17" id="h15-1-17" class="i">+ &quot;proc-macro2&quot;,
+</a><a href="#h15-1-18" id="h15-1-18" class="i">+ &quot;quote&quot;,
+</a><a href="#h15-1-19" id="h15-1-19" class="i">+ &quot;syn&quot;,
+</a><a href="#h15-1-20" id="h15-1-20" class="i">+]
+</a><a href="#h15-1-21" id="h15-1-21" class="i">+
+</a><a href="#h15-1-22" id="h15-1-22" class="i">+[[package]]
+</a> name = &quot;sha2&quot;
+ version = &quot;0.10.2&quot;
+ source = &quot;registry+https://github.com/rust-lang/crates.io-index&quot;
+<b>diff --git a/<a id="h16" href="../file/phora/Cargo.toml.html">phora/Cargo.toml</a> b/<a href="../file/phora/Cargo.toml.html">phora/Cargo.toml</a></b>
+<a href="#h16-0" id="h16-0" class="h">@@ -8,4 +8,5 @@ anyhow = &quot;1.0.57&quot;
+</a> ring = &quot;0.16.20&quot;
+ chacha20poly1305 = &quot;0.9.0&quot;
+ base64 = &quot;0.13.0&quot;
+<a href="#h16-0-3" id="h16-0-3" class="d">-scrypt = &quot;0.10.0&quot;
+</a><a href="#h16-0-4" id="h16-0-4" class="d">-\ No newline at end of file
+</a><a href="#h16-0-5" id="h16-0-5" class="i">+scrypt = &quot;0.10.0&quot;
+</a><a href="#h16-0-6" id="h16-0-6" class="i">+serde = { version = &quot;1.0.144&quot;, features = [&quot;derive&quot;] }
+</a><a href="#h16-0-7" id="h16-0-7" class="i">+\ No newline at end of file
+</a><b>diff --git a/<a id="h17" href="../file/phora/src/account.rs.html">phora/src/account.rs</a> b/<a href="../file/phora/src/account.rs.html">phora/src/account.rs</a></b>
+<a href="#h17-0" id="h17-0" class="h">@@ -1,6 +1,9 @@
+</a><a href="#h17-0-0" id="h17-0-0" class="d">-use crate::validate::{Validate, ValidationError};
+</a><a href="#h17-0-1" id="h17-0-1" class="i">+use crate::data::AccountRegistration;
+</a><a href="#h17-0-2" id="h17-0-2" class="i">+use crate::validate::ValidationError;
+</a><a href="#h17-0-3" id="h17-0-3" class="i">+use serde::{Deserialize, Serialize};
+</a> 
+ /// An account
+<a href="#h17-0-6" id="h17-0-6" class="i">+#[derive(Deserialize, Serialize)]
+</a> pub struct Account {
+     /// The username of the user, also used as an unique identifier
+     pub username: String,
+<a href="#h17-1" id="h17-1" class="h">@@ -11,37 +14,34 @@ pub struct Account {
+</a> }
+ 
+ impl Account {
+<a href="#h17-1-3" id="h17-1-3" class="d">-    /// Register new user
+</a><a href="#h17-1-4" id="h17-1-4" class="d">-    pub fn register(
+</a><a href="#h17-1-5" id="h17-1-5" class="d">-        username: &amp;str,
+</a><a href="#h17-1-6" id="h17-1-6" class="d">-        password: &amp;str,
+</a><a href="#h17-1-7" id="h17-1-7" class="d">-        email: Option&lt;&amp;str&gt;,
+</a><a href="#h17-1-8" id="h17-1-8" class="d">-    ) -&gt; Result&lt;Self, ValidationError&gt; {
+</a><a href="#h17-1-9" id="h17-1-9" class="d">-        let mut validated_email: Option&lt;String&gt; = None;
+</a><a href="#h17-1-10" id="h17-1-10" class="i">+    /// Create new account
+</a><a href="#h17-1-11" id="h17-1-11" class="i">+    pub fn create(payload: AccountRegistration) -&gt; Result&lt;PublicAccount, ValidationError&gt; {
+</a><a href="#h17-1-12" id="h17-1-12" class="i">+        payload.is_valid()?;
+</a> 
+<a href="#h17-1-14" id="h17-1-14" class="d">-        if !Validate::username(username) {
+</a><a href="#h17-1-15" id="h17-1-15" class="d">-            return Err(ValidationError::Username);
+</a><a href="#h17-1-16" id="h17-1-16" class="d">-        }
+</a><a href="#h17-1-17" id="h17-1-17" class="d">-
+</a><a href="#h17-1-18" id="h17-1-18" class="d">-        if !Validate::password(password) {
+</a><a href="#h17-1-19" id="h17-1-19" class="d">-            return Err(ValidationError::Email);
+</a><a href="#h17-1-20" id="h17-1-20" class="d">-        }
+</a><a href="#h17-1-21" id="h17-1-21" class="i">+        // TODO: email verification
+</a><a href="#h17-1-22" id="h17-1-22" class="i">+        // TODO: database registration
+</a> 
+<a href="#h17-1-24" id="h17-1-24" class="d">-        if let Some(email) = email {
+</a><a href="#h17-1-25" id="h17-1-25" class="d">-            if !Validate::email(email) {
+</a><a href="#h17-1-26" id="h17-1-26" class="d">-                return Err(ValidationError::Email);
+</a><a href="#h17-1-27" id="h17-1-27" class="d">-            }
+</a><a href="#h17-1-28" id="h17-1-28" class="d">-            validated_email = Some(email.to_string());
+</a><a href="#h17-1-29" id="h17-1-29" class="i">+        let account = Account {
+</a><a href="#h17-1-30" id="h17-1-30" class="i">+            username: payload.username,
+</a><a href="#h17-1-31" id="h17-1-31" class="i">+            email: payload.email,
+</a><a href="#h17-1-32" id="h17-1-32" class="i">+            password: payload.password,
+</a><a href="#h17-1-33" id="h17-1-33" class="i">+        };
+</a> 
+<a href="#h17-1-35" id="h17-1-35" class="d">-            // TODO: email verification code
+</a><a href="#h17-1-36" id="h17-1-36" class="d">-        }
+</a><a href="#h17-1-37" id="h17-1-37" class="i">+        Ok(account.into())
+</a><a href="#h17-1-38" id="h17-1-38" class="i">+    }
+</a><a href="#h17-1-39" id="h17-1-39" class="i">+}
+</a> 
+<a href="#h17-1-41" id="h17-1-41" class="d">-        // TODO: database registration code
+</a><a href="#h17-1-42" id="h17-1-42" class="i">+/// Account Public Data
+</a><a href="#h17-1-43" id="h17-1-43" class="i">+#[derive(Deserialize, Serialize)]
+</a><a href="#h17-1-44" id="h17-1-44" class="i">+pub struct PublicAccount {
+</a><a href="#h17-1-45" id="h17-1-45" class="i">+    /// The username of the user, also used as an unique identifier
+</a><a href="#h17-1-46" id="h17-1-46" class="i">+    pub username: String,
+</a><a href="#h17-1-47" id="h17-1-47" class="i">+}
+</a> 
+<a href="#h17-1-49" id="h17-1-49" class="d">-        Ok(Account {
+</a><a href="#h17-1-50" id="h17-1-50" class="d">-            username: username.to_string(),
+</a><a href="#h17-1-51" id="h17-1-51" class="d">-            email: validated_email,
+</a><a href="#h17-1-52" id="h17-1-52" class="d">-            password: password.to_string(),
+</a><a href="#h17-1-53" id="h17-1-53" class="d">-        })
+</a><a href="#h17-1-54" id="h17-1-54" class="i">+impl From&lt;Account&gt; for PublicAccount {
+</a><a href="#h17-1-55" id="h17-1-55" class="i">+    fn from(account: Account) -&gt; Self {
+</a><a href="#h17-1-56" id="h17-1-56" class="i">+        PublicAccount {
+</a><a href="#h17-1-57" id="h17-1-57" class="i">+            username: account.username,
+</a><a href="#h17-1-58" id="h17-1-58" class="i">+        }
+</a>     }
+ }
+<b>diff --git a/<a id="h18" href="../file/phora/src/api.rs.html">phora/src/api.rs</a> b/<a href="../file/phora/src/api.rs.html">phora/src/api.rs</a></b>
+<a href="#h18-0" id="h18-0" class="h">@@ -0,0 +1,13 @@
+</a><a href="#h18-0-0" id="h18-0-0" class="i">+pub struct API {
+</a><a href="#h18-0-1" id="h18-0-1" class="i">+    pub version: String,
+</a><a href="#h18-0-2" id="h18-0-2" class="i">+    pub accounts: String,
+</a><a href="#h18-0-3" id="h18-0-3" class="i">+}
+</a><a href="#h18-0-4" id="h18-0-4" class="i">+
+</a><a href="#h18-0-5" id="h18-0-5" class="i">+impl Default for API {
+</a><a href="#h18-0-6" id="h18-0-6" class="i">+    fn default() -&gt; Self {
+</a><a href="#h18-0-7" id="h18-0-7" class="i">+        API {
+</a><a href="#h18-0-8" id="h18-0-8" class="i">+            version: &quot;/v0&quot;.to_string(),
+</a><a href="#h18-0-9" id="h18-0-9" class="i">+            accounts: &quot;/v0/accounts&quot;.to_string(),
+</a><a href="#h18-0-10" id="h18-0-10" class="i">+        }
+</a><a href="#h18-0-11" id="h18-0-11" class="i">+    }
+</a><a href="#h18-0-12" id="h18-0-12" class="i">+}
+</a><b>diff --git a/<a id="h19" href="../file/phora/src/crypto.rs.html">phora/src/crypto.rs</a> b/<a href="../file/phora/src/crypto.rs.html">phora/src/crypto.rs</a></b>
+<a href="#h19-0" id="h19-0" class="h">@@ -13,11 +13,8 @@ use scrypt::{
+</a>     Scrypt,
+ };
+ 
+<a href="#h19-0-3" id="h19-0-3" class="d">-const CREDENTIAL_LEN: usize = digest::SHA256_OUTPUT_LEN;
+</a><a href="#h19-0-4" id="h19-0-4" class="d">-
+</a> /// Nonce used when encrypting the Crypto&#39;s keypair (Crypto::encrypt_keypair_document())
+ const AED_NONCE: &amp;str = &quot;people the information  &quot;;
+<a href="#h19-0-7" id="h19-0-7" class="d">-pub type Credential = [u8; CREDENTIAL_LEN];
+</a> 
+ pub struct Credentials {
+     /// Base64 encoded key pair serialized as a PKCS#8 document
+<b>diff --git a/<a id="h20" href="../file/phora/src/data.rs.html">phora/src/data.rs</a> b/<a href="../file/phora/src/data.rs.html">phora/src/data.rs</a></b>
+<a href="#h20-0" id="h20-0" class="h">@@ -0,0 +1,35 @@
+</a><a href="#h20-0-0" id="h20-0-0" class="i">+use crate::validate::{Validate, ValidationError};
+</a><a href="#h20-0-1" id="h20-0-1" class="i">+use serde::{Deserialize, Serialize};
+</a><a href="#h20-0-2" id="h20-0-2" class="i">+
+</a><a href="#h20-0-3" id="h20-0-3" class="i">+/// User registration Data
+</a><a href="#h20-0-4" id="h20-0-4" class="i">+#[derive(Deserialize, Serialize)]
+</a><a href="#h20-0-5" id="h20-0-5" class="i">+pub struct AccountRegistration {
+</a><a href="#h20-0-6" id="h20-0-6" class="i">+    pub username: String,
+</a><a href="#h20-0-7" id="h20-0-7" class="i">+    pub password: String,
+</a><a href="#h20-0-8" id="h20-0-8" class="i">+    pub retyped_password: String,
+</a><a href="#h20-0-9" id="h20-0-9" class="i">+    pub email: Option&lt;String&gt;,
+</a><a href="#h20-0-10" id="h20-0-10" class="i">+}
+</a><a href="#h20-0-11" id="h20-0-11" class="i">+
+</a><a href="#h20-0-12" id="h20-0-12" class="i">+impl AccountRegistration {
+</a><a href="#h20-0-13" id="h20-0-13" class="i">+    pub fn is_valid(&amp;self) -&gt; Result&lt;(), ValidationError&gt; {
+</a><a href="#h20-0-14" id="h20-0-14" class="i">+        if self.password != self.retyped_password {
+</a><a href="#h20-0-15" id="h20-0-15" class="i">+            return Err(ValidationError::Password);
+</a><a href="#h20-0-16" id="h20-0-16" class="i">+        }
+</a><a href="#h20-0-17" id="h20-0-17" class="i">+
+</a><a href="#h20-0-18" id="h20-0-18" class="i">+        if !Validate::username(&amp;self.username) {
+</a><a href="#h20-0-19" id="h20-0-19" class="i">+            return Err(ValidationError::Username);
+</a><a href="#h20-0-20" id="h20-0-20" class="i">+        }
+</a><a href="#h20-0-21" id="h20-0-21" class="i">+
+</a><a href="#h20-0-22" id="h20-0-22" class="i">+        if !Validate::password(&amp;self.password) {
+</a><a href="#h20-0-23" id="h20-0-23" class="i">+            return Err(ValidationError::Password);
+</a><a href="#h20-0-24" id="h20-0-24" class="i">+        }
+</a><a href="#h20-0-25" id="h20-0-25" class="i">+
+</a><a href="#h20-0-26" id="h20-0-26" class="i">+        if let Some(email) = &amp;self.email {
+</a><a href="#h20-0-27" id="h20-0-27" class="i">+            if !Validate::email(email) {
+</a><a href="#h20-0-28" id="h20-0-28" class="i">+                return Err(ValidationError::Email);
+</a><a href="#h20-0-29" id="h20-0-29" class="i">+            }
+</a><a href="#h20-0-30" id="h20-0-30" class="i">+        }
+</a><a href="#h20-0-31" id="h20-0-31" class="i">+
+</a><a href="#h20-0-32" id="h20-0-32" class="i">+        Ok(())
+</a><a href="#h20-0-33" id="h20-0-33" class="i">+    }
+</a><a href="#h20-0-34" id="h20-0-34" class="i">+}
+</a><b>diff --git a/<a id="h21" href="../file/phora/src/lib.rs.html">phora/src/lib.rs</a> b/<a href="../file/phora/src/lib.rs.html">phora/src/lib.rs</a></b>
+<a href="#h21-0" id="h21-0" class="h">@@ -1,3 +1,5 @@
+</a><a href="#h21-0-0" id="h21-0-0" class="d">-mod account;
+</a><a href="#h21-0-1" id="h21-0-1" class="d">-mod crypto;
+</a><a href="#h21-0-2" id="h21-0-2" class="d">-mod validate;
+</a><a href="#h21-0-3" id="h21-0-3" class="i">+pub mod account;
+</a><a href="#h21-0-4" id="h21-0-4" class="i">+pub mod api;
+</a><a href="#h21-0-5" id="h21-0-5" class="i">+pub mod crypto;
+</a><a href="#h21-0-6" id="h21-0-6" class="i">+pub mod data;
+</a><a href="#h21-0-7" id="h21-0-7" class="i">+pub mod validate;
+</a></pre>
+</div>
+</body>
+</html>

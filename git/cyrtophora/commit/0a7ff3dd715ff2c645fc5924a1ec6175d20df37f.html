@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>[cyrto] add public account data - cyrtophora - Unnamed repository; edit this file &#39;description&#39; to name the repository.
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="cyrtophora Atom Feed" href="../atom.xml" />
+<link rel="alternate" type="application/atom+xml" title="cyrtophora Atom Feed (tags)" href="../tags.xml" />
+<link rel="stylesheet" type="text/css" href="/git.css" />
+</head>
+<body>
+<table><tr><td><a href="/index.html"><img src="/logo.png" alt="" width="32" height="32" /></a></td><td><h1>cyrtophora</h1><span class="desc">Unnamed repository; edit this file &#39;description&#39; to name the repository.
+</span></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a> | <a href="../file/README.md.pretty.html">README</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/0a7ff3dd715ff2c645fc5924a1ec6175d20df37f.html">0a7ff3dd715ff2c645fc5924a1ec6175d20df37f</a>
+<b>parent</b> <a href="../commit/0141f17fa88eb08d111d4188da57ec801fc8be0e.html">0141f17fa88eb08d111d4188da57ec801fc8be0e</a>
+<b>Author:</b> Jackson G. Kaindume &lt;<a href="mailto:seestem@merely.tech">seestem@merely.tech</a>&gt;
+<b>Date:</b>   Wed, 31 Aug 2022 16:52:44 +0200
+
+[cyrto] add public account data
+
+<b>Diffstat:</b>
+<table><tr><td class="M">M</td><td><a href="#h0">cyrto/lib/cyrtophora.dart</a></td><td> | </td><td class="num">1</td><td><span class="i">+</span><span class="d"></span></td></tr>
+<tr><td class="A">A</td><td><a href="#h1">cyrto/lib/src/account.dart</a></td><td> | </td><td class="num">10</td><td><span class="i">++++++++++</span><span class="d"></span></td></tr>
+</table></pre><pre>2 files changed, 11 insertions(+), 0 deletions(-)
+<hr/><b>diff --git a/<a id="h0" href="../file/cyrto/lib/cyrtophora.dart.html">cyrto/lib/cyrtophora.dart</a> b/<a href="../file/cyrto/lib/cyrtophora.dart.html">cyrto/lib/cyrtophora.dart</a></b>
+<a href="#h0-0" id="h0-0" class="h">@@ -5,3 +5,4 @@ library cyrtophora;
+</a> export &#39;src/utils.dart&#39;;
+ export &#39;src/validate.dart&#39;;
+ export &#39;src/data.dart&#39;;
+<a href="#h0-0-3" id="h0-0-3" class="i">+export &#39;src/account.dart&#39;;
+</a><b>diff --git a/<a id="h1" href="../file/cyrto/lib/src/account.dart.html">cyrto/lib/src/account.dart</a> b/<a href="../file/cyrto/lib/src/account.dart.html">cyrto/lib/src/account.dart</a></b>
+<a href="#h1-0" id="h1-0" class="h">@@ -0,0 +1,10 @@
+</a><a href="#h1-0-0" id="h1-0-0" class="i">+/// Account Public Data
+</a><a href="#h1-0-1" id="h1-0-1" class="i">+class PublicAccount {
+</a><a href="#h1-0-2" id="h1-0-2" class="i">+  String username;
+</a><a href="#h1-0-3" id="h1-0-3" class="i">+  PublicAccount(this.username);
+</a><a href="#h1-0-4" id="h1-0-4" class="i">+
+</a><a href="#h1-0-5" id="h1-0-5" class="i">+  /// Generate input from JSON
+</a><a href="#h1-0-6" id="h1-0-6" class="i">+  factory PublicAccount.fromJson(dynamic json) {
+</a><a href="#h1-0-7" id="h1-0-7" class="i">+    return PublicAccount(json[&#39;username&#39;] as String);
+</a><a href="#h1-0-8" id="h1-0-8" class="i">+  }
+</a><a href="#h1-0-9" id="h1-0-9" class="i">+}
+</a></pre>
+</div>
+</body>
+</html>

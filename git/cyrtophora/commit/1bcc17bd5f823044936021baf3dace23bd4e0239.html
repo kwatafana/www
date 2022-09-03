@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>fix make email field optional - cyrtophora - Unnamed repository; edit this file &#39;description&#39; to name the repository.
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="cyrtophora Atom Feed" href="../atom.xml" />
+<link rel="alternate" type="application/atom+xml" title="cyrtophora Atom Feed (tags)" href="../tags.xml" />
+<link rel="stylesheet" type="text/css" href="/git.css" />
+</head>
+<body>
+<table><tr><td><a href="/index.html"><img src="/logo.png" alt="" width="32" height="32" /></a></td><td><h1>cyrtophora</h1><span class="desc">Unnamed repository; edit this file &#39;description&#39; to name the repository.
+</span></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a> | <a href="../file/README.md.pretty.html">README</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/1bcc17bd5f823044936021baf3dace23bd4e0239.html">1bcc17bd5f823044936021baf3dace23bd4e0239</a>
+<b>parent</b> <a href="../commit/700e7e04002afb058f5bd51c4c569ce97f434a10.html">700e7e04002afb058f5bd51c4c569ce97f434a10</a>
+<b>Author:</b> Jackson G. Kaindume &lt;<a href="mailto:seestem@merely.tech">seestem@merely.tech</a>&gt;
+<b>Date:</b>   Sun, 21 Aug 2022 14:32:37 +0200
+
+fix make email field optional
+
+<b>Diffstat:</b>
+<table><tr><td class="M">M</td><td><a href="#h0">src/account.rs</a></td><td> | </td><td class="num">26</td><td><span class="i">++++++++++++++++++</span><span class="d">--------</span></td></tr>
+</table></pre><pre>1 file changed, 18 insertions(+), 8 deletions(-)
+<hr/><b>diff --git a/<a id="h0" href="../file/src/account.rs.html">src/account.rs</a> b/<a href="../file/src/account.rs.html">src/account.rs</a></b>
+<a href="#h0-0" id="h0-0" class="h">@@ -4,33 +4,43 @@ use crate::validate::{Validate, ValidationError};
+</a> pub struct Account {
+     /// The username of the user, also used as an unique identifier
+     pub username: String,
+<a href="#h0-0-3" id="h0-0-3" class="d">-    /// The email address the user
+</a><a href="#h0-0-4" id="h0-0-4" class="d">-    pub email: String,
+</a>     /// The password of the user
+     pub password: String,
+<a href="#h0-0-7" id="h0-0-7" class="i">+    /// The email address the user
+</a><a href="#h0-0-8" id="h0-0-8" class="i">+    pub email: Option&lt;String&gt;,
+</a> }
+ 
+ impl Account {
+<a href="#h0-0-12" id="h0-0-12" class="d">-    pub fn new(username: &amp;str, email: &amp;str, password: &amp;str) -&gt; Result&lt;Self, ValidationError&gt; {
+</a><a href="#h0-0-13" id="h0-0-13" class="i">+    /// Register new user
+</a><a href="#h0-0-14" id="h0-0-14" class="i">+    pub fn register(
+</a><a href="#h0-0-15" id="h0-0-15" class="i">+        username: &amp;str,
+</a><a href="#h0-0-16" id="h0-0-16" class="i">+        password: &amp;str,
+</a><a href="#h0-0-17" id="h0-0-17" class="i">+        email: Option&lt;&amp;str&gt;,
+</a><a href="#h0-0-18" id="h0-0-18" class="i">+    ) -&gt; Result&lt;Self, ValidationError&gt; {
+</a><a href="#h0-0-19" id="h0-0-19" class="i">+        let mut validated_email: Option&lt;String&gt; = None;
+</a><a href="#h0-0-20" id="h0-0-20" class="i">+
+</a>         if !Validate::username(username) {
+             return Err(ValidationError::Username);
+         }
+ 
+<a href="#h0-0-25" id="h0-0-25" class="d">-        if !Validate::email(email) {
+</a><a href="#h0-0-26" id="h0-0-26" class="i">+        if !Validate::password(password) {
+</a>             return Err(ValidationError::Email);
+         }
+ 
+<a href="#h0-0-30" id="h0-0-30" class="d">-        // TODO: email verification code
+</a><a href="#h0-0-31" id="h0-0-31" class="i">+        if let Some(email) = email {
+</a><a href="#h0-0-32" id="h0-0-32" class="i">+            if !Validate::email(email) {
+</a><a href="#h0-0-33" id="h0-0-33" class="i">+                return Err(ValidationError::Email);
+</a><a href="#h0-0-34" id="h0-0-34" class="i">+            }
+</a><a href="#h0-0-35" id="h0-0-35" class="i">+            validated_email = Some(email.to_string());
+</a> 
+<a href="#h0-0-37" id="h0-0-37" class="d">-        if !Validate::password(password) {
+</a><a href="#h0-0-38" id="h0-0-38" class="d">-            return Err(ValidationError::Email);
+</a><a href="#h0-0-39" id="h0-0-39" class="i">+            // TODO: email verification code
+</a>         }
+ 
+         // TODO: database registration code
+ 
+         Ok(Account {
+             username: username.to_string(),
+<a href="#h0-0-46" id="h0-0-46" class="d">-            email: email.to_string(),
+</a><a href="#h0-0-47" id="h0-0-47" class="i">+            email: validated_email,
+</a>             password: password.to_string(),
+         })
+     }
+</pre>
+</div>
+</body>
+</html>

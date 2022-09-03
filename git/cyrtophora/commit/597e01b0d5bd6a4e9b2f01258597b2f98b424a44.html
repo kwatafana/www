@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>[phora] implement sqlite basic account storage and retrieval - cyrtophora - Unnamed repository; edit this file &#39;description&#39; to name the repository.
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="cyrtophora Atom Feed" href="../atom.xml" />
+<link rel="alternate" type="application/atom+xml" title="cyrtophora Atom Feed (tags)" href="../tags.xml" />
+<link rel="stylesheet" type="text/css" href="/git.css" />
+</head>
+<body>
+<table><tr><td><a href="/index.html"><img src="/logo.png" alt="" width="32" height="32" /></a></td><td><h1>cyrtophora</h1><span class="desc">Unnamed repository; edit this file &#39;description&#39; to name the repository.
+</span></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a> | <a href="../file/README.md.pretty.html">README</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/597e01b0d5bd6a4e9b2f01258597b2f98b424a44.html">597e01b0d5bd6a4e9b2f01258597b2f98b424a44</a>
+<b>parent</b> <a href="../commit/df5c86149252a7db0f8317e6726fd6c263c07658.html">df5c86149252a7db0f8317e6726fd6c263c07658</a>
+<b>Author:</b> Jackson G. Kaindume &lt;<a href="mailto:kaindume@kwatafana.org">kaindume@kwatafana.org</a>&gt;
+<b>Date:</b>   Thu,  1 Sep 2022 14:24:55 +0200
+
+[phora] implement sqlite basic account storage and retrieval
+
+<b>Diffstat:</b>
+<table><tr><td class="M">M</td><td><a href="#h0">phora/src/database/sqlite.rs</a></td><td> | </td><td class="num">82</td><td><span class="i">++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++</span><span class="d">---------</span></td></tr>
+</table></pre><pre>1 file changed, 73 insertions(+), 9 deletions(-)
+<hr/><b>diff --git a/<a id="h0" href="../file/phora/src/database/sqlite.rs.html">phora/src/database/sqlite.rs</a> b/<a href="../file/phora/src/database/sqlite.rs.html">phora/src/database/sqlite.rs</a></b>
+<a href="#h0-0" id="h0-0" class="h">@@ -1,10 +1,10 @@
+</a> use super::{error::DatabaseError, DB};
+<a href="#h0-0-1" id="h0-0-1" class="i">+use crate::account::{Account, PublicAccount};
+</a> use rusqlite::{params, Connection, Result};
+<a href="#h0-0-3" id="h0-0-3" class="d">-use std::fmt;
+</a> 
+ pub mod accounts_sql {
+     /// Cyrtophora Account Schema
+<a href="#h0-0-7" id="h0-0-7" class="d">-    pub const CREATE_ACCOUNTS_TABLE: &amp;str = &quot;
+</a><a href="#h0-0-8" id="h0-0-8" class="i">+    pub const CREATE_TABLE: &amp;str = &quot;
+</a>       CREATE TABLE IF NOT EXISTS accounts (
+         id INTEGER PRIMARY KEY,                      -- The Identifier of the User, the Rust Type is `i64`
+         name TEXT,                                   -- Fullname of the account
+<a href="#h0-1" id="h0-1" class="h">@@ -14,20 +14,19 @@ pub mod accounts_sql {
+</a>         joined TEXT DEFAULT(date(&#39;now&#39;)) NOT NULL)   -- The date when the user joined, the Rust Type is `chrono::DateTime`&quot;;
+ 
+     /// Insert a user in the users table
+<a href="#h0-1-3" id="h0-1-3" class="d">-    pub const CREATE_ACCOUNT: &amp;str = &quot;
+</a><a href="#h0-1-4" id="h0-1-4" class="i">+    pub const STORE: &amp;str = &quot;
+</a>       INSERT INTO accounts (
+<a href="#h0-1-6" id="h0-1-6" class="d">-        name,
+</a>         username,
+         password,
+         email
+        )
+<a href="#h0-1-11" id="h0-1-11" class="d">-      VALUES (?1, ?2, ?3, ?4)&quot;;
+</a><a href="#h0-1-12" id="h0-1-12" class="i">+      VALUES (?1, ?2, ?3)&quot;;
+</a> 
+     /// Get by username
+<a href="#h0-1-15" id="h0-1-15" class="d">-    pub const GET_ACCOUNT: &amp;str = &quot;SELECT * FROM accounts WHERE username = :username;&quot;;
+</a><a href="#h0-1-16" id="h0-1-16" class="i">+    pub const GET_PUBLIC: &amp;str = &quot;SELECT username FROM accounts WHERE username = :username;&quot;;
+</a> 
+     /// Drop accounts table
+<a href="#h0-1-19" id="h0-1-19" class="d">-    pub const DESTROY_ACCOUNTS: &amp;str = &quot;DROP table accounts&quot;;
+</a><a href="#h0-1-20" id="h0-1-20" class="i">+    pub const DESTROY_TABLE: &amp;str = &quot;DROP table accounts&quot;;
+</a> }
+ 
+ /// database controller
+<a href="#h0-2" id="h0-2" class="h">@@ -47,9 +46,47 @@ impl DB for SqliteDB {
+</a>     }
+ 
+     fn connect(&amp;mut self) -&gt; Result&lt;(), DatabaseError&gt; {
+<a href="#h0-2-3" id="h0-2-3" class="i">+        // Open database connection
+</a>         let conn = Connection::open(self.path.clone())?;
+         self.conn = Some(conn);
+<a href="#h0-2-6" id="h0-2-6" class="d">-        Ok(())
+</a><a href="#h0-2-7" id="h0-2-7" class="i">+
+</a><a href="#h0-2-8" id="h0-2-8" class="i">+        // Create accounts table if it does not already exists
+</a><a href="#h0-2-9" id="h0-2-9" class="i">+        match &amp;self.conn {
+</a><a href="#h0-2-10" id="h0-2-10" class="i">+            Some(conn) =&gt; match conn.execute(accounts_sql::CREATE_TABLE, []) {
+</a><a href="#h0-2-11" id="h0-2-11" class="i">+                Ok(_rows) =&gt; Ok(()),
+</a><a href="#h0-2-12" id="h0-2-12" class="i">+                Err(_err) =&gt; Err(DatabaseError::CreateTableError),
+</a><a href="#h0-2-13" id="h0-2-13" class="i">+            },
+</a><a href="#h0-2-14" id="h0-2-14" class="i">+            None =&gt; Err(DatabaseError::ConnectionError),
+</a><a href="#h0-2-15" id="h0-2-15" class="i">+        }
+</a><a href="#h0-2-16" id="h0-2-16" class="i">+    }
+</a><a href="#h0-2-17" id="h0-2-17" class="i">+
+</a><a href="#h0-2-18" id="h0-2-18" class="i">+    fn store_account(&amp;self, account: Account) -&gt; Result&lt;(), DatabaseError&gt; {
+</a><a href="#h0-2-19" id="h0-2-19" class="i">+        match &amp;self.conn {
+</a><a href="#h0-2-20" id="h0-2-20" class="i">+            Some(conn) =&gt; {
+</a><a href="#h0-2-21" id="h0-2-21" class="i">+                conn.execute(
+</a><a href="#h0-2-22" id="h0-2-22" class="i">+                    accounts_sql::STORE,
+</a><a href="#h0-2-23" id="h0-2-23" class="i">+                    params![account.username, account.password, account.email],
+</a><a href="#h0-2-24" id="h0-2-24" class="i">+                )?;
+</a><a href="#h0-2-25" id="h0-2-25" class="i">+                Ok(())
+</a><a href="#h0-2-26" id="h0-2-26" class="i">+            }
+</a><a href="#h0-2-27" id="h0-2-27" class="i">+            None =&gt; Err(DatabaseError::ConnectionError),
+</a><a href="#h0-2-28" id="h0-2-28" class="i">+        }
+</a><a href="#h0-2-29" id="h0-2-29" class="i">+    }
+</a><a href="#h0-2-30" id="h0-2-30" class="i">+
+</a><a href="#h0-2-31" id="h0-2-31" class="i">+    fn get_public_account(&amp;self, username: &amp;str) -&gt; Result&lt;PublicAccount, DatabaseError&gt; {
+</a><a href="#h0-2-32" id="h0-2-32" class="i">+        match &amp;self.conn {
+</a><a href="#h0-2-33" id="h0-2-33" class="i">+            Some(conn) =&gt; {
+</a><a href="#h0-2-34" id="h0-2-34" class="i">+                let mut stmt = conn.prepare(accounts_sql::GET_PUBLIC)?;
+</a><a href="#h0-2-35" id="h0-2-35" class="i">+                let mut rows = stmt.query(&amp;[(&quot;:username&quot;, username)])?;
+</a><a href="#h0-2-36" id="h0-2-36" class="i">+                match rows.next()? {
+</a><a href="#h0-2-37" id="h0-2-37" class="i">+                    Some(s) =&gt; Ok(PublicAccount {
+</a><a href="#h0-2-38" id="h0-2-38" class="i">+                        username: s.get(0)?,
+</a><a href="#h0-2-39" id="h0-2-39" class="i">+                    }),
+</a><a href="#h0-2-40" id="h0-2-40" class="i">+                    None =&gt; Err(DatabaseError::AccountRetrievalError),
+</a><a href="#h0-2-41" id="h0-2-41" class="i">+                }
+</a><a href="#h0-2-42" id="h0-2-42" class="i">+            }
+</a><a href="#h0-2-43" id="h0-2-43" class="i">+            None =&gt; Err(DatabaseError::ConnectionError),
+</a><a href="#h0-2-44" id="h0-2-44" class="i">+        }
+</a>     }
+ }
+ 
+<a href="#h0-3" id="h0-3" class="h">@@ -57,9 +94,11 @@ impl DB for SqliteDB {
+</a> mod test {
+     use super::*;
+ 
+<a href="#h0-3-3" id="h0-3-3" class="i">+    const TEST_DB_PATH: &amp;str = &quot;test-data/ACCOUNTS.db&quot;;
+</a><a href="#h0-3-4" id="h0-3-4" class="i">+
+</a>     #[test]
+     fn connect_db() {
+<a href="#h0-3-7" id="h0-3-7" class="d">-        let mut db = SqliteDB::new(&quot;test-data/ACCOUNTS.db&quot;);
+</a><a href="#h0-3-8" id="h0-3-8" class="i">+        let mut db = SqliteDB::new(TEST_DB_PATH);
+</a> 
+         // Connect to database
+         db.connect().unwrap();
+<a href="#h0-4" id="h0-4" class="h">@@ -69,4 +108,29 @@ mod test {
+</a>             _ =&gt; assert!(false),
+         }
+     }
+<a href="#h0-4-3" id="h0-4-3" class="i">+
+</a><a href="#h0-4-4" id="h0-4-4" class="i">+    #[test]
+</a><a href="#h0-4-5" id="h0-4-5" class="i">+    fn test_store_get_account() {
+</a><a href="#h0-4-6" id="h0-4-6" class="i">+        remove_test_db();
+</a><a href="#h0-4-7" id="h0-4-7" class="i">+        let mut db = SqliteDB::new(TEST_DB_PATH);
+</a><a href="#h0-4-8" id="h0-4-8" class="i">+        let account = Account {
+</a><a href="#h0-4-9" id="h0-4-9" class="i">+            username: String::from(&quot;testuszee&quot;),
+</a><a href="#h0-4-10" id="h0-4-10" class="i">+            password: String::from(&quot;12345678910&quot;),
+</a><a href="#h0-4-11" id="h0-4-11" class="i">+            email: Some(String::from(&quot;info@example.com&quot;)),
+</a><a href="#h0-4-12" id="h0-4-12" class="i">+        };
+</a><a href="#h0-4-13" id="h0-4-13" class="i">+
+</a><a href="#h0-4-14" id="h0-4-14" class="i">+        db.connect().unwrap();
+</a><a href="#h0-4-15" id="h0-4-15" class="i">+        db.store_account(account).unwrap();
+</a><a href="#h0-4-16" id="h0-4-16" class="i">+
+</a><a href="#h0-4-17" id="h0-4-17" class="i">+        let public_account = db.get_public_account(&quot;testuszee&quot;).unwrap();
+</a><a href="#h0-4-18" id="h0-4-18" class="i">+
+</a><a href="#h0-4-19" id="h0-4-19" class="i">+        assert_eq!(&amp;public_account.username, &quot;testuszee&quot;);
+</a><a href="#h0-4-20" id="h0-4-20" class="i">+    }
+</a><a href="#h0-4-21" id="h0-4-21" class="i">+
+</a><a href="#h0-4-22" id="h0-4-22" class="i">+    fn remove_test_db() {
+</a><a href="#h0-4-23" id="h0-4-23" class="i">+        let test_db_path = std::path::Path::new(TEST_DB_PATH);
+</a><a href="#h0-4-24" id="h0-4-24" class="i">+        if std::path::Path::exists(test_db_path) {
+</a><a href="#h0-4-25" id="h0-4-25" class="i">+            std::fs::remove_file(test_db_path).unwrap();
+</a><a href="#h0-4-26" id="h0-4-26" class="i">+        }
+</a><a href="#h0-4-27" id="h0-4-27" class="i">+    }
+</a> }
+</pre>
+</div>
+</body>
+</html>

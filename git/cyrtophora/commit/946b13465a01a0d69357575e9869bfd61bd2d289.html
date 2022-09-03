@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Merge pull request &#39;scrypt&#39; (#1) from scrypt into root - cyrtophora - Unnamed repository; edit this file &#39;description&#39; to name the repository.
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="cyrtophora Atom Feed" href="../atom.xml" />
+<link rel="alternate" type="application/atom+xml" title="cyrtophora Atom Feed (tags)" href="../tags.xml" />
+<link rel="stylesheet" type="text/css" href="/git.css" />
+</head>
+<body>
+<table><tr><td><a href="/index.html"><img src="/logo.png" alt="" width="32" height="32" /></a></td><td><h1>cyrtophora</h1><span class="desc">Unnamed repository; edit this file &#39;description&#39; to name the repository.
+</span></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a> | <a href="../file/README.md.pretty.html">README</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/946b13465a01a0d69357575e9869bfd61bd2d289.html">946b13465a01a0d69357575e9869bfd61bd2d289</a>
+<b>parent</b> <a href="../commit/4397e3ba38deb84ef080b52531eeb453df4ef419.html">4397e3ba38deb84ef080b52531eeb453df4ef419</a>
+<b>Author:</b> seestem &lt;<a href="mailto:seestem@noreply.codeberg.org">seestem@noreply.codeberg.org</a>&gt;
+<b>Date:</b>   Thu, 18 Aug 2022 13:12:43 +0200
+
+Merge pull request &#39;scrypt&#39; (#1) from scrypt into root
+
+Reviewed-on: https://codeberg.org/seestem/cyrtophora/pulls/1
+
+<b>Diffstat:</b>
+<table><tr><td class="M">M</td><td><a href="#h0">Cargo.toml</a></td><td> | </td><td class="num">7</td><td><span class="i">+++</span><span class="d">----</span></td></tr>
+<tr><td class="M">M</td><td><a href="#h1">doc/password-hashing.md</a></td><td> | </td><td class="num">28</td><td><span class="i">++++++++++++++++</span><span class="d">------------</span></td></tr>
+<tr><td class="M">M</td><td><a href="#h2">src/lib.rs</a></td><td> | </td><td class="num">94</td><td><span class="i">+++++++++++++++++++++++++</span><span class="d">------------------------------------------------------</span></td></tr>
+</table></pre><pre>3 files changed, 48 insertions(+), 81 deletions(-)
+<hr/><b>diff --git a/<a id="h0" href="../file/Cargo.toml.html">Cargo.toml</a> b/<a href="../file/Cargo.toml.html">Cargo.toml</a></b>
+<a href="#h0-0" id="h0-0" class="h">@@ -3,10 +3,9 @@ name = &quot;bizkit-crypto&quot;
+</a> version = &quot;0.1.0&quot;
+ edition = &quot;2021&quot;
+ 
+<a href="#h0-0-3" id="h0-0-3" class="d">-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+</a><a href="#h0-0-4" id="h0-0-4" class="d">-
+</a> [dependencies]
+ anyhow = &quot;1.0.57&quot;
+ ring = &quot;0.16.20&quot;
+ chacha20poly1305 = &quot;0.9.0&quot;
+<a href="#h0-0-9" id="h0-0-9" class="d">-base64 = &quot;0.13.0&quot;
+</a><a href="#h0-0-10" id="h0-0-10" class="d">-\ No newline at end of file
+</a><a href="#h0-0-11" id="h0-0-11" class="i">+base64 = &quot;0.13.0&quot;
+</a><a href="#h0-0-12" id="h0-0-12" class="i">+scrypt = &quot;0.10.0&quot;
+</a><a href="#h0-0-13" id="h0-0-13" class="i">+\ No newline at end of file
+</a><b>diff --git a/<a id="h1" href="../file/doc/password-hashing.md.html">doc/password-hashing.md</a> b/<a href="../file/doc/password-hashing.md.html">doc/password-hashing.md</a></b>
+<a href="#h1-0" id="h1-0" class="h">@@ -18,26 +18,26 @@ A cool way to prevent this type of leak is by __obfuscating__ the
+</a> users password with a [__hash function__](https://en.wikipedia.org/wiki/Hash_function).
+ 
+ There are lots of hash functions that can be used, but most of these 
+<a href="#h1-0-3" id="h1-0-3" class="d">-are not recommended. For example if you use SHA-256 or other 
+</a><a href="#h1-0-4" id="h1-0-4" class="d">-computationally cheap (hash function without a __work factor__ 
+</a><a href="#h1-0-5" id="h1-0-5" class="d">-parameter) functions, they are vulnerable to dictionary attacks.
+</a><a href="#h1-0-6" id="h1-0-6" class="i">+will be a bad idea to use. For example if you use SHA-256 or other 
+</a><a href="#h1-0-7" id="h1-0-7" class="i">+computationally cheap functions (hash function without a __work factor__ 
+</a><a href="#h1-0-8" id="h1-0-8" class="i">+parameter), they are vulnerable to rainbow table attacks.
+</a> Bruteforce is also possible if the password length is short/known, 
+ asic miners can generate 100 TeraHashes PER Second.
+ 
+ The server can increase the passwords entropy by concatenating it with
+<a href="#h1-0-13" id="h1-0-13" class="d">-a random string. Users can also protect themselves by using longer 
+</a><a href="#h1-0-14" id="h1-0-14" class="d">-passwords.
+</a><a href="#h1-0-15" id="h1-0-15" class="i">+a random string aka the __salt__. Users can also protect themselves 
+</a><a href="#h1-0-16" id="h1-0-16" class="i">+by using longer passwords.
+</a> 
+<a href="#h1-0-18" id="h1-0-18" class="d">-The best method to use against plaintext password leaks and dictionary
+</a><a href="#h1-0-19" id="h1-0-19" class="d">-attacks is to use a __Password Hash Function__. Which is a hash 
+</a><a href="#h1-0-20" id="h1-0-20" class="d">-function specially designed to be slow/expensive to compute which 
+</a><a href="#h1-0-21" id="h1-0-21" class="d">-makes it impossible to bruteforce with current machines.
+</a><a href="#h1-0-22" id="h1-0-22" class="i">+The best method to use against plaintext password leaks and rainbow
+</a><a href="#h1-0-23" id="h1-0-23" class="i">+table attacks is to use a __Password Hash Function__. Which is a hash 
+</a><a href="#h1-0-24" id="h1-0-24" class="i">+function specially designed to be slow/expensive to compute even on
+</a><a href="#h1-0-25" id="h1-0-25" class="i">+specialized hardware.
+</a> 
+ ## Scrypt [recommended]
+ 
+<a href="#h1-0-29" id="h1-0-29" class="d">-The [scrypt](https://en.wikipedia.org/wiki/Scrypt) hash function uses large amounts of memory when hashing 
+</a><a href="#h1-0-30" id="h1-0-30" class="i">+The [scrypt](https://www.tarsnap.com/scrypt.html) hash function uses large amounts of memory when hashing 
+</a> making it expensive to scale to the point of reasonable bruteforce 
+<a href="#h1-0-32" id="h1-0-32" class="d">-attacks.
+</a><a href="#h1-0-33" id="h1-0-33" class="i">+attacks. Secure against hardware brute-force attacks.
+</a> 
+ A number of cryptocurrencies use __scrypt__ for proof of work.
+ 
+<a href="#h1-1" id="h1-1" class="h">@@ -46,7 +46,8 @@ Created by Colin Percival of [Tarsnap](https://en.wikipedia.org/wiki/Tarsnap)
+</a> ## Argon2d [recommended]
+ 
+ The [Argon2d](https://en.wikipedia.org/wiki/Argon2) function is 
+<a href="#h1-1-3" id="h1-1-3" class="d">-designed to resist GPU cracking attacks.
+</a><a href="#h1-1-4" id="h1-1-4" class="i">+designed to resist GPU cracking attacks. Secure against hardware 
+</a><a href="#h1-1-5" id="h1-1-5" class="i">+brute-force attacks.
+</a> 
+ It is the winner of [Password Hashing Competition](https://www.password-hashing.net/).
+ 
+<a href="#h1-2" id="h1-2" class="h">@@ -55,12 +56,15 @@ It is the winner of [Password Hashing Competition](https://www.password-hashing.
+</a> [Bcrypt](https://en.wikipedia.org/wiki/Bcrypt) is based on the 
+ [blowfish](https://en.wikipedia.org/wiki/Blowfish_(cipher)) cipher.
+ 
+<a href="#h1-2-3" id="h1-2-3" class="i">+Vulnerable against hardware brute-force attacks.
+</a><a href="#h1-2-4" id="h1-2-4" class="i">+
+</a> ## PBKDF2
+ 
+ [PBKDF2](https://en.wikipedia.org/wiki/PBKDF2) is an key derivation
+ function with a sliding computational cost to reduce bruteforce 
+ search.
+ 
+<a href="#h1-2-11" id="h1-2-11" class="i">+Vulnerable against hardware brute-force attacks.
+</a> 
+ ## Conclusion
+ 
+<b>diff --git a/<a id="h2" href="../file/src/lib.rs.html">src/lib.rs</a> b/<a href="../file/src/lib.rs.html">src/lib.rs</a></b>
+<a href="#h2-0" id="h2-0" class="h">@@ -5,21 +5,16 @@ use chacha20poly1305::{
+</a> };
+ use ring::{
+     digest::{self, digest, Digest},
+<a href="#h2-0-3" id="h2-0-3" class="d">-    pbkdf2,
+</a>     rand::SystemRandom,
+     signature::{Ed25519KeyPair, KeyPair},
+ };
+<a href="#h2-0-7" id="h2-0-7" class="d">-use std::num::NonZeroU32;
+</a><a href="#h2-0-8" id="h2-0-8" class="i">+use scrypt::{
+</a><a href="#h2-0-9" id="h2-0-9" class="i">+    password_hash::{rand_core::OsRng, PasswordHash, PasswordHasher, PasswordVerifier, SaltString},
+</a><a href="#h2-0-10" id="h2-0-10" class="i">+    Scrypt,
+</a><a href="#h2-0-11" id="h2-0-11" class="i">+};
+</a> 
+<a href="#h2-0-13" id="h2-0-13" class="d">-static PBKDF2_ALG: pbkdf2::Algorithm = pbkdf2::PBKDF2_HMAC_SHA256;
+</a> const CREDENTIAL_LEN: usize = digest::SHA256_OUTPUT_LEN;
+<a href="#h2-0-15" id="h2-0-15" class="d">-const PBKDF2_ITERATIONS: u32 = 100_000;
+</a><a href="#h2-0-16" id="h2-0-16" class="d">-/// Database seed used to generate password hashes,
+</a><a href="#h2-0-17" id="h2-0-17" class="d">-/// so that an attacker cannot crack the same user&#39;s password across
+</a><a href="#h2-0-18" id="h2-0-18" class="d">-/// databases in the unfortunate but common case that the user has
+</a><a href="#h2-0-19" id="h2-0-19" class="d">-/// used the same password for multiple systems.
+</a><a href="#h2-0-20" id="h2-0-20" class="d">-const DATABASE_SEED: &amp;str =
+</a><a href="#h2-0-21" id="h2-0-21" class="d">-    &quot;The cipher has an interesting history: although its true origins are unknown&quot;;
+</a><a href="#h2-0-22" id="h2-0-22" class="i">+
+</a> /// Nonce used when encrypting the Crypto&#39;s keypair (Crypto::encrypt_keypair_document())
+ const AED_NONCE: &amp;str = &quot;people the information  &quot;;
+ pub type Credential = [u8; CREDENTIAL_LEN];
+<a href="#h2-1" id="h2-1" class="h">@@ -52,57 +47,28 @@ impl Crypto {
+</a>         Ok(cred)
+     }
+ 
+<a href="#h2-1-3" id="h2-1-3" class="d">-    /// Generate pbkdf2 based hashed password
+</a><a href="#h2-1-4" id="h2-1-4" class="d">-    pub fn hash_password(username: &amp;str, password: &amp;str) -&gt; Result&lt;String&gt; {
+</a><a href="#h2-1-5" id="h2-1-5" class="d">-        let pbkdf2_iterations: NonZeroU32 = NonZeroU32::new(PBKDF2_ITERATIONS).unwrap();
+</a><a href="#h2-1-6" id="h2-1-6" class="d">-        let salt = Crypto::gen_password_salt(username);
+</a><a href="#h2-1-7" id="h2-1-7" class="d">-        let mut to_store: Credential = [0u8; CREDENTIAL_LEN];
+</a><a href="#h2-1-8" id="h2-1-8" class="d">-        pbkdf2::derive(
+</a><a href="#h2-1-9" id="h2-1-9" class="d">-            PBKDF2_ALG,
+</a><a href="#h2-1-10" id="h2-1-10" class="d">-            pbkdf2_iterations,
+</a><a href="#h2-1-11" id="h2-1-11" class="d">-            &amp;salt,
+</a><a href="#h2-1-12" id="h2-1-12" class="d">-            password.as_bytes(),
+</a><a href="#h2-1-13" id="h2-1-13" class="d">-            &amp;mut to_store,
+</a><a href="#h2-1-14" id="h2-1-14" class="d">-        );
+</a><a href="#h2-1-15" id="h2-1-15" class="d">-
+</a><a href="#h2-1-16" id="h2-1-16" class="d">-        let hash = base64::encode(to_store);
+</a><a href="#h2-1-17" id="h2-1-17" class="d">-        Ok(hash)
+</a><a href="#h2-1-18" id="h2-1-18" class="i">+    /// Generate scrypt based hashed password
+</a><a href="#h2-1-19" id="h2-1-19" class="i">+    pub fn hash_password(password: &amp;str) -&gt; Result&lt;String&gt; {
+</a><a href="#h2-1-20" id="h2-1-20" class="i">+        let salt = SaltString::generate(&amp;mut OsRng);
+</a><a href="#h2-1-21" id="h2-1-21" class="i">+        Ok(Scrypt
+</a><a href="#h2-1-22" id="h2-1-22" class="i">+            .hash_password(password.as_bytes(), &amp;salt)?
+</a><a href="#h2-1-23" id="h2-1-23" class="i">+            .to_string())
+</a>     }
+ 
+<a href="#h2-1-26" id="h2-1-26" class="d">-    /// Verify pbkdf2 based password hash
+</a><a href="#h2-1-27" id="h2-1-27" class="d">-    fn verify_password_hash(username: &amp;str, attempted_password: &amp;str, hash: &amp;str) -&gt; Result&lt;bool&gt; {
+</a><a href="#h2-1-28" id="h2-1-28" class="d">-        let pbkdf2_iterations: NonZeroU32 = NonZeroU32::new(PBKDF2_ITERATIONS).unwrap();
+</a><a href="#h2-1-29" id="h2-1-29" class="d">-        let salt = Crypto::gen_password_salt(username);
+</a><a href="#h2-1-30" id="h2-1-30" class="d">-        let hash_bytes = base64::decode(hash)?;
+</a><a href="#h2-1-31" id="h2-1-31" class="d">-        let res = pbkdf2::verify(
+</a><a href="#h2-1-32" id="h2-1-32" class="d">-            PBKDF2_ALG,
+</a><a href="#h2-1-33" id="h2-1-33" class="d">-            pbkdf2_iterations,
+</a><a href="#h2-1-34" id="h2-1-34" class="d">-            &amp;salt,
+</a><a href="#h2-1-35" id="h2-1-35" class="d">-            attempted_password.as_bytes(),
+</a><a href="#h2-1-36" id="h2-1-36" class="d">-            &amp;hash_bytes,
+</a><a href="#h2-1-37" id="h2-1-37" class="d">-        );
+</a><a href="#h2-1-38" id="h2-1-38" class="d">-
+</a><a href="#h2-1-39" id="h2-1-39" class="d">-        match res {
+</a><a href="#h2-1-40" id="h2-1-40" class="d">-            Ok(()) =&gt; Ok(true),
+</a><a href="#h2-1-41" id="h2-1-41" class="d">-            Err(_e) =&gt; Ok(false),
+</a><a href="#h2-1-42" id="h2-1-42" class="i">+    /// Verify scrypt based password hash
+</a><a href="#h2-1-43" id="h2-1-43" class="i">+    fn verify_password_hash(attempted_password: &amp;str, hash: &amp;str) -&gt; Result&lt;bool&gt; {
+</a><a href="#h2-1-44" id="h2-1-44" class="i">+        let parsed_hash = PasswordHash::new(hash)?;
+</a><a href="#h2-1-45" id="h2-1-45" class="i">+
+</a><a href="#h2-1-46" id="h2-1-46" class="i">+        if Scrypt
+</a><a href="#h2-1-47" id="h2-1-47" class="i">+            .verify_password(attempted_password.as_bytes(), &amp;parsed_hash)
+</a><a href="#h2-1-48" id="h2-1-48" class="i">+            .is_ok()
+</a><a href="#h2-1-49" id="h2-1-49" class="i">+        {
+</a><a href="#h2-1-50" id="h2-1-50" class="i">+            Ok(true)
+</a><a href="#h2-1-51" id="h2-1-51" class="i">+        } else {
+</a><a href="#h2-1-52" id="h2-1-52" class="i">+            Ok(false)
+</a>         }
+     }
+ 
+<a href="#h2-1-56" id="h2-1-56" class="d">-    /// Generate password salt
+</a><a href="#h2-1-57" id="h2-1-57" class="d">-    /// The salt should have a user-specific component so that an attacker
+</a><a href="#h2-1-58" id="h2-1-58" class="d">-    /// cannot crack one password for multiple users in the database. It
+</a><a href="#h2-1-59" id="h2-1-59" class="d">-    /// should have a database-unique component so that an attacker cannot
+</a><a href="#h2-1-60" id="h2-1-60" class="d">-    /// crack the same user&#39;s password across databases in the unfortunate
+</a><a href="#h2-1-61" id="h2-1-61" class="d">-    /// but common case that the user has used the same password for
+</a><a href="#h2-1-62" id="h2-1-62" class="d">-    /// multiple systems.
+</a><a href="#h2-1-63" id="h2-1-63" class="d">-    fn gen_password_salt(username: &amp;str) -&gt; Vec&lt;u8&gt; {
+</a><a href="#h2-1-64" id="h2-1-64" class="d">-        let db_salt_component = DATABASE_SEED.as_bytes();
+</a><a href="#h2-1-65" id="h2-1-65" class="d">-        let mut salt = Vec::with_capacity(db_salt_component.len() + username.as_bytes().len());
+</a><a href="#h2-1-66" id="h2-1-66" class="d">-        salt.extend(db_salt_component.as_ref());
+</a><a href="#h2-1-67" id="h2-1-67" class="d">-        salt.extend(username.as_bytes());
+</a><a href="#h2-1-68" id="h2-1-68" class="d">-        salt
+</a><a href="#h2-1-69" id="h2-1-69" class="d">-    }
+</a><a href="#h2-1-70" id="h2-1-70" class="d">-
+</a>     /// Encrypt the keypair (ed25519) document, using XChaCha20Poly1305
+     /// so that it can be safely persisted into the database. The
+     /// Crypto&#39;s login password is used a the secret key.
+<a href="#h2-2" id="h2-2" class="h">@@ -147,16 +113,14 @@ mod tests {
+</a>     #[test]
+     fn hash_password() {
+         let password1 = &quot;a bad password&quot;;
+<a href="#h2-2-3" id="h2-2-3" class="d">-        let username1 = &quot;goldephoenix&quot;;
+</a><a href="#h2-2-4" id="h2-2-4" class="d">-        let hash1 = Crypto::hash_password(username1, password1).unwrap();
+</a><a href="#h2-2-5" id="h2-2-5" class="i">+        let hash1 = Crypto::hash_password(password1).unwrap();
+</a> 
+         let password2 = &quot;a bad password&quot;;
+<a href="#h2-2-8" id="h2-2-8" class="d">-        let username2 = &quot;alexis&quot;;
+</a><a href="#h2-2-9" id="h2-2-9" class="d">-        let hash2 = Crypto::hash_password(username2, password2).unwrap();
+</a><a href="#h2-2-10" id="h2-2-10" class="i">+        let hash2 = Crypto::hash_password(password2).unwrap();
+</a> 
+<a href="#h2-2-12" id="h2-2-12" class="d">-        // The generated hashes are all 32 bytes long
+</a><a href="#h2-2-13" id="h2-2-13" class="d">-        assert_eq!(hash1.len(), 44);
+</a><a href="#h2-2-14" id="h2-2-14" class="d">-        assert_eq!(hash2.len(), 44);
+</a><a href="#h2-2-15" id="h2-2-15" class="i">+        // The generated hashes are all 88 bytes long
+</a><a href="#h2-2-16" id="h2-2-16" class="i">+        assert_eq!(hash1.len(), 88);
+</a><a href="#h2-2-17" id="h2-2-17" class="i">+        assert_eq!(hash2.len(), 88);
+</a> 
+         // Even if the user passwords are the same they do not generate
+         // the same hashes because the username is also used as a
+<a href="#h2-3" id="h2-3" class="h">@@ -164,8 +128,8 @@ mod tests {
+</a>         assert_ne!(hash1, hash2);
+ 
+         // Verify password
+<a href="#h2-3-3" id="h2-3-3" class="d">-        assert!(Crypto::verify_password_hash(username1, &quot;a bad password&quot;, &amp;hash1).unwrap());
+</a><a href="#h2-3-4" id="h2-3-4" class="d">-        assert!(!Crypto::verify_password_hash(username1, &quot;wrong password&quot;, &amp;hash1).unwrap());
+</a><a href="#h2-3-5" id="h2-3-5" class="i">+        assert!(Crypto::verify_password_hash(&quot;a bad password&quot;, &amp;hash1).unwrap());
+</a><a href="#h2-3-6" id="h2-3-6" class="i">+        assert!(!Crypto::verify_password_hash(&quot;wrong password&quot;, &amp;hash1).unwrap());
+</a>     }
+ 
+     #[test]
+</pre>
+</div>
+</body>
+</html>

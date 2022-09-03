@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Add cyrto - cyrtophora - Unnamed repository; edit this file &#39;description&#39; to name the repository.
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="cyrtophora Atom Feed" href="../atom.xml" />
+<link rel="alternate" type="application/atom+xml" title="cyrtophora Atom Feed (tags)" href="../tags.xml" />
+<link rel="stylesheet" type="text/css" href="/git.css" />
+</head>
+<body>
+<table><tr><td><a href="/index.html"><img src="/logo.png" alt="" width="32" height="32" /></a></td><td><h1>cyrtophora</h1><span class="desc">Unnamed repository; edit this file &#39;description&#39; to name the repository.
+</span></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a> | <a href="../file/README.md.pretty.html">README</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/102f2cff1acf04ef68ed412f0faa7d7a8ce75f1f.html">102f2cff1acf04ef68ed412f0faa7d7a8ce75f1f</a>
+<b>parent</b> <a href="../commit/97188539648fba10f120be9ef12ae3cb182aa1e2.html">97188539648fba10f120be9ef12ae3cb182aa1e2</a>
+<b>Author:</b> Jackson G. Kaindume &lt;<a href="mailto:seestem@merely.tech">seestem@merely.tech</a>&gt;
+<b>Date:</b>   Tue, 23 Aug 2022 17:36:32 +0200
+
+Add cyrto
+
+<b>Diffstat:</b>
+<table><tr><td class="A">A</td><td><a href="#h0">cyrto/.gitignore</a></td><td> | </td><td class="num">10</td><td><span class="i">++++++++++</span><span class="d"></span></td></tr>
+<tr><td class="A">A</td><td><a href="#h1">cyrto/CHANGELOG.md</a></td><td> | </td><td class="num">3</td><td><span class="i">+++</span><span class="d"></span></td></tr>
+<tr><td class="A">A</td><td><a href="#h2">cyrto/README.md</a></td><td> | </td><td class="num">1</td><td><span class="i">+</span><span class="d"></span></td></tr>
+<tr><td class="A">A</td><td><a href="#h3">cyrto/analysis_options.yaml</a></td><td> | </td><td class="num">30</td><td><span class="i">++++++++++++++++++++++++++++++</span><span class="d"></span></td></tr>
+<tr><td class="A">A</td><td><a href="#h4">cyrto/example/cyrtophora_example.dart</a></td><td> | </td><td class="num">6</td><td><span class="i">++++++</span><span class="d"></span></td></tr>
+<tr><td class="A">A</td><td><a href="#h5">cyrto/lib/cyrtophora.dart</a></td><td> | </td><td class="num">6</td><td><span class="i">++++++</span><span class="d"></span></td></tr>
+<tr><td class="A">A</td><td><a href="#h6">cyrto/lib/src/cyrtophora_base.dart</a></td><td> | </td><td class="num">8</td><td><span class="i">++++++++</span><span class="d"></span></td></tr>
+<tr><td class="A">A</td><td><a href="#h7">cyrto/lib/src/utils.dart</a></td><td> | </td><td class="num">75</td><td><span class="i">+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++</span><span class="d"></span></td></tr>
+<tr><td class="A">A</td><td><a href="#h8">cyrto/lib/src/validate.dart</a></td><td> | </td><td class="num">1</td><td><span class="i">+</span><span class="d"></span></td></tr>
+<tr><td class="A">A</td><td><a href="#h9">cyrto/pubspec.yaml</a></td><td> | </td><td class="num">14</td><td><span class="i">++++++++++++++</span><span class="d"></span></td></tr>
+<tr><td class="A">A</td><td><a href="#h10">cyrto/test/cyrtophora_test.dart</a></td><td> | </td><td class="num">5</td><td><span class="i">+++++</span><span class="d"></span></td></tr>
+<tr><td class="A">A</td><td><a href="#h11">cyrto/test/utils_test.dart</a></td><td> | </td><td class="num">100</td><td><span class="i">+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++</span><span class="d"></span></td></tr>
+</table></pre><pre>12 files changed, 259 insertions(+), 0 deletions(-)
+<hr/><b>diff --git a/<a id="h0" href="../file/cyrto/.gitignore.html">cyrto/.gitignore</a> b/<a href="../file/cyrto/.gitignore.html">cyrto/.gitignore</a></b>
+<a href="#h0-0" id="h0-0" class="h">@@ -0,0 +1,10 @@
+</a><a href="#h0-0-0" id="h0-0-0" class="i">+# Files and directories created by pub.
+</a><a href="#h0-0-1" id="h0-0-1" class="i">+.dart_tool/
+</a><a href="#h0-0-2" id="h0-0-2" class="i">+.packages
+</a><a href="#h0-0-3" id="h0-0-3" class="i">+
+</a><a href="#h0-0-4" id="h0-0-4" class="i">+# Conventional directory for build outputs.
+</a><a href="#h0-0-5" id="h0-0-5" class="i">+build/
+</a><a href="#h0-0-6" id="h0-0-6" class="i">+
+</a><a href="#h0-0-7" id="h0-0-7" class="i">+# Omit committing pubspec.lock for library packages; see
+</a><a href="#h0-0-8" id="h0-0-8" class="i">+# https://dart.dev/guides/libraries/private-files#pubspeclock.
+</a><a href="#h0-0-9" id="h0-0-9" class="i">+pubspec.lock
+</a><b>diff --git a/<a id="h1" href="../file/cyrto/CHANGELOG.md.html">cyrto/CHANGELOG.md</a> b/<a href="../file/cyrto/CHANGELOG.md.html">cyrto/CHANGELOG.md</a></b>
+<a href="#h1-0" id="h1-0" class="h">@@ -0,0 +1,3 @@
+</a><a href="#h1-0-0" id="h1-0-0" class="i">+## 1.0.0
+</a><a href="#h1-0-1" id="h1-0-1" class="i">+
+</a><a href="#h1-0-2" id="h1-0-2" class="i">+- Initial version.
+</a><b>diff --git a/<a id="h2" href="../file/cyrto/README.md.html">cyrto/README.md</a> b/<a href="../file/cyrto/README.md.html">cyrto/README.md</a></b>
+<a href="#h2-0" id="h2-0" class="h">@@ -0,0 +1 @@
+</a><a href="#h2-0-0" id="h2-0-0" class="i">+# cyrtophora client
+</a><b>diff --git a/<a id="h3" href="../file/cyrto/analysis_options.yaml.html">cyrto/analysis_options.yaml</a> b/<a href="../file/cyrto/analysis_options.yaml.html">cyrto/analysis_options.yaml</a></b>
+<a href="#h3-0" id="h3-0" class="h">@@ -0,0 +1,30 @@
+</a><a href="#h3-0-0" id="h3-0-0" class="i">+# This file configures the static analysis results for your project (errors,
+</a><a href="#h3-0-1" id="h3-0-1" class="i">+# warnings, and lints).
+</a><a href="#h3-0-2" id="h3-0-2" class="i">+#
+</a><a href="#h3-0-3" id="h3-0-3" class="i">+# This enables the &#39;recommended&#39; set of lints from `package:lints`.
+</a><a href="#h3-0-4" id="h3-0-4" class="i">+# This set helps identify many issues that may lead to problems when running
+</a><a href="#h3-0-5" id="h3-0-5" class="i">+# or consuming Dart code, and enforces writing Dart using a single, idiomatic
+</a><a href="#h3-0-6" id="h3-0-6" class="i">+# style and format.
+</a><a href="#h3-0-7" id="h3-0-7" class="i">+#
+</a><a href="#h3-0-8" id="h3-0-8" class="i">+# If you want a smaller set of lints you can change this to specify
+</a><a href="#h3-0-9" id="h3-0-9" class="i">+# &#39;package:lints/core.yaml&#39;. These are just the most critical lints
+</a><a href="#h3-0-10" id="h3-0-10" class="i">+# (the recommended set includes the core lints).
+</a><a href="#h3-0-11" id="h3-0-11" class="i">+# The core lints are also what is used by pub.dev for scoring packages.
+</a><a href="#h3-0-12" id="h3-0-12" class="i">+
+</a><a href="#h3-0-13" id="h3-0-13" class="i">+include: package:lints/recommended.yaml
+</a><a href="#h3-0-14" id="h3-0-14" class="i">+
+</a><a href="#h3-0-15" id="h3-0-15" class="i">+# Uncomment the following section to specify additional rules.
+</a><a href="#h3-0-16" id="h3-0-16" class="i">+
+</a><a href="#h3-0-17" id="h3-0-17" class="i">+# linter:
+</a><a href="#h3-0-18" id="h3-0-18" class="i">+#   rules:
+</a><a href="#h3-0-19" id="h3-0-19" class="i">+#     - camel_case_types
+</a><a href="#h3-0-20" id="h3-0-20" class="i">+
+</a><a href="#h3-0-21" id="h3-0-21" class="i">+# analyzer:
+</a><a href="#h3-0-22" id="h3-0-22" class="i">+#   exclude:
+</a><a href="#h3-0-23" id="h3-0-23" class="i">+#     - path/to/excluded/files/**
+</a><a href="#h3-0-24" id="h3-0-24" class="i">+
+</a><a href="#h3-0-25" id="h3-0-25" class="i">+# For more information about the core and recommended set of lints, see
+</a><a href="#h3-0-26" id="h3-0-26" class="i">+# https://dart.dev/go/core-lints
+</a><a href="#h3-0-27" id="h3-0-27" class="i">+
+</a><a href="#h3-0-28" id="h3-0-28" class="i">+# For additional information about configuring this file, see
+</a><a href="#h3-0-29" id="h3-0-29" class="i">+# https://dart.dev/guides/language/analysis-options
+</a><b>diff --git a/<a id="h4" href="../file/cyrto/example/cyrtophora_example.dart.html">cyrto/example/cyrtophora_example.dart</a> b/<a href="../file/cyrto/example/cyrtophora_example.dart.html">cyrto/example/cyrtophora_example.dart</a></b>
+<a href="#h4-0" id="h4-0" class="h">@@ -0,0 +1,6 @@
+</a><a href="#h4-0-0" id="h4-0-0" class="i">+import &#39;package:cyrtophora/cyrtophora.dart&#39;;
+</a><a href="#h4-0-1" id="h4-0-1" class="i">+
+</a><a href="#h4-0-2" id="h4-0-2" class="i">+void main() {
+</a><a href="#h4-0-3" id="h4-0-3" class="i">+  var awesome = Awesome();
+</a><a href="#h4-0-4" id="h4-0-4" class="i">+  print(&#39;awesome: ${awesome.isAwesome}&#39;);
+</a><a href="#h4-0-5" id="h4-0-5" class="i">+}
+</a><b>diff --git a/<a id="h5" href="../file/cyrto/lib/cyrtophora.dart.html">cyrto/lib/cyrtophora.dart</a> b/<a href="../file/cyrto/lib/cyrtophora.dart.html">cyrto/lib/cyrtophora.dart</a></b>
+<a href="#h5-0" id="h5-0" class="h">@@ -0,0 +1,6 @@
+</a><a href="#h5-0-0" id="h5-0-0" class="i">+/// cyrtophora client
+</a><a href="#h5-0-1" id="h5-0-1" class="i">+
+</a><a href="#h5-0-2" id="h5-0-2" class="i">+library cyrtophora;
+</a><a href="#h5-0-3" id="h5-0-3" class="i">+
+</a><a href="#h5-0-4" id="h5-0-4" class="i">+export &#39;src/cyrtophora_base.dart&#39;;
+</a><a href="#h5-0-5" id="h5-0-5" class="i">+export &#39;src/utils.dart&#39;;
+</a><b>diff --git a/<a id="h6" href="../file/cyrto/lib/src/cyrtophora_base.dart.html">cyrto/lib/src/cyrtophora_base.dart</a> b/<a href="../file/cyrto/lib/src/cyrtophora_base.dart.html">cyrto/lib/src/cyrtophora_base.dart</a></b>
+<a href="#h6-0" id="h6-0" class="h">@@ -0,0 +1,8 @@
+</a><a href="#h6-0-0" id="h6-0-0" class="i">+/// Cyrtophora client public facing types in this file.
+</a><a href="#h6-0-1" id="h6-0-1" class="i">+
+</a><a href="#h6-0-2" id="h6-0-2" class="i">+import &quot;package:cyrtophora/src/utils.dart&quot;;
+</a><a href="#h6-0-3" id="h6-0-3" class="i">+
+</a><a href="#h6-0-4" id="h6-0-4" class="i">+/// Checks if you are awesome. Spoiler: you are.
+</a><a href="#h6-0-5" id="h6-0-5" class="i">+class Cyrtophora {
+</a><a href="#h6-0-6" id="h6-0-6" class="i">+  bool get isAwesome =&gt; true;
+</a><a href="#h6-0-7" id="h6-0-7" class="i">+}
+</a><b>diff --git a/<a id="h7" href="../file/cyrto/lib/src/utils.dart.html">cyrto/lib/src/utils.dart</a> b/<a href="../file/cyrto/lib/src/utils.dart.html">cyrto/lib/src/utils.dart</a></b>
+<a href="#h7-0" id="h7-0" class="h">@@ -0,0 +1,75 @@
+</a><a href="#h7-0-0" id="h7-0-0" class="i">+/// utilities -- cyrtophora utility functions
+</a><a href="#h7-0-1" id="h7-0-1" class="i">+
+</a><a href="#h7-0-2" id="h7-0-2" class="i">+/// Check if a character is alphanumeric
+</a><a href="#h7-0-3" id="h7-0-3" class="i">+bool isAlphanumeric(String char) {
+</a><a href="#h7-0-4" id="h7-0-4" class="i">+  final alphanumeric = [
+</a><a href="#h7-0-5" id="h7-0-5" class="i">+    &quot;a&quot;,
+</a><a href="#h7-0-6" id="h7-0-6" class="i">+    &quot;b&quot;,
+</a><a href="#h7-0-7" id="h7-0-7" class="i">+    &quot;c&quot;,
+</a><a href="#h7-0-8" id="h7-0-8" class="i">+    &quot;d&quot;,
+</a><a href="#h7-0-9" id="h7-0-9" class="i">+    &quot;e&quot;,
+</a><a href="#h7-0-10" id="h7-0-10" class="i">+    &quot;f&quot;,
+</a><a href="#h7-0-11" id="h7-0-11" class="i">+    &quot;g&quot;,
+</a><a href="#h7-0-12" id="h7-0-12" class="i">+    &quot;h&quot;,
+</a><a href="#h7-0-13" id="h7-0-13" class="i">+    &quot;i&quot;,
+</a><a href="#h7-0-14" id="h7-0-14" class="i">+    &quot;j&quot;,
+</a><a href="#h7-0-15" id="h7-0-15" class="i">+    &quot;k&quot;,
+</a><a href="#h7-0-16" id="h7-0-16" class="i">+    &quot;l&quot;,
+</a><a href="#h7-0-17" id="h7-0-17" class="i">+    &quot;m&quot;,
+</a><a href="#h7-0-18" id="h7-0-18" class="i">+    &quot;n&quot;,
+</a><a href="#h7-0-19" id="h7-0-19" class="i">+    &quot;o&quot;,
+</a><a href="#h7-0-20" id="h7-0-20" class="i">+    &quot;p&quot;,
+</a><a href="#h7-0-21" id="h7-0-21" class="i">+    &quot;q&quot;,
+</a><a href="#h7-0-22" id="h7-0-22" class="i">+    &quot;r&quot;,
+</a><a href="#h7-0-23" id="h7-0-23" class="i">+    &quot;s&quot;,
+</a><a href="#h7-0-24" id="h7-0-24" class="i">+    &quot;t&quot;,
+</a><a href="#h7-0-25" id="h7-0-25" class="i">+    &quot;u&quot;,
+</a><a href="#h7-0-26" id="h7-0-26" class="i">+    &quot;v&quot;,
+</a><a href="#h7-0-27" id="h7-0-27" class="i">+    &quot;w&quot;,
+</a><a href="#h7-0-28" id="h7-0-28" class="i">+    &quot;x&quot;,
+</a><a href="#h7-0-29" id="h7-0-29" class="i">+    &quot;y&quot;,
+</a><a href="#h7-0-30" id="h7-0-30" class="i">+    &quot;z&quot;,
+</a><a href="#h7-0-31" id="h7-0-31" class="i">+    &quot;A&quot;,
+</a><a href="#h7-0-32" id="h7-0-32" class="i">+    &quot;B&quot;,
+</a><a href="#h7-0-33" id="h7-0-33" class="i">+    &quot;C&quot;,
+</a><a href="#h7-0-34" id="h7-0-34" class="i">+    &quot;D&quot;,
+</a><a href="#h7-0-35" id="h7-0-35" class="i">+    &quot;E&quot;,
+</a><a href="#h7-0-36" id="h7-0-36" class="i">+    &quot;F&quot;,
+</a><a href="#h7-0-37" id="h7-0-37" class="i">+    &quot;G&quot;,
+</a><a href="#h7-0-38" id="h7-0-38" class="i">+    &quot;H&quot;,
+</a><a href="#h7-0-39" id="h7-0-39" class="i">+    &quot;I&quot;,
+</a><a href="#h7-0-40" id="h7-0-40" class="i">+    &quot;J&quot;,
+</a><a href="#h7-0-41" id="h7-0-41" class="i">+    &quot;K&quot;,
+</a><a href="#h7-0-42" id="h7-0-42" class="i">+    &quot;L&quot;,
+</a><a href="#h7-0-43" id="h7-0-43" class="i">+    &quot;M&quot;,
+</a><a href="#h7-0-44" id="h7-0-44" class="i">+    &quot;N&quot;,
+</a><a href="#h7-0-45" id="h7-0-45" class="i">+    &quot;O&quot;,
+</a><a href="#h7-0-46" id="h7-0-46" class="i">+    &quot;P&quot;,
+</a><a href="#h7-0-47" id="h7-0-47" class="i">+    &quot;Q&quot;,
+</a><a href="#h7-0-48" id="h7-0-48" class="i">+    &quot;R&quot;,
+</a><a href="#h7-0-49" id="h7-0-49" class="i">+    &quot;S&quot;,
+</a><a href="#h7-0-50" id="h7-0-50" class="i">+    &quot;T&quot;,
+</a><a href="#h7-0-51" id="h7-0-51" class="i">+    &quot;U&quot;,
+</a><a href="#h7-0-52" id="h7-0-52" class="i">+    &quot;V&quot;,
+</a><a href="#h7-0-53" id="h7-0-53" class="i">+    &quot;W&quot;,
+</a><a href="#h7-0-54" id="h7-0-54" class="i">+    &quot;X&quot;,
+</a><a href="#h7-0-55" id="h7-0-55" class="i">+    &quot;Y&quot;,
+</a><a href="#h7-0-56" id="h7-0-56" class="i">+    &quot;Z&quot;,
+</a><a href="#h7-0-57" id="h7-0-57" class="i">+    &quot;1&quot;,
+</a><a href="#h7-0-58" id="h7-0-58" class="i">+    &quot;2&quot;,
+</a><a href="#h7-0-59" id="h7-0-59" class="i">+    &quot;3&quot;,
+</a><a href="#h7-0-60" id="h7-0-60" class="i">+    &quot;4&quot;,
+</a><a href="#h7-0-61" id="h7-0-61" class="i">+    &quot;5&quot;,
+</a><a href="#h7-0-62" id="h7-0-62" class="i">+    &quot;6&quot;,
+</a><a href="#h7-0-63" id="h7-0-63" class="i">+    &quot;7&quot;,
+</a><a href="#h7-0-64" id="h7-0-64" class="i">+    &quot;8&quot;,
+</a><a href="#h7-0-65" id="h7-0-65" class="i">+    &quot;9&quot;,
+</a><a href="#h7-0-66" id="h7-0-66" class="i">+    &quot;0&quot;
+</a><a href="#h7-0-67" id="h7-0-67" class="i">+  ];
+</a><a href="#h7-0-68" id="h7-0-68" class="i">+
+</a><a href="#h7-0-69" id="h7-0-69" class="i">+  if (alphanumeric.contains(char)) {
+</a><a href="#h7-0-70" id="h7-0-70" class="i">+    return true;
+</a><a href="#h7-0-71" id="h7-0-71" class="i">+  } else {
+</a><a href="#h7-0-72" id="h7-0-72" class="i">+    return false;
+</a><a href="#h7-0-73" id="h7-0-73" class="i">+  }
+</a><a href="#h7-0-74" id="h7-0-74" class="i">+}
+</a><b>diff --git a/<a id="h8" href="../file/cyrto/lib/src/validate.dart.html">cyrto/lib/src/validate.dart</a> b/<a href="../file/cyrto/lib/src/validate.dart.html">cyrto/lib/src/validate.dart</a></b>
+<a href="#h8-0" id="h8-0" class="h">@@ -0,0 +1 @@
+</a><a href="#h8-0-0" id="h8-0-0" class="i">+
+</a><b>diff --git a/<a id="h9" href="../file/cyrto/pubspec.yaml.html">cyrto/pubspec.yaml</a> b/<a href="../file/cyrto/pubspec.yaml.html">cyrto/pubspec.yaml</a></b>
+<a href="#h9-0" id="h9-0" class="h">@@ -0,0 +1,14 @@
+</a><a href="#h9-0-0" id="h9-0-0" class="i">+name: cyrtophora
+</a><a href="#h9-0-1" id="h9-0-1" class="i">+description: A starting point for Dart libraries or applications.
+</a><a href="#h9-0-2" id="h9-0-2" class="i">+version: 1.0.0
+</a><a href="#h9-0-3" id="h9-0-3" class="i">+# homepage: https://www.example.com
+</a><a href="#h9-0-4" id="h9-0-4" class="i">+
+</a><a href="#h9-0-5" id="h9-0-5" class="i">+environment:
+</a><a href="#h9-0-6" id="h9-0-6" class="i">+  sdk: &#39;&gt;=2.17.0-227.0.dev &lt;3.0.0&#39;
+</a><a href="#h9-0-7" id="h9-0-7" class="i">+
+</a><a href="#h9-0-8" id="h9-0-8" class="i">+# dependencies:
+</a><a href="#h9-0-9" id="h9-0-9" class="i">+#   path: ^1.8.0
+</a><a href="#h9-0-10" id="h9-0-10" class="i">+
+</a><a href="#h9-0-11" id="h9-0-11" class="i">+dev_dependencies:
+</a><a href="#h9-0-12" id="h9-0-12" class="i">+  lints: ^2.0.0
+</a><a href="#h9-0-13" id="h9-0-13" class="i">+  test: ^1.16.0
+</a><b>diff --git a/<a id="h10" href="../file/cyrto/test/cyrtophora_test.dart.html">cyrto/test/cyrtophora_test.dart</a> b/<a href="../file/cyrto/test/cyrtophora_test.dart.html">cyrto/test/cyrtophora_test.dart</a></b>
+<a href="#h10-0" id="h10-0" class="h">@@ -0,0 +1,5 @@
+</a><a href="#h10-0-0" id="h10-0-0" class="i">+import &#39;package:test/test.dart&#39;;
+</a><a href="#h10-0-1" id="h10-0-1" class="i">+
+</a><a href="#h10-0-2" id="h10-0-2" class="i">+void main() {
+</a><a href="#h10-0-3" id="h10-0-3" class="i">+  group(&#39;Tests for cyrtophora utilities&#39;, () {});
+</a><a href="#h10-0-4" id="h10-0-4" class="i">+}
+</a><b>diff --git a/<a id="h11" href="../file/cyrto/test/utils_test.dart.html">cyrto/test/utils_test.dart</a> b/<a href="../file/cyrto/test/utils_test.dart.html">cyrto/test/utils_test.dart</a></b>
+<a href="#h11-0" id="h11-0" class="h">@@ -0,0 +1,100 @@
+</a><a href="#h11-0-0" id="h11-0-0" class="i">+import &#39;package:cyrtophora/cyrtophora.dart&#39;;
+</a><a href="#h11-0-1" id="h11-0-1" class="i">+import &#39;package:test/test.dart&#39;;
+</a><a href="#h11-0-2" id="h11-0-2" class="i">+
+</a><a href="#h11-0-3" id="h11-0-3" class="i">+void main() {
+</a><a href="#h11-0-4" id="h11-0-4" class="i">+  group(&#39;Tests for cyrtophora utilities&#39;, () {
+</a><a href="#h11-0-5" id="h11-0-5" class="i">+    test(&#39;Test isAlphaNumeric function&#39;, () {
+</a><a href="#h11-0-6" id="h11-0-6" class="i">+      expect(isAlphanumeric(&quot;a&quot;), isTrue);
+</a><a href="#h11-0-7" id="h11-0-7" class="i">+      expect(isAlphanumeric(&quot;b&quot;), isTrue);
+</a><a href="#h11-0-8" id="h11-0-8" class="i">+      expect(isAlphanumeric(&quot;c&quot;), isTrue);
+</a><a href="#h11-0-9" id="h11-0-9" class="i">+      expect(isAlphanumeric(&quot;d&quot;), isTrue);
+</a><a href="#h11-0-10" id="h11-0-10" class="i">+      expect(isAlphanumeric(&quot;e&quot;), isTrue);
+</a><a href="#h11-0-11" id="h11-0-11" class="i">+      expect(isAlphanumeric(&quot;f&quot;), isTrue);
+</a><a href="#h11-0-12" id="h11-0-12" class="i">+      expect(isAlphanumeric(&quot;g&quot;), isTrue);
+</a><a href="#h11-0-13" id="h11-0-13" class="i">+      expect(isAlphanumeric(&quot;h&quot;), isTrue);
+</a><a href="#h11-0-14" id="h11-0-14" class="i">+      expect(isAlphanumeric(&quot;i&quot;), isTrue);
+</a><a href="#h11-0-15" id="h11-0-15" class="i">+      expect(isAlphanumeric(&quot;j&quot;), isTrue);
+</a><a href="#h11-0-16" id="h11-0-16" class="i">+      expect(isAlphanumeric(&quot;k&quot;), isTrue);
+</a><a href="#h11-0-17" id="h11-0-17" class="i">+      expect(isAlphanumeric(&quot;l&quot;), isTrue);
+</a><a href="#h11-0-18" id="h11-0-18" class="i">+      expect(isAlphanumeric(&quot;m&quot;), isTrue);
+</a><a href="#h11-0-19" id="h11-0-19" class="i">+      expect(isAlphanumeric(&quot;n&quot;), isTrue);
+</a><a href="#h11-0-20" id="h11-0-20" class="i">+      expect(isAlphanumeric(&quot;o&quot;), isTrue);
+</a><a href="#h11-0-21" id="h11-0-21" class="i">+      expect(isAlphanumeric(&quot;p&quot;), isTrue);
+</a><a href="#h11-0-22" id="h11-0-22" class="i">+      expect(isAlphanumeric(&quot;q&quot;), isTrue);
+</a><a href="#h11-0-23" id="h11-0-23" class="i">+      expect(isAlphanumeric(&quot;r&quot;), isTrue);
+</a><a href="#h11-0-24" id="h11-0-24" class="i">+      expect(isAlphanumeric(&quot;s&quot;), isTrue);
+</a><a href="#h11-0-25" id="h11-0-25" class="i">+      expect(isAlphanumeric(&quot;t&quot;), isTrue);
+</a><a href="#h11-0-26" id="h11-0-26" class="i">+      expect(isAlphanumeric(&quot;u&quot;), isTrue);
+</a><a href="#h11-0-27" id="h11-0-27" class="i">+      expect(isAlphanumeric(&quot;v&quot;), isTrue);
+</a><a href="#h11-0-28" id="h11-0-28" class="i">+      expect(isAlphanumeric(&quot;w&quot;), isTrue);
+</a><a href="#h11-0-29" id="h11-0-29" class="i">+      expect(isAlphanumeric(&quot;x&quot;), isTrue);
+</a><a href="#h11-0-30" id="h11-0-30" class="i">+      expect(isAlphanumeric(&quot;y&quot;), isTrue);
+</a><a href="#h11-0-31" id="h11-0-31" class="i">+      expect(isAlphanumeric(&quot;z&quot;), isTrue);
+</a><a href="#h11-0-32" id="h11-0-32" class="i">+      expect(isAlphanumeric(&quot;A&quot;), isTrue);
+</a><a href="#h11-0-33" id="h11-0-33" class="i">+      expect(isAlphanumeric(&quot;B&quot;), isTrue);
+</a><a href="#h11-0-34" id="h11-0-34" class="i">+      expect(isAlphanumeric(&quot;C&quot;), isTrue);
+</a><a href="#h11-0-35" id="h11-0-35" class="i">+      expect(isAlphanumeric(&quot;D&quot;), isTrue);
+</a><a href="#h11-0-36" id="h11-0-36" class="i">+      expect(isAlphanumeric(&quot;E&quot;), isTrue);
+</a><a href="#h11-0-37" id="h11-0-37" class="i">+      expect(isAlphanumeric(&quot;F&quot;), isTrue);
+</a><a href="#h11-0-38" id="h11-0-38" class="i">+      expect(isAlphanumeric(&quot;G&quot;), isTrue);
+</a><a href="#h11-0-39" id="h11-0-39" class="i">+      expect(isAlphanumeric(&quot;H&quot;), isTrue);
+</a><a href="#h11-0-40" id="h11-0-40" class="i">+      expect(isAlphanumeric(&quot;I&quot;), isTrue);
+</a><a href="#h11-0-41" id="h11-0-41" class="i">+      expect(isAlphanumeric(&quot;J&quot;), isTrue);
+</a><a href="#h11-0-42" id="h11-0-42" class="i">+      expect(isAlphanumeric(&quot;K&quot;), isTrue);
+</a><a href="#h11-0-43" id="h11-0-43" class="i">+      expect(isAlphanumeric(&quot;L&quot;), isTrue);
+</a><a href="#h11-0-44" id="h11-0-44" class="i">+      expect(isAlphanumeric(&quot;M&quot;), isTrue);
+</a><a href="#h11-0-45" id="h11-0-45" class="i">+      expect(isAlphanumeric(&quot;N&quot;), isTrue);
+</a><a href="#h11-0-46" id="h11-0-46" class="i">+      expect(isAlphanumeric(&quot;O&quot;), isTrue);
+</a><a href="#h11-0-47" id="h11-0-47" class="i">+      expect(isAlphanumeric(&quot;P&quot;), isTrue);
+</a><a href="#h11-0-48" id="h11-0-48" class="i">+      expect(isAlphanumeric(&quot;Q&quot;), isTrue);
+</a><a href="#h11-0-49" id="h11-0-49" class="i">+      expect(isAlphanumeric(&quot;R&quot;), isTrue);
+</a><a href="#h11-0-50" id="h11-0-50" class="i">+      expect(isAlphanumeric(&quot;S&quot;), isTrue);
+</a><a href="#h11-0-51" id="h11-0-51" class="i">+      expect(isAlphanumeric(&quot;T&quot;), isTrue);
+</a><a href="#h11-0-52" id="h11-0-52" class="i">+      expect(isAlphanumeric(&quot;U&quot;), isTrue);
+</a><a href="#h11-0-53" id="h11-0-53" class="i">+      expect(isAlphanumeric(&quot;V&quot;), isTrue);
+</a><a href="#h11-0-54" id="h11-0-54" class="i">+      expect(isAlphanumeric(&quot;W&quot;), isTrue);
+</a><a href="#h11-0-55" id="h11-0-55" class="i">+      expect(isAlphanumeric(&quot;X&quot;), isTrue);
+</a><a href="#h11-0-56" id="h11-0-56" class="i">+      expect(isAlphanumeric(&quot;Y&quot;), isTrue);
+</a><a href="#h11-0-57" id="h11-0-57" class="i">+      expect(isAlphanumeric(&quot;Z&quot;), isTrue);
+</a><a href="#h11-0-58" id="h11-0-58" class="i">+      expect(isAlphanumeric(&quot;1&quot;), isTrue);
+</a><a href="#h11-0-59" id="h11-0-59" class="i">+      expect(isAlphanumeric(&quot;2&quot;), isTrue);
+</a><a href="#h11-0-60" id="h11-0-60" class="i">+      expect(isAlphanumeric(&quot;3&quot;), isTrue);
+</a><a href="#h11-0-61" id="h11-0-61" class="i">+      expect(isAlphanumeric(&quot;4&quot;), isTrue);
+</a><a href="#h11-0-62" id="h11-0-62" class="i">+      expect(isAlphanumeric(&quot;5&quot;), isTrue);
+</a><a href="#h11-0-63" id="h11-0-63" class="i">+      expect(isAlphanumeric(&quot;6&quot;), isTrue);
+</a><a href="#h11-0-64" id="h11-0-64" class="i">+      expect(isAlphanumeric(&quot;7&quot;), isTrue);
+</a><a href="#h11-0-65" id="h11-0-65" class="i">+      expect(isAlphanumeric(&quot;8&quot;), isTrue);
+</a><a href="#h11-0-66" id="h11-0-66" class="i">+      expect(isAlphanumeric(&quot;9&quot;), isTrue);
+</a><a href="#h11-0-67" id="h11-0-67" class="i">+      expect(isAlphanumeric(&quot;0&quot;), isTrue);
+</a><a href="#h11-0-68" id="h11-0-68" class="i">+
+</a><a href="#h11-0-69" id="h11-0-69" class="i">+      expect(isAlphanumeric(&quot;!&quot;), isFalse);
+</a><a href="#h11-0-70" id="h11-0-70" class="i">+      expect(isAlphanumeric(&quot;@&quot;), isFalse);
+</a><a href="#h11-0-71" id="h11-0-71" class="i">+      expect(isAlphanumeric(&quot;#&quot;), isFalse);
+</a><a href="#h11-0-72" id="h11-0-72" class="i">+      expect(isAlphanumeric(&quot;\$&quot;), isFalse);
+</a><a href="#h11-0-73" id="h11-0-73" class="i">+      expect(isAlphanumeric(&quot;%&quot;), isFalse);
+</a><a href="#h11-0-74" id="h11-0-74" class="i">+      expect(isAlphanumeric(&quot;^&quot;), isFalse);
+</a><a href="#h11-0-75" id="h11-0-75" class="i">+      expect(isAlphanumeric(&quot;&amp;&quot;), isFalse);
+</a><a href="#h11-0-76" id="h11-0-76" class="i">+      expect(isAlphanumeric(&quot;*&quot;), isFalse);
+</a><a href="#h11-0-77" id="h11-0-77" class="i">+      expect(isAlphanumeric(&quot;(&quot;), isFalse);
+</a><a href="#h11-0-78" id="h11-0-78" class="i">+      expect(isAlphanumeric(&quot;)&quot;), isFalse);
+</a><a href="#h11-0-79" id="h11-0-79" class="i">+      expect(isAlphanumeric(&quot;-&quot;), isFalse);
+</a><a href="#h11-0-80" id="h11-0-80" class="i">+      expect(isAlphanumeric(&quot;=&quot;), isFalse);
+</a><a href="#h11-0-81" id="h11-0-81" class="i">+      expect(isAlphanumeric(&quot;+&quot;), isFalse);
+</a><a href="#h11-0-82" id="h11-0-82" class="i">+      expect(isAlphanumeric(&quot;\\&quot;), isFalse);
+</a><a href="#h11-0-83" id="h11-0-83" class="i">+      expect(isAlphanumeric(&quot;]&quot;), isFalse);
+</a><a href="#h11-0-84" id="h11-0-84" class="i">+      expect(isAlphanumeric(&quot;}&quot;), isFalse);
+</a><a href="#h11-0-85" id="h11-0-85" class="i">+      expect(isAlphanumeric(&quot;[&quot;), isFalse);
+</a><a href="#h11-0-86" id="h11-0-86" class="i">+      expect(isAlphanumeric(&quot;{&quot;), isFalse);
+</a><a href="#h11-0-87" id="h11-0-87" class="i">+      expect(isAlphanumeric(&quot;:&quot;), isFalse);
+</a><a href="#h11-0-88" id="h11-0-88" class="i">+      expect(isAlphanumeric(&quot;;&quot;), isFalse);
+</a><a href="#h11-0-89" id="h11-0-89" class="i">+      expect(isAlphanumeric(&quot;&#39;&quot;), isFalse);
+</a><a href="#h11-0-90" id="h11-0-90" class="i">+      expect(isAlphanumeric(&quot;\&quot;&quot;), isFalse);
+</a><a href="#h11-0-91" id="h11-0-91" class="i">+      expect(isAlphanumeric(&quot;&lt;&quot;), isFalse);
+</a><a href="#h11-0-92" id="h11-0-92" class="i">+      expect(isAlphanumeric(&quot;&gt;&quot;), isFalse);
+</a><a href="#h11-0-93" id="h11-0-93" class="i">+      expect(isAlphanumeric(&quot;/&quot;), isFalse);
+</a><a href="#h11-0-94" id="h11-0-94" class="i">+      expect(isAlphanumeric(&quot;?&quot;), isFalse);
+</a><a href="#h11-0-95" id="h11-0-95" class="i">+      expect(isAlphanumeric(&quot;.&quot;), isFalse);
+</a><a href="#h11-0-96" id="h11-0-96" class="i">+      expect(isAlphanumeric(&quot;,&quot;), isFalse);
+</a><a href="#h11-0-97" id="h11-0-97" class="i">+    });
+</a><a href="#h11-0-98" id="h11-0-98" class="i">+  });
+</a><a href="#h11-0-99" id="h11-0-99" class="i">+}
+</a></pre>
+</div>
+</body>
+</html>
