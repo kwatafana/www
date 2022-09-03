@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>clean up code - h4ck1ng - Unnamed repository; edit this file &#39;description&#39; to name the repository.
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="h4ck1ng Atom Feed" href="../atom.xml" />
+<link rel="alternate" type="application/atom+xml" title="h4ck1ng Atom Feed (tags)" href="../tags.xml" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
+</head>
+<body>
+<table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>h4ck1ng</h1><span class="desc">Unnamed repository; edit this file &#39;description&#39; to name the repository.
+</span></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a> | <a href="../file/README.md.html">README</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/cf44a79ff8996b0eba32b4015e7617cd3e5fc404.html">cf44a79ff8996b0eba32b4015e7617cd3e5fc404</a>
+<b>parent</b> <a href="../commit/3a5035a7ce23e4bb05004fadff59de0edad4ca9e.html">3a5035a7ce23e4bb05004fadff59de0edad4ca9e</a>
+<b>Author:</b> Jackson G. Kaindume &lt;<a href="mailto:seestem@merely.tech">seestem@merely.tech</a>&gt;
+<b>Date:</b>   Tue, 12 Jul 2022 21:51:55 +0200
+
+clean up code
+
+<b>Diffstat:</b>
+<table><tr><td class="M">M</td><td><a href="#h0">src/detect_server.rs</a></td><td> | </td><td class="num">28</td><td><span class="i">+++++++++++++</span><span class="d">---------------</span></td></tr>
+</table></pre><pre>1 file changed, 13 insertions(+), 15 deletions(-)
+<hr/><b>diff --git a/<a id="h0" href="../file/src/detect_server.rs.html">src/detect_server.rs</a> b/<a href="../file/src/detect_server.rs.html">src/detect_server.rs</a></b>
+<a href="#h0-0" id="h0-0" class="h">@@ -2,29 +2,27 @@ use anyhow::Result;
+</a> 
+ // TODO: use several analysis tactics
+ /// Detect if a server is running Apache
+<a href="#h0-0-3" id="h0-0-3" class="d">-pub fn is_apache(address: &amp;str) -&gt; Result&lt;bool&gt; {
+</a><a href="#h0-0-4" id="h0-0-4" class="d">-    let mut formated_address_with_slash = String::from(&quot;&quot;);
+</a><a href="#h0-0-5" id="h0-0-5" class="d">-    let mut formated_address_without_slash = String::from(&quot;&quot;);
+</a><a href="#h0-0-6" id="h0-0-6" class="i">+pub fn is_apache(url: &amp;str) -&gt; Result&lt;bool&gt; {
+</a><a href="#h0-0-7" id="h0-0-7" class="i">+    let mut address_with_normal_slash = String::from(&quot;&quot;);
+</a><a href="#h0-0-8" id="h0-0-8" class="i">+    let mut address_with_url_encoded_slash = String::from(&quot;&quot;);
+</a> 
+     // Detect apache by checking how the URL encoded forward slash
+     // characters are treated. Only works when the AllowEncodedSlashes
+     // is enabled (it is enabled by default)
+<a href="#h0-0-13" id="h0-0-13" class="d">-    if address.ends_with(&#39;/&#39;) {
+</a><a href="#h0-0-14" id="h0-0-14" class="d">-        formated_address_with_slash = format!(&quot;{}/&quot;, address);
+</a><a href="#h0-0-15" id="h0-0-15" class="i">+    if address_with_normal_slash.ends_with(&#39;/&#39;) {
+</a><a href="#h0-0-16" id="h0-0-16" class="i">+        address_with_normal_slash = format!(&quot;{}/&quot;, url);
+</a><a href="#h0-0-17" id="h0-0-17" class="i">+        address_with_url_encoded_slash = format!(&quot;{}%2f&quot;, url);
+</a>     } else {
+<a href="#h0-0-19" id="h0-0-19" class="d">-        formated_address_with_slash = format!(&quot;{}//&quot;, address);
+</a><a href="#h0-0-20" id="h0-0-20" class="i">+        address_with_normal_slash = format!(&quot;{}//&quot;, url);
+</a><a href="#h0-0-21" id="h0-0-21" class="i">+        address_with_url_encoded_slash = format!(&quot;{}/%2f&quot;, url);
+</a>     }
+ 
+<a href="#h0-0-24" id="h0-0-24" class="d">-    if address.ends_with(&#39;/&#39;) {
+</a><a href="#h0-0-25" id="h0-0-25" class="d">-        formated_address_without_slash = format!(&quot;{}%2f&quot;, address);
+</a><a href="#h0-0-26" id="h0-0-26" class="d">-    } else {
+</a><a href="#h0-0-27" id="h0-0-27" class="d">-        formated_address_without_slash = format!(&quot;{}/%2f&quot;, address);
+</a><a href="#h0-0-28" id="h0-0-28" class="d">-    }
+</a><a href="#h0-0-29" id="h0-0-29" class="d">-
+</a><a href="#h0-0-30" id="h0-0-30" class="d">-    let body = reqwest::blocking::get(formated_address_with_slash)?;
+</a><a href="#h0-0-31" id="h0-0-31" class="d">-    let body2 = reqwest::blocking::get(formated_address_without_slash)?;
+</a><a href="#h0-0-32" id="h0-0-32" class="i">+    let normal_slash_body = reqwest::blocking::get(address_with_normal_slash)?;
+</a><a href="#h0-0-33" id="h0-0-33" class="i">+    let url_encoded_body = reqwest::blocking::get(address_with_url_encoded_slash)?;
+</a> 
+<a href="#h0-0-35" id="h0-0-35" class="d">-    if body.status().is_success() &amp;&amp; body2.status() == reqwest::StatusCode::NOT_FOUND {
+</a><a href="#h0-0-36" id="h0-0-36" class="i">+    if normal_slash_body.status().is_success()
+</a><a href="#h0-0-37" id="h0-0-37" class="i">+        &amp;&amp; url_encoded_body.status() == reqwest::StatusCode::NOT_FOUND
+</a><a href="#h0-0-38" id="h0-0-38" class="i">+    {
+</a>         Ok(true)
+     } else {
+         Ok(false)
+</pre>
+</div>
+</body>
+</html>

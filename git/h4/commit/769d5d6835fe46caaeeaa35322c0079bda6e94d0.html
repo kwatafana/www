@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>add book - h4ck1ng - Unnamed repository; edit this file &#39;description&#39; to name the repository.
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="h4ck1ng Atom Feed" href="../atom.xml" />
+<link rel="alternate" type="application/atom+xml" title="h4ck1ng Atom Feed (tags)" href="../tags.xml" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
+</head>
+<body>
+<table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>h4ck1ng</h1><span class="desc">Unnamed repository; edit this file &#39;description&#39; to name the repository.
+</span></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a> | <a href="../file/README.md.html">README</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/769d5d6835fe46caaeeaa35322c0079bda6e94d0.html">769d5d6835fe46caaeeaa35322c0079bda6e94d0</a>
+<b>parent</b> <a href="../commit/826d6f76017bd6056636dc18525508c49e8e2a93.html">826d6f76017bd6056636dc18525508c49e8e2a93</a>
+<b>Author:</b> Jackson G. Kaindume &lt;<a href="mailto:kaindume@kwatafana.org">kaindume@kwatafana.org</a>&gt;
+<b>Date:</b>   Thu,  1 Sep 2022 21:21:41 +0200
+
+add book
+
+<b>Diffstat:</b>
+<table><tr><td class="M">M</td><td><a href="#h0">.gitignore</a></td><td> | </td><td class="num">3</td><td><span class="i"></span><span class="d">---</span></td></tr>
+<tr><td class="A">A</td><td><a href="#h1">book/.gitignore</a></td><td> | </td><td class="num">1</td><td><span class="i">+</span><span class="d"></span></td></tr>
+<tr><td class="A">A</td><td><a href="#h2">book/book.toml</a></td><td> | </td><td class="num">6</td><td><span class="i">++++++</span><span class="d"></span></td></tr>
+<tr><td class="A">A</td><td><a href="#h3">book/src/SUMMARY.md</a></td><td> | </td><td class="num">4</td><td><span class="i">++++</span><span class="d"></span></td></tr>
+<tr><td class="A">A</td><td><a href="#h4">book/src/apache.md</a></td><td> | </td><td class="num">15</td><td><span class="i">+++++++++++++++</span><span class="d"></span></td></tr>
+<tr><td class="A">A</td><td><a href="#h5">book/src/hackthissite.md</a></td><td> | </td><td class="num">49</td><td><span class="i">+++++++++++++++++++++++++++++++++++++++++++++++++</span><span class="d"></span></td></tr>
+</table></pre><pre>6 files changed, 75 insertions(+), 3 deletions(-)
+<hr/><b>diff --git a/<a id="h0" href="../file/.gitignore.html">.gitignore</a> b/<a href="../file/.gitignore.html">.gitignore</a></b>
+<a href="#h0-0" id="h0-0" class="h">@@ -1,4 +1,2 @@
+</a> *~
+ target/
+<a href="#h0-0-2" id="h0-0-2" class="d">-book/
+</a><a href="#h0-0-3" id="h0-0-3" class="d">-case_studies/
+</a><a href="#h0-0-4" id="h0-0-4" class="d">-\ No newline at end of file
+</a><b>diff --git a/<a id="h1" href="../file/book/.gitignore.html">book/.gitignore</a> b/<a href="../file/book/.gitignore.html">book/.gitignore</a></b>
+<a href="#h1-0" id="h1-0" class="h">@@ -0,0 +1 @@
+</a><a href="#h1-0-0" id="h1-0-0" class="i">+book
+</a><b>diff --git a/<a id="h2" href="../file/book/book.toml.html">book/book.toml</a> b/<a href="../file/book/book.toml.html">book/book.toml</a></b>
+<a href="#h2-0" id="h2-0" class="h">@@ -0,0 +1,6 @@
+</a><a href="#h2-0-0" id="h2-0-0" class="i">+[book]
+</a><a href="#h2-0-1" id="h2-0-1" class="i">+authors = [&quot;Jackson G. Kaindume&quot;]
+</a><a href="#h2-0-2" id="h2-0-2" class="i">+language = &quot;en&quot;
+</a><a href="#h2-0-3" id="h2-0-3" class="i">+multilingual = false
+</a><a href="#h2-0-4" id="h2-0-4" class="i">+src = &quot;src&quot;
+</a><a href="#h2-0-5" id="h2-0-5" class="i">+title = &quot;h4&quot;
+</a><b>diff --git a/<a id="h3" href="../file/book/src/SUMMARY.md.html">book/src/SUMMARY.md</a> b/<a href="../file/book/src/SUMMARY.md.html">book/src/SUMMARY.md</a></b>
+<a href="#h3-0" id="h3-0" class="h">@@ -0,0 +1,4 @@
+</a><a href="#h3-0-0" id="h3-0-0" class="i">+# Summary
+</a><a href="#h3-0-1" id="h3-0-1" class="i">+
+</a><a href="#h3-0-2" id="h3-0-2" class="i">+- [Apache](./apache.md)
+</a><a href="#h3-0-3" id="h3-0-3" class="i">+- [hackthissite](./hackthissite.md)
+</a><b>diff --git a/<a id="h4" href="../file/book/src/apache.md.html">book/src/apache.md</a> b/<a href="../file/book/src/apache.md.html">book/src/apache.md</a></b>
+<a href="#h4-0" id="h4-0" class="h">@@ -0,0 +1,15 @@
+</a><a href="#h4-0-0" id="h4-0-0" class="i">+# Apache
+</a><a href="#h4-0-1" id="h4-0-1" class="i">+
+</a><a href="#h4-0-2" id="h4-0-2" class="i">+&gt; The Apache HTTP Server Project is an effort to develop and maintain 
+</a><a href="#h4-0-3" id="h4-0-3" class="i">+&gt; an open-source HTTP server for modern operating systems including 
+</a><a href="#h4-0-4" id="h4-0-4" class="i">+&gt; UNIX and Windows. The goal of this project is to provide a secure, 
+</a><a href="#h4-0-5" id="h4-0-5" class="i">+&gt; efficient and extensible server that provides HTTP services in sync 
+</a><a href="#h4-0-6" id="h4-0-6" class="i">+&gt; with the current HTTP standards.
+</a><a href="#h4-0-7" id="h4-0-7" class="i">+
+</a><a href="#h4-0-8" id="h4-0-8" class="i">+&gt; The Apache HTTP Server (&quot;httpd&quot;) was launched in 1995 and it has 
+</a><a href="#h4-0-9" id="h4-0-9" class="i">+&gt; been the most popular web server on the Internet since April 1996. 
+</a><a href="#h4-0-10" id="h4-0-10" class="i">+&gt; It has celebrated its 25th birthday as a project in February 2020.
+</a><a href="#h4-0-11" id="h4-0-11" class="i">+
+</a><a href="#h4-0-12" id="h4-0-12" class="i">+## Ref
+</a><a href="#h4-0-13" id="h4-0-13" class="i">+
+</a><a href="#h4-0-14" id="h4-0-14" class="i">+- &lt;https://www.feistyduck.com/library/apache-security/online/index.html&gt;
+</a><b>diff --git a/<a id="h5" href="../file/book/src/hackthissite.md.html">book/src/hackthissite.md</a> b/<a href="../file/book/src/hackthissite.md.html">book/src/hackthissite.md</a></b>
+<a href="#h5-0" id="h5-0" class="h">@@ -0,0 +1,49 @@
+</a><a href="#h5-0-0" id="h5-0-0" class="i">+# CTF Writeups
+</a><a href="#h5-0-1" id="h5-0-1" class="i">+
+</a><a href="#h5-0-2" id="h5-0-2" class="i">+## Hack This Site
+</a><a href="#h5-0-3" id="h5-0-3" class="i">+
+</a><a href="#h5-0-4" id="h5-0-4" class="i">+### Realistic
+</a><a href="#h5-0-5" id="h5-0-5" class="i">+
+</a><a href="#h5-0-6" id="h5-0-6" class="i">+1. [Difficulty rating: Easy](https://www.hackthissite.org/missions/realistic/1/index.php)
+</a><a href="#h5-0-7" id="h5-0-7" class="i">+
+</a><a href="#h5-0-8" id="h5-0-8" class="i">+&gt; From: HeavyMetalRyan
+</a><a href="#h5-0-9" id="h5-0-9" class="i">+&gt;
+</a><a href="#h5-0-10" id="h5-0-10" class="i">+&gt; Message: Hey man, I need a big favour from you. Remember that 
+</a><a href="#h5-0-11" id="h5-0-11" class="i">+&gt; website I showed you once before? Uncle Arnold&#39;s Band Review Page? 
+</a><a href="#h5-0-12" id="h5-0-12" class="i">+&gt; Well, a long time ago I made a $500 bet with a friend that my band 
+</a><a href="#h5-0-13" id="h5-0-13" class="i">+&gt; would be at the top of the list by the end of the year. Well, as 
+</a><a href="#h5-0-14" id="h5-0-14" class="i">+&gt; you already know, two of my band members have died in a horrendous 
+</a><a href="#h5-0-15" id="h5-0-15" class="i">+&gt; car accident... but this ass hole still insists that the bet is on!
+</a><a href="#h5-0-16" id="h5-0-16" class="i">+&gt; I know you&#39;re good with computers and stuff, so I was wondering, is 
+</a><a href="#h5-0-17" id="h5-0-17" class="i">+&gt; there any way for you to hack this website and make my band on the 
+</a><a href="#h5-0-18" id="h5-0-18" class="i">+&gt; top of the list? My band is Raging Inferno. Thanks a lot, man!
+</a><a href="#h5-0-19" id="h5-0-19" class="i">+
+</a><a href="#h5-0-20" id="h5-0-20" class="i">+If we visit the challenge&#39;s [webpage](https://www.hackthissite.org/missions/realistic/1/index.php)
+</a><a href="#h5-0-21" id="h5-0-21" class="i">+we see a page. The interesting parts of the page are the 5 sections
+</a><a href="#h5-0-22" id="h5-0-22" class="i">+of the 5 bands, the bands are ordered the top to bottom with the best
+</a><a href="#h5-0-23" id="h5-0-23" class="i">+band being on top and the worst being at the bottom of the list.
+</a><a href="#h5-0-24" id="h5-0-24" class="i">+
+</a><a href="#h5-0-25" id="h5-0-25" class="i">+Each section contains an HTML form, here is the form for the top band
+</a><a href="#h5-0-26" id="h5-0-26" class="i">+(Imposing Republic):
+</a><a href="#h5-0-27" id="h5-0-27" class="i">+
+</a><a href="#h5-0-28" id="h5-0-28" class="i">+```html
+</a><a href="#h5-0-29" id="h5-0-29" class="i">+&lt;form action=&quot;v.php&quot; method=&quot;get&quot;&gt;
+</a><a href="#h5-0-30" id="h5-0-30" class="i">+	&lt;input type=&quot;hidden&quot; name=&quot;PHPSESSID&quot; value=&quot;abcaeadfc31a5c43b2534bf995c0553f&quot;&gt;
+</a><a href="#h5-0-31" id="h5-0-31" class="i">+	&lt;input type=&quot;hidden&quot; name=&quot;id&quot; value=&quot;4&quot;&gt;
+</a><a href="#h5-0-32" id="h5-0-32" class="i">+	&lt;select name=&quot;vote&quot;&gt;
+</a><a href="#h5-0-33" id="h5-0-33" class="i">+		&lt;option value=&quot;1&quot;&gt;1&lt;/option&gt;
+</a><a href="#h5-0-34" id="h5-0-34" class="i">+		&lt;option value=&quot;2&quot;&gt;2&lt;/option&gt;
+</a><a href="#h5-0-35" id="h5-0-35" class="i">+		&lt;option value=&quot;3&quot;&gt;3&lt;/option&gt;
+</a><a href="#h5-0-36" id="h5-0-36" class="i">+		&lt;option value=&quot;4&quot;&gt;4&lt;/option&gt;
+</a><a href="#h5-0-37" id="h5-0-37" class="i">+		&lt;option value=&quot;5&quot;&gt;5&lt;/option&gt;
+</a><a href="#h5-0-38" id="h5-0-38" class="i">+	&lt;/select&gt;
+</a><a href="#h5-0-39" id="h5-0-39" class="i">+	&lt;input type=&quot;submit&quot; value=&quot;vote!&quot;&gt;
+</a><a href="#h5-0-40" id="h5-0-40" class="i">+&lt;/form&gt;
+</a><a href="#h5-0-41" id="h5-0-41" class="i">+```
+</a><a href="#h5-0-42" id="h5-0-42" class="i">+The form sends a `GET` request, this means that the form data will be
+</a><a href="#h5-0-43" id="h5-0-43" class="i">+appended to the URL in key/value pairs, this it looks for the first 
+</a><a href="#h5-0-44" id="h5-0-44" class="i">+form:
+</a><a href="#h5-0-45" id="h5-0-45" class="i">+
+</a><a href="#h5-0-46" id="h5-0-46" class="i">+&lt;/v.php?PHPSESSID=abcaeadfc31a5c43b2534bf995c0553f&amp;id=4&amp;vote=1&gt;
+</a><a href="#h5-0-47" id="h5-0-47" class="i">+
+</a><a href="#h5-0-48" id="h5-0-48" class="i">+Where PHPSESSID is the session ID, id 
+</a></pre>
+</div>
+</body>
+</html>

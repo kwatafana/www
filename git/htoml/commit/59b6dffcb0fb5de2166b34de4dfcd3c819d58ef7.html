@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>add testimonial section - htoml - HTML page templates described with a toml config
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="htoml Atom Feed" href="../atom.xml" />
+<link rel="alternate" type="application/atom+xml" title="htoml Atom Feed (tags)" href="../tags.xml" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
+</head>
+<body>
+<table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>htoml</h1><span class="desc">HTML page templates described with a toml config
+</span></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a> | <a href="../file/README.md.html">README</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/59b6dffcb0fb5de2166b34de4dfcd3c819d58ef7.html">59b6dffcb0fb5de2166b34de4dfcd3c819d58ef7</a>
+<b>parent</b> <a href="../commit/39f592fac953e277fd9836344d57530c3fa3234c.html">39f592fac953e277fd9836344d57530c3fa3234c</a>
+<b>Author:</b> Jackson G. Kaindume &lt;<a href="mailto:seestem@merely.tech">seestem@merely.tech</a>&gt;
+<b>Date:</b>   Sat, 20 Aug 2022 23:46:41 +0200
+
+add testimonial section
+
+<b>Diffstat:</b>
+<table><tr><td class="M">M</td><td><a href="#h0">examples/frosh.toml</a></td><td> | </td><td class="num">14</td><td><span class="i">++++++++++++++</span><span class="d"></span></td></tr>
+<tr><td class="M">M</td><td><a href="#h1">src/sections/mod.rs</a></td><td> | </td><td class="num">9</td><td><span class="i">+++++++++</span><span class="d"></span></td></tr>
+<tr><td class="A">A</td><td><a href="#h2">src/sections/testimonial.rs</a></td><td> | </td><td class="num">57</td><td><span class="i">+++++++++++++++++++++++++++++++++++++++++++++++++++++++++</span><span class="d"></span></td></tr>
+</table></pre><pre>3 files changed, 80 insertions(+), 0 deletions(-)
+<hr/><b>diff --git a/<a id="h0" href="../file/examples/frosh.toml.html">examples/frosh.toml</a> b/<a href="../file/examples/frosh.toml.html">examples/frosh.toml</a></b>
+<a href="#h0-0" id="h0-0" class="h">@@ -25,3 +25,17 @@ paragraph = &quot;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiu
+</a> [sections.gallery]
+ variant = &quot;frosh&quot;
+ entries = [{src=&quot;https://duckduckgo.com/assets/logo_homepage.alt.v108.svg&quot;}, {src=&quot;https://duckduckgo.com/assets/logo_homepage.alt.v108.svg&quot;}, {src=&quot;https://duckduckgo.com/assets/logo_homepage.alt.v108.svg&quot;}, {src=&quot;https://duckduckgo.com/assets/logo_homepage.alt.v108.svg&quot;}]
+<a href="#h0-0-3" id="h0-0-3" class="i">+
+</a><a href="#h0-0-4" id="h0-0-4" class="i">+[sections.testimonial]
+</a><a href="#h0-0-5" id="h0-0-5" class="i">+variant = &quot;frosh&quot;
+</a><a href="#h0-0-6" id="h0-0-6" class="i">+heading = &quot;Testimonials&quot;
+</a><a href="#h0-0-7" id="h0-0-7" class="i">+entries = [
+</a><a href="#h0-0-8" id="h0-0-8" class="i">+{label = &quot;A&quot;, image = &quot;https://duckduckgo.com/assets/logo_homepage.alt.v108.svg&quot;},
+</a><a href="#h0-0-9" id="h0-0-9" class="i">+{label = &quot;B&quot;, image = &quot;https://duckduckgo.com/assets/logo_homepage.alt.v108.svg&quot;},
+</a><a href="#h0-0-10" id="h0-0-10" class="i">+{label = &quot;C&quot;, image = &quot;https://duckduckgo.com/assets/logo_homepage.alt.v108.svg&quot;},
+</a><a href="#h0-0-11" id="h0-0-11" class="i">+{label = &quot;D&quot;, image = &quot;https://duckduckgo.com/assets/logo_homepage.alt.v108.svg&quot;},
+</a><a href="#h0-0-12" id="h0-0-12" class="i">+{label = &quot;E&quot;, image = &quot;https://duckduckgo.com/assets/logo_homepage.alt.v108.svg&quot;},
+</a><a href="#h0-0-13" id="h0-0-13" class="i">+{label = &quot;F&quot;, image = &quot;https://duckduckgo.com/assets/logo_homepage.alt.v108.svg&quot;},
+</a><a href="#h0-0-14" id="h0-0-14" class="i">+{label = &quot;G&quot;, image = &quot;https://duckduckgo.com/assets/logo_homepage.alt.v108.svg&quot;},
+</a><a href="#h0-0-15" id="h0-0-15" class="i">+{label = &quot;H&quot;, image = &quot;https://duckduckgo.com/assets/logo_homepage.alt.v108.svg&quot;}
+</a><a href="#h0-0-16" id="h0-0-16" class="i">+]
+</a><b>diff --git a/<a id="h1" href="../file/src/sections/mod.rs.html">src/sections/mod.rs</a> b/<a href="../file/src/sections/mod.rs.html">src/sections/mod.rs</a></b>
+<a href="#h1-0" id="h1-0" class="h">@@ -5,6 +5,7 @@ pub mod about;
+</a> pub mod gallery;
+ pub mod hero;
+ pub mod navbar;
+<a href="#h1-0-3" id="h1-0-3" class="i">+pub mod testimonial;
+</a> 
+ /// A section of an HTML webpage
+ pub trait Section {
+<a href="#h1-1" id="h1-1" class="h">@@ -33,6 +34,8 @@ pub struct Sections {
+</a>     pub about: Option&lt;about::About&gt;,
+     /// Gallery Section
+     pub gallery: Option&lt;gallery::Gallery&gt;,
+<a href="#h1-1-3" id="h1-1-3" class="i">+    /// Testimonial Section
+</a><a href="#h1-1-4" id="h1-1-4" class="i">+    pub testimonial: Option&lt;testimonial::Testimonial&gt;,
+</a> }
+ 
+ impl Sections {
+<a href="#h1-2" id="h1-2" class="h">@@ -65,6 +68,12 @@ impl Sections {
+</a>             css = format!(&quot;{}{}&quot;, css, gallery_export.css);
+         }
+ 
+<a href="#h1-2-3" id="h1-2-3" class="i">+        if let Some(testimonial) = &amp;self.testimonial {
+</a><a href="#h1-2-4" id="h1-2-4" class="i">+            let testimonial_export = testimonial.export(metadata);
+</a><a href="#h1-2-5" id="h1-2-5" class="i">+            html = format!(&quot;{}{}&quot;, html, testimonial_export.html);
+</a><a href="#h1-2-6" id="h1-2-6" class="i">+            css = format!(&quot;{}{}&quot;, css, testimonial_export.css);
+</a><a href="#h1-2-7" id="h1-2-7" class="i">+        }
+</a><a href="#h1-2-8" id="h1-2-8" class="i">+
+</a>         Export { html, css }
+     }
+ }
+<b>diff --git a/<a id="h2" href="../file/src/sections/testimonial.rs.html">src/sections/testimonial.rs</a> b/<a href="../file/src/sections/testimonial.rs.html">src/sections/testimonial.rs</a></b>
+<a href="#h2-0" id="h2-0" class="h">@@ -0,0 +1,57 @@
+</a><a href="#h2-0-0" id="h2-0-0" class="i">+use crate::common::Export;
+</a><a href="#h2-0-1" id="h2-0-1" class="i">+use crate::sections::{Section, SectionMetadata};
+</a><a href="#h2-0-2" id="h2-0-2" class="i">+use crate::slider::{Slide, Slider};
+</a><a href="#h2-0-3" id="h2-0-3" class="i">+
+</a><a href="#h2-0-4" id="h2-0-4" class="i">+use serde::Deserialize;
+</a><a href="#h2-0-5" id="h2-0-5" class="i">+
+</a><a href="#h2-0-6" id="h2-0-6" class="i">+#[derive(Deserialize, Clone)]
+</a><a href="#h2-0-7" id="h2-0-7" class="i">+pub struct Testimonial {
+</a><a href="#h2-0-8" id="h2-0-8" class="i">+    /// Variant of testimonial to use
+</a><a href="#h2-0-9" id="h2-0-9" class="i">+    pub variant: String,
+</a><a href="#h2-0-10" id="h2-0-10" class="i">+    /// Heading of about section
+</a><a href="#h2-0-11" id="h2-0-11" class="i">+    pub heading: String,
+</a><a href="#h2-0-12" id="h2-0-12" class="i">+    /// Testimonial entries
+</a><a href="#h2-0-13" id="h2-0-13" class="i">+    pub entries: Vec&lt;Slide&gt;,
+</a><a href="#h2-0-14" id="h2-0-14" class="i">+}
+</a><a href="#h2-0-15" id="h2-0-15" class="i">+
+</a><a href="#h2-0-16" id="h2-0-16" class="i">+impl Section for Testimonial {
+</a><a href="#h2-0-17" id="h2-0-17" class="i">+    fn export(&amp;self, metadata: &amp;SectionMetadata) -&gt; Export {
+</a><a href="#h2-0-18" id="h2-0-18" class="i">+        let mut html = &quot;&quot;.to_string();
+</a><a href="#h2-0-19" id="h2-0-19" class="i">+        let mut css = &quot;&quot;.to_string();
+</a><a href="#h2-0-20" id="h2-0-20" class="i">+
+</a><a href="#h2-0-21" id="h2-0-21" class="i">+        match self.variant.as_str() {
+</a><a href="#h2-0-22" id="h2-0-22" class="i">+            &quot;basic&quot; =&gt; {
+</a><a href="#h2-0-23" id="h2-0-23" class="i">+                css = format!(
+</a><a href="#h2-0-24" id="h2-0-24" class="i">+                    r#&quot;.htoml_testimonial{{
+</a><a href="#h2-0-25" id="h2-0-25" class="i">+                          padding: 2em;
+</a><a href="#h2-0-26" id="h2-0-26" class="i">+                          color: {};
+</a><a href="#h2-0-27" id="h2-0-27" class="i">+                        }}&quot;#,
+</a><a href="#h2-0-28" id="h2-0-28" class="i">+                    metadata.tertiary_color
+</a><a href="#h2-0-29" id="h2-0-29" class="i">+                );
+</a><a href="#h2-0-30" id="h2-0-30" class="i">+
+</a><a href="#h2-0-31" id="h2-0-31" class="i">+                html = format!(
+</a><a href="#h2-0-32" id="h2-0-32" class="i">+                    r#&quot;
+</a><a href="#h2-0-33" id="h2-0-33" class="i">+                &lt;section class=&#39;htoml_testimonial&#39;&gt;
+</a><a href="#h2-0-34" id="h2-0-34" class="i">+                  &lt;h3&gt;{}&lt;h3&gt;
+</a><a href="#h2-0-35" id="h2-0-35" class="i">+                &lt;/section&gt;&quot;#,
+</a><a href="#h2-0-36" id="h2-0-36" class="i">+                    self.heading,
+</a><a href="#h2-0-37" id="h2-0-37" class="i">+                );
+</a><a href="#h2-0-38" id="h2-0-38" class="i">+            }
+</a><a href="#h2-0-39" id="h2-0-39" class="i">+            &quot;frosh&quot; =&gt; {
+</a><a href="#h2-0-40" id="h2-0-40" class="i">+                let slides = &amp;self.entries;
+</a><a href="#h2-0-41" id="h2-0-41" class="i">+                return Slider::export(slides.to_vec());
+</a><a href="#h2-0-42" id="h2-0-42" class="i">+            }
+</a><a href="#h2-0-43" id="h2-0-43" class="i">+            _ =&gt; panic!(&quot;Invalid Testimonial variant&quot;),
+</a><a href="#h2-0-44" id="h2-0-44" class="i">+        }
+</a><a href="#h2-0-45" id="h2-0-45" class="i">+        Export { html, css }
+</a><a href="#h2-0-46" id="h2-0-46" class="i">+    }
+</a><a href="#h2-0-47" id="h2-0-47" class="i">+}
+</a><a href="#h2-0-48" id="h2-0-48" class="i">+
+</a><a href="#h2-0-49" id="h2-0-49" class="i">+#[cfg(test)]
+</a><a href="#h2-0-50" id="h2-0-50" class="i">+mod tests {
+</a><a href="#h2-0-51" id="h2-0-51" class="i">+    #[test]
+</a><a href="#h2-0-52" id="h2-0-52" class="i">+    fn it_works() {
+</a><a href="#h2-0-53" id="h2-0-53" class="i">+        let result = 2 + 2;
+</a><a href="#h2-0-54" id="h2-0-54" class="i">+        assert_eq!(result, 4);
+</a><a href="#h2-0-55" id="h2-0-55" class="i">+    }
+</a><a href="#h2-0-56" id="h2-0-56" class="i">+}
+</a></pre>
+</div>
+</body>
+</html>

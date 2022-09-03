@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>hackthissite.md - h4 - h4cking 700l$</title>
+<link rel="icon" type="image/png" href="../../../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="h4 Atom Feed" href="../../../atom.xml" />
+<link rel="alternate" type="application/atom+xml" title="h4 Atom Feed (tags)" href="../../../tags.xml" />
+<link rel="stylesheet" type="text/css" href="/git.css" />
+</head>
+<body>
+<table><tr><td><a href="../../../../"><img src="/logo.png" alt="" width="32" height="32" /></a></td><td><h1>h4</h1><span class="desc">h4cking 700l$</span></td></tr><tr><td></td><td>
+<a href="../../../log.html">Log</a> | <a href="../../../files.html">Files</a> | <a href="../../../refs.html">Refs</a> | <a href="../../../file/README.md.html">README</a></td></tr></table>
+<hr/>
+<div id="content">
+<p> hackthissite.md (1835B)</p><hr/><pre id="blob">
+<a href="#l1" class="line" id="l1">      1</a> # CTF Writeups
+<a href="#l2" class="line" id="l2">      2</a> 
+<a href="#l3" class="line" id="l3">      3</a> ## Hack This Site
+<a href="#l4" class="line" id="l4">      4</a> 
+<a href="#l5" class="line" id="l5">      5</a> ### Realistic
+<a href="#l6" class="line" id="l6">      6</a> 
+<a href="#l7" class="line" id="l7">      7</a> 1. [Difficulty rating: Easy](https://www.hackthissite.org/missions/realistic/1/index.php)
+<a href="#l8" class="line" id="l8">      8</a> 
+<a href="#l9" class="line" id="l9">      9</a> &gt; From: HeavyMetalRyan
+<a href="#l10" class="line" id="l10">     10</a> &gt;
+<a href="#l11" class="line" id="l11">     11</a> &gt; Message: Hey man, I need a big favour from you. Remember that 
+<a href="#l12" class="line" id="l12">     12</a> &gt; website I showed you once before? Uncle Arnold&#39;s Band Review Page? 
+<a href="#l13" class="line" id="l13">     13</a> &gt; Well, a long time ago I made a $500 bet with a friend that my band 
+<a href="#l14" class="line" id="l14">     14</a> &gt; would be at the top of the list by the end of the year. Well, as 
+<a href="#l15" class="line" id="l15">     15</a> &gt; you already know, two of my band members have died in a horrendous 
+<a href="#l16" class="line" id="l16">     16</a> &gt; car accident... but this ass hole still insists that the bet is on!
+<a href="#l17" class="line" id="l17">     17</a> &gt; I know you&#39;re good with computers and stuff, so I was wondering, is 
+<a href="#l18" class="line" id="l18">     18</a> &gt; there any way for you to hack this website and make my band on the 
+<a href="#l19" class="line" id="l19">     19</a> &gt; top of the list? My band is Raging Inferno. Thanks a lot, man!
+<a href="#l20" class="line" id="l20">     20</a> 
+<a href="#l21" class="line" id="l21">     21</a> If we visit the challenge&#39;s [webpage](https://www.hackthissite.org/missions/realistic/1/index.php)
+<a href="#l22" class="line" id="l22">     22</a> we see a page. The interesting parts of the page are the 5 sections
+<a href="#l23" class="line" id="l23">     23</a> of the 5 bands, the bands are ordered the top to bottom with the best
+<a href="#l24" class="line" id="l24">     24</a> band being on top and the worst being at the bottom of the list.
+<a href="#l25" class="line" id="l25">     25</a> 
+<a href="#l26" class="line" id="l26">     26</a> Each section contains an HTML form, here is the form for the top band
+<a href="#l27" class="line" id="l27">     27</a> (Imposing Republic):
+<a href="#l28" class="line" id="l28">     28</a> 
+<a href="#l29" class="line" id="l29">     29</a> ```html
+<a href="#l30" class="line" id="l30">     30</a> &lt;form action=&quot;v.php&quot; method=&quot;get&quot;&gt;
+<a href="#l31" class="line" id="l31">     31</a> 	&lt;input type=&quot;hidden&quot; name=&quot;PHPSESSID&quot; value=&quot;abcaeadfc31a5c43b2534bf995c0553f&quot;&gt;
+<a href="#l32" class="line" id="l32">     32</a> 	&lt;input type=&quot;hidden&quot; name=&quot;id&quot; value=&quot;4&quot;&gt;
+<a href="#l33" class="line" id="l33">     33</a> 	&lt;select name=&quot;vote&quot;&gt;
+<a href="#l34" class="line" id="l34">     34</a> 		&lt;option value=&quot;1&quot;&gt;1&lt;/option&gt;
+<a href="#l35" class="line" id="l35">     35</a> 		&lt;option value=&quot;2&quot;&gt;2&lt;/option&gt;
+<a href="#l36" class="line" id="l36">     36</a> 		&lt;option value=&quot;3&quot;&gt;3&lt;/option&gt;
+<a href="#l37" class="line" id="l37">     37</a> 		&lt;option value=&quot;4&quot;&gt;4&lt;/option&gt;
+<a href="#l38" class="line" id="l38">     38</a> 		&lt;option value=&quot;5&quot;&gt;5&lt;/option&gt;
+<a href="#l39" class="line" id="l39">     39</a> 	&lt;/select&gt;
+<a href="#l40" class="line" id="l40">     40</a> 	&lt;input type=&quot;submit&quot; value=&quot;vote!&quot;&gt;
+<a href="#l41" class="line" id="l41">     41</a> &lt;/form&gt;
+<a href="#l42" class="line" id="l42">     42</a> ```
+<a href="#l43" class="line" id="l43">     43</a> The form sends a `GET` request, this means that the form data will be
+<a href="#l44" class="line" id="l44">     44</a> appended to the URL in key/value pairs, this it looks for the first 
+<a href="#l45" class="line" id="l45">     45</a> form:
+<a href="#l46" class="line" id="l46">     46</a> 
+<a href="#l47" class="line" id="l47">     47</a> &lt;/v.php?PHPSESSID=abcaeadfc31a5c43b2534bf995c0553f&amp;id=4&amp;vote=1&gt;
+<a href="#l48" class="line" id="l48">     48</a> 
+<a href="#l49" class="line" id="l49">     49</a> Where PHPSESSID is the session ID, id 
+</pre>
+</div>
+</body>
+</html>

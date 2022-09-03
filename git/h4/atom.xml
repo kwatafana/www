@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+<title>h4, branch HEAD</title>
+<subtitle>h4cking 700l$</subtitle>
+<entry>
+<id>68c6282733ab1b502d4ed69066f2cd3f0b118e17</id>
+<published>2022-09-01T19:22:05Z</published>
+<updated>2022-09-01T19:22:05Z</updated>
+<title type="text">fmt</title>
+<link rel="alternate" type="text/html" href="commit/68c6282733ab1b502d4ed69066f2cd3f0b118e17.html" />
+<author>
+<name>Jackson G. Kaindume</name>
+<email>kaindume@kwatafana.org</email>
+</author>
+<content type="text">commit 68c6282733ab1b502d4ed69066f2cd3f0b118e17
+parent 769d5d6835fe46caaeeaa35322c0079bda6e94d0
+Author: Jackson G. Kaindume &lt;kaindume@kwatafana.org&gt;
+Date:   Thu,  1 Sep 2022 21:22:05 +0200
+
+fmt
+
+</content>
+</entry>
+<entry>
+<id>769d5d6835fe46caaeeaa35322c0079bda6e94d0</id>
+<published>2022-09-01T19:21:41Z</published>
+<updated>2022-09-01T19:21:41Z</updated>
+<title type="text">add book</title>
+<link rel="alternate" type="text/html" href="commit/769d5d6835fe46caaeeaa35322c0079bda6e94d0.html" />
+<author>
+<name>Jackson G. Kaindume</name>
+<email>kaindume@kwatafana.org</email>
+</author>
+<content type="text">commit 769d5d6835fe46caaeeaa35322c0079bda6e94d0
+parent 826d6f76017bd6056636dc18525508c49e8e2a93
+Author: Jackson G. Kaindume &lt;kaindume@kwatafana.org&gt;
+Date:   Thu,  1 Sep 2022 21:21:41 +0200
+
+add book
+
+</content>
+</entry>
+<entry>
+<id>826d6f76017bd6056636dc18525508c49e8e2a93</id>
+<published>2022-08-08T11:06:11Z</published>
+<updated>2022-08-08T11:06:11Z</updated>
+<title type="text">update README</title>
+<link rel="alternate" type="text/html" href="commit/826d6f76017bd6056636dc18525508c49e8e2a93.html" />
+<author>
+<name>Jackson G. Kaindume</name>
+<email>seestem@merely.tech</email>
+</author>
+<content type="text">commit 826d6f76017bd6056636dc18525508c49e8e2a93
+parent cf44a79ff8996b0eba32b4015e7617cd3e5fc404
+Author: Jackson G. Kaindume &lt;seestem@merely.tech&gt;
+Date:   Mon,  8 Aug 2022 13:06:11 +0200
+
+update README
+
+</content>
+</entry>
+<entry>
+<id>cf44a79ff8996b0eba32b4015e7617cd3e5fc404</id>
+<published>2022-07-12T19:51:55Z</published>
+<updated>2022-07-12T19:51:55Z</updated>
+<title type="text">clean up code</title>
+<link rel="alternate" type="text/html" href="commit/cf44a79ff8996b0eba32b4015e7617cd3e5fc404.html" />
+<author>
+<name>Jackson G. Kaindume</name>
+<email>seestem@merely.tech</email>
+</author>
+<content type="text">commit cf44a79ff8996b0eba32b4015e7617cd3e5fc404
+parent 3a5035a7ce23e4bb05004fadff59de0edad4ca9e
+Author: Jackson G. Kaindume &lt;seestem@merely.tech&gt;
+Date:   Tue, 12 Jul 2022 21:51:55 +0200
+
+clean up code
+
+</content>
+</entry>
+<entry>
+<id>3a5035a7ce23e4bb05004fadff59de0edad4ca9e</id>
+<published>2022-07-12T19:37:34Z</published>
+<updated>2022-07-12T19:37:34Z</updated>
+<title type="text">update readme</title>
+<link rel="alternate" type="text/html" href="commit/3a5035a7ce23e4bb05004fadff59de0edad4ca9e.html" />
+<author>
+<name>Jackson G. Kaindume</name>
+<email>seestem@merely.tech</email>
+</author>
+<content type="text">commit 3a5035a7ce23e4bb05004fadff59de0edad4ca9e
+parent 7ce62890cb32917de6653c2b061ab01ad2d97bde
+Author: Jackson G. Kaindume &lt;seestem@merely.tech&gt;
+Date:   Tue, 12 Jul 2022 21:37:34 +0200
+
+update readme
+
+</content>
+</entry>
+<entry>
+<id>7ce62890cb32917de6653c2b061ab01ad2d97bde</id>
+<published>2022-07-12T19:31:24Z</published>
+<updated>2022-07-12T19:31:24Z</updated>
+<title type="text">Initial commit</title>
+<link rel="alternate" type="text/html" href="commit/7ce62890cb32917de6653c2b061ab01ad2d97bde.html" />
+<author>
+<name>Jackson G. Kaindume</name>
+<email>seestem@merely.tech</email>
+</author>
+<content type="text">commit 7ce62890cb32917de6653c2b061ab01ad2d97bde
+Author: Jackson G. Kaindume &lt;seestem@merely.tech&gt;
+Date:   Tue, 12 Jul 2022 21:31:24 +0200
+
+Initial commit
+
+</content>
+</entry>
+</feed>

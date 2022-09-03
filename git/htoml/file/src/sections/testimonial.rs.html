@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>testimonial.rs - htoml - HTML page templates described with a toml config
+</title>
+<link rel="icon" type="image/png" href="../../../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="htoml Atom Feed" href="../../../atom.xml" />
+<link rel="alternate" type="application/atom+xml" title="htoml Atom Feed (tags)" href="../../../tags.xml" />
+<link rel="stylesheet" type="text/css" href="/git.css" />
+</head>
+<body>
+<table><tr><td><a href="../../../../"><img src="/logo.png" alt="" width="32" height="32" /></a></td><td><h1>htoml</h1><span class="desc">HTML page templates described with a toml config
+</span></td></tr><tr><td></td><td>
+<a href="../../../log.html">Log</a> | <a href="../../../files.html">Files</a> | <a href="../../../refs.html">Refs</a> | <a href="../../../file/README.md.html">README</a></td></tr></table>
+<hr/>
+<div id="content">
+<p> testimonial.rs (1454B)</p><hr/><pre id="blob">
+<a href="#l1" class="line" id="l1">      1</a> use crate::common::Export;
+<a href="#l2" class="line" id="l2">      2</a> use crate::sections::{Section, SectionMetadata};
+<a href="#l3" class="line" id="l3">      3</a> use crate::slider::{Slide, Slider};
+<a href="#l4" class="line" id="l4">      4</a> 
+<a href="#l5" class="line" id="l5">      5</a> use serde::Deserialize;
+<a href="#l6" class="line" id="l6">      6</a> 
+<a href="#l7" class="line" id="l7">      7</a> #[derive(Deserialize, Clone)]
+<a href="#l8" class="line" id="l8">      8</a> pub struct Testimonial {
+<a href="#l9" class="line" id="l9">      9</a>     /// Variant of testimonial to use
+<a href="#l10" class="line" id="l10">     10</a>     pub variant: String,
+<a href="#l11" class="line" id="l11">     11</a>     /// Heading of about section
+<a href="#l12" class="line" id="l12">     12</a>     pub heading: String,
+<a href="#l13" class="line" id="l13">     13</a>     /// Testimonial entries
+<a href="#l14" class="line" id="l14">     14</a>     pub entries: Vec&lt;Slide&gt;,
+<a href="#l15" class="line" id="l15">     15</a> }
+<a href="#l16" class="line" id="l16">     16</a> 
+<a href="#l17" class="line" id="l17">     17</a> impl Section for Testimonial {
+<a href="#l18" class="line" id="l18">     18</a>     fn export(&amp;self, metadata: &amp;SectionMetadata) -&gt; Export {
+<a href="#l19" class="line" id="l19">     19</a>         let mut html = &quot;&quot;.to_string();
+<a href="#l20" class="line" id="l20">     20</a>         let mut css = &quot;&quot;.to_string();
+<a href="#l21" class="line" id="l21">     21</a> 
+<a href="#l22" class="line" id="l22">     22</a>         match self.variant.as_str() {
+<a href="#l23" class="line" id="l23">     23</a>             &quot;basic&quot; =&gt; {
+<a href="#l24" class="line" id="l24">     24</a>                 css = format!(
+<a href="#l25" class="line" id="l25">     25</a>                     r#&quot;.htoml_testimonial{{
+<a href="#l26" class="line" id="l26">     26</a>                           padding: 2em;
+<a href="#l27" class="line" id="l27">     27</a>                           color: {};
+<a href="#l28" class="line" id="l28">     28</a>                         }}&quot;#,
+<a href="#l29" class="line" id="l29">     29</a>                     metadata.tertiary_color
+<a href="#l30" class="line" id="l30">     30</a>                 );
+<a href="#l31" class="line" id="l31">     31</a> 
+<a href="#l32" class="line" id="l32">     32</a>                 html = format!(
+<a href="#l33" class="line" id="l33">     33</a>                     r#&quot;
+<a href="#l34" class="line" id="l34">     34</a>                 &lt;section class=&#39;htoml_testimonial&#39;&gt;
+<a href="#l35" class="line" id="l35">     35</a>                   &lt;h3&gt;{}&lt;h3&gt;
+<a href="#l36" class="line" id="l36">     36</a>                 &lt;/section&gt;&quot;#,
+<a href="#l37" class="line" id="l37">     37</a>                     self.heading,
+<a href="#l38" class="line" id="l38">     38</a>                 );
+<a href="#l39" class="line" id="l39">     39</a>             }
+<a href="#l40" class="line" id="l40">     40</a>             &quot;frosh&quot; =&gt; {
+<a href="#l41" class="line" id="l41">     41</a>                 let slides = &amp;self.entries;
+<a href="#l42" class="line" id="l42">     42</a>                 return Slider::export(slides.to_vec());
+<a href="#l43" class="line" id="l43">     43</a>             }
+<a href="#l44" class="line" id="l44">     44</a>             _ =&gt; panic!(&quot;Invalid Testimonial variant&quot;),
+<a href="#l45" class="line" id="l45">     45</a>         }
+<a href="#l46" class="line" id="l46">     46</a>         Export { html, css }
+<a href="#l47" class="line" id="l47">     47</a>     }
+<a href="#l48" class="line" id="l48">     48</a> }
+<a href="#l49" class="line" id="l49">     49</a> 
+<a href="#l50" class="line" id="l50">     50</a> #[cfg(test)]
+<a href="#l51" class="line" id="l51">     51</a> mod tests {
+<a href="#l52" class="line" id="l52">     52</a>     #[test]
+<a href="#l53" class="line" id="l53">     53</a>     fn it_works() {
+<a href="#l54" class="line" id="l54">     54</a>         let result = 2 + 2;
+<a href="#l55" class="line" id="l55">     55</a>         assert_eq!(result, 4);
+<a href="#l56" class="line" id="l56">     56</a>     }
+<a href="#l57" class="line" id="l57">     57</a> }
+</pre>
+</div>
+</body>
+</html>

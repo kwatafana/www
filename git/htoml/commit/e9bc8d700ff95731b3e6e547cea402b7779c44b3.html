@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>update README - htoml - HTML page templates described with a toml config
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="htoml Atom Feed" href="../atom.xml" />
+<link rel="alternate" type="application/atom+xml" title="htoml Atom Feed (tags)" href="../tags.xml" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
+</head>
+<body>
+<table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>htoml</h1><span class="desc">HTML page templates described with a toml config
+</span></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a> | <a href="../file/README.md.html">README</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/e9bc8d700ff95731b3e6e547cea402b7779c44b3.html">e9bc8d700ff95731b3e6e547cea402b7779c44b3</a>
+<b>parent</b> <a href="../commit/1df2e862ce728e8fb3e5e17e10921c19290ef1a8.html">1df2e862ce728e8fb3e5e17e10921c19290ef1a8</a>
+<b>Author:</b> Jackson G. Kaindume &lt;<a href="mailto:seestem@merely.tech">seestem@merely.tech</a>&gt;
+<b>Date:</b>   Mon,  8 Aug 2022 11:57:49 +0200
+
+update README
+
+<b>Diffstat:</b>
+<table><tr><td class="D">D</td><td><a href="#h0">README</a></td><td> | </td><td class="num">32</td><td><span class="i"></span><span class="d">--------------------------------</span></td></tr>
+<tr><td class="A">A</td><td><a href="#h1">README.md</a></td><td> | </td><td class="num">41</td><td><span class="i">+++++++++++++++++++++++++++++++++++++++++</span><span class="d"></span></td></tr>
+</table></pre><pre>2 files changed, 41 insertions(+), 32 deletions(-)
+<hr/><b>diff --git a/<a id="h0" href="../file/README.html">README</a> b/<a href="../file/README.html">README</a></b>
+<a href="#h0-0" id="h0-0" class="h">@@ -1,31 +0,0 @@
+</a><a href="#h0-0-0" id="h0-0-0" class="d">-[v0.1.0]                                      [Last update:2022-08-06]
+</a><a href="#h0-0-1" id="h0-0-1" class="d">-                           𝙝𝙩𝙤𝙢𝙡
+</a><a href="#h0-0-2" id="h0-0-2" class="d">-----------------------------------------------------------------------
+</a><a href="#h0-0-3" id="h0-0-3" class="d">-      HTML page templates described with a toml config
+</a><a href="#h0-0-4" id="h0-0-4" class="d">-----------------------------------------------------------------------
+</a><a href="#h0-0-5" id="h0-0-5" class="d">-  authors: [seestem]
+</a><a href="#h0-0-6" id="h0-0-6" class="d">-  source code: https://codeberg.org/seestem/htoml
+</a><a href="#h0-0-7" id="h0-0-7" class="d">-  requirements: rustc 1.62+
+</a><a href="#h0-0-8" id="h0-0-8" class="d">-
+</a><a href="#h0-0-9" id="h0-0-9" class="d">-----------------------------------------------------------------------
+</a><a href="#h0-0-10" id="h0-0-10" class="d">-HTOML file example (contents of a .toml)
+</a><a href="#h0-0-11" id="h0-0-11" class="d">-----------------------------------------------------------------------
+</a><a href="#h0-0-12" id="h0-0-12" class="d">-    
+</a><a href="#h0-0-13" id="h0-0-13" class="d">-    # Title of the HTML page
+</a><a href="#h0-0-14" id="h0-0-14" class="d">-    title = &quot;Homepage&quot;
+</a><a href="#h0-0-15" id="h0-0-15" class="d">-
+</a><a href="#h0-0-16" id="h0-0-16" class="d">-    # Path to html output
+</a><a href="#h0-0-17" id="h0-0-17" class="d">-    output = &quot;index.html&quot;
+</a><a href="#h0-0-18" id="h0-0-18" class="d">-
+</a><a href="#h0-0-19" id="h0-0-19" class="d">-    # Different sections for the HTML document
+</a><a href="#h0-0-20" id="h0-0-20" class="d">-    [sections]
+</a><a href="#h0-0-21" id="h0-0-21" class="d">-
+</a><a href="#h0-0-22" id="h0-0-22" class="d">-    # Navigation section [Optional]
+</a><a href="#h0-0-23" id="h0-0-23" class="d">-    [sections.navbar]
+</a><a href="#h0-0-24" id="h0-0-24" class="d">-
+</a><a href="#h0-0-25" id="h0-0-25" class="d">-    # Variant to use
+</a><a href="#h0-0-26" id="h0-0-26" class="d">-    variant = &quot;basic&quot;
+</a><a href="#h0-0-27" id="h0-0-27" class="d">-
+</a><a href="#h0-0-28" id="h0-0-28" class="d">-    # Links for the navigation
+</a><a href="#h0-0-29" id="h0-0-29" class="d">-    links = [{url= &quot;/&quot;, text= &quot;Home&quot;}, {url= &quot;/about&quot;, text= &quot;About&quot;},]
+</a><a href="#h0-0-30" id="h0-0-30" class="d">-======================================================================
+</a><a href="#h0-0-31" id="h0-0-31" class="d">-\ No newline at end of file
+</a><b>diff --git a/<a id="h1" href="../file/README.md.html">README.md</a> b/<a href="../file/README.md.html">README.md</a></b>
+<a href="#h1-0" id="h1-0" class="h">@@ -0,0 +1,41 @@
+</a><a href="#h1-0-0" id="h1-0-0" class="i">+&lt;div style=&quot;text-align: right&quot;&gt;	
+</a><a href="#h1-0-1" id="h1-0-1" class="i">+&lt;a href=&quot;https://codeberg.org/seestem/crawleth&quot;&gt;
+</a><a href="#h1-0-2" id="h1-0-2" class="i">+    &lt;img alt=&quot;Get it on Codeberg&quot; src=&quot;https://codeberg.org/Codeberg/GetItOnCodeberg/media/branch/main/get-it-on-white-on-black.png&quot; height=&quot;60&quot;&gt;
+</a><a href="#h1-0-3" id="h1-0-3" class="i">+&lt;/a&gt;
+</a><a href="#h1-0-4" id="h1-0-4" class="i">+&lt;/div&gt;	
+</a><a href="#h1-0-5" id="h1-0-5" class="i">+___
+</a><a href="#h1-0-6" id="h1-0-6" class="i">+
+</a><a href="#h1-0-7" id="h1-0-7" class="i">+``` text
+</a><a href="#h1-0-8" id="h1-0-8" class="i">+
+</a><a href="#h1-0-9" id="h1-0-9" class="i">+[v0.1.0]                                      [Last update:2022-08-06]
+</a><a href="#h1-0-10" id="h1-0-10" class="i">+                           𝙝𝙩𝙤𝙢𝙡
+</a><a href="#h1-0-11" id="h1-0-11" class="i">+```
+</a><a href="#h1-0-12" id="h1-0-12" class="i">+&gt; HTML page templates described with a toml config
+</a><a href="#h1-0-13" id="h1-0-13" class="i">+
+</a><a href="#h1-0-14" id="h1-0-14" class="i">+
+</a><a href="#h1-0-15" id="h1-0-15" class="i">+## Developer Requirements: 
+</a><a href="#h1-0-16" id="h1-0-16" class="i">+  
+</a><a href="#h1-0-17" id="h1-0-17" class="i">+- rustc 1.62+
+</a><a href="#h1-0-18" id="h1-0-18" class="i">+
+</a><a href="#h1-0-19" id="h1-0-19" class="i">+
+</a><a href="#h1-0-20" id="h1-0-20" class="i">+## HTOML file example (contents of a .toml)
+</a><a href="#h1-0-21" id="h1-0-21" class="i">+
+</a><a href="#h1-0-22" id="h1-0-22" class="i">+``` toml
+</a><a href="#h1-0-23" id="h1-0-23" class="i">+# Title of the HTML page
+</a><a href="#h1-0-24" id="h1-0-24" class="i">+title = &quot;Homepage&quot;
+</a><a href="#h1-0-25" id="h1-0-25" class="i">+
+</a><a href="#h1-0-26" id="h1-0-26" class="i">+# Path to html output
+</a><a href="#h1-0-27" id="h1-0-27" class="i">+output = &quot;index.html&quot;
+</a><a href="#h1-0-28" id="h1-0-28" class="i">+
+</a><a href="#h1-0-29" id="h1-0-29" class="i">+# Different sections for the HTML document
+</a><a href="#h1-0-30" id="h1-0-30" class="i">+[sections]
+</a><a href="#h1-0-31" id="h1-0-31" class="i">+
+</a><a href="#h1-0-32" id="h1-0-32" class="i">+# Navigation section [Optional]
+</a><a href="#h1-0-33" id="h1-0-33" class="i">+[sections.navbar]
+</a><a href="#h1-0-34" id="h1-0-34" class="i">+
+</a><a href="#h1-0-35" id="h1-0-35" class="i">+# Variant to use
+</a><a href="#h1-0-36" id="h1-0-36" class="i">+variant = &quot;basic&quot;
+</a><a href="#h1-0-37" id="h1-0-37" class="i">+
+</a><a href="#h1-0-38" id="h1-0-38" class="i">+# Links for the navigation
+</a><a href="#h1-0-39" id="h1-0-39" class="i">+links = [{url= &quot;/&quot;, text= &quot;Home&quot;}, {url= &quot;/about&quot;, text= &quot;About&quot;},]
+</a><a href="#h1-0-40" id="h1-0-40" class="i">+```
+</a></pre>
+</div>
+</body>
+</html>

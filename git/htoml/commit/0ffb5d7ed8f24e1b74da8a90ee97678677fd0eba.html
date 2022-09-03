@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>add hero section - htoml - HTML page templates described with a toml config
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="htoml Atom Feed" href="../atom.xml" />
+<link rel="alternate" type="application/atom+xml" title="htoml Atom Feed (tags)" href="../tags.xml" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
+</head>
+<body>
+<table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>htoml</h1><span class="desc">HTML page templates described with a toml config
+</span></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a> | <a href="../file/README.md.html">README</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/0ffb5d7ed8f24e1b74da8a90ee97678677fd0eba.html">0ffb5d7ed8f24e1b74da8a90ee97678677fd0eba</a>
+<b>parent</b> <a href="../commit/bdaa7234851265924f444c471eb3d2fa0880840c.html">bdaa7234851265924f444c471eb3d2fa0880840c</a>
+<b>Author:</b> Jackson G. Kaindume &lt;<a href="mailto:seestem@merely.tech">seestem@merely.tech</a>&gt;
+<b>Date:</b>   Mon, 15 Aug 2022 20:08:40 +0200
+
+add hero section
+
+<b>Diffstat:</b>
+<table><tr><td class="M">M</td><td><a href="#h0">README.md</a></td><td> | </td><td class="num">6</td><td><span class="i">++++++</span><span class="d"></span></td></tr>
+<tr><td class="A">A</td><td><a href="#h1">src/sections/hero.rs</a></td><td> | </td><td class="num">72</td><td><span class="i">++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++</span><span class="d"></span></td></tr>
+<tr><td class="M">M</td><td><a href="#h2">src/sections/mod.rs</a></td><td> | </td><td class="num">9</td><td><span class="i">+++++++++</span><span class="d"></span></td></tr>
+</table></pre><pre>3 files changed, 87 insertions(+), 0 deletions(-)
+<hr/><b>diff --git a/<a id="h0" href="../file/README.md.html">README.md</a> b/<a href="../file/README.md.html">README.md</a></b>
+<a href="#h0-0" id="h0-0" class="h">@@ -39,6 +39,12 @@ variant = &quot;basic&quot;
+</a> # Links for the navigation
+ links = [{url= &quot;/&quot;, text= &quot;Home&quot;}, {url= &quot;/about&quot;, text= &quot;About&quot;}, {url= &quot;/contact&quot;, text= &quot;Contact Us&quot;}]
+ 
+<a href="#h0-0-3" id="h0-0-3" class="i">+# Hero section [Optional]
+</a><a href="#h0-0-4" id="h0-0-4" class="i">+[sections.hero]
+</a><a href="#h0-0-5" id="h0-0-5" class="i">+# Variant to use
+</a><a href="#h0-0-6" id="h0-0-6" class="i">+variant = &quot;basic&quot;
+</a><a href="#h0-0-7" id="h0-0-7" class="i">+heading = &quot;Awesome Hero&quot;
+</a><a href="#h0-0-8" id="h0-0-8" class="i">+sub_heading = &quot;This is a cool sub heading&quot;
+</a> ```
+ 
+ ## Usage
+<b>diff --git a/<a id="h1" href="../file/src/sections/hero.rs.html">src/sections/hero.rs</a> b/<a href="../file/src/sections/hero.rs.html">src/sections/hero.rs</a></b>
+<a href="#h1-0" id="h1-0" class="h">@@ -0,0 +1,72 @@
+</a><a href="#h1-0-0" id="h1-0-0" class="i">+use crate::common::Export;
+</a><a href="#h1-0-1" id="h1-0-1" class="i">+use crate::sections::{Section, SectionMetadata};
+</a><a href="#h1-0-2" id="h1-0-2" class="i">+use serde::Deserialize;
+</a><a href="#h1-0-3" id="h1-0-3" class="i">+use std::path::PathBuf;
+</a><a href="#h1-0-4" id="h1-0-4" class="i">+
+</a><a href="#h1-0-5" id="h1-0-5" class="i">+#[derive(Deserialize, Clone)]
+</a><a href="#h1-0-6" id="h1-0-6" class="i">+pub struct Hero {
+</a><a href="#h1-0-7" id="h1-0-7" class="i">+    /// Variant of hero to use
+</a><a href="#h1-0-8" id="h1-0-8" class="i">+    pub variant: String,
+</a><a href="#h1-0-9" id="h1-0-9" class="i">+    /// Path to background image of the section
+</a><a href="#h1-0-10" id="h1-0-10" class="i">+    pub background_image: Option&lt;PathBuf&gt;,
+</a><a href="#h1-0-11" id="h1-0-11" class="i">+    /// Heading of hero section
+</a><a href="#h1-0-12" id="h1-0-12" class="i">+    pub heading: String,
+</a><a href="#h1-0-13" id="h1-0-13" class="i">+    /// Sub heading of hero section
+</a><a href="#h1-0-14" id="h1-0-14" class="i">+    pub sub_heading: String,
+</a><a href="#h1-0-15" id="h1-0-15" class="i">+}
+</a><a href="#h1-0-16" id="h1-0-16" class="i">+
+</a><a href="#h1-0-17" id="h1-0-17" class="i">+impl Section for Hero {
+</a><a href="#h1-0-18" id="h1-0-18" class="i">+    fn export(&amp;self, metadata: &amp;SectionMetadata) -&gt; Export {
+</a><a href="#h1-0-19" id="h1-0-19" class="i">+        let mut html = &quot;&quot;.to_string();
+</a><a href="#h1-0-20" id="h1-0-20" class="i">+        let mut css = format!(
+</a><a href="#h1-0-21" id="h1-0-21" class="i">+            r#&quot;
+</a><a href="#h1-0-22" id="h1-0-22" class="i">+          .htoml_hero{{
+</a><a href="#h1-0-23" id="h1-0-23" class="i">+            background-color: {};
+</a><a href="#h1-0-24" id="h1-0-24" class="i">+            margin-top: 0;
+</a><a href="#h1-0-25" id="h1-0-25" class="i">+            padding: 2em;
+</a><a href="#h1-0-26" id="h1-0-26" class="i">+            height: 200px;
+</a><a href="#h1-0-27" id="h1-0-27" class="i">+            color: {};
+</a><a href="#h1-0-28" id="h1-0-28" class="i">+          }}
+</a><a href="#h1-0-29" id="h1-0-29" class="i">+
+</a><a href="#h1-0-30" id="h1-0-30" class="i">+          .htoml_hero h1{{
+</a><a href="#h1-0-31" id="h1-0-31" class="i">+            margin-top: 0;
+</a><a href="#h1-0-32" id="h1-0-32" class="i">+          }}
+</a><a href="#h1-0-33" id="h1-0-33" class="i">+        &quot;#,
+</a><a href="#h1-0-34" id="h1-0-34" class="i">+            metadata.tertiary_color, metadata.primary_color
+</a><a href="#h1-0-35" id="h1-0-35" class="i">+        );
+</a><a href="#h1-0-36" id="h1-0-36" class="i">+
+</a><a href="#h1-0-37" id="h1-0-37" class="i">+        let mut background_image = &quot;&quot;;
+</a><a href="#h1-0-38" id="h1-0-38" class="i">+
+</a><a href="#h1-0-39" id="h1-0-39" class="i">+        if let Some(img) = &amp;self.background_image {
+</a><a href="#h1-0-40" id="h1-0-40" class="i">+            if img.as_path().exists() {
+</a><a href="#h1-0-41" id="h1-0-41" class="i">+                if let Some(s) = img.as_path().to_str() {
+</a><a href="#h1-0-42" id="h1-0-42" class="i">+                    background_image = s;
+</a><a href="#h1-0-43" id="h1-0-43" class="i">+                }
+</a><a href="#h1-0-44" id="h1-0-44" class="i">+            }
+</a><a href="#h1-0-45" id="h1-0-45" class="i">+        };
+</a><a href="#h1-0-46" id="h1-0-46" class="i">+
+</a><a href="#h1-0-47" id="h1-0-47" class="i">+        match self.variant.as_str() {
+</a><a href="#h1-0-48" id="h1-0-48" class="i">+            &quot;basic&quot; =&gt; {
+</a><a href="#h1-0-49" id="h1-0-49" class="i">+                html = format!(
+</a><a href="#h1-0-50" id="h1-0-50" class="i">+                    r#&quot;
+</a><a href="#h1-0-51" id="h1-0-51" class="i">+                &lt;section class=&#39;htoml_hero&#39;&gt;
+</a><a href="#h1-0-52" id="h1-0-52" class="i">+                  &lt;h1&gt;{}&lt;h1&gt;
+</a><a href="#h1-0-53" id="h1-0-53" class="i">+                  &lt;p&gt;{}&lt;/p&gt;
+</a><a href="#h1-0-54" id="h1-0-54" class="i">+                &lt;/section&gt;&quot;#,
+</a><a href="#h1-0-55" id="h1-0-55" class="i">+                    self.heading, self.sub_heading
+</a><a href="#h1-0-56" id="h1-0-56" class="i">+                );
+</a><a href="#h1-0-57" id="h1-0-57" class="i">+            }
+</a><a href="#h1-0-58" id="h1-0-58" class="i">+            _ =&gt; panic!(&quot;Invalid Hero variant&quot;),
+</a><a href="#h1-0-59" id="h1-0-59" class="i">+        }
+</a><a href="#h1-0-60" id="h1-0-60" class="i">+        Export { html, css }
+</a><a href="#h1-0-61" id="h1-0-61" class="i">+    }
+</a><a href="#h1-0-62" id="h1-0-62" class="i">+}
+</a><a href="#h1-0-63" id="h1-0-63" class="i">+
+</a><a href="#h1-0-64" id="h1-0-64" class="i">+#[cfg(test)]
+</a><a href="#h1-0-65" id="h1-0-65" class="i">+mod tests {
+</a><a href="#h1-0-66" id="h1-0-66" class="i">+    #[test]
+</a><a href="#h1-0-67" id="h1-0-67" class="i">+    fn it_works() {
+</a><a href="#h1-0-68" id="h1-0-68" class="i">+        let result = 2 + 2;
+</a><a href="#h1-0-69" id="h1-0-69" class="i">+        assert_eq!(result, 4);
+</a><a href="#h1-0-70" id="h1-0-70" class="i">+    }
+</a><a href="#h1-0-71" id="h1-0-71" class="i">+}
+</a><b>diff --git a/<a id="h2" href="../file/src/sections/mod.rs.html">src/sections/mod.rs</a> b/<a href="../file/src/sections/mod.rs.html">src/sections/mod.rs</a></b>
+<a href="#h2-0" id="h2-0" class="h">@@ -1,5 +1,7 @@
+</a> use crate::common::Export;
+ use serde::Deserialize;
+<a href="#h2-0-2" id="h2-0-2" class="i">+
+</a><a href="#h2-0-3" id="h2-0-3" class="i">+pub mod hero;
+</a> pub mod navbar;
+ 
+ /// A section of an HTML webpage
+<a href="#h2-1" id="h2-1" class="h">@@ -23,6 +25,8 @@ pub struct SectionMetadata {
+</a> pub struct Sections {
+     /// Navigation bar section
+     pub navbar: Option&lt;navbar::Navbar&gt;,
+<a href="#h2-1-3" id="h2-1-3" class="i">+    /// Hero section
+</a><a href="#h2-1-4" id="h2-1-4" class="i">+    pub hero: Option&lt;hero::Hero&gt;,
+</a> }
+ 
+ impl Sections {
+<a href="#h2-2" id="h2-2" class="h">@@ -36,6 +40,11 @@ impl Sections {
+</a>             html = format!(&quot;{}{}&quot;, html, navbar_export.html);
+             css = format!(&quot;{}{}&quot;, css, navbar_export.css);
+         }
+<a href="#h2-2-3" id="h2-2-3" class="i">+
+</a><a href="#h2-2-4" id="h2-2-4" class="i">+        if let Some(hero) = &amp;self.hero {
+</a><a href="#h2-2-5" id="h2-2-5" class="i">+            let hero_export = hero.export(metadata);
+</a><a href="#h2-2-6" id="h2-2-6" class="i">+            html = format!(&quot;{}{}&quot;, html, hero_export.html);
+</a><a href="#h2-2-7" id="h2-2-7" class="i">+            css = format!(&quot;{}{}&quot;, css, hero_export.css);
+</a>         }
+ 
+         Export { html, css }
+</pre>
+</div>
+</body>
+</html>
