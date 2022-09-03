@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>fix: name - ietf - Unnamed repository; edit this file &#39;description&#39; to name the repository.
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="ietf Atom Feed" href="../atom.xml" />
+<link rel="alternate" type="application/atom+xml" title="ietf Atom Feed (tags)" href="../tags.xml" />
+<link rel="stylesheet" type="text/css" href="/git.css" />
+</head>
+<body>
+<table><tr><td><a href="/index.html"><img src="/logo.png" alt="" width="32" height="32" /></a></td><td><h1>ietf</h1><span class="desc">Unnamed repository; edit this file &#39;description&#39; to name the repository.
+</span></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a> | <a href="../file/README.md.pretty.html">README</a> | <a href="../file/LICENSE.html">LICENSE</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/08aa5644650d91480615b49bbeeb8f435e000e92.html">08aa5644650d91480615b49bbeeb8f435e000e92</a>
+<b>parent</b> <a href="../commit/b8e61be68b58c6607a4e717d1307f9c123ed714f.html">b8e61be68b58c6607a4e717d1307f9c123ed714f</a>
+<b>Author:</b> 0xflotus &lt;<a href="mailto:0xflotus@gmail.com">0xflotus@gmail.com</a>&gt;
+<b>Date:</b>   Thu, 31 Dec 2020 01:36:42 +0100
+
+fix: name
+
+<b>Diffstat:</b>
+<table><tr><td class="M">M</td><td><a href="#h0">src/main.rs</a></td><td> | </td><td class="num">2</td><td><span class="i">+</span><span class="d">-</span></td></tr>
+</table></pre><pre>1 file changed, 1 insertion(+), 1 deletion(-)
+<hr/><b>diff --git a/<a id="h0" href="../file/src/main.rs.html">src/main.rs</a> b/<a href="../file/src/main.rs.html">src/main.rs</a></b>
+<a href="#h0-0" id="h0-0" class="h">@@ -13,7 +13,7 @@ fn main() {
+</a>                 .takes_value(true),
+         )
+         .subcommand(SubCommand::with_name(&quot;update&quot;).about(&quot;Update RFC Index&quot;))
+<a href="#h0-0-3" id="h0-0-3" class="d">-        .subcommand(SubCommand::with_name(&quot;clean&quot;).about(&quot;Remove the ietf directory&quot;))
+</a><a href="#h0-0-4" id="h0-0-4" class="i">+        .subcommand(SubCommand::with_name(&quot;clean&quot;).about(&quot;Remove the rfc directory&quot;))
+</a>         .get_matches();
+ 
+     // Read RFC by serial number
+</pre>
+</div>
+</body>
+</html>

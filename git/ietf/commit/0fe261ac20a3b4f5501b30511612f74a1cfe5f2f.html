@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Create rust.yml - ietf - Unnamed repository; edit this file &#39;description&#39; to name the repository.
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="ietf Atom Feed" href="../atom.xml" />
+<link rel="alternate" type="application/atom+xml" title="ietf Atom Feed (tags)" href="../tags.xml" />
+<link rel="stylesheet" type="text/css" href="/git.css" />
+</head>
+<body>
+<table><tr><td><a href="/index.html"><img src="/logo.png" alt="" width="32" height="32" /></a></td><td><h1>ietf</h1><span class="desc">Unnamed repository; edit this file &#39;description&#39; to name the repository.
+</span></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a> | <a href="../file/README.md.pretty.html">README</a> | <a href="../file/LICENSE.html">LICENSE</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/0fe261ac20a3b4f5501b30511612f74a1cfe5f2f.html">0fe261ac20a3b4f5501b30511612f74a1cfe5f2f</a>
+<b>parent</b> <a href="../commit/ea47d146b1feecbb09d1b1e8aecd125ca1a60b8c.html">ea47d146b1feecbb09d1b1e8aecd125ca1a60b8c</a>
+<b>Author:</b> cy6erlion &lt;<a href="mailto:50733658+cy6erlion@users.noreply.github.com">50733658+cy6erlion@users.noreply.github.com</a>&gt;
+<b>Date:</b>   Tue, 29 Dec 2020 18:21:47 +0200
+
+Create rust.yml
+<b>Diffstat:</b>
+<table><tr><td class="A">A</td><td><a href="#h0">.github/workflows/rust.yml</a></td><td> | </td><td class="num">22</td><td><span class="i">++++++++++++++++++++++</span><span class="d"></span></td></tr>
+</table></pre><pre>1 file changed, 22 insertions(+), 0 deletions(-)
+<hr/><b>diff --git a/<a id="h0" href="../file/.github/workflows/rust.yml.html">.github/workflows/rust.yml</a> b/<a href="../file/.github/workflows/rust.yml.html">.github/workflows/rust.yml</a></b>
+<a href="#h0-0" id="h0-0" class="h">@@ -0,0 +1,22 @@
+</a><a href="#h0-0-0" id="h0-0-0" class="i">+name: Rust
+</a><a href="#h0-0-1" id="h0-0-1" class="i">+
+</a><a href="#h0-0-2" id="h0-0-2" class="i">+on:
+</a><a href="#h0-0-3" id="h0-0-3" class="i">+  push:
+</a><a href="#h0-0-4" id="h0-0-4" class="i">+    branches: [ master ]
+</a><a href="#h0-0-5" id="h0-0-5" class="i">+  pull_request:
+</a><a href="#h0-0-6" id="h0-0-6" class="i">+    branches: [ master ]
+</a><a href="#h0-0-7" id="h0-0-7" class="i">+
+</a><a href="#h0-0-8" id="h0-0-8" class="i">+env:
+</a><a href="#h0-0-9" id="h0-0-9" class="i">+  CARGO_TERM_COLOR: always
+</a><a href="#h0-0-10" id="h0-0-10" class="i">+
+</a><a href="#h0-0-11" id="h0-0-11" class="i">+jobs:
+</a><a href="#h0-0-12" id="h0-0-12" class="i">+  build:
+</a><a href="#h0-0-13" id="h0-0-13" class="i">+
+</a><a href="#h0-0-14" id="h0-0-14" class="i">+    runs-on: ubuntu-latest
+</a><a href="#h0-0-15" id="h0-0-15" class="i">+
+</a><a href="#h0-0-16" id="h0-0-16" class="i">+    steps:
+</a><a href="#h0-0-17" id="h0-0-17" class="i">+    - uses: actions/checkout@v2
+</a><a href="#h0-0-18" id="h0-0-18" class="i">+    - name: Build
+</a><a href="#h0-0-19" id="h0-0-19" class="i">+      run: cargo build --verbose
+</a><a href="#h0-0-20" id="h0-0-20" class="i">+    - name: Run tests
+</a><a href="#h0-0-21" id="h0-0-21" class="i">+      run: cargo test --verbose
+</a></pre>
+</div>
+</body>
+</html>

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+<title>drtx, branch HEAD</title>
+<subtitle>Dart Extras
+</subtitle>
+<entry>
+<id>65d5b547ea6fafc70f9e907a09d13456366f7625</id>
+<published>2022-09-03T13:06:30Z</published>
+<updated>2022-09-03T13:06:30Z</updated>
+<title type="text">midot adjustments</title>
+<link rel="alternate" type="text/html" href="commit/65d5b547ea6fafc70f9e907a09d13456366f7625.html" />
+<author>
+<name>Jackson G. Kaindume</name>
+<email>kaindume@kwatafana.org</email>
+</author>
+<content type="text">commit 65d5b547ea6fafc70f9e907a09d13456366f7625
+parent 36e7fd7f50aa7259dd3354bfdad05f1b3e4670dc
+Author: Jackson G. Kaindume &lt;kaindume@kwatafana.org&gt;
+Date:   Sat,  3 Sep 2022 15:06:30 +0200
+
+midot adjustments
+
+</content>
+</entry>
+<entry>
+<id>36e7fd7f50aa7259dd3354bfdad05f1b3e4670dc</id>
+<published>2022-09-03T13:05:48Z</published>
+<updated>2022-09-03T13:05:48Z</updated>
+<title type="text">Update README.md</title>
+<link rel="alternate" type="text/html" href="commit/36e7fd7f50aa7259dd3354bfdad05f1b3e4670dc.html" />
+<author>
+<name>Jackson G. Kaindume</name>
+<email>kaindume@kwatafana.org</email>
+</author>
+<content type="text">commit 36e7fd7f50aa7259dd3354bfdad05f1b3e4670dc
+parent 76579e3b2e46456ab8bba79ef431bc04b1d2be20
+Author: Jackson G. Kaindume &lt;kaindume@kwatafana.org&gt;
+Date:   Sat,  3 Sep 2022 15:05:48 +0200
+
+Update README.md
+
+</content>
+</entry>
+<entry>
+<id>76579e3b2e46456ab8bba79ef431bc04b1d2be20</id>
+<published>2022-07-04T12:19:12Z</published>
+<updated>2022-07-04T12:19:12Z</updated>
+<title type="text">shorter API identifiers</title>
+<link rel="alternate" type="text/html" href="commit/76579e3b2e46456ab8bba79ef431bc04b1d2be20.html" />
+<author>
+<name>Jackson G. Kaindume</name>
+<email>seestem@merely.tech</email>
+</author>
+<content type="text">commit 76579e3b2e46456ab8bba79ef431bc04b1d2be20
+parent 5337501ba9d60ea914c7cb6b5b545a21516c76c4
+Author: Jackson G. Kaindume &lt;seestem@merely.tech&gt;
+Date:   Mon,  4 Jul 2022 14:19:12 +0200
+
+shorter API identifiers
+
+</content>
+</entry>
+<entry>
+<id>5337501ba9d60ea914c7cb6b5b545a21516c76c4</id>
+<published>2022-07-04T11:21:31Z</published>
+<updated>2022-07-04T11:21:31Z</updated>
+<title type="text">Add StrFmt.shrtMidDot() function</title>
+<link rel="alternate" type="text/html" href="commit/5337501ba9d60ea914c7cb6b5b545a21516c76c4.html" />
+<author>
+<name>Jackson G. Kaindume</name>
+<email>seestem@merely.tech</email>
+</author>
+<content type="text">commit 5337501ba9d60ea914c7cb6b5b545a21516c76c4
+parent d97d40348a407ee4b8c56c2c2549acbbd4bcf692
+Author: Jackson G. Kaindume &lt;seestem@merely.tech&gt;
+Date:   Mon,  4 Jul 2022 13:21:31 +0200
+
+Add StrFmt.shrtMidDot() function
+
+</content>
+</entry>
+<entry>
+<id>d97d40348a407ee4b8c56c2c2549acbbd4bcf692</id>
+<published>2022-07-04T11:20:22Z</published>
+<updated>2022-07-04T11:20:22Z</updated>
+<title type="text">initial commit</title>
+<link rel="alternate" type="text/html" href="commit/d97d40348a407ee4b8c56c2c2549acbbd4bcf692.html" />
+<author>
+<name>Jackson G. Kaindume</name>
+<email>seestem@merely.tech</email>
+</author>
+<content type="text">commit d97d40348a407ee4b8c56c2c2549acbbd4bcf692
+Author: Jackson G. Kaindume &lt;seestem@merely.tech&gt;
+Date:   Mon,  4 Jul 2022 13:20:22 +0200
+
+initial commit
+
+</content>
+</entry>
+</feed>

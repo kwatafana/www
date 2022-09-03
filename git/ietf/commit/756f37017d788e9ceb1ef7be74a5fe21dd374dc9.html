@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>follow string conversion conventions - ietf - Unnamed repository; edit this file &#39;description&#39; to name the repository.
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="ietf Atom Feed" href="../atom.xml" />
+<link rel="alternate" type="application/atom+xml" title="ietf Atom Feed (tags)" href="../tags.xml" />
+<link rel="stylesheet" type="text/css" href="/git.css" />
+</head>
+<body>
+<table><tr><td><a href="/index.html"><img src="/logo.png" alt="" width="32" height="32" /></a></td><td><h1>ietf</h1><span class="desc">Unnamed repository; edit this file &#39;description&#39; to name the repository.
+</span></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a> | <a href="../file/README.md.pretty.html">README</a> | <a href="../file/LICENSE.html">LICENSE</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/756f37017d788e9ceb1ef7be74a5fe21dd374dc9.html">756f37017d788e9ceb1ef7be74a5fe21dd374dc9</a>
+<b>parent</b> <a href="../commit/e7f31713df0e372c01d8cbab9c2f267f81f580b8.html">e7f31713df0e372c01d8cbab9c2f267f81f580b8</a>
+<b>Author:</b> Nick Torres &lt;<a href="mailto:nickrtorres@icloud.com">nickrtorres@icloud.com</a>&gt;
+<b>Date:</b>   Sun,  7 Feb 2021 13:52:00 -0800
+
+follow string conversion conventions
+
+<b>Diffstat:</b>
+<table><tr><td class="M">M</td><td><a href="#h0">src/fetch.rs</a></td><td> | </td><td class="num">15</td><td><span class="i">++++++++</span><span class="d">-------</span></td></tr>
+</table></pre><pre>1 file changed, 8 insertions(+), 7 deletions(-)
+<hr/><b>diff --git a/<a id="h0" href="../file/src/fetch.rs.html">src/fetch.rs</a> b/<a href="../file/src/fetch.rs.html">src/fetch.rs</a></b>
+<a href="#h0-0" id="h0-0" class="h">@@ -20,7 +20,7 @@ pub fn scrape(data: &amp;str) -&gt; Vec&lt;String&gt; {
+</a>         rfcs.push(
+             iter.by_ref()
+                 .take_while(|s| !s.is_empty())
+<a href="#h0-0-3" id="h0-0-3" class="d">-                .fold(&quot;&quot;.to_owned(), |acc, s| acc + s),
+</a><a href="#h0-0-4" id="h0-0-4" class="i">+                .fold(String::new(), |acc, s| acc + s),
+</a>         );
+     }
+ 
+<a href="#h0-1" id="h0-1" class="h">@@ -33,13 +33,13 @@ mod tests {
+</a> 
+     #[test]
+     fn single_rfc_scrape() {
+<a href="#h0-1-3" id="h0-1-3" class="d">-        let data = &quot;\n&quot;.repeat(66).to_owned()
+</a><a href="#h0-1-4" id="h0-1-4" class="i">+        let data = String::from(&quot;\n&quot;.repeat(66))
+</a>             + &quot;8989 Additional Criteria for Nominating Committee Eligibility. B.\n&quot;
+             + &quot;     Carpenter, S. Farrell. February 2021. (Format: HTML, TXT, PDF, XML)\n&quot;
+             + &quot;     (Status: EXPERIMENTAL) (DOI: 10.17487/RFC8989) \n&quot;;
+ 
+         let rfcs = vec![
+<a href="#h0-1-10" id="h0-1-10" class="d">-            &quot;8989 Additional Criteria for Nominating Committee Eligibility. B.&quot;.to_owned()
+</a><a href="#h0-1-11" id="h0-1-11" class="i">+            String::from(&quot;8989 Additional Criteria for Nominating Committee Eligibility. B.&quot;)
+</a>                 + &quot;     Carpenter, S. Farrell. February 2021. (Format: HTML, TXT, PDF, XML)&quot;
+                 + &quot;     (Status: EXPERIMENTAL) (DOI: 10.17487/RFC8989) &quot;,
+         ];
+<a href="#h0-2" id="h0-2" class="h">@@ -49,7 +49,7 @@ mod tests {
+</a> 
+     #[test]
+     fn multi_rfc_scrape() {
+<a href="#h0-2-3" id="h0-2-3" class="d">-        let data = &quot;\n&quot;.repeat(66).to_owned()
+</a><a href="#h0-2-4" id="h0-2-4" class="i">+        let data = String::from(&quot;\n&quot;.repeat(66))
+</a>             + &quot;8989 Additional Criteria for Nominating Committee Eligibility. B.\n&quot;
+             + &quot;     Carpenter, S. Farrell. February 2021. (Format: HTML, TXT, PDF, XML)\n&quot;
+             + &quot;     (Status: EXPERIMENTAL) (DOI: 10.17487/RFC8989) \n&quot;
+<a href="#h0-3" id="h0-3" class="h">@@ -60,11 +60,12 @@ mod tests {
+</a>             + &quot;     STANDARD) (DOI: 10.17487/RFC9003) \n&quot;;
+ 
+         let rfcs = vec![
+<a href="#h0-3-3" id="h0-3-3" class="d">-            &quot;8989 Additional Criteria for Nominating Committee Eligibility. B.&quot;.to_owned()
+</a><a href="#h0-3-4" id="h0-3-4" class="i">+            String::from(&quot;8989 Additional Criteria for Nominating Committee Eligibility. B.&quot;)
+</a>                 + &quot;     Carpenter, S. Farrell. February 2021. (Format: HTML, TXT, PDF, XML)&quot;
+                 + &quot;     (Status: EXPERIMENTAL) (DOI: 10.17487/RFC8989) &quot;,
+<a href="#h0-3-7" id="h0-3-7" class="d">-            &quot;9003 Extended BGP Administrative Shutdown Communication. J. Snijders, J.&quot;.to_owned()
+</a><a href="#h0-3-8" id="h0-3-8" class="d">-                + &quot;     Heitz, J. Scudder, A. Azimov. January 2021. (Format: HTML, TXT, PDF,&quot;
+</a><a href="#h0-3-9" id="h0-3-9" class="i">+            String::from(
+</a><a href="#h0-3-10" id="h0-3-10" class="i">+                &quot;9003 Extended BGP Administrative Shutdown Communication. J. Snijders, J.&quot;,
+</a><a href="#h0-3-11" id="h0-3-11" class="i">+            ) + &quot;     Heitz, J. Scudder, A. Azimov. January 2021. (Format: HTML, TXT, PDF,&quot;
+</a>                 + &quot;     XML) (Obsoletes RFC8203) (Updates RFC4486) (Status: PROPOSED&quot;
+                 + &quot;     STANDARD) (DOI: 10.17487/RFC9003) &quot;,
+         ];
+</pre>
+</div>
+</body>
+</html>

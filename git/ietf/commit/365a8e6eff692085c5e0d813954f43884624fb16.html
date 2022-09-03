@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>update usage guide - ietf - Unnamed repository; edit this file &#39;description&#39; to name the repository.
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="ietf Atom Feed" href="../atom.xml" />
+<link rel="alternate" type="application/atom+xml" title="ietf Atom Feed (tags)" href="../tags.xml" />
+<link rel="stylesheet" type="text/css" href="/git.css" />
+</head>
+<body>
+<table><tr><td><a href="/index.html"><img src="/logo.png" alt="" width="32" height="32" /></a></td><td><h1>ietf</h1><span class="desc">Unnamed repository; edit this file &#39;description&#39; to name the repository.
+</span></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a> | <a href="../file/README.md.pretty.html">README</a> | <a href="../file/LICENSE.html">LICENSE</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/365a8e6eff692085c5e0d813954f43884624fb16.html">365a8e6eff692085c5e0d813954f43884624fb16</a>
+<b>parent</b> <a href="../commit/15a3d511c2cb061c0c8d206816bfe34153523c7a.html">15a3d511c2cb061c0c8d206816bfe34153523c7a</a>
+<b>Author:</b> cy6erlion &lt;<a href="mailto:dev@merely.tech">dev@merely.tech</a>&gt;
+<b>Date:</b>   Thu, 31 Dec 2020 23:08:57 +0200
+
+update usage guide
+
+<b>Diffstat:</b>
+<table><tr><td class="M">M</td><td><a href="#h0">README.md</a></td><td> | </td><td class="num">17</td><td><span class="i">++++++++++++</span><span class="d">-----</span></td></tr>
+</table></pre><pre>1 file changed, 12 insertions(+), 5 deletions(-)
+<hr/><b>diff --git a/<a id="h0" href="../file/README.md.html">README.md</a> b/<a href="../file/README.md.html">README.md</a></b>
+<a href="#h0-0" id="h0-0" class="h">@@ -43,9 +43,7 @@ You can install it with the Rust package manager
+</a>  $ cargo install ietf
+ ```
+ 
+<a href="#h0-0-3" id="h0-0-3" class="d">-### Running	
+</a><a href="#h0-0-4" id="h0-0-4" class="d">-To run simply type the following command in the shell to start the RFC
+</a><a href="#h0-0-5" id="h0-0-5" class="d">-index:
+</a><a href="#h0-0-6" id="h0-0-6" class="i">+### View RFC index
+</a> 
+ ``` bash
+ $ ietf
+<a href="#h0-1" id="h0-1" class="h">@@ -56,8 +54,17 @@ $ ietf
+</a> $ ietf -n 1
+ ```
+ 
+<a href="#h0-1-3" id="h0-1-3" class="d">-### Update
+</a><a href="#h0-1-4" id="h0-1-4" class="d">-To update the local RFC index, use the following command:
+</a><a href="#h0-1-5" id="h0-1-5" class="i">+### Remove an RFC
+</a><a href="#h0-1-6" id="h0-1-6" class="i">+``` bash
+</a><a href="#h0-1-7" id="h0-1-7" class="i">+$ ietf -r 1
+</a><a href="#h0-1-8" id="h0-1-8" class="i">+```
+</a><a href="#h0-1-9" id="h0-1-9" class="i">+
+</a><a href="#h0-1-10" id="h0-1-10" class="i">+### Remove the RFC storage directory:
+</a><a href="#h0-1-11" id="h0-1-11" class="i">+``` bash
+</a><a href="#h0-1-12" id="h0-1-12" class="i">+$ ietf clean
+</a><a href="#h0-1-13" id="h0-1-13" class="i">+```
+</a><a href="#h0-1-14" id="h0-1-14" class="i">+
+</a><a href="#h0-1-15" id="h0-1-15" class="i">+### Update/Download RFC index
+</a> 
+ ``` bash
+ $ ietf update
+</pre>
+</div>
+</body>
+</html>

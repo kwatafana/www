@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>docs and comments - funscheduler - Unnamed repository; edit this file &#39;description&#39; to name the repository.
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="funscheduler Atom Feed" href="../atom.xml" />
+<link rel="alternate" type="application/atom+xml" title="funscheduler Atom Feed (tags)" href="../tags.xml" />
+<link rel="stylesheet" type="text/css" href="/git.css" />
+</head>
+<body>
+<table><tr><td><a href="/index.html"><img src="/logo.png" alt="" width="32" height="32" /></a></td><td><h1>funscheduler</h1><span class="desc">Unnamed repository; edit this file &#39;description&#39; to name the repository.
+</span></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a> | <a href="../file/README.md.pretty.html">README</a> | <a href="../file/LICENSE.html">LICENSE</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/1e34ff1e8f5e3061bc8e9d8f1a888b0e75981e54.html">1e34ff1e8f5e3061bc8e9d8f1a888b0e75981e54</a>
+<b>parent</b> <a href="../commit/d7c68af31741e003fae919d0c5a1173d608526f0.html">d7c68af31741e003fae919d0c5a1173d608526f0</a>
+<b>Author:</b> Jackson G. Kaindume &lt;<a href="mailto:seestem@protonmail.com">seestem@protonmail.com</a>&gt;
+<b>Date:</b>   Fri, 16 Jul 2021 00:27:29 +0200
+
+docs and comments
+
+<b>Diffstat:</b>
+<table><tr><td class="M">M</td><td><a href="#h0">README</a></td><td> | </td><td class="num">14</td><td><span class="i">+++++++</span><span class="d">-------</span></td></tr>
+<tr><td class="M">M</td><td><a href="#h1">src/lib.rs</a></td><td> | </td><td class="num">3</td><td><span class="i">++</span><span class="d">-</span></td></tr>
+</table></pre><pre>2 files changed, 9 insertions(+), 8 deletions(-)
+<hr/><b>diff --git a/<a id="h0" href="../file/README.html">README</a> b/<a href="../file/README.html">README</a></b>
+<a href="#h0-0" id="h0-0" class="h">@@ -3,7 +3,7 @@
+</a>                └  └─┘┘└┘└─┘└─┘┴ ┴└─┘─┴┘└─┘┴─┘└─┘┴└─
+ 
+ ----------------------------------------------------------------------
+<a href="#h0-0-3" id="h0-0-3" class="d">-  Simple time based function execution scheduler
+</a><a href="#h0-0-4" id="h0-0-4" class="i">+  Time based function execution scheduler
+</a> ----------------------------------------------------------------------
+ 
+     use funscheduler::{FunScheduler, Timing};
+<a href="#h0-1" id="h0-1" class="h">@@ -18,16 +18,16 @@
+</a>     }
+ 
+ ----------------------------------------------------------------------
+<a href="#h0-1-3" id="h0-1-3" class="d">-  Timings: Easily congigure the timing of the function execution
+</a><a href="#h0-1-4" id="h0-1-4" class="i">+  Timings allow simple congiguration of the function execution
+</a> ----------------------------------------------------------------------
+ 
+<a href="#h0-1-7" id="h0-1-7" class="d">-      Timing::Seconds(1)    // Every second
+</a><a href="#h0-1-8" id="h0-1-8" class="d">-      Timing::Minutes(25)   // Every 25 minutes
+</a><a href="#h0-1-9" id="h0-1-9" class="d">-      Timing::Hours(2)      // Every 2 hours
+</a><a href="#h0-1-10" id="h0-1-10" class="d">-      Timing::Days(1)       // Every day same as Timing::Hours(24)
+</a><a href="#h0-1-11" id="h0-1-11" class="i">+    Timing::Seconds(1)
+</a><a href="#h0-1-12" id="h0-1-12" class="i">+    Timing::Minutes(25)
+</a><a href="#h0-1-13" id="h0-1-13" class="i">+    Timing::Hours(2)
+</a><a href="#h0-1-14" id="h0-1-14" class="i">+    Timing::Days(1)
+</a>     
+ ----------------------------------------------------------------------
+<a href="#h0-1-17" id="h0-1-17" class="d">-  Job runners: Different ways to execute the function
+</a><a href="#h0-1-18" id="h0-1-18" class="i">+  Job runners, different methods/ways to execute the function
+</a> ----------------------------------------------------------------------
+ 
+     // Evaluates a function at specified intervals, starting now
+<b>diff --git a/<a id="h1" href="../file/src/lib.rs.html">src/lib.rs</a> b/<a href="../file/src/lib.rs.html">src/lib.rs</a></b>
+<a href="#h1-0" id="h1-0" class="h">@@ -1,4 +1,5 @@
+</a><a href="#h1-0-0" id="h1-0-0" class="d">-//! # Time based function execution scheduler
+</a><a href="#h1-0-1" id="h1-0-1" class="i">+//! # funscheduler
+</a><a href="#h1-0-2" id="h1-0-2" class="i">+//! Time based function execution scheduler
+</a> use std::time::Duration;
+ 
+ /// Timing configuration
+</pre>
+</div>
+</body>
+</html>

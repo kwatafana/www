@@ -1,0 +1,901 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+<title>ietf, branch HEAD</title>
+<subtitle>CLI for reading IETF RFCs.
+</subtitle>
+<entry>
+<id>4f653f2c2abd7127201bdd045e0fa1644bccfa19</id>
+<published>2022-04-23T13:52:28Z</published>
+<updated>2022-04-23T14:09:27Z</updated>
+<title type="text">feat: search</title>
+<link rel="alternate" type="text/html" href="commit/4f653f2c2abd7127201bdd045e0fa1644bccfa19.html" />
+<author>
+<name>tizee</name>
+<email>33030965+tizee@users.noreply.github.com</email>
+</author>
+<content type="text">commit 4f653f2c2abd7127201bdd045e0fa1644bccfa19
+parent 0052851b5315ed3e678b7be1f540b991b6a4ab33
+Author: tizee &lt;33030965+tizee@users.noreply.github.com&gt;
+Date:   Sat, 23 Apr 2022 21:52:28 +0800
+
+feat: search
+
+</content>
+</entry>
+<entry>
+<id>0052851b5315ed3e678b7be1f540b991b6a4ab33</id>
+<published>2021-02-08T16:50:34Z</published>
+<updated>2021-02-08T16:50:34Z</updated>
+<title type="text">Merge pull request #9 from nickrtorres/master</title>
+<link rel="alternate" type="text/html" href="commit/0052851b5315ed3e678b7be1f540b991b6a4ab33.html" />
+<author>
+<name>cy6erlion</name>
+<email>50733658+cy6erlion@users.noreply.github.com</email>
+</author>
+<content type="text">commit 0052851b5315ed3e678b7be1f540b991b6a4ab33
+parent cf8cdbded4410bd7c2ca0f0fbcf84b3da5ddbcb9
+Author: cy6erlion &lt;50733658+cy6erlion@users.noreply.github.com&gt;
+Date:   Mon,  8 Feb 2021 18:50:34 +0200
+
+Merge pull request #9 from nickrtorres/master
+
+include final RFC during scrape
+</content>
+</entry>
+<entry>
+<id>756f37017d788e9ceb1ef7be74a5fe21dd374dc9</id>
+<published>2021-02-07T21:52:00Z</published>
+<updated>2021-02-07T21:52:00Z</updated>
+<title type="text">follow string conversion conventions</title>
+<link rel="alternate" type="text/html" href="commit/756f37017d788e9ceb1ef7be74a5fe21dd374dc9.html" />
+<author>
+<name>Nick Torres</name>
+<email>nickrtorres@icloud.com</email>
+</author>
+<content type="text">commit 756f37017d788e9ceb1ef7be74a5fe21dd374dc9
+parent e7f31713df0e372c01d8cbab9c2f267f81f580b8
+Author: Nick Torres &lt;nickrtorres@icloud.com&gt;
+Date:   Sun,  7 Feb 2021 13:52:00 -0800
+
+follow string conversion conventions
+
+</content>
+</entry>
+<entry>
+<id>e7f31713df0e372c01d8cbab9c2f267f81f580b8</id>
+<published>2021-02-07T21:16:53Z</published>
+<updated>2021-02-07T21:16:53Z</updated>
+<title type="text">include final RFC during scrape</title>
+<link rel="alternate" type="text/html" href="commit/e7f31713df0e372c01d8cbab9c2f267f81f580b8.html" />
+<author>
+<name>Nick Torres</name>
+<email>nickrtorres@icloud.com</email>
+</author>
+<content type="text">commit e7f31713df0e372c01d8cbab9c2f267f81f580b8
+parent cf8cdbded4410bd7c2ca0f0fbcf84b3da5ddbcb9
+Author: Nick Torres &lt;nickrtorres@icloud.com&gt;
+Date:   Sun,  7 Feb 2021 13:16:53 -0800
+
+include final RFC during scrape
+
+</content>
+</entry>
+<entry>
+<id>cf8cdbded4410bd7c2ca0f0fbcf84b3da5ddbcb9</id>
+<published>2021-02-07T09:01:46Z</published>
+<updated>2021-02-07T09:01:46Z</updated>
+<title type="text">ignore oryx file</title>
+<link rel="alternate" type="text/html" href="commit/cf8cdbded4410bd7c2ca0f0fbcf84b3da5ddbcb9.html" />
+<author>
+<name>cy6erlion</name>
+<email>dev@merely.tech</email>
+</author>
+<content type="text">commit cf8cdbded4410bd7c2ca0f0fbcf84b3da5ddbcb9
+parent f6a584ac28ebf13425cfdfd686db433b90a40850
+Author: cy6erlion &lt;dev@merely.tech&gt;
+Date:   Sun,  7 Feb 2021 11:01:46 +0200
+
+ignore oryx file
+
+</content>
+</entry>
+<entry>
+<id>f6a584ac28ebf13425cfdfd686db433b90a40850</id>
+<published>2021-02-07T08:59:44Z</published>
+<updated>2021-02-07T08:59:44Z</updated>
+<title type="text">feat: Revert back to using normal pager for IETF reading</title>
+<link rel="alternate" type="text/html" href="commit/f6a584ac28ebf13425cfdfd686db433b90a40850.html" />
+<author>
+<name>cy6erlion</name>
+<email>dev@merely.tech</email>
+</author>
+<content type="text">commit f6a584ac28ebf13425cfdfd686db433b90a40850
+parent 9d0be962a119fc598e93e1e1a4d39c2aaf77ff5c
+Author: cy6erlion &lt;dev@merely.tech&gt;
+Date:   Sun,  7 Feb 2021 10:59:44 +0200
+
+feat: Revert back to using normal pager for IETF reading
+
+</content>
+</entry>
+<entry>
+<id>9d0be962a119fc598e93e1e1a4d39c2aaf77ff5c</id>
+<published>2021-01-18T20:54:25Z</published>
+<updated>2021-01-18T20:54:25Z</updated>
+<title type="text">updates before release</title>
+<link rel="alternate" type="text/html" href="commit/9d0be962a119fc598e93e1e1a4d39c2aaf77ff5c.html" />
+<author>
+<name>cy6erlion</name>
+<email>dev@merely.tech</email>
+</author>
+<content type="text">commit 9d0be962a119fc598e93e1e1a4d39c2aaf77ff5c
+parent 04358b5a7fe8414ee2dd52b6f5496f8c14f2e45f
+Author: cy6erlion &lt;dev@merely.tech&gt;
+Date:   Mon, 18 Jan 2021 22:54:25 +0200
+
+updates before release
+
+</content>
+</entry>
+<entry>
+<id>04358b5a7fe8414ee2dd52b6f5496f8c14f2e45f</id>
+<published>2021-01-18T20:44:13Z</published>
+<updated>2021-01-18T20:44:13Z</updated>
+<title type="text">update dependencies</title>
+<link rel="alternate" type="text/html" href="commit/04358b5a7fe8414ee2dd52b6f5496f8c14f2e45f.html" />
+<author>
+<name>cy6erlion</name>
+<email>dev@merely.tech</email>
+</author>
+<content type="text">commit 04358b5a7fe8414ee2dd52b6f5496f8c14f2e45f
+parent 17e0553c73fc671f6a408505ebe801cba23fd1e8
+Author: cy6erlion &lt;dev@merely.tech&gt;
+Date:   Mon, 18 Jan 2021 22:44:13 +0200
+
+update dependencies
+
+</content>
+</entry>
+<entry>
+<id>17e0553c73fc671f6a408505ebe801cba23fd1e8</id>
+<published>2021-01-13T06:45:52Z</published>
+<updated>2021-01-13T06:45:52Z</updated>
+<title type="text">bump version</title>
+<link rel="alternate" type="text/html" href="commit/17e0553c73fc671f6a408505ebe801cba23fd1e8.html" />
+<author>
+<name>cy6erlion</name>
+<email>dev@merely.tech</email>
+</author>
+<content type="text">commit 17e0553c73fc671f6a408505ebe801cba23fd1e8
+parent 111602bba6afc7b29ab496d13d6b5762d1b6de49
+Author: cy6erlion &lt;dev@merely.tech&gt;
+Date:   Wed, 13 Jan 2021 08:45:52 +0200
+
+bump version
+
+</content>
+</entry>
+<entry>
+<id>111602bba6afc7b29ab496d13d6b5762d1b6de49</id>
+<published>2021-01-12T19:52:03Z</published>
+<updated>2021-01-12T19:52:03Z</updated>
+<title type="text">fix cargo warnings</title>
+<link rel="alternate" type="text/html" href="commit/111602bba6afc7b29ab496d13d6b5762d1b6de49.html" />
+<author>
+<name>cy6erlion</name>
+<email>dev@merely.tech</email>
+</author>
+<content type="text">commit 111602bba6afc7b29ab496d13d6b5762d1b6de49
+parent 906950beb34433860a349437c98ab31e66e37c98
+Author: cy6erlion &lt;dev@merely.tech&gt;
+Date:   Tue, 12 Jan 2021 21:52:03 +0200
+
+fix cargo warnings
+
+</content>
+</entry>
+<entry>
+<id>906950beb34433860a349437c98ab31e66e37c98</id>
+<published>2021-01-12T19:42:56Z</published>
+<updated>2021-01-12T19:42:56Z</updated>
+<title type="text">bump version to 0.2.0</title>
+<link rel="alternate" type="text/html" href="commit/906950beb34433860a349437c98ab31e66e37c98.html" />
+<author>
+<name>cy6erlion</name>
+<email>dev@merely.tech</email>
+</author>
+<content type="text">commit 906950beb34433860a349437c98ab31e66e37c98
+parent 93fd8c1dde897a28da5e3013d9844f44014229f0
+Author: cy6erlion &lt;dev@merely.tech&gt;
+Date:   Tue, 12 Jan 2021 21:42:56 +0200
+
+bump version to 0.2.0
+
+</content>
+</entry>
+<entry>
+<id>93fd8c1dde897a28da5e3013d9844f44014229f0</id>
+<published>2021-01-12T19:01:24Z</published>
+<updated>2021-01-12T19:01:24Z</updated>
+<title type="text">update program description</title>
+<link rel="alternate" type="text/html" href="commit/93fd8c1dde897a28da5e3013d9844f44014229f0.html" />
+<author>
+<name>cy6erlion</name>
+<email>dev@merely.tech</email>
+</author>
+<content type="text">commit 93fd8c1dde897a28da5e3013d9844f44014229f0
+parent 6bf53af69285f99fe4e4c12e5c11b8c836e03a54
+Author: cy6erlion &lt;dev@merely.tech&gt;
+Date:   Tue, 12 Jan 2021 21:01:24 +0200
+
+update program description
+
+</content>
+</entry>
+<entry>
+<id>6bf53af69285f99fe4e4c12e5c11b8c836e03a54</id>
+<published>2021-01-12T18:32:08Z</published>
+<updated>2021-01-12T18:32:08Z</updated>
+<title type="text">Remove pager crate</title>
+<link rel="alternate" type="text/html" href="commit/6bf53af69285f99fe4e4c12e5c11b8c836e03a54.html" />
+<author>
+<name>cy6erlion</name>
+<email>dev@merely.tech</email>
+</author>
+<content type="text">commit 6bf53af69285f99fe4e4c12e5c11b8c836e03a54
+parent 4559b69367d243917c20793cbd9a2f5364808db9
+Author: cy6erlion &lt;dev@merely.tech&gt;
+Date:   Tue, 12 Jan 2021 20:32:08 +0200
+
+Remove pager crate
+
+</content>
+</entry>
+<entry>
+<id>4559b69367d243917c20793cbd9a2f5364808db9</id>
+<published>2021-01-12T18:30:55Z</published>
+<updated>2021-01-12T18:30:55Z</updated>
+<title type="text">Remove println</title>
+<link rel="alternate" type="text/html" href="commit/4559b69367d243917c20793cbd9a2f5364808db9.html" />
+<author>
+<name>cy6erlion</name>
+<email>dev@merely.tech</email>
+</author>
+<content type="text">commit 4559b69367d243917c20793cbd9a2f5364808db9
+parent a3970084c76419c27a95164ae2f20a09dfa7c23a
+Author: cy6erlion &lt;dev@merely.tech&gt;
+Date:   Tue, 12 Jan 2021 20:30:55 +0200
+
+Remove println
+
+</content>
+</entry>
+<entry>
+<id>a3970084c76419c27a95164ae2f20a09dfa7c23a</id>
+<published>2021-01-12T18:30:06Z</published>
+<updated>2021-01-12T18:30:06Z</updated>
+<title type="text">tui initial cursive UI intergration</title>
+<link rel="alternate" type="text/html" href="commit/a3970084c76419c27a95164ae2f20a09dfa7c23a.html" />
+<author>
+<name>cy6erlion</name>
+<email>dev@merely.tech</email>
+</author>
+<content type="text">commit a3970084c76419c27a95164ae2f20a09dfa7c23a
+parent 1127ffe3f8a250600fd40febf51aa8a2e8b6155f
+Author: cy6erlion &lt;dev@merely.tech&gt;
+Date:   Tue, 12 Jan 2021 20:30:06 +0200
+
+tui initial cursive UI intergration
+
+</content>
+</entry>
+<entry>
+<id>1127ffe3f8a250600fd40febf51aa8a2e8b6155f</id>
+<published>2021-01-12T17:37:13Z</published>
+<updated>2021-01-12T17:37:13Z</updated>
+<title type="text">add cursive crate</title>
+<link rel="alternate" type="text/html" href="commit/1127ffe3f8a250600fd40febf51aa8a2e8b6155f.html" />
+<author>
+<name>cy6erlion</name>
+<email>dev@merely.tech</email>
+</author>
+<content type="text">commit 1127ffe3f8a250600fd40febf51aa8a2e8b6155f
+parent bea196f4ff3712586eb601851fc354b7cf8332e1
+Author: cy6erlion &lt;dev@merely.tech&gt;
+Date:   Tue, 12 Jan 2021 19:37:13 +0200
+
+add cursive crate
+
+</content>
+</entry>
+<entry>
+<id>bea196f4ff3712586eb601851fc354b7cf8332e1</id>
+<published>2021-01-12T10:29:46Z</published>
+<updated>2021-01-12T10:29:46Z</updated>
+<title type="text">fmt</title>
+<link rel="alternate" type="text/html" href="commit/bea196f4ff3712586eb601851fc354b7cf8332e1.html" />
+<author>
+<name>cy6erlion</name>
+<email>dev@merely.tech</email>
+</author>
+<content type="text">commit bea196f4ff3712586eb601851fc354b7cf8332e1
+parent 42b3263a1cd66804dd6a54f5dcffbe3ce917ab61
+Author: cy6erlion &lt;dev@merely.tech&gt;
+Date:   Tue, 12 Jan 2021 12:29:46 +0200
+
+fmt
+
+</content>
+</entry>
+<entry>
+<id>42b3263a1cd66804dd6a54f5dcffbe3ce917ab61</id>
+<published>2021-01-12T10:27:12Z</published>
+<updated>2021-01-12T10:27:12Z</updated>
+<title type="text">remove unecisarry code</title>
+<link rel="alternate" type="text/html" href="commit/42b3263a1cd66804dd6a54f5dcffbe3ce917ab61.html" />
+<author>
+<name>cy6erlion</name>
+<email>dev@merely.tech</email>
+</author>
+<content type="text">commit 42b3263a1cd66804dd6a54f5dcffbe3ce917ab61
+parent adf027ea362b90e05c5340f8f0fe30f241deb2f7
+Author: cy6erlion &lt;dev@merely.tech&gt;
+Date:   Tue, 12 Jan 2021 12:27:12 +0200
+
+remove unecisarry code
+
+</content>
+</entry>
+<entry>
+<id>adf027ea362b90e05c5340f8f0fe30f241deb2f7</id>
+<published>2021-01-12T10:00:14Z</published>
+<updated>2021-01-12T10:00:14Z</updated>
+<title type="text">remove lib.rs</title>
+<link rel="alternate" type="text/html" href="commit/adf027ea362b90e05c5340f8f0fe30f241deb2f7.html" />
+<author>
+<name>cy6erlion</name>
+<email>dev@merely.tech</email>
+</author>
+<content type="text">commit adf027ea362b90e05c5340f8f0fe30f241deb2f7
+parent ce5601f42a5191ea3320d996c1696de7886b8b7d
+Author: cy6erlion &lt;dev@merely.tech&gt;
+Date:   Tue, 12 Jan 2021 12:00:14 +0200
+
+remove lib.rs
+
+</content>
+</entry>
+<entry>
+<id>ce5601f42a5191ea3320d996c1696de7886b8b7d</id>
+<published>2021-01-12T09:53:16Z</published>
+<updated>2021-01-12T09:53:16Z</updated>
+<title type="text">remove lib.rs</title>
+<link rel="alternate" type="text/html" href="commit/ce5601f42a5191ea3320d996c1696de7886b8b7d.html" />
+<author>
+<name>cy6erlion</name>
+<email>dev@merely.tech</email>
+</author>
+<content type="text">commit ce5601f42a5191ea3320d996c1696de7886b8b7d
+parent 82246d5972ddc33a9ec57486d1ea623763a5a301
+Author: cy6erlion &lt;dev@merely.tech&gt;
+Date:   Tue, 12 Jan 2021 11:53:16 +0200
+
+remove lib.rs
+
+</content>
+</entry>
+<entry>
+<id>82246d5972ddc33a9ec57486d1ea623763a5a301</id>
+<published>2021-01-12T09:51:29Z</published>
+<updated>2021-01-12T09:51:29Z</updated>
+<title type="text">Merge branch &#39;storage-struct&#39;</title>
+<link rel="alternate" type="text/html" href="commit/82246d5972ddc33a9ec57486d1ea623763a5a301.html" />
+<author>
+<name>cy6erlion</name>
+<email>dev@merely.tech</email>
+</author>
+<content type="text">commit 82246d5972ddc33a9ec57486d1ea623763a5a301
+parent 365a8e6eff692085c5e0d813954f43884624fb16
+Author: cy6erlion &lt;dev@merely.tech&gt;
+Date:   Tue, 12 Jan 2021 11:51:29 +0200
+
+Merge branch &#39;storage-struct&#39;
+
+</content>
+</entry>
+<entry>
+<id>3455abb6b1bdbd92230f463a7e5452ef8a1171ca</id>
+<published>2021-01-12T09:46:12Z</published>
+<updated>2021-01-12T09:46:12Z</updated>
+<title type="text">move lib.rs into main.rs</title>
+<link rel="alternate" type="text/html" href="commit/3455abb6b1bdbd92230f463a7e5452ef8a1171ca.html" />
+<author>
+<name>cy6erlion</name>
+<email>dev@merely.tech</email>
+</author>
+<content type="text">commit 3455abb6b1bdbd92230f463a7e5452ef8a1171ca
+parent 35b3fbcb83522a3a63bd020dd95609fe23f91c05
+Author: cy6erlion &lt;dev@merely.tech&gt;
+Date:   Tue, 12 Jan 2021 11:46:12 +0200
+
+move lib.rs into main.rs
+
+</content>
+</entry>
+<entry>
+<id>35b3fbcb83522a3a63bd020dd95609fe23f91c05</id>
+<published>2021-01-12T09:45:36Z</published>
+<updated>2021-01-12T09:45:36Z</updated>
+<title type="text">change fetch return types</title>
+<link rel="alternate" type="text/html" href="commit/35b3fbcb83522a3a63bd020dd95609fe23f91c05.html" />
+<author>
+<name>cy6erlion</name>
+<email>dev@merely.tech</email>
+</author>
+<content type="text">commit 35b3fbcb83522a3a63bd020dd95609fe23f91c05
+parent 10f392e39004f6af22207e20dbe2b9dc17292999
+Author: cy6erlion &lt;dev@merely.tech&gt;
+Date:   Tue, 12 Jan 2021 11:45:36 +0200
+
+change fetch return types
+
+</content>
+</entry>
+<entry>
+<id>10f392e39004f6af22207e20dbe2b9dc17292999</id>
+<published>2021-01-12T09:45:04Z</published>
+<updated>2021-01-12T09:45:04Z</updated>
+<title type="text">turn storage into a struct</title>
+<link rel="alternate" type="text/html" href="commit/10f392e39004f6af22207e20dbe2b9dc17292999.html" />
+<author>
+<name>cy6erlion</name>
+<email>dev@merely.tech</email>
+</author>
+<content type="text">commit 10f392e39004f6af22207e20dbe2b9dc17292999
+parent 365a8e6eff692085c5e0d813954f43884624fb16
+Author: cy6erlion &lt;dev@merely.tech&gt;
+Date:   Tue, 12 Jan 2021 11:45:04 +0200
+
+turn storage into a struct
+
+</content>
+</entry>
+<entry>
+<id>3b336df703f588aad3665398ecf8d7752b9c0d43</id>
+<published>2021-01-01T07:02:12Z</published>
+<updated>2021-01-01T07:02:12Z</updated>
+<title type="text">Merge pull request #6 from 0xflotus/patch-1</title>
+<link rel="alternate" type="text/html" href="commit/3b336df703f588aad3665398ecf8d7752b9c0d43.html" />
+<author>
+<name>cy6erlion</name>
+<email>50733658+cy6erlion@users.noreply.github.com</email>
+</author>
+<content type="text">commit 3b336df703f588aad3665398ecf8d7752b9c0d43
+parent 73c4d4f1c8515517b659f16ceb96c117897f1631
+Author: cy6erlion &lt;50733658+cy6erlion@users.noreply.github.com&gt;
+Date:   Fri,  1 Jan 2021 09:02:12 +0200
+
+Merge pull request #6 from 0xflotus/patch-1
+
+readme: updated to latest features
+</content>
+</entry>
+<entry>
+<id>73c4d4f1c8515517b659f16ceb96c117897f1631</id>
+<published>2021-01-01T06:59:43Z</published>
+<updated>2021-01-01T06:59:43Z</updated>
+<title type="text">Merge pull request #7 from 0xflotus/patch-2</title>
+<link rel="alternate" type="text/html" href="commit/73c4d4f1c8515517b659f16ceb96c117897f1631.html" />
+<author>
+<name>cy6erlion</name>
+<email>50733658+cy6erlion@users.noreply.github.com</email>
+</author>
+<content type="text">commit 73c4d4f1c8515517b659f16ceb96c117897f1631
+parent 365a8e6eff692085c5e0d813954f43884624fb16
+Author: cy6erlion &lt;50733658+cy6erlion@users.noreply.github.com&gt;
+Date:   Fri,  1 Jan 2021 08:59:43 +0200
+
+Merge pull request #7 from 0xflotus/patch-2
+
+chore: removed unused import
+</content>
+</entry>
+<entry>
+<id>231ba26b5d5ebb152a69b85b23cab14536b67f57</id>
+<published>2021-01-01T02:01:12Z</published>
+<updated>2021-01-01T02:01:12Z</updated>
+<title type="text">chore: removed unused import</title>
+<link rel="alternate" type="text/html" href="commit/231ba26b5d5ebb152a69b85b23cab14536b67f57.html" />
+<author>
+<name>0xflotus</name>
+<email>0xflotus@gmail.com</email>
+</author>
+<content type="text">commit 231ba26b5d5ebb152a69b85b23cab14536b67f57
+parent 365a8e6eff692085c5e0d813954f43884624fb16
+Author: 0xflotus &lt;0xflotus@gmail.com&gt;
+Date:   Fri,  1 Jan 2021 03:01:12 +0100
+
+chore: removed unused import
+</content>
+</entry>
+<entry>
+<id>9819dd4ab8247491f09451ed6ac4091912fb2f3c</id>
+<published>2021-01-01T01:59:29Z</published>
+<updated>2021-01-01T01:59:29Z</updated>
+<title type="text">readme: updated to latest features</title>
+<link rel="alternate" type="text/html" href="commit/9819dd4ab8247491f09451ed6ac4091912fb2f3c.html" />
+<author>
+<name>0xflotus</name>
+<email>0xflotus@gmail.com</email>
+</author>
+<content type="text">commit 9819dd4ab8247491f09451ed6ac4091912fb2f3c
+parent 365a8e6eff692085c5e0d813954f43884624fb16
+Author: 0xflotus &lt;0xflotus@gmail.com&gt;
+Date:   Fri,  1 Jan 2021 02:59:29 +0100
+
+readme: updated to latest features
+</content>
+</entry>
+<entry>
+<id>365a8e6eff692085c5e0d813954f43884624fb16</id>
+<published>2020-12-31T21:08:57Z</published>
+<updated>2020-12-31T21:08:57Z</updated>
+<title type="text">update usage guide</title>
+<link rel="alternate" type="text/html" href="commit/365a8e6eff692085c5e0d813954f43884624fb16.html" />
+<author>
+<name>cy6erlion</name>
+<email>dev@merely.tech</email>
+</author>
+<content type="text">commit 365a8e6eff692085c5e0d813954f43884624fb16
+parent 15a3d511c2cb061c0c8d206816bfe34153523c7a
+Author: cy6erlion &lt;dev@merely.tech&gt;
+Date:   Thu, 31 Dec 2020 23:08:57 +0200
+
+update usage guide
+
+</content>
+</entry>
+<entry>
+<id>15a3d511c2cb061c0c8d206816bfe34153523c7a</id>
+<published>2020-12-31T20:48:18Z</published>
+<updated>2020-12-31T20:48:18Z</updated>
+<title type="text">Merge pull request #5 from cy6erlion/storage</title>
+<link rel="alternate" type="text/html" href="commit/15a3d511c2cb061c0c8d206816bfe34153523c7a.html" />
+<author>
+<name>cy6erlion</name>
+<email>50733658+cy6erlion@users.noreply.github.com</email>
+</author>
+<content type="text">commit 15a3d511c2cb061c0c8d206816bfe34153523c7a
+parent 50710aec900d0c6e5297dd596cbcb5e2aba9e7aa
+Author: cy6erlion &lt;50733658+cy6erlion@users.noreply.github.com&gt;
+Date:   Thu, 31 Dec 2020 22:48:18 +0200
+
+Merge pull request #5 from cy6erlion/storage
+
+move all storage related code to storage.rs
+</content>
+</entry>
+<entry>
+<id>4a3a6929949c3d737b25a40fe6c7efb9d598e876</id>
+<published>2020-12-31T20:44:24Z</published>
+<updated>2020-12-31T20:44:24Z</updated>
+<title type="text">move all storage related code to storage.rs</title>
+<link rel="alternate" type="text/html" href="commit/4a3a6929949c3d737b25a40fe6c7efb9d598e876.html" />
+<author>
+<name>cy6erlion</name>
+<email>dev@merely.tech</email>
+</author>
+<content type="text">commit 4a3a6929949c3d737b25a40fe6c7efb9d598e876
+parent 50710aec900d0c6e5297dd596cbcb5e2aba9e7aa
+Author: cy6erlion &lt;dev@merely.tech&gt;
+Date:   Thu, 31 Dec 2020 22:44:24 +0200
+
+move all storage related code to storage.rs
+
+</content>
+</entry>
+<entry>
+<id>50710aec900d0c6e5297dd596cbcb5e2aba9e7aa</id>
+<published>2020-12-31T19:31:36Z</published>
+<updated>2020-12-31T19:31:36Z</updated>
+<title type="text">Merge pull request #4 from 0xflotus/master</title>
+<link rel="alternate" type="text/html" href="commit/50710aec900d0c6e5297dd596cbcb5e2aba9e7aa.html" />
+<author>
+<name>cy6erlion</name>
+<email>50733658+cy6erlion@users.noreply.github.com</email>
+</author>
+<content type="text">commit 50710aec900d0c6e5297dd596cbcb5e2aba9e7aa
+parent 885af1cfb3f5356c1968e5c31677835ecdfd2a25
+Author: cy6erlion &lt;50733658+cy6erlion@users.noreply.github.com&gt;
+Date:   Thu, 31 Dec 2020 21:31:36 +0200
+
+Merge pull request #4 from 0xflotus/master
+
+feat: added banner before help
+</content>
+</entry>
+<entry>
+<id>885af1cfb3f5356c1968e5c31677835ecdfd2a25</id>
+<published>2020-12-31T19:21:21Z</published>
+<updated>2020-12-31T19:21:21Z</updated>
+<title type="text">Merge pull request #3 from 0xflotus/clean</title>
+<link rel="alternate" type="text/html" href="commit/885af1cfb3f5356c1968e5c31677835ecdfd2a25.html" />
+<author>
+<name>cy6erlion</name>
+<email>50733658+cy6erlion@users.noreply.github.com</email>
+</author>
+<content type="text">commit 885af1cfb3f5356c1968e5c31677835ecdfd2a25
+parent fd13eee0267cb4ad276771596e73f18e5113acab
+Author: cy6erlion &lt;50733658+cy6erlion@users.noreply.github.com&gt;
+Date:   Thu, 31 Dec 2020 21:21:21 +0200
+
+Merge pull request #3 from 0xflotus/clean
+
+feat: remove rfcs from disk
+</content>
+</entry>
+<entry>
+<id>1ab8ee24ee8ee40d0195b644ba4f5136098e11a3</id>
+<published>2020-12-31T14:26:37Z</published>
+<updated>2020-12-31T14:26:37Z</updated>
+<title type="text">feat: added banner before help</title>
+<link rel="alternate" type="text/html" href="commit/1ab8ee24ee8ee40d0195b644ba4f5136098e11a3.html" />
+<author>
+<name>0xflotus</name>
+<email>0xflotus@gmail.com</email>
+</author>
+<content type="text">commit 1ab8ee24ee8ee40d0195b644ba4f5136098e11a3
+parent fd13eee0267cb4ad276771596e73f18e5113acab
+Author: 0xflotus &lt;0xflotus@gmail.com&gt;
+Date:   Thu, 31 Dec 2020 15:26:37 +0100
+
+feat: added banner before help
+
+</content>
+</entry>
+<entry>
+<id>a2cd903afdd43c5fe5acde6610db8c2d234e652d</id>
+<published>2020-12-31T00:46:35Z</published>
+<updated>2020-12-31T00:46:35Z</updated>
+<title type="text">feat: remove rfc by serial number</title>
+<link rel="alternate" type="text/html" href="commit/a2cd903afdd43c5fe5acde6610db8c2d234e652d.html" />
+<author>
+<name>0xflotus</name>
+<email>0xflotus@gmail.com</email>
+</author>
+<content type="text">commit a2cd903afdd43c5fe5acde6610db8c2d234e652d
+parent 08aa5644650d91480615b49bbeeb8f435e000e92
+Author: 0xflotus &lt;0xflotus@gmail.com&gt;
+Date:   Thu, 31 Dec 2020 01:46:35 +0100
+
+feat: remove rfc by serial number
+
+</content>
+</entry>
+<entry>
+<id>08aa5644650d91480615b49bbeeb8f435e000e92</id>
+<published>2020-12-31T00:36:42Z</published>
+<updated>2020-12-31T00:36:42Z</updated>
+<title type="text">fix: name</title>
+<link rel="alternate" type="text/html" href="commit/08aa5644650d91480615b49bbeeb8f435e000e92.html" />
+<author>
+<name>0xflotus</name>
+<email>0xflotus@gmail.com</email>
+</author>
+<content type="text">commit 08aa5644650d91480615b49bbeeb8f435e000e92
+parent b8e61be68b58c6607a4e717d1307f9c123ed714f
+Author: 0xflotus &lt;0xflotus@gmail.com&gt;
+Date:   Thu, 31 Dec 2020 01:36:42 +0100
+
+fix: name
+
+</content>
+</entry>
+<entry>
+<id>b8e61be68b58c6607a4e717d1307f9c123ed714f</id>
+<published>2020-12-31T00:34:53Z</published>
+<updated>2020-12-31T00:34:53Z</updated>
+<title type="text">feat: added clean subommand</title>
+<link rel="alternate" type="text/html" href="commit/b8e61be68b58c6607a4e717d1307f9c123ed714f.html" />
+<author>
+<name>0xflotus</name>
+<email>0xflotus@gmail.com</email>
+</author>
+<content type="text">commit b8e61be68b58c6607a4e717d1307f9c123ed714f
+parent fd13eee0267cb4ad276771596e73f18e5113acab
+Author: 0xflotus &lt;0xflotus@gmail.com&gt;
+Date:   Thu, 31 Dec 2020 01:34:53 +0100
+
+feat: added clean subommand
+
+</content>
+</entry>
+<entry>
+<id>fd13eee0267cb4ad276771596e73f18e5113acab</id>
+<published>2020-12-29T17:21:42Z</published>
+<updated>2020-12-29T17:21:42Z</updated>
+<title type="text">fmt</title>
+<link rel="alternate" type="text/html" href="commit/fd13eee0267cb4ad276771596e73f18e5113acab.html" />
+<author>
+<name>cy6erlion</name>
+<email>dev@merely.tech</email>
+</author>
+<content type="text">commit fd13eee0267cb4ad276771596e73f18e5113acab
+parent 3ed33279df26b5ccb186987aab32d89e6eae1352
+Author: cy6erlion &lt;dev@merely.tech&gt;
+Date:   Tue, 29 Dec 2020 19:21:42 +0200
+
+fmt
+
+</content>
+</entry>
+<entry>
+<id>3ed33279df26b5ccb186987aab32d89e6eae1352</id>
+<published>2020-12-29T17:19:33Z</published>
+<updated>2020-12-29T17:19:33Z</updated>
+<title type="text">add install instructions</title>
+<link rel="alternate" type="text/html" href="commit/3ed33279df26b5ccb186987aab32d89e6eae1352.html" />
+<author>
+<name>cy6erlion</name>
+<email>dev@merely.tech</email>
+</author>
+<content type="text">commit 3ed33279df26b5ccb186987aab32d89e6eae1352
+parent 225941dfb717bcc398b7d469fa8d089707e31db9
+Author: cy6erlion &lt;dev@merely.tech&gt;
+Date:   Tue, 29 Dec 2020 19:19:33 +0200
+
+add install instructions
+
+</content>
+</entry>
+<entry>
+<id>225941dfb717bcc398b7d469fa8d089707e31db9</id>
+<published>2020-12-29T17:05:06Z</published>
+<updated>2020-12-29T17:05:06Z</updated>
+<title type="text">Add metedata fields to Cargo.toml</title>
+<link rel="alternate" type="text/html" href="commit/225941dfb717bcc398b7d469fa8d089707e31db9.html" />
+<author>
+<name>cy6erlion</name>
+<email>dev@merely.tech</email>
+</author>
+<content type="text">commit 225941dfb717bcc398b7d469fa8d089707e31db9
+parent e0cd436ac1cdbdd66dd2d434c1419dc40bab5cab
+Author: cy6erlion &lt;dev@merely.tech&gt;
+Date:   Tue, 29 Dec 2020 19:05:06 +0200
+
+Add metedata fields to Cargo.toml
+
+</content>
+</entry>
+<entry>
+<id>e0cd436ac1cdbdd66dd2d434c1419dc40bab5cab</id>
+<published>2020-12-29T16:39:18Z</published>
+<updated>2020-12-29T16:39:18Z</updated>
+<title type="text">rename and fix clippy warnings</title>
+<link rel="alternate" type="text/html" href="commit/e0cd436ac1cdbdd66dd2d434c1419dc40bab5cab.html" />
+<author>
+<name>cy6erlion</name>
+<email>dev@merely.tech</email>
+</author>
+<content type="text">commit e0cd436ac1cdbdd66dd2d434c1419dc40bab5cab
+parent 0fe261ac20a3b4f5501b30511612f74a1cfe5f2f
+Author: cy6erlion &lt;dev@merely.tech&gt;
+Date:   Tue, 29 Dec 2020 18:39:18 +0200
+
+rename and fix clippy warnings
+
+</content>
+</entry>
+<entry>
+<id>0fe261ac20a3b4f5501b30511612f74a1cfe5f2f</id>
+<published>2020-12-29T16:21:47Z</published>
+<updated>2020-12-29T16:21:47Z</updated>
+<title type="text">Create rust.yml</title>
+<link rel="alternate" type="text/html" href="commit/0fe261ac20a3b4f5501b30511612f74a1cfe5f2f.html" />
+<author>
+<name>cy6erlion</name>
+<email>50733658+cy6erlion@users.noreply.github.com</email>
+</author>
+<content type="text">commit 0fe261ac20a3b4f5501b30511612f74a1cfe5f2f
+parent ea47d146b1feecbb09d1b1e8aecd125ca1a60b8c
+Author: cy6erlion &lt;50733658+cy6erlion@users.noreply.github.com&gt;
+Date:   Tue, 29 Dec 2020 18:21:47 +0200
+
+Create rust.yml
+</content>
+</entry>
+<entry>
+<id>ea47d146b1feecbb09d1b1e8aecd125ca1a60b8c</id>
+<published>2020-12-29T16:18:55Z</published>
+<updated>2020-12-29T16:18:55Z</updated>
+<title type="text">Merge pull request #1 from cy6erlion/add-license-1</title>
+<link rel="alternate" type="text/html" href="commit/ea47d146b1feecbb09d1b1e8aecd125ca1a60b8c.html" />
+<author>
+<name>cy6erlion</name>
+<email>50733658+cy6erlion@users.noreply.github.com</email>
+</author>
+<content type="text">commit ea47d146b1feecbb09d1b1e8aecd125ca1a60b8c
+parent e24a5d2c7d4157765b7b9b820e1f92f77af412db
+Author: cy6erlion &lt;50733658+cy6erlion@users.noreply.github.com&gt;
+Date:   Tue, 29 Dec 2020 18:18:55 +0200
+
+Merge pull request #1 from cy6erlion/add-license-1
+
+Add MIT license
+</content>
+</entry>
+<entry>
+<id>9cfa412302a7cb7cb79eedb1b9c0a718339c6ab6</id>
+<published>2020-12-29T16:18:24Z</published>
+<updated>2020-12-29T16:18:24Z</updated>
+<title type="text">Add MIT license</title>
+<link rel="alternate" type="text/html" href="commit/9cfa412302a7cb7cb79eedb1b9c0a718339c6ab6.html" />
+<author>
+<name>cy6erlion</name>
+<email>50733658+cy6erlion@users.noreply.github.com</email>
+</author>
+<content type="text">commit 9cfa412302a7cb7cb79eedb1b9c0a718339c6ab6
+parent e24a5d2c7d4157765b7b9b820e1f92f77af412db
+Author: cy6erlion &lt;50733658+cy6erlion@users.noreply.github.com&gt;
+Date:   Tue, 29 Dec 2020 18:18:24 +0200
+
+Add MIT license
+</content>
+</entry>
+<entry>
+<id>e24a5d2c7d4157765b7b9b820e1f92f77af412db</id>
+<published>2020-12-29T16:07:05Z</published>
+<updated>2020-12-29T16:07:05Z</updated>
+<title type="text">fmt</title>
+<link rel="alternate" type="text/html" href="commit/e24a5d2c7d4157765b7b9b820e1f92f77af412db.html" />
+<author>
+<name>cy6erlion</name>
+<email>dev@merely.tech</email>
+</author>
+<content type="text">commit e24a5d2c7d4157765b7b9b820e1f92f77af412db
+parent 43c503faf37aa19ca68b9f1616d6e57f4bc6bca8
+Author: cy6erlion &lt;dev@merely.tech&gt;
+Date:   Tue, 29 Dec 2020 18:07:05 +0200
+
+fmt
+
+</content>
+</entry>
+<entry>
+<id>43c503faf37aa19ca68b9f1616d6e57f4bc6bca8</id>
+<published>2020-12-29T16:05:17Z</published>
+<updated>2020-12-29T16:05:17Z</updated>
+<title type="text">check if storage directory has been created</title>
+<link rel="alternate" type="text/html" href="commit/43c503faf37aa19ca68b9f1616d6e57f4bc6bca8.html" />
+<author>
+<name>cy6erlion</name>
+<email>dev@merely.tech</email>
+</author>
+<content type="text">commit 43c503faf37aa19ca68b9f1616d6e57f4bc6bca8
+parent 992cbfe46511010351eb576dea44313e3c529c8a
+Author: cy6erlion &lt;dev@merely.tech&gt;
+Date:   Tue, 29 Dec 2020 18:05:17 +0200
+
+check if storage directory has been created
+
+</content>
+</entry>
+<entry>
+<id>992cbfe46511010351eb576dea44313e3c529c8a</id>
+<published>2020-12-29T14:46:42Z</published>
+<updated>2020-12-29T14:46:42Z</updated>
+<title type="text">initial commit</title>
+<link rel="alternate" type="text/html" href="commit/992cbfe46511010351eb576dea44313e3c529c8a.html" />
+<author>
+<name>cy6erlion</name>
+<email>dev@merely.tech</email>
+</author>
+<content type="text">commit 992cbfe46511010351eb576dea44313e3c529c8a
+Author: cy6erlion &lt;dev@merely.tech&gt;
+Date:   Tue, 29 Dec 2020 16:46:42 +0200
+
+initial commit
+
+</content>
+</entry>
+</feed>

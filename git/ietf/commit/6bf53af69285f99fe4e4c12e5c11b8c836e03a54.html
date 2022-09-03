@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Remove pager crate - ietf - Unnamed repository; edit this file &#39;description&#39; to name the repository.
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="ietf Atom Feed" href="../atom.xml" />
+<link rel="alternate" type="application/atom+xml" title="ietf Atom Feed (tags)" href="../tags.xml" />
+<link rel="stylesheet" type="text/css" href="/git.css" />
+</head>
+<body>
+<table><tr><td><a href="/index.html"><img src="/logo.png" alt="" width="32" height="32" /></a></td><td><h1>ietf</h1><span class="desc">Unnamed repository; edit this file &#39;description&#39; to name the repository.
+</span></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a> | <a href="../file/README.md.pretty.html">README</a> | <a href="../file/LICENSE.html">LICENSE</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/6bf53af69285f99fe4e4c12e5c11b8c836e03a54.html">6bf53af69285f99fe4e4c12e5c11b8c836e03a54</a>
+<b>parent</b> <a href="../commit/4559b69367d243917c20793cbd9a2f5364808db9.html">4559b69367d243917c20793cbd9a2f5364808db9</a>
+<b>Author:</b> cy6erlion &lt;<a href="mailto:dev@merely.tech">dev@merely.tech</a>&gt;
+<b>Date:</b>   Tue, 12 Jan 2021 20:32:08 +0200
+
+Remove pager crate
+
+<b>Diffstat:</b>
+<table><tr><td class="M">M</td><td><a href="#h0">Cargo.lock</a></td><td> | </td><td class="num">38</td><td><span class="i"></span><span class="d">--------------------------------------</span></td></tr>
+<tr><td class="M">M</td><td><a href="#h1">Cargo.toml</a></td><td> | </td><td class="num">3</td><td><span class="i">+</span><span class="d">--</span></td></tr>
+</table></pre><pre>2 files changed, 1 insertion(+), 40 deletions(-)
+<hr/><b>diff --git a/<a id="h0" href="../file/Cargo.lock.html">Cargo.lock</a> b/<a href="../file/Cargo.lock.html">Cargo.lock</a></b>
+<a href="#h0-0" id="h0-0" class="h">@@ -316,39 +316,12 @@ dependencies = [
+</a> ]
+ 
+ [[package]]
+<a href="#h0-0-3" id="h0-0-3" class="d">-name = &quot;errno&quot;
+</a><a href="#h0-0-4" id="h0-0-4" class="d">-version = &quot;0.2.7&quot;
+</a><a href="#h0-0-5" id="h0-0-5" class="d">-source = &quot;registry+https://github.com/rust-lang/crates.io-index&quot;
+</a><a href="#h0-0-6" id="h0-0-6" class="d">-checksum = &quot;fa68f2fb9cae9d37c9b2b3584aba698a2e97f72d7aef7b9f7aa71d8b54ce46fe&quot;
+</a><a href="#h0-0-7" id="h0-0-7" class="d">-dependencies = [
+</a><a href="#h0-0-8" id="h0-0-8" class="d">- &quot;errno-dragonfly&quot;,
+</a><a href="#h0-0-9" id="h0-0-9" class="d">- &quot;libc&quot;,
+</a><a href="#h0-0-10" id="h0-0-10" class="d">- &quot;winapi&quot;,
+</a><a href="#h0-0-11" id="h0-0-11" class="d">-]
+</a><a href="#h0-0-12" id="h0-0-12" class="d">-
+</a><a href="#h0-0-13" id="h0-0-13" class="d">-[[package]]
+</a><a href="#h0-0-14" id="h0-0-14" class="d">-name = &quot;errno-dragonfly&quot;
+</a><a href="#h0-0-15" id="h0-0-15" class="d">-version = &quot;0.1.1&quot;
+</a><a href="#h0-0-16" id="h0-0-16" class="d">-source = &quot;registry+https://github.com/rust-lang/crates.io-index&quot;
+</a><a href="#h0-0-17" id="h0-0-17" class="d">-checksum = &quot;14ca354e36190500e1e1fb267c647932382b54053c50b14970856c0b00a35067&quot;
+</a><a href="#h0-0-18" id="h0-0-18" class="d">-dependencies = [
+</a><a href="#h0-0-19" id="h0-0-19" class="d">- &quot;gcc&quot;,
+</a><a href="#h0-0-20" id="h0-0-20" class="d">- &quot;libc&quot;,
+</a><a href="#h0-0-21" id="h0-0-21" class="d">-]
+</a><a href="#h0-0-22" id="h0-0-22" class="d">-
+</a><a href="#h0-0-23" id="h0-0-23" class="d">-[[package]]
+</a> name = &quot;fnv&quot;
+ version = &quot;1.0.7&quot;
+ source = &quot;registry+https://github.com/rust-lang/crates.io-index&quot;
+ checksum = &quot;3f9eec918d3f24069decb9af1554cad7c880e2da24a9afd88aca000531ab82c1&quot;
+ 
+ [[package]]
+<a href="#h0-0-30" id="h0-0-30" class="d">-name = &quot;gcc&quot;
+</a><a href="#h0-0-31" id="h0-0-31" class="d">-version = &quot;0.3.55&quot;
+</a><a href="#h0-0-32" id="h0-0-32" class="d">-source = &quot;registry+https://github.com/rust-lang/crates.io-index&quot;
+</a><a href="#h0-0-33" id="h0-0-33" class="d">-checksum = &quot;8f5f3913fa0bfe7ee1fd8248b6b9f42a5af4b9d65ec2dd2c3c26132b950ecfc2&quot;
+</a><a href="#h0-0-34" id="h0-0-34" class="d">-
+</a><a href="#h0-0-35" id="h0-0-35" class="d">-[[package]]
+</a> name = &quot;getrandom&quot;
+ version = &quot;0.1.15&quot;
+ source = &quot;registry+https://github.com/rust-lang/crates.io-index&quot;
+<a href="#h0-1" id="h0-1" class="h">@@ -393,7 +366,6 @@ dependencies = [
+</a>  &quot;cursive&quot;,
+  &quot;dirs-next&quot;,
+  &quot;minreq&quot;,
+<a href="#h0-1-3" id="h0-1-3" class="d">- &quot;pager&quot;,
+</a> ]
+ 
+ [[package]]
+<a href="#h0-2" id="h0-2" class="h">@@ -540,16 +512,6 @@ dependencies = [
+</a> ]
+ 
+ [[package]]
+<a href="#h0-2-3" id="h0-2-3" class="d">-name = &quot;pager&quot;
+</a><a href="#h0-2-4" id="h0-2-4" class="d">-version = &quot;0.16.0&quot;
+</a><a href="#h0-2-5" id="h0-2-5" class="d">-source = &quot;registry+https://github.com/rust-lang/crates.io-index&quot;
+</a><a href="#h0-2-6" id="h0-2-6" class="d">-checksum = &quot;05c7d08cf0d0b55c4f0ffedb5e06569ea212e85d622975071370393970491968&quot;
+</a><a href="#h0-2-7" id="h0-2-7" class="d">-dependencies = [
+</a><a href="#h0-2-8" id="h0-2-8" class="d">- &quot;errno&quot;,
+</a><a href="#h0-2-9" id="h0-2-9" class="d">- &quot;libc&quot;,
+</a><a href="#h0-2-10" id="h0-2-10" class="d">-]
+</a><a href="#h0-2-11" id="h0-2-11" class="d">-
+</a><a href="#h0-2-12" id="h0-2-12" class="d">-[[package]]
+</a> name = &quot;pkg-config&quot;
+ version = &quot;0.3.19&quot;
+ source = &quot;registry+https://github.com/rust-lang/crates.io-index&quot;
+<b>diff --git a/<a id="h1" href="../file/Cargo.toml.html">Cargo.toml</a> b/<a href="../file/Cargo.toml.html">Cargo.toml</a></b>
+<a href="#h1-0" id="h1-0" class="h">@@ -20,8 +20,7 @@ license = &quot;MIT&quot;
+</a> clap = &quot;2.33.3&quot;
+ # Minimal HTTP client
+ minreq = {version = &quot;2.2.1&quot;, features = [&quot;https&quot;]}
+<a href="#h1-0-3" id="h1-0-3" class="d">-# Pager
+</a><a href="#h1-0-4" id="h1-0-4" class="d">-pager = &quot;0.16.0&quot;
+</a><a href="#h1-0-5" id="h1-0-5" class="i">+
+</a> # Directories
+ dirs-next = &quot;2.0.0&quot;
+ 
+</pre>
+</div>
+</body>
+</html>

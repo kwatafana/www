@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>docs and comments - funscheduler - Unnamed repository; edit this file &#39;description&#39; to name the repository.
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="funscheduler Atom Feed" href="../atom.xml" />
+<link rel="alternate" type="application/atom+xml" title="funscheduler Atom Feed (tags)" href="../tags.xml" />
+<link rel="stylesheet" type="text/css" href="/git.css" />
+</head>
+<body>
+<table><tr><td><a href="/index.html"><img src="/logo.png" alt="" width="32" height="32" /></a></td><td><h1>funscheduler</h1><span class="desc">Unnamed repository; edit this file &#39;description&#39; to name the repository.
+</span></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a> | <a href="../file/README.md.pretty.html">README</a> | <a href="../file/LICENSE.html">LICENSE</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/d7c68af31741e003fae919d0c5a1173d608526f0.html">d7c68af31741e003fae919d0c5a1173d608526f0</a>
+<b>parent</b> <a href="../commit/26aa346ebb11cf2d31030484deede3ed17e84893.html">26aa346ebb11cf2d31030484deede3ed17e84893</a>
+<b>Author:</b> Jackson G. Kaindume &lt;<a href="mailto:seestem@protonmail.com">seestem@protonmail.com</a>&gt;
+<b>Date:</b>   Thu, 15 Jul 2021 23:05:22 +0200
+
+docs and comments
+
+<b>Diffstat:</b>
+<table><tr><td class="M">M</td><td><a href="#h0">README</a></td><td> | </td><td class="num">9</td><td><span class="i">++++</span><span class="d">-----</span></td></tr>
+<tr><td class="M">M</td><td><a href="#h1">src/lib.rs</a></td><td> | </td><td class="num">7</td><td><span class="i">++</span><span class="d">-----</span></td></tr>
+</table></pre><pre>2 files changed, 6 insertions(+), 10 deletions(-)
+<hr/><b>diff --git a/<a id="h0" href="../file/README.html">README</a> b/<a href="../file/README.html">README</a></b>
+<a href="#h0-0" id="h0-0" class="h">@@ -21,10 +21,10 @@
+</a>   Timings: Easily congigure the timing of the function execution
+ ----------------------------------------------------------------------
+ 
+<a href="#h0-0-3" id="h0-0-3" class="d">-    - Timing::Seconds(1)    // Every second
+</a><a href="#h0-0-4" id="h0-0-4" class="d">-    - Timing::Minutes(25)   // Every 25 minutes
+</a><a href="#h0-0-5" id="h0-0-5" class="d">-    - Timing::Hours(2)      // Every 2 hours
+</a><a href="#h0-0-6" id="h0-0-6" class="d">-    - Timing::Days(1)       // Every day same as Timing::Hours(24)
+</a><a href="#h0-0-7" id="h0-0-7" class="i">+      Timing::Seconds(1)    // Every second
+</a><a href="#h0-0-8" id="h0-0-8" class="i">+      Timing::Minutes(25)   // Every 25 minutes
+</a><a href="#h0-0-9" id="h0-0-9" class="i">+      Timing::Hours(2)      // Every 2 hours
+</a><a href="#h0-0-10" id="h0-0-10" class="i">+      Timing::Days(1)       // Every day same as Timing::Hours(24)
+</a>     
+ ----------------------------------------------------------------------
+   Job runners: Different ways to execute the function
+<a href="#h0-1" id="h0-1" class="h">@@ -40,7 +40,6 @@
+</a>     // Execute function once after a specified amount of time
+     FunScheduler::after(job, Timing::Seconds(1))
+ 
+<a href="#h0-1-3" id="h0-1-3" class="d">-----------------------------------------------------------------------
+</a> 
+ .-{ seestem@protonmail.com ⧉ }-------------------------------------.
+ | Written and placed in the public domain by Jackson G. Kaindume     |
+<b>diff --git a/<a id="h1" href="../file/src/lib.rs.html">src/lib.rs</a> b/<a href="../file/src/lib.rs.html">src/lib.rs</a></b>
+<a href="#h1-0" id="h1-0" class="h">@@ -1,11 +1,7 @@
+</a><a href="#h1-0-0" id="h1-0-0" class="d">-// .---------------------------------------------------------------.
+</a><a href="#h1-0-1" id="h1-0-1" class="d">-// |           Written and placed in the public domain by           |
+</a><a href="#h1-0-2" id="h1-0-2" class="d">-// |        Jackson G. Kaindume&lt;seestem@protonmail.com&gt;  ⧉         |
+</a><a href="#h1-0-3" id="h1-0-3" class="d">-// &#39;----------------------------------------------------------[2021]+
+</a> //! # Time based function execution scheduler
+<a href="#h1-0-5" id="h1-0-5" class="d">-
+</a> use std::time::Duration;
+ 
+<a href="#h1-0-8" id="h1-0-8" class="i">+/// Timing configuration
+</a> pub enum Timing {
+     Seconds(u64),
+     Minutes(u64),
+<a href="#h1-1" id="h1-1" class="h">@@ -13,6 +9,7 @@ pub enum Timing {
+</a>     Days(u64),
+ }
+ 
+<a href="#h1-1-3" id="h1-1-3" class="i">+/// Different methods/ways of running functions
+</a> pub struct FunScheduler;
+ 
+ impl FunScheduler {
+</pre>
+</div>
+</body>
+</html>

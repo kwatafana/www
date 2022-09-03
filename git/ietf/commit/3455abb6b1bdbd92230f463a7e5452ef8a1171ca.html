@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>move lib.rs into main.rs - ietf - Unnamed repository; edit this file &#39;description&#39; to name the repository.
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="ietf Atom Feed" href="../atom.xml" />
+<link rel="alternate" type="application/atom+xml" title="ietf Atom Feed (tags)" href="../tags.xml" />
+<link rel="stylesheet" type="text/css" href="/git.css" />
+</head>
+<body>
+<table><tr><td><a href="/index.html"><img src="/logo.png" alt="" width="32" height="32" /></a></td><td><h1>ietf</h1><span class="desc">Unnamed repository; edit this file &#39;description&#39; to name the repository.
+</span></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a> | <a href="../file/README.md.pretty.html">README</a> | <a href="../file/LICENSE.html">LICENSE</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/3455abb6b1bdbd92230f463a7e5452ef8a1171ca.html">3455abb6b1bdbd92230f463a7e5452ef8a1171ca</a>
+<b>parent</b> <a href="../commit/35b3fbcb83522a3a63bd020dd95609fe23f91c05.html">35b3fbcb83522a3a63bd020dd95609fe23f91c05</a>
+<b>Author:</b> cy6erlion &lt;<a href="mailto:dev@merely.tech">dev@merely.tech</a>&gt;
+<b>Date:</b>   Tue, 12 Jan 2021 11:46:12 +0200
+
+move lib.rs into main.rs
+
+<b>Diffstat:</b>
+<table><tr><td class="D">D</td><td><a href="#h0">src/lib.rs</a></td><td> | </td><td class="num">78</td><td><span class="i"></span><span class="d">------------------------------------------------------------------------------</span></td></tr>
+<tr><td class="M">M</td><td><a href="#h1">src/main.rs</a></td><td> | </td><td class="num">68</td><td><span class="i">+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++</span><span class="d">---------</span></td></tr>
+</table></pre><pre>2 files changed, 59 insertions(+), 87 deletions(-)
+<hr/><b>diff --git a/<a id="h0" href="../file/src/lib.rs.html">src/lib.rs</a> b/<a href="../file/src/lib.rs.html">src/lib.rs</a></b>
+<a href="#h0-0" id="h0-0" class="h">@@ -1,78 +0,0 @@
+</a><a href="#h0-0-0" id="h0-0-0" class="d">-extern crate dirs_next;
+</a><a href="#h0-0-1" id="h0-0-1" class="d">-extern crate pager;
+</a><a href="#h0-0-2" id="h0-0-2" class="d">-
+</a><a href="#h0-0-3" id="h0-0-3" class="d">-use pager::Pager;
+</a><a href="#h0-0-4" id="h0-0-4" class="d">-use std::fs::File;
+</a><a href="#h0-0-5" id="h0-0-5" class="d">-use std::io::{BufReader, Read};
+</a><a href="#h0-0-6" id="h0-0-6" class="d">-use std::path::Path;
+</a><a href="#h0-0-7" id="h0-0-7" class="d">-
+</a><a href="#h0-0-8" id="h0-0-8" class="d">-mod fetch;
+</a><a href="#h0-0-9" id="h0-0-9" class="d">-pub mod storage;
+</a><a href="#h0-0-10" id="h0-0-10" class="d">-
+</a><a href="#h0-0-11" id="h0-0-11" class="d">-pub fn list_view() {
+</a><a href="#h0-0-12" id="h0-0-12" class="d">-    if !storage::index_exists().unwrap() {
+</a><a href="#h0-0-13" id="h0-0-13" class="d">-        // Download all RFCs
+</a><a href="#h0-0-14" id="h0-0-14" class="d">-        fetch::index().unwrap();
+</a><a href="#h0-0-15" id="h0-0-15" class="d">-    }
+</a><a href="#h0-0-16" id="h0-0-16" class="d">-
+</a><a href="#h0-0-17" id="h0-0-17" class="d">-    let home_path = if let Some(p) = storage::get_home_path() {
+</a><a href="#h0-0-18" id="h0-0-18" class="d">-        p
+</a><a href="#h0-0-19" id="h0-0-19" class="d">-    } else {
+</a><a href="#h0-0-20" id="h0-0-20" class="d">-        panic!(&quot;Error: &#39;Could not find home directory!&#39;&quot;);
+</a><a href="#h0-0-21" id="h0-0-21" class="d">-    };
+</a><a href="#h0-0-22" id="h0-0-22" class="d">-
+</a><a href="#h0-0-23" id="h0-0-23" class="d">-    let path = format!(&quot;{}INDEX&quot;, home_path);
+</a><a href="#h0-0-24" id="h0-0-24" class="d">-
+</a><a href="#h0-0-25" id="h0-0-25" class="d">-    let mut index = String::new();
+</a><a href="#h0-0-26" id="h0-0-26" class="d">-    let f = File::open(&amp;path).expect(&quot;Unable to open file&quot;);
+</a><a href="#h0-0-27" id="h0-0-27" class="d">-    let mut br = BufReader::new(f);
+</a><a href="#h0-0-28" id="h0-0-28" class="d">-    let mut dots = &quot;&quot;;
+</a><a href="#h0-0-29" id="h0-0-29" class="d">-
+</a><a href="#h0-0-30" id="h0-0-30" class="d">-    br.read_to_string(&amp;mut index).expect(&quot;Unable to read INDEX&quot;);
+</a><a href="#h0-0-31" id="h0-0-31" class="d">-
+</a><a href="#h0-0-32" id="h0-0-32" class="d">-    Pager::with_pager(&quot;less -r&quot;).setup();
+</a><a href="#h0-0-33" id="h0-0-33" class="d">-
+</a><a href="#h0-0-34" id="h0-0-34" class="d">-    for line in index.lines() {
+</a><a href="#h0-0-35" id="h0-0-35" class="d">-        let line_words: Vec&lt;&amp;str&gt; = line.split(&#39; &#39;).collect();
+</a><a href="#h0-0-36" id="h0-0-36" class="d">-        let summerize: String = line.chars().skip(line_words[0].len()).take(77).collect();
+</a><a href="#h0-0-37" id="h0-0-37" class="d">-
+</a><a href="#h0-0-38" id="h0-0-38" class="d">-        if line.len() &gt;= 77 {
+</a><a href="#h0-0-39" id="h0-0-39" class="d">-            dots = &quot;...&quot;;
+</a><a href="#h0-0-40" id="h0-0-40" class="d">-        }
+</a><a href="#h0-0-41" id="h0-0-41" class="d">-
+</a><a href="#h0-0-42" id="h0-0-42" class="d">-        println!(&quot;{} | {}{}&quot;, line_words[0], summerize, dots);
+</a><a href="#h0-0-43" id="h0-0-43" class="d">-
+</a><a href="#h0-0-44" id="h0-0-44" class="d">-        dots = &quot;&quot;;
+</a><a href="#h0-0-45" id="h0-0-45" class="d">-    }
+</a><a href="#h0-0-46" id="h0-0-46" class="d">-}
+</a><a href="#h0-0-47" id="h0-0-47" class="d">-
+</a><a href="#h0-0-48" id="h0-0-48" class="d">-// Read RFC by serial number
+</a><a href="#h0-0-49" id="h0-0-49" class="d">-pub fn read_rfc(rfc_number: u32) {
+</a><a href="#h0-0-50" id="h0-0-50" class="d">-    // check if RFC is downloaded
+</a><a href="#h0-0-51" id="h0-0-51" class="d">-    if !storage::is_rfc_downloaded(rfc_number).unwrap() {
+</a><a href="#h0-0-52" id="h0-0-52" class="d">-        // download RFC
+</a><a href="#h0-0-53" id="h0-0-53" class="d">-        fetch::rfc(rfc_number).unwrap();
+</a><a href="#h0-0-54" id="h0-0-54" class="d">-    }
+</a><a href="#h0-0-55" id="h0-0-55" class="d">-
+</a><a href="#h0-0-56" id="h0-0-56" class="d">-    let home_path = if let Some(p) = storage::get_home_path() {
+</a><a href="#h0-0-57" id="h0-0-57" class="d">-        p
+</a><a href="#h0-0-58" id="h0-0-58" class="d">-    } else {
+</a><a href="#h0-0-59" id="h0-0-59" class="d">-        panic!(&quot;Error: &#39;Could not find home directory!&#39;&quot;);
+</a><a href="#h0-0-60" id="h0-0-60" class="d">-    };
+</a><a href="#h0-0-61" id="h0-0-61" class="d">-
+</a><a href="#h0-0-62" id="h0-0-62" class="d">-    let path = format!(&quot;{}{}&quot;, home_path, rfc_number);
+</a><a href="#h0-0-63" id="h0-0-63" class="d">-
+</a><a href="#h0-0-64" id="h0-0-64" class="d">-    let mut rfc = String::new();
+</a><a href="#h0-0-65" id="h0-0-65" class="d">-    let f = File::open(&amp;path).expect(&quot;Unable to open file&quot;);
+</a><a href="#h0-0-66" id="h0-0-66" class="d">-    let mut br = BufReader::new(f);
+</a><a href="#h0-0-67" id="h0-0-67" class="d">-    br.read_to_string(&amp;mut rfc).expect(&quot;Unable to read RFC&quot;);
+</a><a href="#h0-0-68" id="h0-0-68" class="d">-
+</a><a href="#h0-0-69" id="h0-0-69" class="d">-    // Read RFC
+</a><a href="#h0-0-70" id="h0-0-70" class="d">-    Pager::with_pager(&quot;less -r&quot;).setup();
+</a><a href="#h0-0-71" id="h0-0-71" class="d">-    println!(&quot;{}&quot;, &amp;rfc);
+</a><a href="#h0-0-72" id="h0-0-72" class="d">-}
+</a><a href="#h0-0-73" id="h0-0-73" class="d">-
+</a><a href="#h0-0-74" id="h0-0-74" class="d">-// Update RFC
+</a><a href="#h0-0-75" id="h0-0-75" class="d">-pub fn update() {
+</a><a href="#h0-0-76" id="h0-0-76" class="d">-    fetch::index().unwrap();
+</a><a href="#h0-0-77" id="h0-0-77" class="d">-}
+</a><b>diff --git a/<a id="h1" href="../file/src/main.rs.html">src/main.rs</a> b/<a href="../file/src/main.rs.html">src/main.rs</a></b>
+<a href="#h1-0" id="h1-0" class="h">@@ -1,4 +1,12 @@
+</a> use clap::{App, Arg, SubCommand};
+<a href="#h1-0-1" id="h1-0-1" class="i">+extern crate pager;
+</a><a href="#h1-0-2" id="h1-0-2" class="i">+
+</a><a href="#h1-0-3" id="h1-0-3" class="i">+mod fetch;
+</a><a href="#h1-0-4" id="h1-0-4" class="i">+pub mod storage;
+</a><a href="#h1-0-5" id="h1-0-5" class="i">+
+</a><a href="#h1-0-6" id="h1-0-6" class="i">+use pager::Pager;
+</a><a href="#h1-0-7" id="h1-0-7" class="i">+use std::fs::File;
+</a><a href="#h1-0-8" id="h1-0-8" class="i">+use std::io::{BufReader, Read};
+</a> 
+ fn main() {
+     let matches = App::new(&quot;ietf&quot;)
+<a href="#h1-1" id="h1-1" class="h">@@ -25,18 +33,38 @@ fn main() {
+</a>         .subcommand(SubCommand::with_name(&quot;clean&quot;).about(&quot;Remove the rfc directory&quot;))
+         .get_matches();
+ 
+<a href="#h1-1-3" id="h1-1-3" class="i">+    let storage = storage::Storage::new();
+</a><a href="#h1-1-4" id="h1-1-4" class="i">+
+</a>     // Read RFC by serial number
+     if let Some(n) = matches.value_of(&quot;Number&quot;) {
+<a href="#h1-1-7" id="h1-1-7" class="d">-        ietf::read_rfc(
+</a><a href="#h1-1-8" id="h1-1-8" class="d">-            n.parse::&lt;u32&gt;()
+</a><a href="#h1-1-9" id="h1-1-9" class="d">-                .expect(&quot;RFC Serial Number should be a numeric value!&quot;),
+</a><a href="#h1-1-10" id="h1-1-10" class="d">-        );
+</a><a href="#h1-1-11" id="h1-1-11" class="i">+        let rfc_number = n.parse::&lt;u32&gt;().unwrap();
+</a><a href="#h1-1-12" id="h1-1-12" class="i">+
+</a><a href="#h1-1-13" id="h1-1-13" class="i">+        // check if RFC is downloaded
+</a><a href="#h1-1-14" id="h1-1-14" class="i">+        if !storage.is_rfc_downloaded(rfc_number).unwrap() {
+</a><a href="#h1-1-15" id="h1-1-15" class="i">+            // download RFC
+</a><a href="#h1-1-16" id="h1-1-16" class="i">+            let rfc_data = fetch::rfc(rfc_number).unwrap();
+</a><a href="#h1-1-17" id="h1-1-17" class="i">+
+</a><a href="#h1-1-18" id="h1-1-18" class="i">+            // persist RFC
+</a><a href="#h1-1-19" id="h1-1-19" class="i">+            storage.persist_rfc(rfc_number, &amp;rfc_data);
+</a><a href="#h1-1-20" id="h1-1-20" class="i">+        }
+</a><a href="#h1-1-21" id="h1-1-21" class="i">+
+</a><a href="#h1-1-22" id="h1-1-22" class="i">+        let rfc_file_path = format!(&quot;{}{}&quot;, storage.rfc_dir_path, rfc_number);
+</a><a href="#h1-1-23" id="h1-1-23" class="i">+
+</a><a href="#h1-1-24" id="h1-1-24" class="i">+        let mut rfc_data = String::new();
+</a><a href="#h1-1-25" id="h1-1-25" class="i">+        let index_file = File::open(&amp;rfc_file_path).expect(&quot;Unable to open file&quot;);
+</a><a href="#h1-1-26" id="h1-1-26" class="i">+        let mut buffer_reader = BufReader::new(index_file);
+</a><a href="#h1-1-27" id="h1-1-27" class="i">+        buffer_reader
+</a><a href="#h1-1-28" id="h1-1-28" class="i">+            .read_to_string(&amp;mut rfc_data)
+</a><a href="#h1-1-29" id="h1-1-29" class="i">+            .expect(&quot;Unable to read RFC&quot;);
+</a><a href="#h1-1-30" id="h1-1-30" class="i">+
+</a><a href="#h1-1-31" id="h1-1-31" class="i">+        Pager::with_pager(&quot;less -r&quot;).setup();
+</a><a href="#h1-1-32" id="h1-1-32" class="i">+        println!(&quot;{}&quot;, &amp;rfc_data);
+</a>         return;
+     }
+ 
+     // Removes RFC by serial number
+     if let Some(n) = matches.value_of(&quot;Remove&quot;) {
+<a href="#h1-1-38" id="h1-1-38" class="d">-        ietf::storage::remove(
+</a><a href="#h1-1-39" id="h1-1-39" class="i">+        storage.remove(
+</a>             n.parse::&lt;u32&gt;()
+                 .expect(&quot;RFC Serial Number should be a numeric value!&quot;),
+         );
+<a href="#h1-2" id="h1-2" class="h">@@ -45,16 +73,38 @@ fn main() {
+</a> 
+     // Update RFC index
+     if let Some(_matches) = matches.subcommand_matches(&quot;update&quot;) {
+<a href="#h1-2-3" id="h1-2-3" class="d">-        ietf::update();
+</a><a href="#h1-2-4" id="h1-2-4" class="i">+        storage.update_index();
+</a>         return;
+     }
+ 
+     // Remove the ietf directory
+     if let Some(_matches) = matches.subcommand_matches(&quot;clean&quot;) {
+<a href="#h1-2-10" id="h1-2-10" class="d">-        ietf::storage::clean();
+</a><a href="#h1-2-11" id="h1-2-11" class="i">+        storage.clean();
+</a>         return;
+     }
+ 
+<a href="#h1-2-15" id="h1-2-15" class="d">-    // Display RFC list view
+</a><a href="#h1-2-16" id="h1-2-16" class="d">-    ietf::list_view();
+</a><a href="#h1-2-17" id="h1-2-17" class="i">+    // ---------- Display RFC list view ------------
+</a><a href="#h1-2-18" id="h1-2-18" class="i">+    let mut index_data = String::new();
+</a><a href="#h1-2-19" id="h1-2-19" class="i">+    let index_file = File::open(&amp;storage.index_file_path).expect(&quot;Unable to open file&quot;);
+</a><a href="#h1-2-20" id="h1-2-20" class="i">+    let mut buffer_reader = BufReader::new(index_file);
+</a><a href="#h1-2-21" id="h1-2-21" class="i">+    let mut read_more_dots = &quot;&quot;;
+</a><a href="#h1-2-22" id="h1-2-22" class="i">+
+</a><a href="#h1-2-23" id="h1-2-23" class="i">+    buffer_reader
+</a><a href="#h1-2-24" id="h1-2-24" class="i">+        .read_to_string(&amp;mut index_data)
+</a><a href="#h1-2-25" id="h1-2-25" class="i">+        .expect(&quot;Unable to read INDEX&quot;);
+</a><a href="#h1-2-26" id="h1-2-26" class="i">+
+</a><a href="#h1-2-27" id="h1-2-27" class="i">+    Pager::with_pager(&quot;less -r&quot;).setup();
+</a><a href="#h1-2-28" id="h1-2-28" class="i">+
+</a><a href="#h1-2-29" id="h1-2-29" class="i">+    for line in index_data.lines() {
+</a><a href="#h1-2-30" id="h1-2-30" class="i">+        let line_words: Vec&lt;&amp;str&gt; = line.split(&#39; &#39;).collect();
+</a><a href="#h1-2-31" id="h1-2-31" class="i">+        let summerize: String = line.chars().skip(line_words[0].len()).take(77).collect();
+</a><a href="#h1-2-32" id="h1-2-32" class="i">+
+</a><a href="#h1-2-33" id="h1-2-33" class="i">+        if line.len() &gt;= 77 {
+</a><a href="#h1-2-34" id="h1-2-34" class="i">+            read_more_dots = &quot;...&quot;;
+</a><a href="#h1-2-35" id="h1-2-35" class="i">+        }
+</a><a href="#h1-2-36" id="h1-2-36" class="i">+
+</a><a href="#h1-2-37" id="h1-2-37" class="i">+        println!(&quot;{} | {}{}&quot;, line_words[0], summerize, read_more_dots);
+</a><a href="#h1-2-38" id="h1-2-38" class="i">+
+</a><a href="#h1-2-39" id="h1-2-39" class="i">+        read_more_dots = &quot;&quot;;
+</a><a href="#h1-2-40" id="h1-2-40" class="i">+    }
+</a> }
+</pre>
+</div>
+</body>
+</html>

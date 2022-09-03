@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>feat: Revert back to using normal pager for IETF reading - ietf - Unnamed repository; edit this file &#39;description&#39; to name the repository.
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="ietf Atom Feed" href="../atom.xml" />
+<link rel="alternate" type="application/atom+xml" title="ietf Atom Feed (tags)" href="../tags.xml" />
+<link rel="stylesheet" type="text/css" href="/git.css" />
+</head>
+<body>
+<table><tr><td><a href="/index.html"><img src="/logo.png" alt="" width="32" height="32" /></a></td><td><h1>ietf</h1><span class="desc">Unnamed repository; edit this file &#39;description&#39; to name the repository.
+</span></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a> | <a href="../file/README.md.pretty.html">README</a> | <a href="../file/LICENSE.html">LICENSE</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/f6a584ac28ebf13425cfdfd686db433b90a40850.html">f6a584ac28ebf13425cfdfd686db433b90a40850</a>
+<b>parent</b> <a href="../commit/9d0be962a119fc598e93e1e1a4d39c2aaf77ff5c.html">9d0be962a119fc598e93e1e1a4d39c2aaf77ff5c</a>
+<b>Author:</b> cy6erlion &lt;<a href="mailto:dev@merely.tech">dev@merely.tech</a>&gt;
+<b>Date:</b>   Sun,  7 Feb 2021 10:59:44 +0200
+
+feat: Revert back to using normal pager for IETF reading
+
+<b>Diffstat:</b>
+<table><tr><td class="M">M</td><td><a href="#h0">Cargo.lock</a></td><td> | </td><td class="num">38</td><td><span class="i">++++++++++++++++++++++++++++++++++++++</span><span class="d"></span></td></tr>
+<tr><td class="M">M</td><td><a href="#h1">Cargo.toml</a></td><td> | </td><td class="num">4</td><td><span class="i">++++</span><span class="d"></span></td></tr>
+<tr><td class="M">M</td><td><a href="#h2">src/main.rs</a></td><td> | </td><td class="num">28</td><td><span class="i">+++++++++++++++++</span><span class="d">-----------</span></td></tr>
+</table></pre><pre>3 files changed, 59 insertions(+), 11 deletions(-)
+<hr/><b>diff --git a/<a id="h0" href="../file/Cargo.lock.html">Cargo.lock</a> b/<a href="../file/Cargo.lock.html">Cargo.lock</a></b>
+<a href="#h0-0" id="h0-0" class="h">@@ -250,12 +250,39 @@ dependencies = [
+</a> ]
+ 
+ [[package]]
+<a href="#h0-0-3" id="h0-0-3" class="i">+name = &quot;errno&quot;
+</a><a href="#h0-0-4" id="h0-0-4" class="i">+version = &quot;0.2.7&quot;
+</a><a href="#h0-0-5" id="h0-0-5" class="i">+source = &quot;registry+https://github.com/rust-lang/crates.io-index&quot;
+</a><a href="#h0-0-6" id="h0-0-6" class="i">+checksum = &quot;fa68f2fb9cae9d37c9b2b3584aba698a2e97f72d7aef7b9f7aa71d8b54ce46fe&quot;
+</a><a href="#h0-0-7" id="h0-0-7" class="i">+dependencies = [
+</a><a href="#h0-0-8" id="h0-0-8" class="i">+ &quot;errno-dragonfly&quot;,
+</a><a href="#h0-0-9" id="h0-0-9" class="i">+ &quot;libc&quot;,
+</a><a href="#h0-0-10" id="h0-0-10" class="i">+ &quot;winapi&quot;,
+</a><a href="#h0-0-11" id="h0-0-11" class="i">+]
+</a><a href="#h0-0-12" id="h0-0-12" class="i">+
+</a><a href="#h0-0-13" id="h0-0-13" class="i">+[[package]]
+</a><a href="#h0-0-14" id="h0-0-14" class="i">+name = &quot;errno-dragonfly&quot;
+</a><a href="#h0-0-15" id="h0-0-15" class="i">+version = &quot;0.1.1&quot;
+</a><a href="#h0-0-16" id="h0-0-16" class="i">+source = &quot;registry+https://github.com/rust-lang/crates.io-index&quot;
+</a><a href="#h0-0-17" id="h0-0-17" class="i">+checksum = &quot;14ca354e36190500e1e1fb267c647932382b54053c50b14970856c0b00a35067&quot;
+</a><a href="#h0-0-18" id="h0-0-18" class="i">+dependencies = [
+</a><a href="#h0-0-19" id="h0-0-19" class="i">+ &quot;gcc&quot;,
+</a><a href="#h0-0-20" id="h0-0-20" class="i">+ &quot;libc&quot;,
+</a><a href="#h0-0-21" id="h0-0-21" class="i">+]
+</a><a href="#h0-0-22" id="h0-0-22" class="i">+
+</a><a href="#h0-0-23" id="h0-0-23" class="i">+[[package]]
+</a> name = &quot;fnv&quot;
+ version = &quot;1.0.7&quot;
+ source = &quot;registry+https://github.com/rust-lang/crates.io-index&quot;
+ checksum = &quot;3f9eec918d3f24069decb9af1554cad7c880e2da24a9afd88aca000531ab82c1&quot;
+ 
+ [[package]]
+<a href="#h0-0-30" id="h0-0-30" class="i">+name = &quot;gcc&quot;
+</a><a href="#h0-0-31" id="h0-0-31" class="i">+version = &quot;0.3.55&quot;
+</a><a href="#h0-0-32" id="h0-0-32" class="i">+source = &quot;registry+https://github.com/rust-lang/crates.io-index&quot;
+</a><a href="#h0-0-33" id="h0-0-33" class="i">+checksum = &quot;8f5f3913fa0bfe7ee1fd8248b6b9f42a5af4b9d65ec2dd2c3c26132b950ecfc2&quot;
+</a><a href="#h0-0-34" id="h0-0-34" class="i">+
+</a><a href="#h0-0-35" id="h0-0-35" class="i">+[[package]]
+</a> name = &quot;getrandom&quot;
+ version = &quot;0.1.15&quot;
+ source = &quot;registry+https://github.com/rust-lang/crates.io-index&quot;
+<a href="#h0-1" id="h0-1" class="h">@@ -300,6 +327,7 @@ dependencies = [
+</a>  &quot;cursive&quot;,
+  &quot;dirs-next&quot;,
+  &quot;minreq&quot;,
+<a href="#h0-1-3" id="h0-1-3" class="i">+ &quot;pager&quot;,
+</a> ]
+ 
+ [[package]]
+<a href="#h0-2" id="h0-2" class="h">@@ -440,6 +468,16 @@ dependencies = [
+</a> ]
+ 
+ [[package]]
+<a href="#h0-2-3" id="h0-2-3" class="i">+name = &quot;pager&quot;
+</a><a href="#h0-2-4" id="h0-2-4" class="i">+version = &quot;0.16.0&quot;
+</a><a href="#h0-2-5" id="h0-2-5" class="i">+source = &quot;registry+https://github.com/rust-lang/crates.io-index&quot;
+</a><a href="#h0-2-6" id="h0-2-6" class="i">+checksum = &quot;05c7d08cf0d0b55c4f0ffedb5e06569ea212e85d622975071370393970491968&quot;
+</a><a href="#h0-2-7" id="h0-2-7" class="i">+dependencies = [
+</a><a href="#h0-2-8" id="h0-2-8" class="i">+ &quot;errno&quot;,
+</a><a href="#h0-2-9" id="h0-2-9" class="i">+ &quot;libc&quot;,
+</a><a href="#h0-2-10" id="h0-2-10" class="i">+]
+</a><a href="#h0-2-11" id="h0-2-11" class="i">+
+</a><a href="#h0-2-12" id="h0-2-12" class="i">+[[package]]
+</a> name = &quot;pkg-config&quot;
+ version = &quot;0.3.19&quot;
+ source = &quot;registry+https://github.com/rust-lang/crates.io-index&quot;
+<b>diff --git a/<a id="h1" href="../file/Cargo.toml.html">Cargo.toml</a> b/<a href="../file/Cargo.toml.html">Cargo.toml</a></b>
+<a href="#h1-0" id="h1-0" class="h">@@ -27,3 +27,6 @@ dirs-next = &quot;2.0.0&quot;
+</a> 
+ # Terminal User Interface
+ cursive = &quot;0.16&quot;
+<a href="#h1-0-3" id="h1-0-3" class="i">+
+</a><a href="#h1-0-4" id="h1-0-4" class="i">+# Pager for reading the RFCs
+</a><a href="#h1-0-5" id="h1-0-5" class="i">+pager = &quot;0.16.0&quot;
+</a><a href="#h1-0-6" id="h1-0-6" class="i">+\ No newline at end of file
+</a><b>diff --git a/<a id="h2" href="../file/src/main.rs.html">src/main.rs</a> b/<a href="../file/src/main.rs.html">src/main.rs</a></b>
+<a href="#h2-0" id="h2-0" class="h">@@ -1,10 +1,12 @@
+</a><a href="#h2-0-0" id="h2-0-0" class="i">+extern crate pager;
+</a> use clap::{App, Arg, SubCommand};
+ use cursive::align::HAlign;
+ use cursive::event::EventResult;
+ use cursive::traits::With;
+ use cursive::traits::*;
+<a href="#h2-0-6" id="h2-0-6" class="d">-use cursive::views::{Dialog, OnEventView, SelectView, TextView};
+</a><a href="#h2-0-7" id="h2-0-7" class="i">+use cursive::views::{Dialog, OnEventView, SelectView};
+</a> use cursive::Cursive;
+<a href="#h2-0-9" id="h2-0-9" class="i">+use pager::Pager;
+</a> 
+ mod fetch;
+ mod storage;
+<a href="#h2-1" id="h2-1" class="h">@@ -38,13 +40,6 @@ fn main() -&gt; Result&lt;(), std::io::Error&gt; {
+</a>         .get_matches();
+ 
+     let storage = storage::Storage::new();
+<a href="#h2-1-3" id="h2-1-3" class="d">-    let mut siv = cursive::default();
+</a><a href="#h2-1-4" id="h2-1-4" class="d">-    siv.set_theme(cursive::theme::Theme::default().with(|theme| {
+</a><a href="#h2-1-5" id="h2-1-5" class="d">-        use cursive::theme::{BaseColor::*, Color::*, PaletteColor::*};
+</a><a href="#h2-1-6" id="h2-1-6" class="d">-        theme.palette[Background] = TerminalDefault;
+</a><a href="#h2-1-7" id="h2-1-7" class="d">-        theme.palette[Primary] = Dark(Black);
+</a><a href="#h2-1-8" id="h2-1-8" class="d">-        theme.palette[Secondary] = Rgb(255, 12, 42);
+</a><a href="#h2-1-9" id="h2-1-9" class="d">-    }));
+</a> 
+     // Read RFC by rfcnumber
+     if let Some(n) = matches.value_of(&quot;Number&quot;) {
+<a href="#h2-2" id="h2-2" class="h">@@ -70,8 +65,8 @@ fn main() -&gt; Result&lt;(), std::io::Error&gt; {
+</a>             .read_to_string(&amp;mut rfc_data)
+             .expect(&quot;Unable to read RFC&quot;);
+ 
+<a href="#h2-2-3" id="h2-2-3" class="d">-        siv.add_layer(TextView::new(rfc_data).with_name(&quot;text&quot;).scrollable());
+</a><a href="#h2-2-4" id="h2-2-4" class="d">-        siv.run();
+</a><a href="#h2-2-5" id="h2-2-5" class="i">+        Pager::with_pager(&quot;less -r&quot;).setup();
+</a><a href="#h2-2-6" id="h2-2-6" class="i">+        println!(&quot;{}&quot;, rfc_data);
+</a>         return Ok(());
+     }
+ 
+<a href="#h2-3" id="h2-3" class="h">@@ -97,6 +92,14 @@ fn main() -&gt; Result&lt;(), std::io::Error&gt; {
+</a>     }
+ 
+     // ---------- Display RFC list view ------------
+<a href="#h2-3-3" id="h2-3-3" class="i">+    let mut siv = cursive::default();
+</a><a href="#h2-3-4" id="h2-3-4" class="i">+    siv.set_theme(cursive::theme::Theme::default().with(|theme| {
+</a><a href="#h2-3-5" id="h2-3-5" class="i">+        use cursive::theme::{BaseColor::*, Color::*, PaletteColor::*};
+</a><a href="#h2-3-6" id="h2-3-6" class="i">+        theme.palette[Background] = TerminalDefault;
+</a><a href="#h2-3-7" id="h2-3-7" class="i">+        theme.palette[Primary] = Dark(Black);
+</a><a href="#h2-3-8" id="h2-3-8" class="i">+        theme.palette[Secondary] = Rgb(255, 12, 42);
+</a><a href="#h2-3-9" id="h2-3-9" class="i">+    }));
+</a><a href="#h2-3-10" id="h2-3-10" class="i">+
+</a>     let mut index_data = String::new();
+     let index_file = File::open(&amp;storage.index_file_path).expect(&quot;Unable to open file&quot;);
+     let mut buffer_reader = BufReader::new(index_file);
+<a href="#h2-4" id="h2-4" class="h">@@ -130,7 +133,10 @@ fn main() -&gt; Result&lt;(), std::io::Error&gt; {
+</a>             .read_to_string(&amp;mut rfc_data)
+             .expect(&quot;Unable to read RFC&quot;);
+ 
+<a href="#h2-4-3" id="h2-4-3" class="d">-        siv.add_layer(TextView::new(rfc_data).with_name(&quot;text&quot;).scrollable());
+</a><a href="#h2-4-4" id="h2-4-4" class="i">+        siv.dump();
+</a><a href="#h2-4-5" id="h2-4-5" class="i">+        Pager::with_pager(&quot;less -r&quot;).setup();
+</a><a href="#h2-4-6" id="h2-4-6" class="i">+        println!(&quot;{}&quot;, rfc_data);
+</a><a href="#h2-4-7" id="h2-4-7" class="i">+        siv.quit();
+</a>     };
+ 
+     buffer_reader
+</pre>
+</div>
+</body>
+</html>

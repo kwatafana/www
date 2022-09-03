@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>shorter API identifiers - drtx - Unnamed repository; edit this file &#39;description&#39; to name the repository.
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="drtx Atom Feed" href="../atom.xml" />
+<link rel="alternate" type="application/atom+xml" title="drtx Atom Feed (tags)" href="../tags.xml" />
+<link rel="stylesheet" type="text/css" href="/git.css" />
+</head>
+<body>
+<table><tr><td><a href="/index.html"><img src="/logo.png" alt="" width="32" height="32" /></a></td><td><h1>drtx</h1><span class="desc">Unnamed repository; edit this file &#39;description&#39; to name the repository.
+</span></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a> | <a href="../file/README.md.pretty.html">README</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/76579e3b2e46456ab8bba79ef431bc04b1d2be20.html">76579e3b2e46456ab8bba79ef431bc04b1d2be20</a>
+<b>parent</b> <a href="../commit/5337501ba9d60ea914c7cb6b5b545a21516c76c4.html">5337501ba9d60ea914c7cb6b5b545a21516c76c4</a>
+<b>Author:</b> Jackson G. Kaindume &lt;<a href="mailto:seestem@merely.tech">seestem@merely.tech</a>&gt;
+<b>Date:</b>   Mon,  4 Jul 2022 14:19:12 +0200
+
+shorter API identifiers
+
+<b>Diffstat:</b>
+<table><tr><td class="M">M</td><td><a href="#h0">lib/src/drtx_base.dart</a></td><td> | </td><td class="num">7</td><td><span class="i">++</span><span class="d">-----</span></td></tr>
+<tr><td class="M">M</td><td><a href="#h1">test/drtx_test.dart</a></td><td> | </td><td class="num">6</td><td><span class="i">+++</span><span class="d">---</span></td></tr>
+</table></pre><pre>2 files changed, 5 insertions(+), 8 deletions(-)
+<hr/><b>diff --git a/<a id="h0" href="../file/lib/src/drtx_base.dart.html">lib/src/drtx_base.dart</a> b/<a href="../file/lib/src/drtx_base.dart.html">lib/src/drtx_base.dart</a></b>
+<a href="#h0-0" id="h0-0" class="h">@@ -1,10 +1,7 @@
+</a><a href="#h0-0-0" id="h0-0-0" class="d">-// Public facing types
+</a><a href="#h0-0-1" id="h0-0-1" class="d">-
+</a><a href="#h0-0-2" id="h0-0-2" class="d">-/// Functions for string formating
+</a><a href="#h0-0-3" id="h0-0-3" class="d">-class StrFmt {
+</a><a href="#h0-0-4" id="h0-0-4" class="i">+class X {
+</a>   /// if a string is has 13 characters or more it return the first 5 characters
+   /// with 3 (...) dots and the last 5 characters
+<a href="#h0-0-7" id="h0-0-7" class="d">-  static String shrtMidDot(String str) {
+</a><a href="#h0-0-8" id="h0-0-8" class="i">+  static String midot(String str) {
+</a>     if (str.length &gt; 13) {
+       final start = str.substring(0, 5);
+       final end = str.substring(str.length - 5);
+<b>diff --git a/<a id="h1" href="../file/test/drtx_test.dart.html">test/drtx_test.dart</a> b/<a href="../file/test/drtx_test.dart.html">test/drtx_test.dart</a></b>
+<a href="#h1-0" id="h1-0" class="h">@@ -8,10 +8,10 @@ void main() {
+</a>     });
+ 
+     test(&#39;shrtMidDot&#39;, () {
+<a href="#h1-0-3" id="h1-0-3" class="d">-      expect(StrFmt.shrtMidDot(&quot;0123456789&quot;), &quot;0123456789&quot;);
+</a><a href="#h1-0-4" id="h1-0-4" class="d">-      expect(StrFmt.shrtMidDot(&quot;0123456789ABCDE&quot;), &quot;01234...ABCDE&quot;);
+</a><a href="#h1-0-5" id="h1-0-5" class="i">+      expect(X.midot(&quot;0123456789&quot;), &quot;0123456789&quot;);
+</a><a href="#h1-0-6" id="h1-0-6" class="i">+      expect(X.midot(&quot;0123456789ABCDE&quot;), &quot;01234...ABCDE&quot;);
+</a>       expect(
+<a href="#h1-0-8" id="h1-0-8" class="d">-          StrFmt.shrtMidDot(
+</a><a href="#h1-0-9" id="h1-0-9" class="i">+          X.midot(
+</a>               &quot;0123456kfjdffdfaunfdfnhjfdhfdfdkjdfdfkdfnngfdfjgghjfghfjhgffghfghhjfghjfgjhfghfghjfghgjfghjfghjfghrbebqjewe83929odf;****3774743g789ABCDE&quot;),
+           &quot;01234...ABCDE&quot;);
+     });
+</pre>
+</div>
+</body>
+</html>

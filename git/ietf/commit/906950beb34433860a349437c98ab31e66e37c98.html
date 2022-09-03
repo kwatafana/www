@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>bump version to 0.2.0 - ietf - Unnamed repository; edit this file &#39;description&#39; to name the repository.
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="ietf Atom Feed" href="../atom.xml" />
+<link rel="alternate" type="application/atom+xml" title="ietf Atom Feed (tags)" href="../tags.xml" />
+<link rel="stylesheet" type="text/css" href="/git.css" />
+</head>
+<body>
+<table><tr><td><a href="/index.html"><img src="/logo.png" alt="" width="32" height="32" /></a></td><td><h1>ietf</h1><span class="desc">Unnamed repository; edit this file &#39;description&#39; to name the repository.
+</span></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a> | <a href="../file/README.md.pretty.html">README</a> | <a href="../file/LICENSE.html">LICENSE</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/906950beb34433860a349437c98ab31e66e37c98.html">906950beb34433860a349437c98ab31e66e37c98</a>
+<b>parent</b> <a href="../commit/93fd8c1dde897a28da5e3013d9844f44014229f0.html">93fd8c1dde897a28da5e3013d9844f44014229f0</a>
+<b>Author:</b> cy6erlion &lt;<a href="mailto:dev@merely.tech">dev@merely.tech</a>&gt;
+<b>Date:</b>   Tue, 12 Jan 2021 21:42:56 +0200
+
+bump version to 0.2.0
+
+<b>Diffstat:</b>
+<table><tr><td class="M">M</td><td><a href="#h0">Cargo.lock</a></td><td> | </td><td class="num">2</td><td><span class="i">+</span><span class="d">-</span></td></tr>
+<tr><td class="M">M</td><td><a href="#h1">Cargo.toml</a></td><td> | </td><td class="num">2</td><td><span class="i">+</span><span class="d">-</span></td></tr>
+<tr><td class="M">M</td><td><a href="#h2">src/main.rs</a></td><td> | </td><td class="num">2</td><td><span class="i">+</span><span class="d">-</span></td></tr>
+</table></pre><pre>3 files changed, 3 insertions(+), 3 deletions(-)
+<hr/><b>diff --git a/<a id="h0" href="../file/Cargo.lock.html">Cargo.lock</a> b/<a href="../file/Cargo.lock.html">Cargo.lock</a></b>
+<a href="#h0-0" id="h0-0" class="h">@@ -360,7 +360,7 @@ checksum = &quot;b9e0384b61958566e926dc50660321d12159025e767c18e043daf26b70104c39&quot;
+</a> 
+ [[package]]
+ name = &quot;ietf&quot;
+<a href="#h0-0-3" id="h0-0-3" class="d">-version = &quot;0.1.0&quot;
+</a><a href="#h0-0-4" id="h0-0-4" class="i">+version = &quot;0.2.0&quot;
+</a> dependencies = [
+  &quot;clap&quot;,
+  &quot;cursive&quot;,
+<b>diff --git a/<a id="h1" href="../file/Cargo.toml.html">Cargo.toml</a> b/<a href="../file/Cargo.toml.html">Cargo.toml</a></b>
+<a href="#h1-0" id="h1-0" class="h">@@ -1,6 +1,6 @@
+</a> [package]
+ name = &quot;ietf&quot;
+<a href="#h1-0-2" id="h1-0-2" class="d">-version = &quot;0.1.0&quot;
+</a><a href="#h1-0-3" id="h1-0-3" class="i">+version = &quot;0.2.0&quot;
+</a> authors = [&quot;cy6erlion &lt;dev@merely.tech&gt;&quot;]
+ edition = &quot;2018&quot;
+ description = &quot;A program to read IETF RFCs in the terminal.&quot;
+<b>diff --git a/<a id="h2" href="../file/src/main.rs.html">src/main.rs</a> b/<a href="../file/src/main.rs.html">src/main.rs</a></b>
+<a href="#h2-0" id="h2-0" class="h">@@ -15,7 +15,7 @@ use std::io::{BufReader, Read};
+</a> 
+ fn main() -&gt; Result&lt;(), std::io::Error&gt; {
+     let matches = App::new(&quot;ietf&quot;)
+<a href="#h2-0-3" id="h2-0-3" class="d">-        .version(&quot;0.1.0&quot;)
+</a><a href="#h2-0-4" id="h2-0-4" class="i">+        .version(&quot;0.2.0&quot;)
+</a>         .about(&quot;CLI for reading IETF RFCs.&quot;)
+         .before_help(&quot;██▄██ ▄▄█▄ ▄█ ▄▄\n██ ▄█ ▄▄██ ██ ▄█\n█▄▄▄█▄▄▄██▄██▄██\n▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀&quot;)
+         .arg(
+</pre>
+</div>
+</body>
+</html>

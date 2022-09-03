@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Run functions in their own threads to prevent blocking the scheduler - funscheduler - Unnamed repository; edit this file &#39;description&#39; to name the repository.
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="funscheduler Atom Feed" href="../atom.xml" />
+<link rel="alternate" type="application/atom+xml" title="funscheduler Atom Feed (tags)" href="../tags.xml" />
+<link rel="stylesheet" type="text/css" href="/git.css" />
+</head>
+<body>
+<table><tr><td><a href="/index.html"><img src="/logo.png" alt="" width="32" height="32" /></a></td><td><h1>funscheduler</h1><span class="desc">Unnamed repository; edit this file &#39;description&#39; to name the repository.
+</span></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a> | <a href="../file/README.md.pretty.html">README</a> | <a href="../file/LICENSE.html">LICENSE</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/1b0fbec0a0c49cb105623989ff3c2ad6ed1470a3.html">1b0fbec0a0c49cb105623989ff3c2ad6ed1470a3</a>
+<b>parent</b> <a href="../commit/fccf40edc429f9d25966b27ee222dfa79fd2750f.html">fccf40edc429f9d25966b27ee222dfa79fd2750f</a>
+<b>Author:</b> Jackson G. Kaindume &lt;<a href="mailto:seestem@protonmail.com">seestem@protonmail.com</a>&gt;
+<b>Date:</b>   Wed, 14 Jul 2021 23:34:00 +0200
+
+Run functions in their own threads to prevent blocking the scheduler
+
+<b>Diffstat:</b>
+<table><tr><td class="M">M</td><td><a href="#h0">src/lib.rs</a></td><td> | </td><td class="num">52</td><td><span class="i">+++++++++++++++++++++++++++++++++++</span><span class="d">-----------------</span></td></tr>
+</table></pre><pre>1 file changed, 35 insertions(+), 17 deletions(-)
+<hr/><b>diff --git a/<a id="h0" href="../file/src/lib.rs.html">src/lib.rs</a> b/<a href="../file/src/lib.rs.html">src/lib.rs</a></b>
+<a href="#h0-0" id="h0-0" class="h">@@ -1,6 +1,6 @@
+</a> // .---------------------------------------------------------------.
+ // |           Written and placed in the public domain by           |
+<a href="#h0-0-2" id="h0-0-2" class="d">-// |        Jackson G. Kaindume&lt;seestem@protonmail.com&gt;  ⧉          |
+</a><a href="#h0-0-3" id="h0-0-3" class="i">+// |        Jackson G. Kaindume&lt;seestem@protonmail.com&gt;  ⧉         |
+</a> // &#39;----------------------------------------------------------[2021]+
+ //! # Time based function execution scheduler
+ 
+<a href="#h0-1" id="h0-1" class="h">@@ -16,41 +16,59 @@ pub enum Timing {
+</a> pub struct FunScheduler;
+ 
+ impl FunScheduler {
+<a href="#h0-1-3" id="h0-1-3" class="d">-    /// Execute a function in specified time intervals, starting now.
+</a><a href="#h0-1-4" id="h0-1-4" class="i">+    /// Execute a function in specified time interval,
+</a><a href="#h0-1-5" id="h0-1-5" class="i">+    /// the function will be executed imidiately and then start
+</a>     pub fn interval(job: fn(), timing: Timing) {
+<a href="#h0-1-7" id="h0-1-7" class="d">-        let time_control = calc_time(timing);
+</a><a href="#h0-1-8" id="h0-1-8" class="i">+        let time = calc_time(timing);
+</a> 
+         loop {
+<a href="#h0-1-11" id="h0-1-11" class="d">-            job();
+</a><a href="#h0-1-12" id="h0-1-12" class="d">-            std::thread::sleep(time_control);
+</a><a href="#h0-1-13" id="h0-1-13" class="i">+            std::thread::spawn(move || {
+</a><a href="#h0-1-14" id="h0-1-14" class="i">+                job();
+</a><a href="#h0-1-15" id="h0-1-15" class="i">+            });
+</a><a href="#h0-1-16" id="h0-1-16" class="i">+
+</a><a href="#h0-1-17" id="h0-1-17" class="i">+            std::thread::sleep(time);
+</a><a href="#h0-1-18" id="h0-1-18" class="i">+        }
+</a><a href="#h0-1-19" id="h0-1-19" class="i">+    }
+</a><a href="#h0-1-20" id="h0-1-20" class="i">+
+</a><a href="#h0-1-21" id="h0-1-21" class="i">+    /// Like intervals but does not execute immediately.
+</a><a href="#h0-1-22" id="h0-1-22" class="i">+    pub fn rinterval(job: fn(), timing: Timing) {
+</a><a href="#h0-1-23" id="h0-1-23" class="i">+        let time = calc_time(timing);
+</a><a href="#h0-1-24" id="h0-1-24" class="i">+
+</a><a href="#h0-1-25" id="h0-1-25" class="i">+        loop {
+</a><a href="#h0-1-26" id="h0-1-26" class="i">+            std::thread::sleep(time);
+</a><a href="#h0-1-27" id="h0-1-27" class="i">+
+</a><a href="#h0-1-28" id="h0-1-28" class="i">+            std::thread::spawn(move || {
+</a><a href="#h0-1-29" id="h0-1-29" class="i">+                job();
+</a><a href="#h0-1-30" id="h0-1-30" class="i">+            });
+</a>         }
+     }
+ 
+     /// Execute function once after a specified amount of time
+     pub fn after(job: fn(), timing: Timing) {
+<a href="#h0-1-36" id="h0-1-36" class="d">-        let time_control = calc_time(timing);
+</a><a href="#h0-1-37" id="h0-1-37" class="d">-        std::thread::sleep(time_control);
+</a><a href="#h0-1-38" id="h0-1-38" class="i">+        let time = calc_time(timing);
+</a><a href="#h0-1-39" id="h0-1-39" class="i">+        std::thread::sleep(time);
+</a>         job();
+     }
+ }
+ 
+<a href="#h0-1-44" id="h0-1-44" class="d">-pub fn calc_time(timing: Timing) -&gt; Duration {
+</a><a href="#h0-1-45" id="h0-1-45" class="d">-    let final_seconds;
+</a><a href="#h0-1-46" id="h0-1-46" class="i">+/// Calculate time
+</a><a href="#h0-1-47" id="h0-1-47" class="i">+fn calc_time(timing: Timing) -&gt; Duration {
+</a><a href="#h0-1-48" id="h0-1-48" class="i">+    let seconds;
+</a>     match timing {
+<a href="#h0-1-50" id="h0-1-50" class="d">-        Timing::Seconds(seconds) =&gt; final_seconds = Duration::from_secs(seconds),
+</a><a href="#h0-1-51" id="h0-1-51" class="i">+        Timing::Seconds(s) =&gt; seconds = Duration::from_secs(s),
+</a>         Timing::Minutes(minutes) =&gt; {
+<a href="#h0-1-53" id="h0-1-53" class="d">-            let seconds = minutes * 60;
+</a><a href="#h0-1-54" id="h0-1-54" class="d">-            final_seconds = Duration::from_secs(seconds);
+</a><a href="#h0-1-55" id="h0-1-55" class="i">+            let s = minutes * 60;
+</a><a href="#h0-1-56" id="h0-1-56" class="i">+            seconds = Duration::from_secs(s);
+</a>         }
+         Timing::Hours(hours) =&gt; {
+<a href="#h0-1-59" id="h0-1-59" class="d">-            let seconds = hours * 3600;
+</a><a href="#h0-1-60" id="h0-1-60" class="d">-            final_seconds = Duration::from_secs(seconds);
+</a><a href="#h0-1-61" id="h0-1-61" class="i">+            let s = hours * 3600;
+</a><a href="#h0-1-62" id="h0-1-62" class="i">+            seconds = Duration::from_secs(s);
+</a>         }
+         Timing::Days(days) =&gt; {
+<a href="#h0-1-65" id="h0-1-65" class="d">-            let seconds = days * 86_400;
+</a><a href="#h0-1-66" id="h0-1-66" class="d">-            final_seconds = Duration::from_secs(seconds);
+</a><a href="#h0-1-67" id="h0-1-67" class="i">+            let s = days * 86_400;
+</a><a href="#h0-1-68" id="h0-1-68" class="i">+            seconds = Duration::from_secs(s);
+</a>         }
+     }
+ 
+<a href="#h0-1-72" id="h0-1-72" class="d">-    final_seconds
+</a><a href="#h0-1-73" id="h0-1-73" class="i">+    seconds
+</a> }
+</pre>
+</div>
+</body>
+</html>

@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>rename and fix clippy warnings - ietf - Unnamed repository; edit this file &#39;description&#39; to name the repository.
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="ietf Atom Feed" href="../atom.xml" />
+<link rel="alternate" type="application/atom+xml" title="ietf Atom Feed (tags)" href="../tags.xml" />
+<link rel="stylesheet" type="text/css" href="/git.css" />
+</head>
+<body>
+<table><tr><td><a href="/index.html"><img src="/logo.png" alt="" width="32" height="32" /></a></td><td><h1>ietf</h1><span class="desc">Unnamed repository; edit this file &#39;description&#39; to name the repository.
+</span></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a> | <a href="../file/README.md.pretty.html">README</a> | <a href="../file/LICENSE.html">LICENSE</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/e0cd436ac1cdbdd66dd2d434c1419dc40bab5cab.html">e0cd436ac1cdbdd66dd2d434c1419dc40bab5cab</a>
+<b>parent</b> <a href="../commit/0fe261ac20a3b4f5501b30511612f74a1cfe5f2f.html">0fe261ac20a3b4f5501b30511612f74a1cfe5f2f</a>
+<b>Author:</b> cy6erlion &lt;<a href="mailto:dev@merely.tech">dev@merely.tech</a>&gt;
+<b>Date:</b>   Tue, 29 Dec 2020 18:39:18 +0200
+
+rename and fix clippy warnings
+
+<b>Diffstat:</b>
+<table><tr><td class="M">M</td><td><a href="#h0">Cargo.lock</a></td><td> | </td><td class="num">20</td><td><span class="i">++++++++++</span><span class="d">----------</span></td></tr>
+<tr><td class="M">M</td><td><a href="#h1">Cargo.toml</a></td><td> | </td><td class="num">2</td><td><span class="i">+</span><span class="d">-</span></td></tr>
+<tr><td class="M">M</td><td><a href="#h2">README.md</a></td><td> | </td><td class="num">20</td><td><span class="i">+++++++++++</span><span class="d">---------</span></td></tr>
+<tr><td class="M">M</td><td><a href="#h3">src/fetch.rs</a></td><td> | </td><td class="num">6</td><td><span class="i">+++</span><span class="d">---</span></td></tr>
+<tr><td class="M">M</td><td><a href="#h4">src/lib.rs</a></td><td> | </td><td class="num">12</td><td><span class="i">++++++</span><span class="d">------</span></td></tr>
+<tr><td class="M">M</td><td><a href="#h5">src/main.rs</a></td><td> | </td><td class="num">10</td><td><span class="i">+++++</span><span class="d">-----</span></td></tr>
+</table></pre><pre>6 files changed, 36 insertions(+), 34 deletions(-)
+<hr/><b>diff --git a/<a id="h0" href="../file/Cargo.lock.html">Cargo.lock</a> b/<a href="../file/Cargo.lock.html">Cargo.lock</a></b>
+<a href="#h0-0" id="h0-0" class="h">@@ -149,6 +149,16 @@ dependencies = [
+</a> ]
+ 
+ [[package]]
+<a href="#h0-0-3" id="h0-0-3" class="i">+name = &quot;ietf&quot;
+</a><a href="#h0-0-4" id="h0-0-4" class="i">+version = &quot;0.1.0&quot;
+</a><a href="#h0-0-5" id="h0-0-5" class="i">+dependencies = [
+</a><a href="#h0-0-6" id="h0-0-6" class="i">+ &quot;clap&quot;,
+</a><a href="#h0-0-7" id="h0-0-7" class="i">+ &quot;dirs-next&quot;,
+</a><a href="#h0-0-8" id="h0-0-8" class="i">+ &quot;minreq&quot;,
+</a><a href="#h0-0-9" id="h0-0-9" class="i">+ &quot;pager&quot;,
+</a><a href="#h0-0-10" id="h0-0-10" class="i">+]
+</a><a href="#h0-0-11" id="h0-0-11" class="i">+
+</a><a href="#h0-0-12" id="h0-0-12" class="i">+[[package]]
+</a> name = &quot;js-sys&quot;
+ version = &quot;0.3.46&quot;
+ source = &quot;registry+https://github.com/rust-lang/crates.io-index&quot;
+<a href="#h0-1" id="h0-1" class="h">@@ -241,16 +251,6 @@ dependencies = [
+</a> ]
+ 
+ [[package]]
+<a href="#h0-1-3" id="h0-1-3" class="d">-name = &quot;rfc&quot;
+</a><a href="#h0-1-4" id="h0-1-4" class="d">-version = &quot;0.1.0&quot;
+</a><a href="#h0-1-5" id="h0-1-5" class="d">-dependencies = [
+</a><a href="#h0-1-6" id="h0-1-6" class="d">- &quot;clap&quot;,
+</a><a href="#h0-1-7" id="h0-1-7" class="d">- &quot;dirs-next&quot;,
+</a><a href="#h0-1-8" id="h0-1-8" class="d">- &quot;minreq&quot;,
+</a><a href="#h0-1-9" id="h0-1-9" class="d">- &quot;pager&quot;,
+</a><a href="#h0-1-10" id="h0-1-10" class="d">-]
+</a><a href="#h0-1-11" id="h0-1-11" class="d">-
+</a><a href="#h0-1-12" id="h0-1-12" class="d">-[[package]]
+</a> name = &quot;ring&quot;
+ version = &quot;0.16.19&quot;
+ source = &quot;registry+https://github.com/rust-lang/crates.io-index&quot;
+<b>diff --git a/<a id="h1" href="../file/Cargo.toml.html">Cargo.toml</a> b/<a href="../file/Cargo.toml.html">Cargo.toml</a></b>
+<a href="#h1-0" id="h1-0" class="h">@@ -1,5 +1,5 @@
+</a> [package]
+<a href="#h1-0-1" id="h1-0-1" class="d">-name = &quot;rfc&quot;
+</a><a href="#h1-0-2" id="h1-0-2" class="i">+name = &quot;ietf&quot;
+</a> version = &quot;0.1.0&quot;
+ authors = [&quot;cy6erlion &lt;dev@merely.tech&gt;&quot;]
+ edition = &quot;2018&quot;
+<b>diff --git a/<a id="h2" href="../file/README.md.html">README.md</a> b/<a href="../file/README.md.html">README.md</a></b>
+<a href="#h2-0" id="h2-0" class="h">@@ -1,16 +1,18 @@
+</a><a href="#h2-0-0" id="h2-0-0" class="d">-``` text
+</a><a href="#h2-0-1" id="h2-0-1" class="d">-█▀▄ █▀ ▄▀▀
+</a><a href="#h2-0-2" id="h2-0-2" class="d">-█▀▄ █▀ ▀▄▄
+</a><a href="#h2-0-3" id="h2-0-3" class="i">+``` text▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+</a><a href="#h2-0-4" id="h2-0-4" class="i">+██▄██ ▄▄█▄ ▄█ ▄▄
+</a><a href="#h2-0-5" id="h2-0-5" class="i">+██ ▄█ ▄▄██ ██ ▄█
+</a><a href="#h2-0-6" id="h2-0-6" class="i">+█▄▄▄█▄▄▄██▄██▄██
+</a><a href="#h2-0-7" id="h2-0-7" class="i">+▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
+</a> ```
+ 
+ ``` bash
+<a href="#h2-0-11" id="h2-0-11" class="d">-$ rfc 0.1.0
+</a><a href="#h2-0-12" id="h2-0-12" class="i">+$ ietf 0.1.0
+</a> 	
+<a href="#h2-0-14" id="h2-0-14" class="d">-A program to read RFCs in the terminal.
+</a><a href="#h2-0-15" id="h2-0-15" class="i">+A program to read IETF RFCs in the terminal.
+</a> 
+ USAGE:
+ 
+<a href="#h2-0-19" id="h2-0-19" class="d">-	rfc [OPTIONS] [SUBCOMMAND]
+</a><a href="#h2-0-20" id="h2-0-20" class="i">+	ietf [OPTIONS] [SUBCOMMAND]
+</a> 	
+ FLAGS:
+ 	-h, --help       Prints help information
+<a href="#h2-1" id="h2-1" class="h">@@ -38,17 +40,17 @@ To run simply type the following command in the shell to start the RFC
+</a> browser:
+ 
+ ``` bash
+<a href="#h2-1-3" id="h2-1-3" class="d">-$ rfc
+</a><a href="#h2-1-4" id="h2-1-4" class="i">+$ ietf
+</a> ```
+ 
+ ### Read RFC by number
+ ``` bash
+<a href="#h2-1-9" id="h2-1-9" class="d">-$ rfc -n 1
+</a><a href="#h2-1-10" id="h2-1-10" class="i">+$ ietf -n 1
+</a> ```
+ 
+ ### Update
+ To update the local RFC index, use the following command:
+ 
+ ``` bash
+<a href="#h2-1-17" id="h2-1-17" class="d">-$ rfc update
+</a><a href="#h2-1-18" id="h2-1-18" class="i">+$ ietf update
+</a> ```
+<b>diff --git a/<a id="h3" href="../file/src/fetch.rs.html">src/fetch.rs</a> b/<a href="../file/src/fetch.rs.html">src/fetch.rs</a></b>
+<a href="#h3-0" id="h3-0" class="h">@@ -33,7 +33,7 @@ pub fn persist_index(index: Vec&lt;String&gt;) {
+</a>             panic!(&quot;Unsupported OS&quot;);
+         };
+ 
+<a href="#h3-0-3" id="h3-0-3" class="d">-        let file = File::create(&amp;path).expect(&quot;Unable to create file&quot;);
+</a><a href="#h3-0-4" id="h3-0-4" class="i">+        let _file = File::create(&amp;path).expect(&quot;Unable to create file&quot;);
+</a>         let mut file = OpenOptions::new()
+             .write(true)
+             .append(true)
+<a href="#h3-1" id="h3-1" class="h">@@ -61,7 +61,7 @@ pub fn persist_rfc(sn: u32, rfc: &amp;str) {
+</a>             panic!(&quot;Unsupported OS&quot;);
+         };
+ 
+<a href="#h3-1-3" id="h3-1-3" class="d">-        let file = File::create(&amp;path).expect(&quot;Unable to create file&quot;);
+</a><a href="#h3-1-4" id="h3-1-4" class="i">+        let _file = File::create(&amp;path).expect(&quot;Unable to create file&quot;);
+</a>         let mut file = OpenOptions::new()
+             .write(true)
+             .append(true)
+<a href="#h3-2" id="h3-2" class="h">@@ -93,7 +93,7 @@ pub fn scrape(data: &amp;str) -&gt; Vec&lt;String&gt; {
+</a>                 buff = format!(&quot;{}{}&quot;, buff, line);
+             }
+         } else {
+<a href="#h3-2-3" id="h3-2-3" class="d">-            count = count + 1;
+</a><a href="#h3-2-4" id="h3-2-4" class="i">+            count += 1;
+</a>         }
+     }
+ 
+<b>diff --git a/<a id="h4" href="../file/src/lib.rs.html">src/lib.rs</a> b/<a href="../file/src/lib.rs.html">src/lib.rs</a></b>
+<a href="#h4-0" id="h4-0" class="h">@@ -98,10 +98,10 @@ fn index_exists() -&gt; Result&lt;bool, ()&gt; {
+</a>         };
+ 
+         if Path::new(&amp;path).exists() {
+<a href="#h4-0-3" id="h4-0-3" class="d">-            return Ok(true);
+</a><a href="#h4-0-4" id="h4-0-4" class="i">+            Ok(true)
+</a>         } else {
+             init_storage_sir().unwrap();
+<a href="#h4-0-7" id="h4-0-7" class="d">-            return Ok(false);
+</a><a href="#h4-0-8" id="h4-0-8" class="i">+            Ok(false)
+</a>         }
+     } else {
+         panic!(&quot;Could not find home directory&quot;);
+<a href="#h4-1" id="h4-1" class="h">@@ -120,10 +120,10 @@ fn is_rfc_downloaded(sn: u32) -&gt; Result&lt;bool, ()&gt; {
+</a>         };
+ 
+         if Path::new(&amp;path).exists() {
+<a href="#h4-1-3" id="h4-1-3" class="d">-            return Ok(true);
+</a><a href="#h4-1-4" id="h4-1-4" class="i">+            Ok(true)
+</a>         } else {
+             init_storage_sir().unwrap();
+<a href="#h4-1-7" id="h4-1-7" class="d">-            return Ok(false);
+</a><a href="#h4-1-8" id="h4-1-8" class="i">+            Ok(false)
+</a>         }
+     } else {
+         panic!(&quot;Could not find home directory&quot;);
+<a href="#h4-2" id="h4-2" class="h">@@ -142,10 +142,10 @@ fn init_storage_sir() -&gt; std::io::Result&lt;()&gt; {
+</a>         };
+ 
+         if Path::new(&amp;path).exists() {
+<a href="#h4-2-3" id="h4-2-3" class="d">-            return Ok(());
+</a><a href="#h4-2-4" id="h4-2-4" class="i">+            Ok(())
+</a>         } else {
+             std::fs::create_dir(path)?;
+<a href="#h4-2-7" id="h4-2-7" class="d">-            return Ok(());
+</a><a href="#h4-2-8" id="h4-2-8" class="i">+            Ok(())
+</a>         }
+     } else {
+         panic!(&quot;Could not find home directory&quot;);
+<b>diff --git a/<a id="h5" href="../file/src/main.rs.html">src/main.rs</a> b/<a href="../file/src/main.rs.html">src/main.rs</a></b>
+<a href="#h5-0" id="h5-0" class="h">@@ -1,7 +1,7 @@
+</a> use clap::{App, Arg, SubCommand};
+ 
+ fn main() {
+<a href="#h5-0-3" id="h5-0-3" class="d">-    let matches = App::new(&quot;rfc&quot;)
+</a><a href="#h5-0-4" id="h5-0-4" class="i">+    let matches = App::new(&quot;ietf&quot;)
+</a>         .version(&quot;0.1.0&quot;)
+         .about(&quot;A program to read RFCs in the terminal.&quot;)
+         .arg(
+<a href="#h5-1" id="h5-1" class="h">@@ -17,7 +17,7 @@ fn main() {
+</a> 
+     // Read RFC by serial number
+     if let Some(n) = matches.value_of(&quot;Number&quot;) {
+<a href="#h5-1-3" id="h5-1-3" class="d">-        rfc::read_rfc(
+</a><a href="#h5-1-4" id="h5-1-4" class="i">+        ietf::read_rfc(
+</a>             n.parse::&lt;u32&gt;()
+                 .expect(&quot;RFC Serial Number should be a numeric value!&quot;),
+         );
+<a href="#h5-2" id="h5-2" class="h">@@ -25,11 +25,11 @@ fn main() {
+</a>     }
+ 
+     // Update RFC index
+<a href="#h5-2-3" id="h5-2-3" class="d">-    if let Some(matches) = matches.subcommand_matches(&quot;update&quot;) {
+</a><a href="#h5-2-4" id="h5-2-4" class="d">-        rfc::update();
+</a><a href="#h5-2-5" id="h5-2-5" class="i">+    if let Some(_matches) = matches.subcommand_matches(&quot;update&quot;) {
+</a><a href="#h5-2-6" id="h5-2-6" class="i">+        ietf::update();
+</a>         return;
+     }
+ 
+     // Display RFC list view
+<a href="#h5-2-11" id="h5-2-11" class="d">-    rfc::list_view();
+</a><a href="#h5-2-12" id="h5-2-12" class="i">+    ietf::list_view();
+</a> }
+</pre>
+</div>
+</body>
+</html>
