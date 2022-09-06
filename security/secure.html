@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Jackson G. Kaindume" />
+  <meta name="dcterms.date" content="2022-09-04" />
+  <title>🔐</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+  </style>
+  <style type="text/css">html {
+line-height: 1.5;
+font-family: Georgia, serif;
+font-size: 20px;
+color: cyan;
+background-color: #222D31;
+}
+.title{
+font-size: 1.5em;
+font-weight: bolder;
+}
+body {
+margin: 0 auto;
+max-width: 36em;
+padding-left: 50px;
+padding-right: 50px;
+padding-top: 50px;
+padding-bottom: 50px;
+hyphens: auto;
+word-wrap: break-word;
+text-rendering: optimizeLegibility;
+font-kerning: normal;
+}
+@media (max-width: 600px) {
+body {
+font-size: 0.9em;
+padding: 1em;
+}
+}
+@media print {
+body {
+background-color: transparent;
+color: black;
+font-size: 12pt;
+}
+p, h2, h3 {
+orphans: 3;
+widows: 3;
+}
+h2, h3, h4 {
+page-break-after: avoid;
+}
+}
+p {
+margin: 1em 0;
+}
+a {
+color: cyan;
+}
+a:visited {
+color: cyan;
+}
+img {
+max-width: 100%;
+}
+h1, h2, h3, h4, h5, h6 {
+margin-top: 1em;
+}
+h5, h6 {
+font-size: 1em;
+font-style: italic;
+}
+h6 {
+font-weight: normal;
+}
+ol, ul {
+padding-left: 1.7em;
+margin-top: 1em;
+}
+li > ol, li > ul {
+margin-top: 0;
+}
+blockquote {
+margin: 1em 0 1em 1.7em;
+padding-left: 1em;
+border-left: 2px solid #e6e6e6;
+color: #606060;
+}
+code {
+font-family: Menlo, Monaco, 'Lucida Console', Consolas, monospace;
+font-size: 85%;
+margin: 0;
+}
+pre {
+margin: 1em 0;
+overflow: auto;
+}
+pre code {
+padding: 0;
+overflow: visible;
+}
+.sourceCode {
+background-color: transparent;
+overflow: visible;
+}
+hr {
+background-color: cyan;
+border: none;
+height: 1px;
+margin: 1em 0;
+}
+table {
+margin: 1em 0;
+border-collapse: collapse;
+width: 100%;
+overflow-x: auto;
+display: block;
+font-variant-numeric: lining-nums tabular-nums;
+}
+table caption {
+margin-bottom: 0.75em;
+}
+tbody {
+margin-top: 0.5em;
+border-top: 1px solid cyan;
+border-bottom: 1px solid cyan;
+}
+th {
+border-top: 1px solid cyan;
+padding: 0.25em 0.5em 0.25em 0.5em;
+}
+td {
+padding: 0.125em 0.5em 0.25em 0.5em;
+}
+header {
+margin-bottom: 4em;
+text-align: center;
+}
+#TOC li {
+list-style: none;
+}
+#TOC a:not(:hover) {
+text-decoration: none;
+}
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+</style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">🔐</h1>
+<p class="subtitle">Secure Bits | cyber security</p>
+<p class="author">Jackson G. Kaindume</p>
+<p class="date">2022-09-04</p>
+</header>
+<hr />
+<h2 id="password-hashing">Password Hashing</h2>
+<h3 id="why-hash">Why hash?</h3>
+<p>It is only a matter of time until your server gets hacked, and when that happens you don’t want the users passwords to be leaked – this will allow the attacker to gain access to the users resources. Some users also use the same password across many services, your web-server can be the root cause of a chain of breaches.</p>
+<p>A cool way to prevent this type of leak is by <strong>obfuscating</strong> the users password with a <a href="https://en.wikipedia.org/wiki/Hash_function"><strong>hash function</strong></a>.</p>
+<p>There are lots of hash functions that can be used, but most of these will be a bad idea to use. For example if you use SHA-256 or other computationally cheap functions (hash function without a <strong>work factor</strong> parameter), they are vulnerable to rainbow table attacks. Bruteforce is also possible if the password length is short/known, asic miners can generate 100 TeraHashes PER Second.</p>
+<p>The server can increase the passwords entropy by concatenating it with a random string aka the <strong>salt</strong>. Users can also protect themselves by using longer passwords.</p>
+<p>The best method to use against plaintext password leaks and rainbow table attacks is to use a <strong>Password Hash Function</strong>. Which is a hash function specially designed to be slow/expensive to compute even on specialized hardware.</p>
+<h3 id="scrypt-recommended">Scrypt [recommended]</h3>
+<p>The <a href="https://www.tarsnap.com/scrypt.html">scrypt</a> hash function uses large amounts of memory when hashing making it expensive to scale to the point of reasonable bruteforce attacks. Secure against hardware brute-force attacks.</p>
+<p>A number of cryptocurrencies use <strong>scrypt</strong> for proof of work.</p>
+<p>Created by Colin Percival of <a href="https://en.wikipedia.org/wiki/Tarsnap">Tarsnap</a></p>
+<h3 id="argon2d-recommended">Argon2d [recommended]</h3>
+<p>The <a href="https://en.wikipedia.org/wiki/Argon2">Argon2d</a> function is designed to resist GPU cracking attacks. Secure against hardware brute-force attacks.</p>
+<p>It is the winner of <a href="https://www.password-hashing.net/">Password Hashing Competition</a>.</p>
+<h3 id="bcrypt">Bcrypt</h3>
+<p><a href="https://en.wikipedia.org/wiki/Bcrypt">Bcrypt</a> is based on the <a href="https://en.wikipedia.org/wiki/Blowfish_(cipher)">blowfish</a> cipher.</p>
+<p>Vulnerable against hardware brute-force attacks.</p>
+<h3 id="pbkdf2">PBKDF2</h3>
+<p><a href="https://en.wikipedia.org/wiki/PBKDF2">PBKDF2</a> is an key derivation function with a sliding computational cost to reduce bruteforce search.</p>
+<p>Vulnerable against hardware brute-force attacks.</p>
+<h3 id="conclusion">Conclusion</h3>
+<p>A cool way to prevent password leaks is by <strong>obfuscating</strong> them with a password hash functions which offer additional security against bruteforce from specialliazed hardware such as asics. If password hash functions are used and implemented correctly even the administrators of the server will not be able to read the users passwords especially if the server is open source and the users can audit the code for themselves.</p>
+<p><a href="https://www.troyhunt.com/our-password-hashing-has-no-clothes/" class="uri">https://www.troyhunt.com/our-password-hashing-has-no-clothes/</a> <a href="https://paragonie.com/blog/2016/02/how-safely-store-password-in-2016" class="uri">https://paragonie.com/blog/2016/02/how-safely-store-password-in-2016</a> <a href="https://www.troyhunt.com/passwords-evolved-authentication-guidance-for-the-modern-era/" class="uri">https://www.troyhunt.com/passwords-evolved-authentication-guidance-for-the-modern-era/</a></p>
+<h2 id="validation">Validation</h2>
+<p><a href="https://beesbuzz.biz/code/439-Falsehoods-programmers-believe-about-email" class="uri">https://beesbuzz.biz/code/439-Falsehoods-programmers-believe-about-email</a></p>
+<h2 id="methodology">Methodology</h2>
+<h3 id="cia-data-control">CIA Data control</h3>
+<p>Hacking is fundamentally about data control, controlling the data on a webpage, in a database, cookie or data sitting on a webserver out there somewhere in the cloud.</p>
+<p>For a hacker controlling the data means compromising:</p>
+<ol class="incremental" type="1">
+<li><strong>C</strong>onfidentiality: being able to <strong>read</strong> data it in cleartext</li>
+<li><strong>I</strong>ntegrity: being able to <strong>modify</strong> the data</li>
+<li><strong>A</strong>vailability: being able to <strong>destroy</strong> the data</li>
+</ol>
+<h4 id="doorways-inputs">1. Doorways (Inputs)</h4>
+<p>A hacker needs to find avenues to meet the system, these are avenues where the hacker gets the system to run and hopefully get it to crush and burn.</p>
+<p>The best way to find avenues is through the inputs of the system, these are the doorways the system has to the outside world. Naive systems fail to consider all that can pass through those doorways, the same door that fits the angel also fits the demon.</p>
+<p>It is good practice to decompose a system or sub-system to it doorways (Inputs) and analyze the angels (expected input) and demons (hacker input).</p>
+<h4 id="angels-expected-inputs">2. Angels (Expected Inputs)</h4>
+<p>These are the inputs expected by a system.</p>
+<h4 id="demons">3. Demons</h4>
+<p>These are the inputs not considered by naive systems. These inputs can result in the compromise of the systems <strong>confidentiality</strong>, <strong>integrity</strong> or <strong>availability</strong>.</p>
+<h4 id="bugs">4. Bugs</h4>
+<p>Some hacks are as the result of vulnerable software dependencies of developer/implementation bugs such as CVEs, these bugs can lead to angels and demons doorways or to other class of <em>CIA data control</em> hacks.</p>
+<h2 id="system-analysis-template">System Analysis Template</h2>
+<h3 id="webpage">Webpage</h3>
+<h4 id="confidentiality">1. Confidentiality</h4>
+<blockquote>
+<p>On this page what data should the hacker not be able to read?</p>
+</blockquote>
+<p>If so what controls that data?</p>
+<h4 id="integrity">2. Integrity</h4>
+<blockquote>
+<p>On this page what data should the hacker not be able to modify?</p>
+</blockquote>
+<p>If so what controls that data?</p>
+<h4 id="availability">3. Availability</h4>
+<blockquote>
+<p>On this page what data should the hacker not be able to destroy?</p>
+</blockquote>
+<p>If so what controls that data?</p>
+<h4 id="doorways-angels-and-demons">4. Doorways, Angels and Demons</h4>
+<blockquote>
+<p>List all the doorways on this page with their angels and demons</p>
+</blockquote>
+<h4 id="bugs-1">5. Bugs</h4>
+<blockquote>
+<p>List exploitable dependency bugs</p>
+</blockquote>
+<h2 id="attacks">Attacks</h2>
+<h3 id="sql-injection">SQL injection</h3>
+<p><a href="http://www.unixwiz.net/techtips/sql-injection.html" class="uri">http://www.unixwiz.net/techtips/sql-injection.html</a> <a href="https://bobby-tables.com/" class="uri">https://bobby-tables.com/</a> <a href="https://www.hackingarticles.in/beginner-guide-sql-injection-part-1/" class="uri">https://www.hackingarticles.in/beginner-guide-sql-injection-part-1/</a></p>
+<h3 id="rainbow-tables">Rainbow Tables</h3>
+<h3 id="cross-site-scripting">Cross-Site scripting</h3>
+<p><a href="https://brutelogic.com.br/blog/dom-based-xss-the-3-sinks/" class="uri">https://brutelogic.com.br/blog/dom-based-xss-the-3-sinks/</a></p>
+<h3 id="csrf">CSRF</h3>
+<h3 id="server-side-request-forgery">Server-Side Request Forgery</h3>
+<p><a href="https://www.hackerone.com/application-security/how-server-side-request-forgery-ssrf" class="uri">https://www.hackerone.com/application-security/how-server-side-request-forgery-ssrf</a> <a href="https://blog.christophetd.fr/abusing-aws-metadata-service-using-ssrf-vulnerabilities/" class="uri">https://blog.christophetd.fr/abusing-aws-metadata-service-using-ssrf-vulnerabilities/</a> <a href="https://www.rfk.id.au/blog/entry/security-bugs-ssrf-via-request-splitting/" class="uri">https://www.rfk.id.au/blog/entry/security-bugs-ssrf-via-request-splitting/</a></p>
+<h3 id="http-and-cookies">HTTP and Cookies</h3>
+<p><a href="https://nullsweep.com/http-security-headers-a-complete-guide/" class="uri">https://nullsweep.com/http-security-headers-a-complete-guide/</a></p>
+<h3 id="buffer-overflows">Buffer Overflows</h3>
+<h3 id="path-traversal">Path Traversal</h3>
+<h3 id="side-channels">Side Channels</h3>
+<h3 id="ssl-pinning">SSL pinning</h3>
+<p>//TODO see:</p>
+<p>see <a href="https://www.guardsquare.com/blog/iOS-SSL-certificate-pinning-bypassing" class="uri">https://www.guardsquare.com/blog/iOS-SSL-certificate-pinning-bypassing</a></p>
+<h3 id="cors">CORS</h3>
+<p><a href="https://dzone.com/articles/do-you-really-know-cors" class="uri">https://dzone.com/articles/do-you-really-know-cors</a></p>
+<h3 id="jwt">JWT</h3>
+<p><a href="https://medium.facilelogin.com/jwt-jws-and-jwe-for-not-so-dummies-b63310d201a3" class="uri">https://medium.facilelogin.com/jwt-jws-and-jwe-for-not-so-dummies-b63310d201a3</a> <a href="https://auth0.com/blog/critical-vulnerabilities-in-json-web-token-libraries/" class="uri">https://auth0.com/blog/critical-vulnerabilities-in-json-web-token-libraries/</a> <a href="https://cursorblog.com/managing-a-secure-json-web-token-implementation/" class="uri">https://cursorblog.com/managing-a-secure-json-web-token-implementation/</a></p>
+<h3 id="mobile">Mobile</h3>
+<p><a href="https://dzone.com/articles/android-webview-secure-coding-practices" class="uri">https://dzone.com/articles/android-webview-secure-coding-practices</a></p>
+<h3 id="oauth-and-openid">OAuth and OpenId</h3>
+<p><a href="https://developer.okta.com/blog/2019/10/21/illustrated-guide-to-oauth-and-oidc" class="uri">https://developer.okta.com/blog/2019/10/21/illustrated-guide-to-oauth-and-oidc</a></p>
+<h3 id="php">PHP</h3>
+<p><a href="https://paragonie.com/blog/2017/12/2018-guide-building-secure-php-software" class="uri">https://paragonie.com/blog/2017/12/2018-guide-building-secure-php-software</a></p>
+<h3 id="apache">Apache</h3>
+<blockquote>
+<p>The Apache HTTP Server Project is an effort to develop and maintain an open-source HTTP server for modern operating systems including UNIX and Windows. The goal of this project is to provide a secure, efficient and extensible server that provides HTTP services in sync with the current HTTP standards.</p>
+</blockquote>
+<blockquote>
+<p>The Apache HTTP Server (“httpd”) was launched in 1995 and it has been the most popular web server on the Internet since April 1996. It has celebrated its 25th birthday as a project in February 2020.</p>
+</blockquote>
+<ul class="incremental">
+<li><a href="https://www.feistyduck.com/library/apache-security/online/index.html" class="uri">https://www.feistyduck.com/library/apache-security/online/index.html</a></li>
+</ul>
+<h2 id="references">References</h2>
+<h3 id="to-read">To Read</h3>
+<p><a href="https://sudo.pagerduty.com/for_engineers/" class="uri">https://sudo.pagerduty.com/for_engineers/</a></p>
+</body>
+</html>
