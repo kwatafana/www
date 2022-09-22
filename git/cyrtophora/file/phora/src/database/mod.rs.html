@@ -12,28 +12,26 @@
 </head>
 <body>
 <table><tr><td><a href="/index.html"><img src="/logo.png" alt="" width="32" height="32" /></a></td><td><h1>cyrtophora</h1><span class="desc">Full-stack users-first, secure web framework.
-</span></td></tr><tr class="url"><td></td><td>git clone <a href="https://codeberg.org/kwatafana/cyrtophora.git">https://codeberg.org/kwatafana/cyrtophora.git</a></td></tr><tr><td></td><td>
+</span></td></tr><tr class="url"><td></td><td>git clone <a href="https://gitlab.com/kwatafana/cyrtophora.git">https://gitlab.com/kwatafana/cyrtophora.git</a></td></tr><tr><td></td><td>
 <a href="../../../../log.html">Log</a> | <a href="../../../../files.html">Files</a> | <a href="../../../../refs.html">Refs</a> | <a href="../../../../file/README.md.pretty.html">README</a></td></tr></table>
 <hr/>
 <div id="content">
-<p> mod.rs (520B)</p><hr/><pre id="blob">
+<p> mod.rs (424B)</p><hr/><pre id="blob">
 <a href="#l1" class="line" id="l1">      1</a> use crate::account::{Account, PublicAccount};
-<a href="#l2" class="line" id="l2">      2</a> use error::DatabaseError;
+<a href="#l2" class="line" id="l2">      2</a> use error::Error;
 <a href="#l3" class="line" id="l3">      3</a> 
 <a href="#l4" class="line" id="l4">      4</a> pub mod error;
 <a href="#l5" class="line" id="l5">      5</a> #[cfg(feature = &quot;sqlite&quot;)]
 <a href="#l6" class="line" id="l6">      6</a> pub mod sqlite;
 <a href="#l7" class="line" id="l7">      7</a> 
 <a href="#l8" class="line" id="l8">      8</a> pub trait DB {
-<a href="#l9" class="line" id="l9">      9</a>     /// New database instance
-<a href="#l10" class="line" id="l10">     10</a>     fn new(path: &amp;str) -&gt; Self;
-<a href="#l11" class="line" id="l11">     11</a>     /// Connect to database
-<a href="#l12" class="line" id="l12">     12</a>     fn connect(&amp;mut self) -&gt; Result&lt;(), DatabaseError&gt;;
-<a href="#l13" class="line" id="l13">     13</a>     /// Store user account
-<a href="#l14" class="line" id="l14">     14</a>     fn store_account(&amp;self, account: Account) -&gt; Result&lt;(), DatabaseError&gt;;
-<a href="#l15" class="line" id="l15">     15</a>     /// Get account public data
-<a href="#l16" class="line" id="l16">     16</a>     fn get_public_account(&amp;self, username: &amp;str) -&gt; Result&lt;PublicAccount, DatabaseError&gt;;
-<a href="#l17" class="line" id="l17">     17</a> }
+<a href="#l9" class="line" id="l9">      9</a>     /// Connect to database
+<a href="#l10" class="line" id="l10">     10</a>     fn connect(&amp;mut self) -&gt; Result&lt;(), Error&gt;;
+<a href="#l11" class="line" id="l11">     11</a>     /// Store user account
+<a href="#l12" class="line" id="l12">     12</a>     fn account_store(&amp;self, account: &amp;Account) -&gt; Result&lt;(), Error&gt;;
+<a href="#l13" class="line" id="l13">     13</a>     /// Get account public data
+<a href="#l14" class="line" id="l14">     14</a>     fn account_get_pub(&amp;self, username: &amp;str) -&gt; Result&lt;PublicAccount, Error&gt;;
+<a href="#l15" class="line" id="l15">     15</a> }
 </pre>
 </div>
 </body>

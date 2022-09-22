@@ -12,12 +12,12 @@
 </head>
 <body>
 <table><tr><td><a href="/index.html"><img src="/logo.png" alt="" width="32" height="32" /></a></td><td><h1>cyrtophora</h1><span class="desc">Full-stack users-first, secure web framework.
-</span></td></tr><tr class="url"><td></td><td>git clone <a href="https://codeberg.org/kwatafana/cyrtophora.git">https://codeberg.org/kwatafana/cyrtophora.git</a></td></tr><tr><td></td><td>
+</span></td></tr><tr class="url"><td></td><td>git clone <a href="https://gitlab.com/kwatafana/cyrtophora.git">https://gitlab.com/kwatafana/cyrtophora.git</a></td></tr><tr><td></td><td>
 <a href="../../../../log.html">Log</a> | <a href="../../../../files.html">Files</a> | <a href="../../../../refs.html">Refs</a> | <a href="../../../../file/README.md.pretty.html">README</a></td></tr></table>
 <hr/>
 <div id="content">
-<p> sqlite.rs (4236B)</p><hr/><pre id="blob">
-<a href="#l1" class="line" id="l1">      1</a> use super::{error::DatabaseError, DB};
+<p> sqlite.rs (4156B)</p><hr/><pre id="blob">
+<a href="#l1" class="line" id="l1">      1</a> use super::{error::Error, DB};
 <a href="#l2" class="line" id="l2">      2</a> use crate::account::{Account, PublicAccount};
 <a href="#l3" class="line" id="l3">      3</a> use rusqlite::{params, Connection, Result};
 <a href="#l4" class="line" id="l4">      4</a> 
@@ -55,16 +55,16 @@
 <a href="#l36" class="line" id="l36">     36</a>     /// An SQLite connection handle
 <a href="#l37" class="line" id="l37">     37</a>     conn: Option&lt;Connection&gt;,
 <a href="#l38" class="line" id="l38">     38</a> }
-<a href="#l39" class="line" id="l39">     39</a> 
-<a href="#l40" class="line" id="l40">     40</a> impl DB for SqliteDB {
-<a href="#l41" class="line" id="l41">     41</a>     fn new(path: &amp;str) -&gt; Self {
-<a href="#l42" class="line" id="l42">     42</a>         SqliteDB {
-<a href="#l43" class="line" id="l43">     43</a>             path: path.to_string(),
-<a href="#l44" class="line" id="l44">     44</a>             conn: None,
-<a href="#l45" class="line" id="l45">     45</a>         }
-<a href="#l46" class="line" id="l46">     46</a>     }
-<a href="#l47" class="line" id="l47">     47</a> 
-<a href="#l48" class="line" id="l48">     48</a>     fn connect(&amp;mut self) -&gt; Result&lt;(), DatabaseError&gt; {
+<a href="#l39" class="line" id="l39">     39</a> impl SqliteDB {
+<a href="#l40" class="line" id="l40">     40</a>     pub fn new(path: &amp;str) -&gt; Self {
+<a href="#l41" class="line" id="l41">     41</a>         SqliteDB {
+<a href="#l42" class="line" id="l42">     42</a>             path: path.to_string(),
+<a href="#l43" class="line" id="l43">     43</a>             conn: None,
+<a href="#l44" class="line" id="l44">     44</a>         }
+<a href="#l45" class="line" id="l45">     45</a>     }
+<a href="#l46" class="line" id="l46">     46</a> }
+<a href="#l47" class="line" id="l47">     47</a> impl DB for SqliteDB {
+<a href="#l48" class="line" id="l48">     48</a>     fn connect(&amp;mut self) -&gt; Result&lt;(), Error&gt; {
 <a href="#l49" class="line" id="l49">     49</a>         // Open database connection
 <a href="#l50" class="line" id="l50">     50</a>         let conn = Connection::open(self.path.clone())?;
 <a href="#l51" class="line" id="l51">     51</a>         self.conn = Some(conn);
@@ -73,26 +73,26 @@
 <a href="#l54" class="line" id="l54">     54</a>         match &amp;self.conn {
 <a href="#l55" class="line" id="l55">     55</a>             Some(conn) =&gt; match conn.execute(accounts_sql::CREATE_TABLE, []) {
 <a href="#l56" class="line" id="l56">     56</a>                 Ok(_rows) =&gt; Ok(()),
-<a href="#l57" class="line" id="l57">     57</a>                 Err(_err) =&gt; Err(DatabaseError::CreateTableError),
+<a href="#l57" class="line" id="l57">     57</a>                 Err(_err) =&gt; Err(Error::CreateTable),
 <a href="#l58" class="line" id="l58">     58</a>             },
-<a href="#l59" class="line" id="l59">     59</a>             None =&gt; Err(DatabaseError::ConnectionError),
+<a href="#l59" class="line" id="l59">     59</a>             None =&gt; Err(Error::Connection),
 <a href="#l60" class="line" id="l60">     60</a>         }
 <a href="#l61" class="line" id="l61">     61</a>     }
 <a href="#l62" class="line" id="l62">     62</a> 
-<a href="#l63" class="line" id="l63">     63</a>     fn store_account(&amp;self, account: Account) -&gt; Result&lt;(), DatabaseError&gt; {
+<a href="#l63" class="line" id="l63">     63</a>     fn account_store(&amp;self, account: &amp;Account) -&gt; Result&lt;(), Error&gt; {
 <a href="#l64" class="line" id="l64">     64</a>         match &amp;self.conn {
 <a href="#l65" class="line" id="l65">     65</a>             Some(conn) =&gt; {
 <a href="#l66" class="line" id="l66">     66</a>                 conn.execute(
 <a href="#l67" class="line" id="l67">     67</a>                     accounts_sql::STORE,
-<a href="#l68" class="line" id="l68">     68</a>                     params![account.username, account.password, account.email],
+<a href="#l68" class="line" id="l68">     68</a>                     params![&amp;account.username, account.password, account.email],
 <a href="#l69" class="line" id="l69">     69</a>                 )?;
 <a href="#l70" class="line" id="l70">     70</a>                 Ok(())
 <a href="#l71" class="line" id="l71">     71</a>             }
-<a href="#l72" class="line" id="l72">     72</a>             None =&gt; Err(DatabaseError::ConnectionError),
+<a href="#l72" class="line" id="l72">     72</a>             None =&gt; Err(Error::Connection),
 <a href="#l73" class="line" id="l73">     73</a>         }
 <a href="#l74" class="line" id="l74">     74</a>     }
 <a href="#l75" class="line" id="l75">     75</a> 
-<a href="#l76" class="line" id="l76">     76</a>     fn get_public_account(&amp;self, username: &amp;str) -&gt; Result&lt;PublicAccount, DatabaseError&gt; {
+<a href="#l76" class="line" id="l76">     76</a>     fn account_get_pub(&amp;self, username: &amp;str) -&gt; Result&lt;PublicAccount, Error&gt; {
 <a href="#l77" class="line" id="l77">     77</a>         match &amp;self.conn {
 <a href="#l78" class="line" id="l78">     78</a>             Some(conn) =&gt; {
 <a href="#l79" class="line" id="l79">     79</a>                 let mut stmt = conn.prepare(accounts_sql::GET_PUBLIC)?;
@@ -101,10 +101,10 @@
 <a href="#l82" class="line" id="l82">     82</a>                     Some(s) =&gt; Ok(PublicAccount {
 <a href="#l83" class="line" id="l83">     83</a>                         username: s.get(0)?,
 <a href="#l84" class="line" id="l84">     84</a>                     }),
-<a href="#l85" class="line" id="l85">     85</a>                     None =&gt; Err(DatabaseError::AccountRetrievalError),
+<a href="#l85" class="line" id="l85">     85</a>                     None =&gt; Err(Error::AccountRetrieval),
 <a href="#l86" class="line" id="l86">     86</a>                 }
 <a href="#l87" class="line" id="l87">     87</a>             }
-<a href="#l88" class="line" id="l88">     88</a>             None =&gt; Err(DatabaseError::ConnectionError),
+<a href="#l88" class="line" id="l88">     88</a>             None =&gt; Err(Error::Connection),
 <a href="#l89" class="line" id="l89">     89</a>         }
 <a href="#l90" class="line" id="l90">     90</a>     }
 <a href="#l91" class="line" id="l91">     91</a> }
@@ -139,9 +139,9 @@
 <a href="#l120" class="line" id="l120">    120</a>         };
 <a href="#l121" class="line" id="l121">    121</a> 
 <a href="#l122" class="line" id="l122">    122</a>         db.connect().unwrap();
-<a href="#l123" class="line" id="l123">    123</a>         db.store_account(account).unwrap();
+<a href="#l123" class="line" id="l123">    123</a>         db.account_store(&amp;account).unwrap();
 <a href="#l124" class="line" id="l124">    124</a> 
-<a href="#l125" class="line" id="l125">    125</a>         let public_account = db.get_public_account(&quot;testuszee&quot;).unwrap();
+<a href="#l125" class="line" id="l125">    125</a>         let public_account = db.account_get_pub(&quot;testuszee&quot;).unwrap();
 <a href="#l126" class="line" id="l126">    126</a> 
 <a href="#l127" class="line" id="l127">    127</a>         assert_eq!(&amp;public_account.username, &quot;testuszee&quot;);
 <a href="#l128" class="line" id="l128">    128</a>     }

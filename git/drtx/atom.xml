@@ -4,6 +4,25 @@
 <subtitle>Dart Extras
 </subtitle>
 <entry>
+<id>68265057779e4d60b230f9a1b05efd7e7b79339c</id>
+<published>2022-09-22T00:08:31Z</published>
+<updated>2022-09-22T00:08:31Z</updated>
+<title type="text">Update readme</title>
+<link rel="alternate" type="text/html" href="commit/68265057779e4d60b230f9a1b05efd7e7b79339c.html" />
+<author>
+<name>Jackson G. Kaindume</name>
+<email>kaindume@kwatafana.org</email>
+</author>
+<content type="text">commit 68265057779e4d60b230f9a1b05efd7e7b79339c
+parent 65d5b547ea6fafc70f9e907a09d13456366f7625
+Author: Jackson G. Kaindume &lt;kaindume@kwatafana.org&gt;
+Date:   Thu, 22 Sep 2022 02:08:31 +0200
+
+Update readme
+
+</content>
+</entry>
+<entry>
 <id>65d5b547ea6fafc70f9e907a09d13456366f7625</id>
 <published>2022-09-03T13:06:30Z</published>
 <updated>2022-09-03T13:06:30Z</updated>

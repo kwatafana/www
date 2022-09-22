@@ -88,28 +88,36 @@ margin-top: 0;
 blockquote {
 margin: 1em 0 1em 1.7em;
 padding-left: 1em;
-border-left: 2px solid #e6e6e6;
+border-left: 1px dashed #606060;
 color: #606060;
+font-size: .6em;
 }
 code {
 font-family: Menlo, Monaco, 'Lucida Console', Consolas, monospace;
 font-size: 85%;
 margin: 0;
+color: teal;
+border: thin dashed teal;
+border-radius: 2px;
 }
 pre {
 margin: 1em 0;
 overflow: auto;
+border: thin dashed teal;
+border-radius: 2px;
+padding: .5em;
 }
 pre code {
 padding: 0;
 overflow: visible;
+border: none;
 }
 .sourceCode {
 background-color: transparent;
 overflow: visible;
 }
 hr {
-background-color: cyan;
+background-color: teal;
 border: none;
 height: 1px;
 margin: 1em 0;
@@ -127,12 +135,13 @@ margin-bottom: 0.75em;
 }
 tbody {
 margin-top: 0.5em;
-border-top: 1px solid cyan;
-border-bottom: 1px solid cyan;
+}
+tbody, tr, td{
+border: 1px solid teal;
 }
 th {
-border-top: 1px solid cyan;
 padding: 0.25em 0.5em 0.25em 0.5em;
+border: 2px solid teal;
 }
 td {
 padding: 0.125em 0.5em 0.25em 0.5em;
@@ -160,21 +169,21 @@ ul.task-list{list-style: none;}
 <header id="title-block-header">
 <h1 class="title">Kwatafana | Cyber Security 🔐</h1>
 </header>
-<p>At <a href="https://kwatafana.org/">kwatafana.org</a> cyber security is one of our core pillars, we go the extra mile to keep our systems secure.</p>
-<h3 id="security">Security</h3>
-<p>Security deals with defending against unwanted data controls. Or more precisely enforcing <strong>C</strong>onfidentiality, <strong>I</strong>ntegrity and data <strong>A</strong>vailability within a system (notice that these make up the CIA acronym 😜).</p>
-<p>We are working on <a href="https://codeberg.org/kwatafana/cyrtophora">cyrtophora</a>, a fullstack framework for secure internet services. It is a core component in our infrastructure, we use it to write most of our internet services.</p>
-<p>Alongside <a href="https://codeberg.org/kwatafana/cyrtophora">cyrtophora</a> we are writing a cyber-security guide <a href="./secure.html">secure bits</a>, it details the defensive techniques used in cyrtophora. The book is meant to be a general guide to cyber-security.</p>
+<p>At <a href="https://kwatafana.org/">kwatafana.org</a> cyber security is one of our core focus areas, we go the extra mile to keep our systems secure.</p>
+<p>Security is all about defending against unwanted data controls. Or more precisely enforcing <strong>C</strong>onfidentiality, <strong>I</strong>ntegrity and data <strong>A</strong>vailability within a system (notice that these make up the CIA acronym 😜).</p>
+<p>We are woriking on <a href="/git/cyrtophora/file/README.md.pretty.html"><code>cyrtophora</code></a> a fullstack framework for building secure internet services. It is a core component in our infrastructure, we use it for a number of our services.</p>
+<p>Alongside <a href="/git/cyrtophora/file/README.md.pretty.html"><code>cyrtophora</code></a> we are writing a cyber-security guide <a href="./secure.html"><code>🔐 secure bits</code></a>, it details the defensive techniques used in <a href="/git/cyrtophora/file/README.md.pretty.html"><code>cyrtophora</code></a>. The book is meant to be a general guide to cyber-security.</p>
 <h3 id="high-assurance-systems">High Assurance Systems</h3>
-<p>Our software and networking services should be dependable and robust, they should also be highly available and be able to function in safety critical environment. You can read more about this <a href="./dependable.html">here</a></p>
+<p>We try our best to make our software and networking services robust and highly available, one of our long term goals is to make it possible that our systems can function in safety critical environments.</p>
+<p>You can read more in: <a href="./dependable.html"><code>🔗 dependable bits</code></a>.</p>
 <h3 id="pen-testing">Pen-Testing</h3>
-<p>One way to learn about avenues of attack, is by trying to attack existing systems. We do this with our tool <a href="https://codeberg.org/kwatafana/h4">h4</a>, which is meant to test the security of our services but it is generic enough to be used by any cyber security researcher.</p>
-<p>We also help organization with their cyber-security, we can try to hack your software or internet services from android apps, web servers to cryptography related systems. We will give you a detailed report of the vulnerabilities and how to prevent them. If you are interested in this please drop us an email <a href="mailto:kaindume@kwatafana.org" class="email">kaindume@kwatafana.org</a></p>
-<p>Some of our <a href="./vulnerable.html">writeups</a> of the systems we hacked.</p>
+<p>One way to learn about avenues of attack, is by trying to attack existing systems. At <a href="https://kwatafana.org/">kwatafana.org</a> we do this with <a href="/git/h4/file/README.md.pretty.html"><code>h4</code></a> our tool to test the security of our services but it is generic enough to be used by any cyber security researcher.</p>
+<p>We also help organizations with their cyber-security, we can try to hack your software or internet services from android apps, web servers to cryptography related systems. We will give you a detailed report of the vulnerabilities we find and how to prevent them. If you are interested in this please drop us an email <a href="mailto:kaindume@kwatafana.org" class="email">kaindume@kwatafana.org</a>.</p>
+Some of our <a href="./vulnerable.html">🔓 writeups</a> of the systems we hacked.
 <hr>
 ⧉ <a href="../index.html">kwatafana.org</a> | <em> <b>email: kaindume (at) kwatafana (dot) org</b> </em> <br>
 <div style="text-align: right">
-<p><small><em>updated: 2022-09-06 17:33:28.234229183 UTC</small></p>
+<p><small><em>updated: 2022-09-22 00:39:38.461733610 UTC</small></p>
 </div>
 </body>
 </html>
