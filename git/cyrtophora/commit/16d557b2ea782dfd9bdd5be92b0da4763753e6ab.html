@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>[phora] use concrete type instead of - cyrtophora - Full-stack users-first, secure web framework.
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="cyrtophora Atom Feed" href="../atom.xml" />
+<link rel="alternate" type="application/atom+xml" title="cyrtophora Atom Feed (tags)" href="../tags.xml" />
+<link rel="stylesheet" type="text/css" href="/git.css" />
+</head>
+<body>
+<table><tr><td><a href="/index.html"><img src="/logo.png" alt="" width="32" height="32" /></a></td><td><h1>cyrtophora</h1><span class="desc">Full-stack users-first, secure web framework.
+</span></td></tr><tr class="url"><td></td><td>git clone <a href="https://gitlab.com/kwatafana/cyrtophora.git">https://gitlab.com/kwatafana/cyrtophora.git</a></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a> | <a href="../file/README.md.pretty.html">README</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/16d557b2ea782dfd9bdd5be92b0da4763753e6ab.html">16d557b2ea782dfd9bdd5be92b0da4763753e6ab</a>
+<b>parent</b> <a href="../commit/4a205d6314a4df98e0e723e5b9612b0eeb0550aa.html">4a205d6314a4df98e0e723e5b9612b0eeb0550aa</a>
+<b>Author:</b> Jackson G. Kaindume &lt;<a href="mailto:kaindume@kwatafana.org">kaindume@kwatafana.org</a>&gt;
+<b>Date:</b>   Thu, 22 Sep 2022 15:00:01 +0200
+
+[phora] use concrete type instead of
+
+<b>Diffstat:</b>
+<table><tr><td class="M">M</td><td><a href="#h0">phora/src/lib.rs</a></td><td> | </td><td class="num">4</td><td><span class="i">+++</span><span class="d">-</span></td></tr>
+</table></pre><pre>1 file changed, 3 insertions(+), 1 deletion(-)
+<hr/><b>diff --git a/<a id="h0" href="../file/phora/src/lib.rs.html">phora/src/lib.rs</a> b/<a href="../file/phora/src/lib.rs.html">phora/src/lib.rs</a></b>
+<a href="#h0-0" id="h0-0" class="h">@@ -16,7 +16,9 @@ where
+</a> 
+ impl&lt;D: DB&gt; Cyrtophora&lt;D&gt; {
+     #[cfg(feature = &quot;sqlite&quot;)]
+<a href="#h0-0-3" id="h0-0-3" class="d">-    pub fn new(path: &amp;str) -&gt; Result&lt;Self, database::error::Error&gt; {
+</a><a href="#h0-0-4" id="h0-0-4" class="i">+    pub fn new_sqlite(
+</a><a href="#h0-0-5" id="h0-0-5" class="i">+        path: &amp;str,
+</a><a href="#h0-0-6" id="h0-0-6" class="i">+    ) -&gt; Result&lt;Cyrtophora&lt;database::sqlite::SqliteDB&gt;, database::error::Error&gt; {
+</a>         let mut db = database::sqlite::SqliteDB::new(path);
+         db.connect()?;
+         let c = Cyrtophora { database: Some(db) };
+</pre>
+</div>
+</body>
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Merge branch &#39;ci&#39; into &#39;root&#39; - cyrtophora - Full-stack users-first, secure web framework.
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="cyrtophora Atom Feed" href="../atom.xml" />
+<link rel="alternate" type="application/atom+xml" title="cyrtophora Atom Feed (tags)" href="../tags.xml" />
+<link rel="stylesheet" type="text/css" href="/git.css" />
+</head>
+<body>
+<table><tr><td><a href="/index.html"><img src="/logo.png" alt="" width="32" height="32" /></a></td><td><h1>cyrtophora</h1><span class="desc">Full-stack users-first, secure web framework.
+</span></td></tr><tr class="url"><td></td><td>git clone <a href="https://gitlab.com/kwatafana/cyrtophora.git">https://gitlab.com/kwatafana/cyrtophora.git</a></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a> | <a href="../file/README.md.pretty.html">README</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/f148b42cb5f4162fec53fa094fd8837dee05ffa1.html">f148b42cb5f4162fec53fa094fd8837dee05ffa1</a>
+<b>parent</b> <a href="../commit/04bf46132d478f0d17c28a957e9841722c306ae0.html">04bf46132d478f0d17c28a957e9841722c306ae0</a>
+<b>Author:</b> kaindume &lt;<a href="mailto:cy6erlion@protonmail.com">cy6erlion@protonmail.com</a>&gt;
+<b>Date:</b>   Thu, 22 Sep 2022 14:14:18 +0000
+
+Merge branch &#39;ci&#39; into &#39;root&#39;
+
+Setup Rust CI
+
+See merge request kwatafana/cyrtophora!2
+<b>Diffstat:</b>
+<table><tr><td class="A">A</td><td><a href="#h0">.gitlab-ci.yml</a></td><td> | </td><td class="num">38</td><td><span class="i">++++++++++++++++++++++++++++++++++++++</span><span class="d"></span></td></tr>
+<tr><td class="M">M</td><td><a href="#h1">phora/Cargo.lock</a></td><td> | </td><td class="num">1</td><td><span class="i">+</span><span class="d"></span></td></tr>
+<tr><td class="M">M</td><td><a href="#h2">phora/Cargo.toml</a></td><td> | </td><td class="num">3</td><td><span class="i">+</span><span class="d">--</span></td></tr>
+<tr><td class="M">M</td><td><a href="#h3">phora/src/lib.rs</a></td><td> | </td><td class="num">23</td><td><span class="i">+++++++++++++++++++++</span><span class="d">--</span></td></tr>
+</table></pre><pre>4 files changed, 61 insertions(+), 4 deletions(-)
+<hr/><b>diff --git a/<a id="h0" href="../file/.gitlab-ci.yml.html">.gitlab-ci.yml</a> b/<a href="../file/.gitlab-ci.yml.html">.gitlab-ci.yml</a></b>
+<a href="#h0-0" id="h0-0" class="h">@@ -0,0 +1,38 @@
+</a><a href="#h0-0-0" id="h0-0-0" class="i">+.cargo_test_template: &amp;cargo_test
+</a><a href="#h0-0-1" id="h0-0-1" class="i">+  stage: test
+</a><a href="#h0-0-2" id="h0-0-2" class="i">+  script:
+</a><a href="#h0-0-3" id="h0-0-3" class="i">+    - cd phora
+</a><a href="#h0-0-4" id="h0-0-4" class="i">+    - mkdir test-data
+</a><a href="#h0-0-5" id="h0-0-5" class="i">+    - cargo test -F sqlite --verbose --jobs 1
+</a><a href="#h0-0-6" id="h0-0-6" class="i">+
+</a><a href="#h0-0-7" id="h0-0-7" class="i">+stages:
+</a><a href="#h0-0-8" id="h0-0-8" class="i">+  - test
+</a><a href="#h0-0-9" id="h0-0-9" class="i">+  - deploy
+</a><a href="#h0-0-10" id="h0-0-10" class="i">+      
+</a><a href="#h0-0-11" id="h0-0-11" class="i">+stable:cargo:
+</a><a href="#h0-0-12" id="h0-0-12" class="i">+  image: rustdocker/rust:stable
+</a><a href="#h0-0-13" id="h0-0-13" class="i">+  &lt;&lt;: *cargo_test
+</a><a href="#h0-0-14" id="h0-0-14" class="i">+
+</a><a href="#h0-0-15" id="h0-0-15" class="i">+beta:cargo:
+</a><a href="#h0-0-16" id="h0-0-16" class="i">+  image: rustdocker/rust:beta
+</a><a href="#h0-0-17" id="h0-0-17" class="i">+  &lt;&lt;: *cargo_test
+</a><a href="#h0-0-18" id="h0-0-18" class="i">+
+</a><a href="#h0-0-19" id="h0-0-19" class="i">+nightly:cargo:
+</a><a href="#h0-0-20" id="h0-0-20" class="i">+  image: rustdocker/rust:nightly
+</a><a href="#h0-0-21" id="h0-0-21" class="i">+  &lt;&lt;: *cargo_test
+</a><a href="#h0-0-22" id="h0-0-22" class="i">+
+</a><a href="#h0-0-23" id="h0-0-23" class="i">+pages:
+</a><a href="#h0-0-24" id="h0-0-24" class="i">+  image: rustdocker/rust:stable
+</a><a href="#h0-0-25" id="h0-0-25" class="i">+  stage: deploy
+</a><a href="#h0-0-26" id="h0-0-26" class="i">+  only:
+</a><a href="#h0-0-27" id="h0-0-27" class="i">+    - root
+</a><a href="#h0-0-28" id="h0-0-28" class="i">+  script:
+</a><a href="#h0-0-29" id="h0-0-29" class="i">+    - cargo doc
+</a><a href="#h0-0-30" id="h0-0-30" class="i">+    - rm -rf public
+</a><a href="#h0-0-31" id="h0-0-31" class="i">+    - mkdir public
+</a><a href="#h0-0-32" id="h0-0-32" class="i">+    - cp -R target/doc/* public
+</a><a href="#h0-0-33" id="h0-0-33" class="i">+  artifacts:
+</a><a href="#h0-0-34" id="h0-0-34" class="i">+    paths:
+</a><a href="#h0-0-35" id="h0-0-35" class="i">+      - public
+</a><a href="#h0-0-36" id="h0-0-36" class="i">+            
+</a><a href="#h0-0-37" id="h0-0-37" class="i">+# Reference: http://imp.gitlab.io/blog/blog/gitlab-ci-and-rust/
+</a><b>diff --git a/<a id="h1" href="../file/phora/Cargo.lock.html">phora/Cargo.lock</a> b/<a href="../file/phora/Cargo.lock.html">phora/Cargo.lock</a></b>
+<a href="#h1-0" id="h1-0" class="h">@@ -250,6 +250,7 @@ version = &quot;0.25.1&quot;
+</a> source = &quot;registry+https://github.com/rust-lang/crates.io-index&quot;
+ checksum = &quot;9f0455f2c1bc9a7caa792907026e469c1d91761fb0ea37cbb16427c77280cf35&quot;
+ dependencies = [
+<a href="#h1-0-3" id="h1-0-3" class="i">+ &quot;cc&quot;,
+</a>  &quot;pkg-config&quot;,
+  &quot;vcpkg&quot;,
+ ]
+<b>diff --git a/<a id="h2" href="../file/phora/Cargo.toml.html">phora/Cargo.toml</a> b/<a href="../file/phora/Cargo.toml.html">phora/Cargo.toml</a></b>
+<a href="#h2-0" id="h2-0" class="h">@@ -10,7 +10,6 @@ chacha20poly1305 = &quot;0.9.0&quot;
+</a> base64 = &quot;0.13.0&quot;
+ scrypt = &quot;0.10.0&quot;
+ serde = { version = &quot;1.0.144&quot;, features = [&quot;derive&quot;] }
+<a href="#h2-0-3" id="h2-0-3" class="d">-rusqlite = { version = &quot;0.28.0&quot;, optional = true }
+</a><a href="#h2-0-4" id="h2-0-4" class="d">-
+</a><a href="#h2-0-5" id="h2-0-5" class="i">+rusqlite = { version = &quot;0.28.0&quot;, features = [&quot;bundled&quot;], optional = true }
+</a> [features]
+ sqlite = [&quot;dep:rusqlite&quot;]
+ \ No newline at end of file
+<b>diff --git a/<a id="h3" href="../file/phora/src/lib.rs.html">phora/src/lib.rs</a> b/<a href="../file/phora/src/lib.rs.html">phora/src/lib.rs</a></b>
+<a href="#h3-0" id="h3-0" class="h">@@ -17,9 +17,9 @@ where
+</a> impl&lt;D: DB&gt; Cyrtophora&lt;D&gt; {
+     #[cfg(feature = &quot;sqlite&quot;)]
+     pub fn new_sqlite(
+<a href="#h3-0-3" id="h3-0-3" class="d">-        path: &amp;str,
+</a><a href="#h3-0-4" id="h3-0-4" class="i">+        db_path: &amp;str,
+</a>     ) -&gt; Result&lt;Cyrtophora&lt;database::sqlite::SqliteDB&gt;, database::error::Error&gt; {
+<a href="#h3-0-6" id="h3-0-6" class="d">-        let mut db = database::sqlite::SqliteDB::new(path);
+</a><a href="#h3-0-7" id="h3-0-7" class="i">+        let mut db = database::sqlite::SqliteDB::new(db_path);
+</a>         db.connect()?;
+         let c = Cyrtophora { database: Some(db) };
+         Ok(c)
+<a href="#h3-1" id="h3-1" class="h">@@ -56,3 +56,22 @@ impl&lt;D: DB&gt; Cyrtophora&lt;D&gt; {
+</a>         }
+     }
+ }
+<a href="#h3-1-3" id="h3-1-3" class="i">+
+</a><a href="#h3-1-4" id="h3-1-4" class="i">+#[cfg(test)]
+</a><a href="#h3-1-5" id="h3-1-5" class="i">+mod test {
+</a><a href="#h3-1-6" id="h3-1-6" class="i">+    use super::*;
+</a><a href="#h3-1-7" id="h3-1-7" class="i">+
+</a><a href="#h3-1-8" id="h3-1-8" class="i">+    const TEST_DB_PATH: &amp;str = &quot;test-data/ACCOUNTS.db&quot;;
+</a><a href="#h3-1-9" id="h3-1-9" class="i">+
+</a><a href="#h3-1-10" id="h3-1-10" class="i">+    #[test]
+</a><a href="#h3-1-11" id="h3-1-11" class="i">+    #[cfg(feature = &quot;sqlite&quot;)]
+</a><a href="#h3-1-12" id="h3-1-12" class="i">+    fn test_new_sqlite() {
+</a><a href="#h3-1-13" id="h3-1-13" class="i">+        let cyrtophora =
+</a><a href="#h3-1-14" id="h3-1-14" class="i">+            Cyrtophora::&lt;database::sqlite::SqliteDB&gt;::new_sqlite(TEST_DB_PATH).unwrap();
+</a><a href="#h3-1-15" id="h3-1-15" class="i">+
+</a><a href="#h3-1-16" id="h3-1-16" class="i">+        match cyrtophora.database {
+</a><a href="#h3-1-17" id="h3-1-17" class="i">+            Some(_conn) =&gt; assert!(true),
+</a><a href="#h3-1-18" id="h3-1-18" class="i">+            _ =&gt; assert!(false),
+</a><a href="#h3-1-19" id="h3-1-19" class="i">+        }
+</a><a href="#h3-1-20" id="h3-1-20" class="i">+    }
+</a><a href="#h3-1-21" id="h3-1-21" class="i">+}
+</a></pre>
+</div>
+</body>
+</html>

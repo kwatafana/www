@@ -16,7 +16,7 @@
 <a href="../../log.html">Log</a> | <a href="../../files.html">Files</a> | <a href="../../refs.html">Refs</a> | <a href="../../file/README.md.pretty.html">README</a></td></tr></table>
 <hr/>
 <div id="content">
-<p> Cargo.toml (233B)</p><hr/><pre id="blob">
+<p> Cargo.toml (345B)</p><hr/><pre id="blob">
 <a href="#l1" class="line" id="l1">      1</a> [package]
 <a href="#l2" class="line" id="l2">      2</a> name = &quot;cyrtophora&quot;
 <a href="#l3" class="line" id="l3">      3</a> version = &quot;0.1.0&quot;
@@ -28,7 +28,10 @@
 <a href="#l9" class="line" id="l9">      9</a> chacha20poly1305 = &quot;0.9.0&quot;
 <a href="#l10" class="line" id="l10">     10</a> base64 = &quot;0.13.0&quot;
 <a href="#l11" class="line" id="l11">     11</a> scrypt = &quot;0.10.0&quot;
-<a href="#l12" class="line" id="l12">     12</a> serde = { version = &quot;1.0.144&quot;, features = [&quot;derive&quot;] }</pre>
+<a href="#l12" class="line" id="l12">     12</a> serde = { version = &quot;1.0.144&quot;, features = [&quot;derive&quot;] }
+<a href="#l13" class="line" id="l13">     13</a> rusqlite = { version = &quot;0.28.0&quot;, features = [&quot;bundled&quot;], optional = true }
+<a href="#l14" class="line" id="l14">     14</a> [features]
+<a href="#l15" class="line" id="l15">     15</a> sqlite = [&quot;dep:rusqlite&quot;]</pre>
 </div>
 </body>
 </html>

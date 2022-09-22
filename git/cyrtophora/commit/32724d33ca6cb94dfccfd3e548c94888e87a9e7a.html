@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>[ci] fix pages - cyrtophora - Full-stack users-first, secure web framework.
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="cyrtophora Atom Feed" href="../atom.xml" />
+<link rel="alternate" type="application/atom+xml" title="cyrtophora Atom Feed (tags)" href="../tags.xml" />
+<link rel="stylesheet" type="text/css" href="/git.css" />
+</head>
+<body>
+<table><tr><td><a href="/index.html"><img src="/logo.png" alt="" width="32" height="32" /></a></td><td><h1>cyrtophora</h1><span class="desc">Full-stack users-first, secure web framework.
+</span></td></tr><tr class="url"><td></td><td>git clone <a href="https://gitlab.com/kwatafana/cyrtophora.git">https://gitlab.com/kwatafana/cyrtophora.git</a></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a> | <a href="../file/README.md.pretty.html">README</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/32724d33ca6cb94dfccfd3e548c94888e87a9e7a.html">32724d33ca6cb94dfccfd3e548c94888e87a9e7a</a>
+<b>parent</b> <a href="../commit/f148b42cb5f4162fec53fa094fd8837dee05ffa1.html">f148b42cb5f4162fec53fa094fd8837dee05ffa1</a>
+<b>Author:</b> Jackson G. Kaindume &lt;<a href="mailto:kaindume@kwatafana.org">kaindume@kwatafana.org</a>&gt;
+<b>Date:</b>   Thu, 22 Sep 2022 16:21:19 +0200
+
+[ci] fix pages
+
+<b>Diffstat:</b>
+<table><tr><td class="M">M</td><td><a href="#h0">.gitlab-ci.yml</a></td><td> | </td><td class="num">3</td><td><span class="i">++</span><span class="d">-</span></td></tr>
+</table></pre><pre>1 file changed, 2 insertions(+), 1 deletion(-)
+<hr/><b>diff --git a/<a id="h0" href="../file/.gitlab-ci.yml.html">.gitlab-ci.yml</a> b/<a href="../file/.gitlab-ci.yml.html">.gitlab-ci.yml</a></b>
+<a href="#h0-0" id="h0-0" class="h">@@ -27,7 +27,8 @@ pages:
+</a>   only:
+     - root
+   script:
+<a href="#h0-0-3" id="h0-0-3" class="d">-    - cargo doc
+</a><a href="#h0-0-4" id="h0-0-4" class="i">+    - cd phora
+</a><a href="#h0-0-5" id="h0-0-5" class="i">+    - cargo doc -F sqlite
+</a>     - rm -rf public
+     - mkdir public
+     - cp -R target/doc/* public
+</pre>
+</div>
+</body>
+</html>

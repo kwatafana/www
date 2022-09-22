@@ -16,8 +16,8 @@
 <a href="../../../log.html">Log</a> | <a href="../../../files.html">Files</a> | <a href="../../../refs.html">Refs</a> | <a href="../../../file/README.md.pretty.html">README</a></td></tr></table>
 <hr/>
 <div id="content">
-<p> account.rs (1183B)</p><hr/><pre id="blob">
-<a href="#l1" class="line" id="l1">      1</a> use crate::data::AccountRegistration;
+<p> account.rs (1093B)</p><hr/><pre id="blob">
+<a href="#l1" class="line" id="l1">      1</a> use crate::data::AccountCreationInput;
 <a href="#l2" class="line" id="l2">      2</a> use crate::validate::ValidationError;
 <a href="#l3" class="line" id="l3">      3</a> use serde::{Deserialize, Serialize};
 <a href="#l4" class="line" id="l4">      4</a> 
@@ -34,36 +34,33 @@
 <a href="#l15" class="line" id="l15">     15</a> 
 <a href="#l16" class="line" id="l16">     16</a> impl Account {
 <a href="#l17" class="line" id="l17">     17</a>     /// Create new account
-<a href="#l18" class="line" id="l18">     18</a>     pub fn create(payload: AccountRegistration) -&gt; Result&lt;PublicAccount, ValidationError&gt; {
+<a href="#l18" class="line" id="l18">     18</a>     pub fn create(payload: AccountCreationInput) -&gt; Result&lt;Self, ValidationError&gt; {
 <a href="#l19" class="line" id="l19">     19</a>         payload.is_valid()?;
 <a href="#l20" class="line" id="l20">     20</a> 
-<a href="#l21" class="line" id="l21">     21</a>         // TODO: email verification
-<a href="#l22" class="line" id="l22">     22</a>         // TODO: database registration
-<a href="#l23" class="line" id="l23">     23</a> 
-<a href="#l24" class="line" id="l24">     24</a>         let account = Account {
-<a href="#l25" class="line" id="l25">     25</a>             username: payload.username,
-<a href="#l26" class="line" id="l26">     26</a>             email: payload.email,
-<a href="#l27" class="line" id="l27">     27</a>             password: payload.password,
-<a href="#l28" class="line" id="l28">     28</a>         };
-<a href="#l29" class="line" id="l29">     29</a> 
-<a href="#l30" class="line" id="l30">     30</a>         Ok(account.into())
-<a href="#l31" class="line" id="l31">     31</a>     }
-<a href="#l32" class="line" id="l32">     32</a> }
-<a href="#l33" class="line" id="l33">     33</a> 
-<a href="#l34" class="line" id="l34">     34</a> /// Account Public Data
-<a href="#l35" class="line" id="l35">     35</a> #[derive(Deserialize, Serialize)]
-<a href="#l36" class="line" id="l36">     36</a> pub struct PublicAccount {
-<a href="#l37" class="line" id="l37">     37</a>     /// The username of the user, also used as an unique identifier
-<a href="#l38" class="line" id="l38">     38</a>     pub username: String,
-<a href="#l39" class="line" id="l39">     39</a> }
-<a href="#l40" class="line" id="l40">     40</a> 
-<a href="#l41" class="line" id="l41">     41</a> impl From&lt;Account&gt; for PublicAccount {
-<a href="#l42" class="line" id="l42">     42</a>     fn from(account: Account) -&gt; Self {
-<a href="#l43" class="line" id="l43">     43</a>         PublicAccount {
-<a href="#l44" class="line" id="l44">     44</a>             username: account.username,
-<a href="#l45" class="line" id="l45">     45</a>         }
-<a href="#l46" class="line" id="l46">     46</a>     }
-<a href="#l47" class="line" id="l47">     47</a> }
+<a href="#l21" class="line" id="l21">     21</a>         let account = Account {
+<a href="#l22" class="line" id="l22">     22</a>             username: payload.username,
+<a href="#l23" class="line" id="l23">     23</a>             email: payload.email,
+<a href="#l24" class="line" id="l24">     24</a>             password: payload.password,
+<a href="#l25" class="line" id="l25">     25</a>         };
+<a href="#l26" class="line" id="l26">     26</a> 
+<a href="#l27" class="line" id="l27">     27</a>         Ok(account)
+<a href="#l28" class="line" id="l28">     28</a>     }
+<a href="#l29" class="line" id="l29">     29</a> }
+<a href="#l30" class="line" id="l30">     30</a> 
+<a href="#l31" class="line" id="l31">     31</a> /// Account Public Data
+<a href="#l32" class="line" id="l32">     32</a> #[derive(Deserialize, Serialize)]
+<a href="#l33" class="line" id="l33">     33</a> pub struct PublicAccount {
+<a href="#l34" class="line" id="l34">     34</a>     /// The username of the user, also used as an unique identifier
+<a href="#l35" class="line" id="l35">     35</a>     pub username: String,
+<a href="#l36" class="line" id="l36">     36</a> }
+<a href="#l37" class="line" id="l37">     37</a> 
+<a href="#l38" class="line" id="l38">     38</a> impl From&lt;Account&gt; for PublicAccount {
+<a href="#l39" class="line" id="l39">     39</a>     fn from(account: Account) -&gt; Self {
+<a href="#l40" class="line" id="l40">     40</a>         PublicAccount {
+<a href="#l41" class="line" id="l41">     41</a>             username: account.username,
+<a href="#l42" class="line" id="l42">     42</a>         }
+<a href="#l43" class="line" id="l43">     43</a>     }
+<a href="#l44" class="line" id="l44">     44</a> }
 </pre>
 </div>
 </body>

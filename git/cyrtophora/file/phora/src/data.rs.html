@@ -16,20 +16,20 @@
 <a href="../../../log.html">Log</a> | <a href="../../../files.html">Files</a> | <a href="../../../refs.html">Refs</a> | <a href="../../../file/README.md.pretty.html">README</a></td></tr></table>
 <hr/>
 <div id="content">
-<p> data.rs (909B)</p><hr/><pre id="blob">
+<p> data.rs (911B)</p><hr/><pre id="blob">
 <a href="#l1" class="line" id="l1">      1</a> use crate::validate::{Validate, ValidationError};
 <a href="#l2" class="line" id="l2">      2</a> use serde::{Deserialize, Serialize};
 <a href="#l3" class="line" id="l3">      3</a> 
 <a href="#l4" class="line" id="l4">      4</a> /// User registration Data
 <a href="#l5" class="line" id="l5">      5</a> #[derive(Deserialize, Serialize)]
-<a href="#l6" class="line" id="l6">      6</a> pub struct AccountRegistration {
+<a href="#l6" class="line" id="l6">      6</a> pub struct AccountCreationInput {
 <a href="#l7" class="line" id="l7">      7</a>     pub username: String,
 <a href="#l8" class="line" id="l8">      8</a>     pub password: String,
 <a href="#l9" class="line" id="l9">      9</a>     pub retyped_password: String,
 <a href="#l10" class="line" id="l10">     10</a>     pub email: Option&lt;String&gt;,
 <a href="#l11" class="line" id="l11">     11</a> }
 <a href="#l12" class="line" id="l12">     12</a> 
-<a href="#l13" class="line" id="l13">     13</a> impl AccountRegistration {
+<a href="#l13" class="line" id="l13">     13</a> impl AccountCreationInput {
 <a href="#l14" class="line" id="l14">     14</a>     pub fn is_valid(&amp;self) -&gt; Result&lt;(), ValidationError&gt; {
 <a href="#l15" class="line" id="l15">     15</a>         if self.password != self.retyped_password {
 <a href="#l16" class="line" id="l16">     16</a>             return Err(ValidationError::Password);

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>.gitlab-ci.yml - cyrtophora - Full-stack users-first, secure web framework.
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="cyrtophora Atom Feed" href="../atom.xml" />
+<link rel="alternate" type="application/atom+xml" title="cyrtophora Atom Feed (tags)" href="../tags.xml" />
+<link rel="stylesheet" type="text/css" href="/git.css" />
+</head>
+<body>
+<table><tr><td><a href="/index.html"><img src="/logo.png" alt="" width="32" height="32" /></a></td><td><h1>cyrtophora</h1><span class="desc">Full-stack users-first, secure web framework.
+</span></td></tr><tr class="url"><td></td><td>git clone <a href="https://gitlab.com/kwatafana/cyrtophora.git">https://gitlab.com/kwatafana/cyrtophora.git</a></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a> | <a href="../file/README.md.pretty.html">README</a></td></tr></table>
+<hr/>
+<div id="content">
+<p> .gitlab-ci.yml (688B)</p><hr/><pre id="blob">
+<a href="#l1" class="line" id="l1">      1</a> .cargo_test_template: &amp;cargo_test
+<a href="#l2" class="line" id="l2">      2</a>   stage: test
+<a href="#l3" class="line" id="l3">      3</a>   script:
+<a href="#l4" class="line" id="l4">      4</a>     - cd phora
+<a href="#l5" class="line" id="l5">      5</a>     - mkdir test-data
+<a href="#l6" class="line" id="l6">      6</a>     - cargo test -F sqlite --verbose --jobs 1
+<a href="#l7" class="line" id="l7">      7</a> 
+<a href="#l8" class="line" id="l8">      8</a> stages:
+<a href="#l9" class="line" id="l9">      9</a>   - test
+<a href="#l10" class="line" id="l10">     10</a>   - deploy
+<a href="#l11" class="line" id="l11">     11</a>       
+<a href="#l12" class="line" id="l12">     12</a> stable:cargo:
+<a href="#l13" class="line" id="l13">     13</a>   image: rustdocker/rust:stable
+<a href="#l14" class="line" id="l14">     14</a>   &lt;&lt;: *cargo_test
+<a href="#l15" class="line" id="l15">     15</a> 
+<a href="#l16" class="line" id="l16">     16</a> beta:cargo:
+<a href="#l17" class="line" id="l17">     17</a>   image: rustdocker/rust:beta
+<a href="#l18" class="line" id="l18">     18</a>   &lt;&lt;: *cargo_test
+<a href="#l19" class="line" id="l19">     19</a> 
+<a href="#l20" class="line" id="l20">     20</a> nightly:cargo:
+<a href="#l21" class="line" id="l21">     21</a>   image: rustdocker/rust:nightly
+<a href="#l22" class="line" id="l22">     22</a>   &lt;&lt;: *cargo_test
+<a href="#l23" class="line" id="l23">     23</a> 
+<a href="#l24" class="line" id="l24">     24</a> pages:
+<a href="#l25" class="line" id="l25">     25</a>   image: rustdocker/rust:stable
+<a href="#l26" class="line" id="l26">     26</a>   stage: deploy
+<a href="#l27" class="line" id="l27">     27</a>   only:
+<a href="#l28" class="line" id="l28">     28</a>     - root
+<a href="#l29" class="line" id="l29">     29</a>   script:
+<a href="#l30" class="line" id="l30">     30</a>     - cd phora
+<a href="#l31" class="line" id="l31">     31</a>     - cargo doc -F sqlite
+<a href="#l32" class="line" id="l32">     32</a>     - rm -rf public
+<a href="#l33" class="line" id="l33">     33</a>     - mkdir ../public
+<a href="#l34" class="line" id="l34">     34</a>     - cp -R target/doc/* ../public
+<a href="#l35" class="line" id="l35">     35</a>   artifacts:
+<a href="#l36" class="line" id="l36">     36</a>     paths:
+<a href="#l37" class="line" id="l37">     37</a>       - public
+<a href="#l38" class="line" id="l38">     38</a>             
+<a href="#l39" class="line" id="l39">     39</a> # Reference: http://imp.gitlab.io/blog/blog/gitlab-ci-and-rust/
+</pre>
+</div>
+</body>
+</html>
