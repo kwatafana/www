@@ -231,27 +231,29 @@ ul.task-list{list-style: none;}
 <header id="title-block-header">
 <h1 class="title">Code Snippets</h1>
 </header>
+<h2 id="termination-status-of-last-executed-program">Termination status of last executed program</h2>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a>$ <span class="bu">echo</span> <span class="va">$?</span></span></code></pre></div>
 <h2 id="what-is-the-overhead-of-rusts-option-type">What is the overhead of Rust’s <code>Option</code> type?</h2>
-<div class="sourceCode" id="cb1"><pre class="sourceCode rust"><code class="sourceCode rust"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="kw">use</span> <span class="pp">std::mem::</span>size_of<span class="op">;</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true"></a><span class="pp">macro_rules!</span> show_size <span class="op">{</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true"></a>    (header) <span class="op">=&gt;</span> (</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true"></a>        <span class="pp">println!</span>(<span class="st">&quot;{:&lt;22} {:&gt;4}    {}&quot;</span><span class="op">,</span> <span class="st">&quot;Type&quot;</span><span class="op">,</span> <span class="st">&quot;T&quot;</span><span class="op">,</span> <span class="st">&quot;Option&lt;T&gt;&quot;</span>)<span class="op">;</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true"></a>    )<span class="op">;</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true"></a>    (<span class="op">$</span>t<span class="op">:</span>ty) <span class="op">=&gt;</span> (</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true"></a>        <span class="pp">println!</span>(<span class="st">&quot;{:&lt;22} {:4} {:4}&quot;</span><span class="op">,</span> <span class="pp">stringify!</span>(<span class="op">$</span>t)<span class="op">,</span> <span class="pp">size_of::</span><span class="op">&lt;$</span>t<span class="op">&gt;</span>()<span class="op">,</span> <span class="pp">size_of::</span><span class="op">&lt;</span><span class="dt">Option</span><span class="op">&lt;$</span>t<span class="op">&gt;&gt;</span>())</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true"></a>    )</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true"></a><span class="op">}</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true"></a></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true"></a><span class="kw">fn</span> main() <span class="op">{</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true"></a>    <span class="pp">show_size!</span>(header)<span class="op">;</span></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true"></a>    <span class="pp">show_size!</span>(<span class="dt">i32</span>)<span class="op">;</span></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true"></a>    <span class="pp">show_size!</span>(<span class="op">&amp;</span><span class="dt">i32</span>)<span class="op">;</span></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true"></a>    <span class="pp">show_size!</span>(<span class="dt">Box</span><span class="op">&lt;</span><span class="dt">i32</span><span class="op">&gt;</span>)<span class="op">;</span></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true"></a>    <span class="pp">show_size!</span>(<span class="op">&amp;</span>[<span class="dt">i32</span>])<span class="op">;</span></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true"></a>    <span class="pp">show_size!</span>(<span class="dt">Vec</span><span class="op">&lt;</span><span class="dt">i32</span><span class="op">&gt;</span>)<span class="op">;</span></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true"></a>    <span class="pp">show_size!</span>(<span class="dt">Result</span><span class="op">&lt;</span>()<span class="op">,</span> <span class="dt">Box</span><span class="op">&lt;</span><span class="dt">i32</span><span class="op">&gt;&gt;</span>)<span class="op">;</span></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true"></a><span class="op">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode rust"><code class="sourceCode rust"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a><span class="kw">use</span> <span class="pp">std::mem::</span>size_of<span class="op">;</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true"></a><span class="pp">macro_rules!</span> show_size <span class="op">{</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true"></a>    (header) <span class="op">=&gt;</span> (</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true"></a>        <span class="pp">println!</span>(<span class="st">&quot;{:&lt;22} {:&gt;4}    {}&quot;</span><span class="op">,</span> <span class="st">&quot;Type&quot;</span><span class="op">,</span> <span class="st">&quot;T&quot;</span><span class="op">,</span> <span class="st">&quot;Option&lt;T&gt;&quot;</span>)<span class="op">;</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true"></a>    )<span class="op">;</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true"></a>    (<span class="op">$</span>t<span class="op">:</span>ty) <span class="op">=&gt;</span> (</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true"></a>        <span class="pp">println!</span>(<span class="st">&quot;{:&lt;22} {:4} {:4}&quot;</span><span class="op">,</span> <span class="pp">stringify!</span>(<span class="op">$</span>t)<span class="op">,</span> <span class="pp">size_of::</span><span class="op">&lt;$</span>t<span class="op">&gt;</span>()<span class="op">,</span> <span class="pp">size_of::</span><span class="op">&lt;</span><span class="dt">Option</span><span class="op">&lt;$</span>t<span class="op">&gt;&gt;</span>())</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true"></a>    )</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true"></a><span class="op">}</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true"></a></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true"></a><span class="kw">fn</span> main() <span class="op">{</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true"></a>    <span class="pp">show_size!</span>(header)<span class="op">;</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true"></a>    <span class="pp">show_size!</span>(<span class="dt">i32</span>)<span class="op">;</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true"></a>    <span class="pp">show_size!</span>(<span class="op">&amp;</span><span class="dt">i32</span>)<span class="op">;</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true"></a>    <span class="pp">show_size!</span>(<span class="dt">Box</span><span class="op">&lt;</span><span class="dt">i32</span><span class="op">&gt;</span>)<span class="op">;</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true"></a>    <span class="pp">show_size!</span>(<span class="op">&amp;</span>[<span class="dt">i32</span>])<span class="op">;</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true"></a>    <span class="pp">show_size!</span>(<span class="dt">Vec</span><span class="op">&lt;</span><span class="dt">i32</span><span class="op">&gt;</span>)<span class="op">;</span></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true"></a>    <span class="pp">show_size!</span>(<span class="dt">Result</span><span class="op">&lt;</span>()<span class="op">,</span> <span class="dt">Box</span><span class="op">&lt;</span><span class="dt">i32</span><span class="op">&gt;&gt;</span>)<span class="op">;</span></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true"></a><span class="op">}</span></span></code></pre></div>
 <blockquote>
 <p><a href="https://stackoverflow.com/questions/16504643/what-is-the-overhead-of-rusts-option-type">source:</a></p>
 </blockquote>
@@ -281,7 +283,7 @@ done</code></pre>
 <hr>
 ⧉ <a href="../index.html">kwatafana.org</a> | <em> <b>email: kaindume (at) kwatafana (dot) org</b> </em> <br>
 <div style="text-align: right">
-<p><small><em>updated: 2022-09-24 21:37:26.117396021 UTC</small></p>
+<p><small><em>updated: 2022-09-24 22:10:47.871598246 UTC</small></p>
 </div>
 </body>
 </html>
