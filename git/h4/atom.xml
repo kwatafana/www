@@ -3,6 +3,44 @@
 <title>h4, branch HEAD</title>
 <subtitle>h4cking 700l$</subtitle>
 <entry>
+<id>ebc3fcee97ef5f9283f411c429cf48c72137f543</id>
+<published>2022-09-22T16:02:18Z</published>
+<updated>2022-09-22T16:02:18Z</updated>
+<title type="text">remove book</title>
+<link rel="alternate" type="text/html" href="commit/ebc3fcee97ef5f9283f411c429cf48c72137f543.html" />
+<author>
+<name>Jackson G. Kaindume</name>
+<email>kaindume@kwatafana.org</email>
+</author>
+<content type="text">commit ebc3fcee97ef5f9283f411c429cf48c72137f543
+parent 09455214b51a3db88467b12bae71ef449957b058
+Author: Jackson G. Kaindume &lt;kaindume@kwatafana.org&gt;
+Date:   Thu, 22 Sep 2022 18:02:18 +0200
+
+remove book
+
+</content>
+</entry>
+<entry>
+<id>09455214b51a3db88467b12bae71ef449957b058</id>
+<published>2022-09-22T16:01:27Z</published>
+<updated>2022-09-22T16:01:27Z</updated>
+<title type="text">Update readme</title>
+<link rel="alternate" type="text/html" href="commit/09455214b51a3db88467b12bae71ef449957b058.html" />
+<author>
+<name>Jackson G. Kaindume</name>
+<email>kaindume@kwatafana.org</email>
+</author>
+<content type="text">commit 09455214b51a3db88467b12bae71ef449957b058
+parent f2a2bc06c4ae66911157e2aed76a671f0a6e79f1
+Author: Jackson G. Kaindume &lt;kaindume@kwatafana.org&gt;
+Date:   Thu, 22 Sep 2022 18:01:27 +0200
+
+Update readme
+
+</content>
+</entry>
+<entry>
 <id>f2a2bc06c4ae66911157e2aed76a671f0a6e79f1</id>
 <published>2022-09-21T23:10:57Z</published>
 <updated>2022-09-21T23:10:57Z</updated>

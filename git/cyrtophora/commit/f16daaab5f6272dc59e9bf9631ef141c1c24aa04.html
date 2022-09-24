@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>[phora] fix cfg!() attributes - cyrtophora - Full-stack users-first, secure web framework.
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="cyrtophora Atom Feed" href="../atom.xml" />
+<link rel="alternate" type="application/atom+xml" title="cyrtophora Atom Feed (tags)" href="../tags.xml" />
+<link rel="stylesheet" type="text/css" href="/git.css" />
+</head>
+<body>
+<table><tr><td><a href="/index.html"><img src="/logo.png" alt="" width="32" height="32" /></a></td><td><h1>cyrtophora</h1><span class="desc">Full-stack users-first, secure web framework.
+</span></td></tr><tr class="url"><td></td><td>git clone <a href="https://gitlab.com/kwatafana/cyrtophora.git">https://gitlab.com/kwatafana/cyrtophora.git</a></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a> | <a href="../file/README.md.pretty.html">README</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/f16daaab5f6272dc59e9bf9631ef141c1c24aa04.html">f16daaab5f6272dc59e9bf9631ef141c1c24aa04</a>
+<b>parent</b> <a href="../commit/ee054fe3cc3b8be912cd32cd5f9f76aea2651e33.html">ee054fe3cc3b8be912cd32cd5f9f76aea2651e33</a>
+<b>Author:</b> Jackson G. Kaindume &lt;<a href="mailto:kaindume@kwatafana.org">kaindume@kwatafana.org</a>&gt;
+<b>Date:</b>   Thu, 22 Sep 2022 21:11:08 +0200
+
+[phora] fix cfg!() attributes
+
+<b>Diffstat:</b>
+<table><tr><td class="M">M</td><td><a href="#h0">phora/src/lib.rs</a></td><td> | </td><td class="num">30</td><td><span class="i">+++++++++++++++++++++</span><span class="d">---------</span></td></tr>
+</table></pre><pre>1 file changed, 21 insertions(+), 9 deletions(-)
+<hr/><b>diff --git a/<a id="h0" href="../file/phora/src/lib.rs.html">phora/src/lib.rs</a> b/<a href="../file/phora/src/lib.rs.html">phora/src/lib.rs</a></b>
+<a href="#h0-0" id="h0-0" class="h">@@ -34,7 +34,7 @@ impl&lt;D: DB&gt; Cyrtophora&lt;D&gt; {
+</a>         // TODO: email verification
+ 
+         // store account in database
+<a href="#h0-0-3" id="h0-0-3" class="d">-        if cfg!(sqlite) {
+</a><a href="#h0-0-4" id="h0-0-4" class="i">+        if cfg!(feature = &quot;sqlite&quot;) {
+</a>             if let Some(db) = &amp;self.database {
+                 db.account_store(&amp;account)?;
+             }
+<a href="#h0-1" id="h0-1" class="h">@@ -44,7 +44,7 @@ impl&lt;D: DB&gt; Cyrtophora&lt;D&gt; {
+</a> 
+     /// Get account public data, using the username as ID
+     pub fn account_get(&amp;self, username: &amp;str) -&gt; Result&lt;PublicAccount, database::error::Error&gt; {
+<a href="#h0-1-3" id="h0-1-3" class="d">-        if cfg!(sqlite) {
+</a><a href="#h0-1-4" id="h0-1-4" class="i">+        if cfg!(feature = &quot;sqlite&quot;) {
+</a>             if let Some(db) = &amp;self.database {
+                 let public_account = db.account_get_pub(username)?;
+                 Ok(public_account)
+<a href="#h0-2" id="h0-2" class="h">@@ -61,17 +61,29 @@ impl&lt;D: DB&gt; Cyrtophora&lt;D&gt; {
+</a> mod test {
+     use super::*;
+ 
+<a href="#h0-2-3" id="h0-2-3" class="d">-    const TEST_DB_PATH: &amp;str = &quot;test-data/ACCOUNTS.db&quot;;
+</a><a href="#h0-2-4" id="h0-2-4" class="i">+    const TEST_DB_PATH: &amp;str = &quot;test-data/CYRTOPHORA.db&quot;;
+</a> 
+     #[test]
+     #[cfg(feature = &quot;sqlite&quot;)]
+<a href="#h0-2-8" id="h0-2-8" class="d">-    fn test_new_sqlite() {
+</a><a href="#h0-2-9" id="h0-2-9" class="d">-        let cyrtophora =
+</a><a href="#h0-2-10" id="h0-2-10" class="d">-            Cyrtophora::&lt;database::sqlite::SqliteDB&gt;::new_sqlite(TEST_DB_PATH).unwrap();
+</a><a href="#h0-2-11" id="h0-2-11" class="i">+    fn test_create_and_get_account_sqlite() {
+</a><a href="#h0-2-12" id="h0-2-12" class="i">+        remove_test_db();
+</a><a href="#h0-2-13" id="h0-2-13" class="i">+        let mut cyrt = Cyrtophora::&lt;database::sqlite::SqliteDB&gt;::new_sqlite(TEST_DB_PATH).unwrap();
+</a><a href="#h0-2-14" id="h0-2-14" class="i">+        let account_input = crate::data::AccountCreationInput {
+</a><a href="#h0-2-15" id="h0-2-15" class="i">+            username: &quot;testuser&quot;.to_string(),
+</a><a href="#h0-2-16" id="h0-2-16" class="i">+            password: &quot;1234567890&quot;.to_string(),
+</a><a href="#h0-2-17" id="h0-2-17" class="i">+            retyped_password: &quot;1234567890&quot;.to_string(),
+</a><a href="#h0-2-18" id="h0-2-18" class="i">+            email: None,
+</a><a href="#h0-2-19" id="h0-2-19" class="i">+        };
+</a> 
+<a href="#h0-2-21" id="h0-2-21" class="d">-        match cyrtophora.database {
+</a><a href="#h0-2-22" id="h0-2-22" class="d">-            Some(_conn) =&gt; assert!(true),
+</a><a href="#h0-2-23" id="h0-2-23" class="d">-            _ =&gt; assert!(false),
+</a><a href="#h0-2-24" id="h0-2-24" class="i">+        cyrt.account_create(account_input).unwrap();
+</a><a href="#h0-2-25" id="h0-2-25" class="i">+        let public_account = cyrt.account_get(&quot;testuser&quot;).unwrap();
+</a><a href="#h0-2-26" id="h0-2-26" class="i">+        assert_eq!(&amp;public_account.username, &quot;testuser&quot;);
+</a><a href="#h0-2-27" id="h0-2-27" class="i">+    }
+</a><a href="#h0-2-28" id="h0-2-28" class="i">+
+</a><a href="#h0-2-29" id="h0-2-29" class="i">+    fn remove_test_db() {
+</a><a href="#h0-2-30" id="h0-2-30" class="i">+        let test_db_path = std::path::Path::new(TEST_DB_PATH);
+</a><a href="#h0-2-31" id="h0-2-31" class="i">+        if std::path::Path::exists(test_db_path) {
+</a><a href="#h0-2-32" id="h0-2-32" class="i">+            std::fs::remove_file(test_db_path).unwrap();
+</a>         }
+     }
+ }
+</pre>
+</div>
+</body>
+</html>

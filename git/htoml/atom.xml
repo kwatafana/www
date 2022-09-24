@@ -4,6 +4,25 @@
 <subtitle>HTML page templates described with a toml config
 </subtitle>
 <entry>
+<id>5a1134d3d7c18e2f298b9589e87a088a27e0ccb0</id>
+<published>2022-09-22T16:04:22Z</published>
+<updated>2022-09-22T16:04:22Z</updated>
+<title type="text">Update readme</title>
+<link rel="alternate" type="text/html" href="commit/5a1134d3d7c18e2f298b9589e87a088a27e0ccb0.html" />
+<author>
+<name>Jackson G. Kaindume</name>
+<email>kaindume@kwatafana.org</email>
+</author>
+<content type="text">commit 5a1134d3d7c18e2f298b9589e87a088a27e0ccb0
+parent b29fbfa27a5eb590f9b35652c06c7d3e1216f663
+Author: Jackson G. Kaindume &lt;kaindume@kwatafana.org&gt;
+Date:   Thu, 22 Sep 2022 18:04:22 +0200
+
+Update readme
+
+</content>
+</entry>
+<entry>
 <id>b29fbfa27a5eb590f9b35652c06c7d3e1216f663</id>
 <published>2022-09-21T23:08:39Z</published>
 <updated>2022-09-21T23:08:39Z</updated>

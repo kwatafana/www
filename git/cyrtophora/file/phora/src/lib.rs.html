@@ -16,7 +16,7 @@
 <a href="../../../log.html">Log</a> | <a href="../../../files.html">Files</a> | <a href="../../../refs.html">Refs</a> | <a href="../../../file/README.md.pretty.html">README</a></td></tr></table>
 <hr/>
 <div id="content">
-<p> lib.rs (1961B)</p><hr/><pre id="blob">
+<p> lib.rs (2540B)</p><hr/><pre id="blob">
 <a href="#l1" class="line" id="l1">      1</a> use account::PublicAccount;
 <a href="#l2" class="line" id="l2">      2</a> use database::DB;
 <a href="#l3" class="line" id="l3">      3</a> 
@@ -53,7 +53,7 @@
 <a href="#l34" class="line" id="l34">     34</a>         // TODO: email verification
 <a href="#l35" class="line" id="l35">     35</a> 
 <a href="#l36" class="line" id="l36">     36</a>         // store account in database
-<a href="#l37" class="line" id="l37">     37</a>         if cfg!(sqlite) {
+<a href="#l37" class="line" id="l37">     37</a>         if cfg!(feature = &quot;sqlite&quot;) {
 <a href="#l38" class="line" id="l38">     38</a>             if let Some(db) = &amp;self.database {
 <a href="#l39" class="line" id="l39">     39</a>                 db.account_store(&amp;account)?;
 <a href="#l40" class="line" id="l40">     40</a>             }
@@ -63,7 +63,7 @@
 <a href="#l44" class="line" id="l44">     44</a> 
 <a href="#l45" class="line" id="l45">     45</a>     /// Get account public data, using the username as ID
 <a href="#l46" class="line" id="l46">     46</a>     pub fn account_get(&amp;self, username: &amp;str) -&gt; Result&lt;PublicAccount, database::error::Error&gt; {
-<a href="#l47" class="line" id="l47">     47</a>         if cfg!(sqlite) {
+<a href="#l47" class="line" id="l47">     47</a>         if cfg!(feature = &quot;sqlite&quot;) {
 <a href="#l48" class="line" id="l48">     48</a>             if let Some(db) = &amp;self.database {
 <a href="#l49" class="line" id="l49">     49</a>                 let public_account = db.account_get_pub(username)?;
 <a href="#l50" class="line" id="l50">     50</a>                 Ok(public_account)
@@ -80,20 +80,32 @@
 <a href="#l61" class="line" id="l61">     61</a> mod test {
 <a href="#l62" class="line" id="l62">     62</a>     use super::*;
 <a href="#l63" class="line" id="l63">     63</a> 
-<a href="#l64" class="line" id="l64">     64</a>     const TEST_DB_PATH: &amp;str = &quot;test-data/ACCOUNTS.db&quot;;
+<a href="#l64" class="line" id="l64">     64</a>     const TEST_DB_PATH: &amp;str = &quot;test-data/CYRTOPHORA.db&quot;;
 <a href="#l65" class="line" id="l65">     65</a> 
 <a href="#l66" class="line" id="l66">     66</a>     #[test]
 <a href="#l67" class="line" id="l67">     67</a>     #[cfg(feature = &quot;sqlite&quot;)]
-<a href="#l68" class="line" id="l68">     68</a>     fn test_new_sqlite() {
-<a href="#l69" class="line" id="l69">     69</a>         let cyrtophora =
-<a href="#l70" class="line" id="l70">     70</a>             Cyrtophora::&lt;database::sqlite::SqliteDB&gt;::new_sqlite(TEST_DB_PATH).unwrap();
-<a href="#l71" class="line" id="l71">     71</a> 
-<a href="#l72" class="line" id="l72">     72</a>         match cyrtophora.database {
-<a href="#l73" class="line" id="l73">     73</a>             Some(_conn) =&gt; assert!(true),
-<a href="#l74" class="line" id="l74">     74</a>             _ =&gt; assert!(false),
-<a href="#l75" class="line" id="l75">     75</a>         }
-<a href="#l76" class="line" id="l76">     76</a>     }
-<a href="#l77" class="line" id="l77">     77</a> }
+<a href="#l68" class="line" id="l68">     68</a>     fn test_create_and_get_account_sqlite() {
+<a href="#l69" class="line" id="l69">     69</a>         remove_test_db();
+<a href="#l70" class="line" id="l70">     70</a>         let mut cyrt = Cyrtophora::&lt;database::sqlite::SqliteDB&gt;::new_sqlite(TEST_DB_PATH).unwrap();
+<a href="#l71" class="line" id="l71">     71</a>         let account_input = crate::data::AccountCreationInput {
+<a href="#l72" class="line" id="l72">     72</a>             username: &quot;testuser&quot;.to_string(),
+<a href="#l73" class="line" id="l73">     73</a>             password: &quot;1234567890&quot;.to_string(),
+<a href="#l74" class="line" id="l74">     74</a>             retyped_password: &quot;1234567890&quot;.to_string(),
+<a href="#l75" class="line" id="l75">     75</a>             email: None,
+<a href="#l76" class="line" id="l76">     76</a>         };
+<a href="#l77" class="line" id="l77">     77</a> 
+<a href="#l78" class="line" id="l78">     78</a>         cyrt.account_create(account_input).unwrap();
+<a href="#l79" class="line" id="l79">     79</a>         let public_account = cyrt.account_get(&quot;testuser&quot;).unwrap();
+<a href="#l80" class="line" id="l80">     80</a>         assert_eq!(&amp;public_account.username, &quot;testuser&quot;);
+<a href="#l81" class="line" id="l81">     81</a>     }
+<a href="#l82" class="line" id="l82">     82</a> 
+<a href="#l83" class="line" id="l83">     83</a>     fn remove_test_db() {
+<a href="#l84" class="line" id="l84">     84</a>         let test_db_path = std::path::Path::new(TEST_DB_PATH);
+<a href="#l85" class="line" id="l85">     85</a>         if std::path::Path::exists(test_db_path) {
+<a href="#l86" class="line" id="l86">     86</a>             std::fs::remove_file(test_db_path).unwrap();
+<a href="#l87" class="line" id="l87">     87</a>         }
+<a href="#l88" class="line" id="l88">     88</a>     }
+<a href="#l89" class="line" id="l89">     89</a> }
 </pre>
 </div>
 </body>
