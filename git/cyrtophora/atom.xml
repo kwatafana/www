@@ -1,8 +1,160 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 <title>cyrtophora, branch HEAD</title>
-<subtitle>Full-stack users-first, secure web framework.
+<subtitle>[EXPERIMENTAL] secure web node
 </subtitle>
+<entry>
+<id>0953fb821ac59abcb44eaadd5cab8f8387c90556</id>
+<published>2022-09-23T22:50:24Z</published>
+<updated>2022-09-23T22:50:24Z</updated>
+<title type="text">[phora]  #[cfg(feature = node)]</title>
+<link rel="alternate" type="text/html" href="commit/0953fb821ac59abcb44eaadd5cab8f8387c90556.html" />
+<author>
+<name>Jackson G. Kaindume</name>
+<email>kaindume@kwatafana.org</email>
+</author>
+<content type="text">commit 0953fb821ac59abcb44eaadd5cab8f8387c90556
+parent da40d979269be1144397f917bcc7727952aa851d
+Author: Jackson G. Kaindume &lt;kaindume@kwatafana.org&gt;
+Date:   Sat, 24 Sep 2022 00:50:24 +0200
+
+[phora]  #[cfg(feature = node)]
+
+</content>
+</entry>
+<entry>
+<id>da40d979269be1144397f917bcc7727952aa851d</id>
+<published>2022-09-23T22:47:33Z</published>
+<updated>2022-09-23T22:47:33Z</updated>
+<title type="text">[ci] phora test all features</title>
+<link rel="alternate" type="text/html" href="commit/da40d979269be1144397f917bcc7727952aa851d.html" />
+<author>
+<name>Jackson G. Kaindume</name>
+<email>kaindume@kwatafana.org</email>
+</author>
+<content type="text">commit da40d979269be1144397f917bcc7727952aa851d
+parent eb1c93a67012fbf00c0b68b142a144a90947655d
+Author: Jackson G. Kaindume &lt;kaindume@kwatafana.org&gt;
+Date:   Sat, 24 Sep 2022 00:47:33 +0200
+
+[ci] phora test all features
+
+</content>
+</entry>
+<entry>
+<id>eb1c93a67012fbf00c0b68b142a144a90947655d</id>
+<published>2022-09-23T22:32:12Z</published>
+<updated>2022-09-23T22:32:12Z</updated>
+<title type="text">[phora] include node feature in ci builds</title>
+<link rel="alternate" type="text/html" href="commit/eb1c93a67012fbf00c0b68b142a144a90947655d.html" />
+<author>
+<name>Jackson G. Kaindume</name>
+<email>kaindume@kwatafana.org</email>
+</author>
+<content type="text">commit eb1c93a67012fbf00c0b68b142a144a90947655d
+parent 9e1f98b8ffca4f1dfb55494536b58b463c71b598
+Author: Jackson G. Kaindume &lt;kaindume@kwatafana.org&gt;
+Date:   Sat, 24 Sep 2022 00:32:12 +0200
+
+[phora] include node feature in ci builds
+
+</content>
+</entry>
+<entry>
+<id>9e1f98b8ffca4f1dfb55494536b58b463c71b598</id>
+<published>2022-09-23T22:28:33Z</published>
+<updated>2022-09-23T22:28:33Z</updated>
+<title type="text">[phora] setup basic http node</title>
+<link rel="alternate" type="text/html" href="commit/9e1f98b8ffca4f1dfb55494536b58b463c71b598.html" />
+<author>
+<name>Jackson G. Kaindume</name>
+<email>kaindume@kwatafana.org</email>
+</author>
+<content type="text">commit 9e1f98b8ffca4f1dfb55494536b58b463c71b598
+parent 8cec55ee21419f88c178e3af4a59f17f37d7458e
+Author: Jackson G. Kaindume &lt;kaindume@kwatafana.org&gt;
+Date:   Sat, 24 Sep 2022 00:28:33 +0200
+
+[phora] setup basic http node
+
+</content>
+</entry>
+<entry>
+<id>8cec55ee21419f88c178e3af4a59f17f37d7458e</id>
+<published>2022-09-23T17:12:38Z</published>
+<updated>2022-09-23T17:12:38Z</updated>
+<title type="text">[phora] add</title>
+<link rel="alternate" type="text/html" href="commit/8cec55ee21419f88c178e3af4a59f17f37d7458e.html" />
+<author>
+<name>Jackson G. Kaindume</name>
+<email>kaindume@kwatafana.org</email>
+</author>
+<content type="text">commit 8cec55ee21419f88c178e3af4a59f17f37d7458e
+parent 9df996d0e4d32b5a47b4ce8d90d86c8ae4306ade
+Author: Jackson G. Kaindume &lt;kaindume@kwatafana.org&gt;
+Date:   Fri, 23 Sep 2022 19:12:38 +0200
+
+[phora] add
+
+</content>
+</entry>
+<entry>
+<id>9df996d0e4d32b5a47b4ce8d90d86c8ae4306ade</id>
+<published>2022-09-23T16:37:01Z</published>
+<updated>2022-09-23T16:37:01Z</updated>
+<title type="text">[phora] fix endpoints default initialize</title>
+<link rel="alternate" type="text/html" href="commit/9df996d0e4d32b5a47b4ce8d90d86c8ae4306ade.html" />
+<author>
+<name>Jackson G. Kaindume</name>
+<email>kaindume@kwatafana.org</email>
+</author>
+<content type="text">commit 9df996d0e4d32b5a47b4ce8d90d86c8ae4306ade
+parent 0bacedc110e7e8b4ab291143b0a153b577534f22
+Author: Jackson G. Kaindume &lt;kaindume@kwatafana.org&gt;
+Date:   Fri, 23 Sep 2022 18:37:01 +0200
+
+[phora] fix endpoints default initialize
+
+</content>
+</entry>
+<entry>
+<id>0bacedc110e7e8b4ab291143b0a153b577534f22</id>
+<published>2022-09-23T16:28:24Z</published>
+<updated>2022-09-23T16:28:24Z</updated>
+<title type="text">[phora] add endpoints</title>
+<link rel="alternate" type="text/html" href="commit/0bacedc110e7e8b4ab291143b0a153b577534f22.html" />
+<author>
+<name>Jackson G. Kaindume</name>
+<email>kaindume@kwatafana.org</email>
+</author>
+<content type="text">commit 0bacedc110e7e8b4ab291143b0a153b577534f22
+parent bbf1a175c23c524289ad3d07fbbb5c3293b18be4
+Author: Jackson G. Kaindume &lt;kaindume@kwatafana.org&gt;
+Date:   Fri, 23 Sep 2022 18:28:24 +0200
+
+[phora] add endpoints
+
+</content>
+</entry>
+<entry>
+<id>bbf1a175c23c524289ad3d07fbbb5c3293b18be4</id>
+<published>2022-09-23T16:23:52Z</published>
+<updated>2022-09-23T16:23:52Z</updated>
+<title type="text">Update readme</title>
+<link rel="alternate" type="text/html" href="commit/bbf1a175c23c524289ad3d07fbbb5c3293b18be4.html" />
+<author>
+<name>Jackson G. Kaindume</name>
+<email>kaindume@kwatafana.org</email>
+</author>
+<content type="text">commit bbf1a175c23c524289ad3d07fbbb5c3293b18be4
+parent f16daaab5f6272dc59e9bf9631ef141c1c24aa04
+Author: Jackson G. Kaindume &lt;kaindume@kwatafana.org&gt;
+Date:   Fri, 23 Sep 2022 18:23:52 +0200
+
+Update readme
+
+</content>
+</entry>
 <entry>
 <id>f16daaab5f6272dc59e9bf9631ef141c1c24aa04</id>
 <published>2022-09-22T19:11:08Z</published>

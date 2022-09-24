@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Cargo.toml - cyrtophora - Full-stack users-first, secure web framework.
+<title>Cargo.toml - cyrtophora - [EXPERIMENTAL] secure web node
 </title>
 <link rel="icon" type="image/png" href="../../favicon.png" />
 <link rel="alternate" type="application/atom+xml" title="cyrtophora Atom Feed" href="../../atom.xml" />
@@ -11,27 +11,30 @@
 <link rel="stylesheet" type="text/css" href="/git.css" />
 </head>
 <body>
-<table><tr><td><a href="/index.html"><img src="/logo.png" alt="" width="32" height="32" /></a></td><td><h1>cyrtophora</h1><span class="desc">Full-stack users-first, secure web framework.
+<table><tr><td><a href="/index.html"><img src="/logo.png" alt="" width="32" height="32" /></a></td><td><h1>cyrtophora</h1><span class="desc">[EXPERIMENTAL] secure web node
 </span></td></tr><tr class="url"><td></td><td>git clone <a href="https://gitlab.com/kwatafana/cyrtophora.git">https://gitlab.com/kwatafana/cyrtophora.git</a></td></tr><tr><td></td><td>
 <a href="../../log.html">Log</a> | <a href="../../files.html">Files</a> | <a href="../../refs.html">Refs</a> | <a href="../../file/README.md.pretty.html">README</a></td></tr></table>
 <hr/>
 <div id="content">
-<p> Cargo.toml (345B)</p><hr/><pre id="blob">
+<p> Cargo.toml (428B)</p><hr/><pre id="blob">
 <a href="#l1" class="line" id="l1">      1</a> [package]
 <a href="#l2" class="line" id="l2">      2</a> name = &quot;cyrtophora&quot;
 <a href="#l3" class="line" id="l3">      3</a> version = &quot;0.1.0&quot;
 <a href="#l4" class="line" id="l4">      4</a> edition = &quot;2021&quot;
 <a href="#l5" class="line" id="l5">      5</a> 
-<a href="#l6" class="line" id="l6">      6</a> [dependencies]
-<a href="#l7" class="line" id="l7">      7</a> anyhow = &quot;1.0.57&quot;
-<a href="#l8" class="line" id="l8">      8</a> ring = &quot;0.16.20&quot;
-<a href="#l9" class="line" id="l9">      9</a> chacha20poly1305 = &quot;0.9.0&quot;
-<a href="#l10" class="line" id="l10">     10</a> base64 = &quot;0.13.0&quot;
-<a href="#l11" class="line" id="l11">     11</a> scrypt = &quot;0.10.0&quot;
-<a href="#l12" class="line" id="l12">     12</a> serde = { version = &quot;1.0.144&quot;, features = [&quot;derive&quot;] }
-<a href="#l13" class="line" id="l13">     13</a> rusqlite = { version = &quot;0.28.0&quot;, features = [&quot;bundled&quot;], optional = true }
-<a href="#l14" class="line" id="l14">     14</a> [features]
-<a href="#l15" class="line" id="l15">     15</a> sqlite = [&quot;dep:rusqlite&quot;]</pre>
+<a href="#l6" class="line" id="l6">      6</a> [features]
+<a href="#l7" class="line" id="l7">      7</a> sqlite = [&quot;dep:rusqlite&quot;]
+<a href="#l8" class="line" id="l8">      8</a> node = [&quot;dep:rouille&quot;, &quot;sqlite&quot;]
+<a href="#l9" class="line" id="l9">      9</a> 
+<a href="#l10" class="line" id="l10">     10</a> [dependencies]
+<a href="#l11" class="line" id="l11">     11</a> anyhow = &quot;1.0.57&quot;
+<a href="#l12" class="line" id="l12">     12</a> ring = &quot;0.16.20&quot;
+<a href="#l13" class="line" id="l13">     13</a> chacha20poly1305 = &quot;0.9.0&quot;
+<a href="#l14" class="line" id="l14">     14</a> base64 = &quot;0.13.0&quot;
+<a href="#l15" class="line" id="l15">     15</a> scrypt = &quot;0.10.0&quot;
+<a href="#l16" class="line" id="l16">     16</a> serde = { version = &quot;1.0.144&quot;, features = [&quot;derive&quot;] }
+<a href="#l17" class="line" id="l17">     17</a> rusqlite = { version = &quot;0.28.0&quot;, features = [&quot;bundled&quot;], optional = true }
+<a href="#l18" class="line" id="l18">     18</a> rouille = { version = &quot;3.5.0&quot;, optional = true }</pre>
 </div>
 </body>
 </html>

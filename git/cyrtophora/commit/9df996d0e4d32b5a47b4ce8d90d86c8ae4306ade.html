@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>[phora] fix endpoints default initialize - cyrtophora - [EXPERIMENTAL] secure web node
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="cyrtophora Atom Feed" href="../atom.xml" />
+<link rel="alternate" type="application/atom+xml" title="cyrtophora Atom Feed (tags)" href="../tags.xml" />
+<link rel="stylesheet" type="text/css" href="/git.css" />
+</head>
+<body>
+<table><tr><td><a href="/index.html"><img src="/logo.png" alt="" width="32" height="32" /></a></td><td><h1>cyrtophora</h1><span class="desc">[EXPERIMENTAL] secure web node
+</span></td></tr><tr class="url"><td></td><td>git clone <a href="https://gitlab.com/kwatafana/cyrtophora.git">https://gitlab.com/kwatafana/cyrtophora.git</a></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a> | <a href="../file/README.md.pretty.html">README</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/9df996d0e4d32b5a47b4ce8d90d86c8ae4306ade.html">9df996d0e4d32b5a47b4ce8d90d86c8ae4306ade</a>
+<b>parent</b> <a href="../commit/0bacedc110e7e8b4ab291143b0a153b577534f22.html">0bacedc110e7e8b4ab291143b0a153b577534f22</a>
+<b>Author:</b> Jackson G. Kaindume &lt;<a href="mailto:kaindume@kwatafana.org">kaindume@kwatafana.org</a>&gt;
+<b>Date:</b>   Fri, 23 Sep 2022 18:37:01 +0200
+
+[phora] fix endpoints default initialize
+
+<b>Diffstat:</b>
+<table><tr><td class="M">M</td><td><a href="#h0">phora/src/lib.rs</a></td><td> | </td><td class="num">3</td><td><span class="i">+</span><span class="d">--</span></td></tr>
+</table></pre><pre>1 file changed, 1 insertion(+), 2 deletions(-)
+<hr/><b>diff --git a/<a id="h0" href="../file/phora/src/lib.rs.html">phora/src/lib.rs</a> b/<a href="../file/phora/src/lib.rs.html">phora/src/lib.rs</a></b>
+<a href="#h0-0" id="h0-0" class="h">@@ -3,7 +3,6 @@ use database::DB;
+</a> use endpoints::Endpoints;
+ 
+ pub mod account;
+<a href="#h0-0-3" id="h0-0-3" class="d">-pub mod crypto;
+</a> pub mod data;
+ pub mod database;
+ pub mod endpoints;
+<a href="#h0-1" id="h0-1" class="h">@@ -26,7 +25,7 @@ impl&lt;D: DB&gt; Cyrtophora&lt;D&gt; {
+</a>     ) -&gt; Result&lt;Cyrtophora&lt;database::sqlite::SqliteDB&gt;, database::error::Error&gt; {
+         let mut db = database::sqlite::SqliteDB::new(db_path);
+         db.connect()?;
+<a href="#h0-1-3" id="h0-1-3" class="d">-
+</a><a href="#h0-1-4" id="h0-1-4" class="i">+        let endpoints: Endpoints = Default::default();
+</a>         let c = Cyrtophora {
+             database: Some(db),
+             endpoints: endpoints,
+</pre>
+</div>
+</body>
+</html>

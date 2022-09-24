@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>[phora] setup basic http node - cyrtophora - [EXPERIMENTAL] secure web node
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="cyrtophora Atom Feed" href="../atom.xml" />
+<link rel="alternate" type="application/atom+xml" title="cyrtophora Atom Feed (tags)" href="../tags.xml" />
+<link rel="stylesheet" type="text/css" href="/git.css" />
+</head>
+<body>
+<table><tr><td><a href="/index.html"><img src="/logo.png" alt="" width="32" height="32" /></a></td><td><h1>cyrtophora</h1><span class="desc">[EXPERIMENTAL] secure web node
+</span></td></tr><tr class="url"><td></td><td>git clone <a href="https://gitlab.com/kwatafana/cyrtophora.git">https://gitlab.com/kwatafana/cyrtophora.git</a></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a> | <a href="../file/README.md.pretty.html">README</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/9e1f98b8ffca4f1dfb55494536b58b463c71b598.html">9e1f98b8ffca4f1dfb55494536b58b463c71b598</a>
+<b>parent</b> <a href="../commit/8cec55ee21419f88c178e3af4a59f17f37d7458e.html">8cec55ee21419f88c178e3af4a59f17f37d7458e</a>
+<b>Author:</b> Jackson G. Kaindume &lt;<a href="mailto:kaindume@kwatafana.org">kaindume@kwatafana.org</a>&gt;
+<b>Date:</b>   Sat, 24 Sep 2022 00:28:33 +0200
+
+[phora] setup basic http node
+
+<b>Diffstat:</b>
+<table><tr><td class="M">M</td><td><a href="#h0">phora/Cargo.lock</a></td><td> | </td><td class="num">555</td><td><span class="i">+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++</span><span class="d"></span></td></tr>
+<tr><td class="M">M</td><td><a href="#h1">phora/Cargo.toml</a></td><td> | </td><td class="num">9</td><td><span class="i">++++++</span><span class="d">---</span></td></tr>
+<tr><td class="M">M</td><td><a href="#h2">phora/src/lib.rs</a></td><td> | </td><td class="num">24</td><td><span class="i">+++++++++++++++</span><span class="d">---------</span></td></tr>
+<tr><td class="A">A</td><td><a href="#h3">phora/src/node.rs</a></td><td> | </td><td class="num">17</td><td><span class="i">+++++++++++++++++</span><span class="d"></span></td></tr>
+</table></pre><pre>4 files changed, 593 insertions(+), 12 deletions(-)
+<hr/><b>diff --git a/<a id="h0" href="../file/phora/Cargo.lock.html">phora/Cargo.lock</a> b/<a href="../file/phora/Cargo.lock.html">phora/Cargo.lock</a></b>
+<a href="#h0-0" id="h0-0" class="h">@@ -3,6 +3,12 @@
+</a> version = 3
+ 
+ [[package]]
+<a href="#h0-0-3" id="h0-0-3" class="i">+name = &quot;adler32&quot;
+</a><a href="#h0-0-4" id="h0-0-4" class="i">+version = &quot;1.2.0&quot;
+</a><a href="#h0-0-5" id="h0-0-5" class="i">+source = &quot;registry+https://github.com/rust-lang/crates.io-index&quot;
+</a><a href="#h0-0-6" id="h0-0-6" class="i">+checksum = &quot;aae1277d39aeec15cb388266ecc24b11c80469deae6067e17a1a7aa9e5c1f234&quot;
+</a><a href="#h0-0-7" id="h0-0-7" class="i">+
+</a><a href="#h0-0-8" id="h0-0-8" class="i">+[[package]]
+</a> name = &quot;aead&quot;
+ version = &quot;0.4.3&quot;
+ source = &quot;registry+https://github.com/rust-lang/crates.io-index&quot;
+<a href="#h0-1" id="h0-1" class="h">@@ -23,12 +29,48 @@ dependencies = [
+</a> ]
+ 
+ [[package]]
+<a href="#h0-1-3" id="h0-1-3" class="i">+name = &quot;alloc-no-stdlib&quot;
+</a><a href="#h0-1-4" id="h0-1-4" class="i">+version = &quot;2.0.4&quot;
+</a><a href="#h0-1-5" id="h0-1-5" class="i">+source = &quot;registry+https://github.com/rust-lang/crates.io-index&quot;
+</a><a href="#h0-1-6" id="h0-1-6" class="i">+checksum = &quot;cc7bb162ec39d46ab1ca8c77bf72e890535becd1751bb45f64c597edb4c8c6b3&quot;
+</a><a href="#h0-1-7" id="h0-1-7" class="i">+
+</a><a href="#h0-1-8" id="h0-1-8" class="i">+[[package]]
+</a><a href="#h0-1-9" id="h0-1-9" class="i">+name = &quot;alloc-stdlib&quot;
+</a><a href="#h0-1-10" id="h0-1-10" class="i">+version = &quot;0.2.2&quot;
+</a><a href="#h0-1-11" id="h0-1-11" class="i">+source = &quot;registry+https://github.com/rust-lang/crates.io-index&quot;
+</a><a href="#h0-1-12" id="h0-1-12" class="i">+checksum = &quot;94fb8275041c72129eb51b7d0322c29b8387a0386127718b096429201a5d6ece&quot;
+</a><a href="#h0-1-13" id="h0-1-13" class="i">+dependencies = [
+</a><a href="#h0-1-14" id="h0-1-14" class="i">+ &quot;alloc-no-stdlib&quot;,
+</a><a href="#h0-1-15" id="h0-1-15" class="i">+]
+</a><a href="#h0-1-16" id="h0-1-16" class="i">+
+</a><a href="#h0-1-17" id="h0-1-17" class="i">+[[package]]
+</a><a href="#h0-1-18" id="h0-1-18" class="i">+name = &quot;android_system_properties&quot;
+</a><a href="#h0-1-19" id="h0-1-19" class="i">+version = &quot;0.1.5&quot;
+</a><a href="#h0-1-20" id="h0-1-20" class="i">+source = &quot;registry+https://github.com/rust-lang/crates.io-index&quot;
+</a><a href="#h0-1-21" id="h0-1-21" class="i">+checksum = &quot;819e7219dbd41043ac279b19830f2efc897156490d7fd6ea916720117ee66311&quot;
+</a><a href="#h0-1-22" id="h0-1-22" class="i">+dependencies = [
+</a><a href="#h0-1-23" id="h0-1-23" class="i">+ &quot;libc&quot;,
+</a><a href="#h0-1-24" id="h0-1-24" class="i">+]
+</a><a href="#h0-1-25" id="h0-1-25" class="i">+
+</a><a href="#h0-1-26" id="h0-1-26" class="i">+[[package]]
+</a> name = &quot;anyhow&quot;
+ version = &quot;1.0.60&quot;
+ source = &quot;registry+https://github.com/rust-lang/crates.io-index&quot;
+ checksum = &quot;c794e162a5eff65c72ef524dfe393eb923c354e350bb78b9c7383df13f3bc142&quot;
+ 
+ [[package]]
+<a href="#h0-1-33" id="h0-1-33" class="i">+name = &quot;ascii&quot;
+</a><a href="#h0-1-34" id="h0-1-34" class="i">+version = &quot;1.1.0&quot;
+</a><a href="#h0-1-35" id="h0-1-35" class="i">+source = &quot;registry+https://github.com/rust-lang/crates.io-index&quot;
+</a><a href="#h0-1-36" id="h0-1-36" class="i">+checksum = &quot;d92bec98840b8f03a5ff5413de5293bfcd8bf96467cf5452609f939ec6f5de16&quot;
+</a><a href="#h0-1-37" id="h0-1-37" class="i">+
+</a><a href="#h0-1-38" id="h0-1-38" class="i">+[[package]]
+</a><a href="#h0-1-39" id="h0-1-39" class="i">+name = &quot;autocfg&quot;
+</a><a href="#h0-1-40" id="h0-1-40" class="i">+version = &quot;1.1.0&quot;
+</a><a href="#h0-1-41" id="h0-1-41" class="i">+source = &quot;registry+https://github.com/rust-lang/crates.io-index&quot;
+</a><a href="#h0-1-42" id="h0-1-42" class="i">+checksum = &quot;d468802bab17cbc0cc575e9b053f41e72aa36bfa6b7f55e3529ffa43161b97fa&quot;
+</a><a href="#h0-1-43" id="h0-1-43" class="i">+
+</a><a href="#h0-1-44" id="h0-1-44" class="i">+[[package]]
+</a> name = &quot;base64&quot;
+ version = &quot;0.13.0&quot;
+ source = &quot;registry+https://github.com/rust-lang/crates.io-index&quot;
+<a href="#h0-2" id="h0-2" class="h">@@ -56,6 +98,37 @@ dependencies = [
+</a> ]
+ 
+ [[package]]
+<a href="#h0-2-3" id="h0-2-3" class="i">+name = &quot;brotli&quot;
+</a><a href="#h0-2-4" id="h0-2-4" class="i">+version = &quot;3.3.4&quot;
+</a><a href="#h0-2-5" id="h0-2-5" class="i">+source = &quot;registry+https://github.com/rust-lang/crates.io-index&quot;
+</a><a href="#h0-2-6" id="h0-2-6" class="i">+checksum = &quot;a1a0b1dbcc8ae29329621f8d4f0d835787c1c38bb1401979b49d13b0b305ff68&quot;
+</a><a href="#h0-2-7" id="h0-2-7" class="i">+dependencies = [
+</a><a href="#h0-2-8" id="h0-2-8" class="i">+ &quot;alloc-no-stdlib&quot;,
+</a><a href="#h0-2-9" id="h0-2-9" class="i">+ &quot;alloc-stdlib&quot;,
+</a><a href="#h0-2-10" id="h0-2-10" class="i">+ &quot;brotli-decompressor&quot;,
+</a><a href="#h0-2-11" id="h0-2-11" class="i">+]
+</a><a href="#h0-2-12" id="h0-2-12" class="i">+
+</a><a href="#h0-2-13" id="h0-2-13" class="i">+[[package]]
+</a><a href="#h0-2-14" id="h0-2-14" class="i">+name = &quot;brotli-decompressor&quot;
+</a><a href="#h0-2-15" id="h0-2-15" class="i">+version = &quot;2.3.2&quot;
+</a><a href="#h0-2-16" id="h0-2-16" class="i">+source = &quot;registry+https://github.com/rust-lang/crates.io-index&quot;
+</a><a href="#h0-2-17" id="h0-2-17" class="i">+checksum = &quot;59ad2d4653bf5ca36ae797b1f4bb4dbddb60ce49ca4aed8a2ce4829f60425b80&quot;
+</a><a href="#h0-2-18" id="h0-2-18" class="i">+dependencies = [
+</a><a href="#h0-2-19" id="h0-2-19" class="i">+ &quot;alloc-no-stdlib&quot;,
+</a><a href="#h0-2-20" id="h0-2-20" class="i">+ &quot;alloc-stdlib&quot;,
+</a><a href="#h0-2-21" id="h0-2-21" class="i">+]
+</a><a href="#h0-2-22" id="h0-2-22" class="i">+
+</a><a href="#h0-2-23" id="h0-2-23" class="i">+[[package]]
+</a><a href="#h0-2-24" id="h0-2-24" class="i">+name = &quot;buf_redux&quot;
+</a><a href="#h0-2-25" id="h0-2-25" class="i">+version = &quot;0.8.4&quot;
+</a><a href="#h0-2-26" id="h0-2-26" class="i">+source = &quot;registry+https://github.com/rust-lang/crates.io-index&quot;
+</a><a href="#h0-2-27" id="h0-2-27" class="i">+checksum = &quot;b953a6887648bb07a535631f2bc00fbdb2a2216f135552cb3f534ed136b9c07f&quot;
+</a><a href="#h0-2-28" id="h0-2-28" class="i">+dependencies = [
+</a><a href="#h0-2-29" id="h0-2-29" class="i">+ &quot;memchr&quot;,
+</a><a href="#h0-2-30" id="h0-2-30" class="i">+ &quot;safemem&quot;,
+</a><a href="#h0-2-31" id="h0-2-31" class="i">+]
+</a><a href="#h0-2-32" id="h0-2-32" class="i">+
+</a><a href="#h0-2-33" id="h0-2-33" class="i">+[[package]]
+</a> name = &quot;bumpalo&quot;
+ version = &quot;3.10.0&quot;
+ source = &quot;registry+https://github.com/rust-lang/crates.io-index&quot;
+<a href="#h0-3" id="h0-3" class="h">@@ -99,6 +172,24 @@ dependencies = [
+</a> ]
+ 
+ [[package]]
+<a href="#h0-3-3" id="h0-3-3" class="i">+name = &quot;chrono&quot;
+</a><a href="#h0-3-4" id="h0-3-4" class="i">+version = &quot;0.4.22&quot;
+</a><a href="#h0-3-5" id="h0-3-5" class="i">+source = &quot;registry+https://github.com/rust-lang/crates.io-index&quot;
+</a><a href="#h0-3-6" id="h0-3-6" class="i">+checksum = &quot;bfd4d1b31faaa3a89d7934dbded3111da0d2ef28e3ebccdb4f0179f5929d1ef1&quot;
+</a><a href="#h0-3-7" id="h0-3-7" class="i">+dependencies = [
+</a><a href="#h0-3-8" id="h0-3-8" class="i">+ &quot;iana-time-zone&quot;,
+</a><a href="#h0-3-9" id="h0-3-9" class="i">+ &quot;num-integer&quot;,
+</a><a href="#h0-3-10" id="h0-3-10" class="i">+ &quot;num-traits&quot;,
+</a><a href="#h0-3-11" id="h0-3-11" class="i">+ &quot;winapi&quot;,
+</a><a href="#h0-3-12" id="h0-3-12" class="i">+]
+</a><a href="#h0-3-13" id="h0-3-13" class="i">+
+</a><a href="#h0-3-14" id="h0-3-14" class="i">+[[package]]
+</a><a href="#h0-3-15" id="h0-3-15" class="i">+name = &quot;chunked_transfer&quot;
+</a><a href="#h0-3-16" id="h0-3-16" class="i">+version = &quot;1.4.0&quot;
+</a><a href="#h0-3-17" id="h0-3-17" class="i">+source = &quot;registry+https://github.com/rust-lang/crates.io-index&quot;
+</a><a href="#h0-3-18" id="h0-3-18" class="i">+checksum = &quot;fff857943da45f546682664a79488be82e69e43c1a7a2307679ab9afb3a66d2e&quot;
+</a><a href="#h0-3-19" id="h0-3-19" class="i">+
+</a><a href="#h0-3-20" id="h0-3-20" class="i">+[[package]]
+</a> name = &quot;cipher&quot;
+ version = &quot;0.3.0&quot;
+ source = &quot;registry+https://github.com/rust-lang/crates.io-index&quot;
+<a href="#h0-4" id="h0-4" class="h">@@ -118,6 +209,12 @@ dependencies = [
+</a> ]
+ 
+ [[package]]
+<a href="#h0-4-3" id="h0-4-3" class="i">+name = &quot;core-foundation-sys&quot;
+</a><a href="#h0-4-4" id="h0-4-4" class="i">+version = &quot;0.8.3&quot;
+</a><a href="#h0-4-5" id="h0-4-5" class="i">+source = &quot;registry+https://github.com/rust-lang/crates.io-index&quot;
+</a><a href="#h0-4-6" id="h0-4-6" class="i">+checksum = &quot;5827cebf4670468b8772dd191856768aedcb1b0278a04f989f7766351917b9dc&quot;
+</a><a href="#h0-4-7" id="h0-4-7" class="i">+
+</a><a href="#h0-4-8" id="h0-4-8" class="i">+[[package]]
+</a> name = &quot;cpufeatures&quot;
+ version = &quot;0.2.2&quot;
+ source = &quot;registry+https://github.com/rust-lang/crates.io-index&quot;
+<a href="#h0-5" id="h0-5" class="h">@@ -127,6 +224,15 @@ dependencies = [
+</a> ]
+ 
+ [[package]]
+<a href="#h0-5-3" id="h0-5-3" class="i">+name = &quot;crc32fast&quot;
+</a><a href="#h0-5-4" id="h0-5-4" class="i">+version = &quot;1.3.2&quot;
+</a><a href="#h0-5-5" id="h0-5-5" class="i">+source = &quot;registry+https://github.com/rust-lang/crates.io-index&quot;
+</a><a href="#h0-5-6" id="h0-5-6" class="i">+checksum = &quot;b540bd8bc810d3885c6ea91e2018302f68baba2129ab3e88f32389ee9370880d&quot;
+</a><a href="#h0-5-7" id="h0-5-7" class="i">+dependencies = [
+</a><a href="#h0-5-8" id="h0-5-8" class="i">+ &quot;cfg-if&quot;,
+</a><a href="#h0-5-9" id="h0-5-9" class="i">+]
+</a><a href="#h0-5-10" id="h0-5-10" class="i">+
+</a><a href="#h0-5-11" id="h0-5-11" class="i">+[[package]]
+</a> name = &quot;crypto-common&quot;
+ version = &quot;0.1.6&quot;
+ source = &quot;registry+https://github.com/rust-lang/crates.io-index&quot;
+<a href="#h0-6" id="h0-6" class="h">@@ -144,12 +250,23 @@ dependencies = [
+</a>  &quot;base64&quot;,
+  &quot;chacha20poly1305&quot;,
+  &quot;ring&quot;,
+<a href="#h0-6-3" id="h0-6-3" class="i">+ &quot;rouille&quot;,
+</a>  &quot;rusqlite&quot;,
+  &quot;scrypt&quot;,
+  &quot;serde&quot;,
+ ]
+ 
+ [[package]]
+<a href="#h0-6-10" id="h0-6-10" class="i">+name = &quot;deflate&quot;
+</a><a href="#h0-6-11" id="h0-6-11" class="i">+version = &quot;0.9.1&quot;
+</a><a href="#h0-6-12" id="h0-6-12" class="i">+source = &quot;registry+https://github.com/rust-lang/crates.io-index&quot;
+</a><a href="#h0-6-13" id="h0-6-13" class="i">+checksum = &quot;5f95bf05dffba6e6cce8dfbb30def788154949ccd9aed761b472119c21e01c70&quot;
+</a><a href="#h0-6-14" id="h0-6-14" class="i">+dependencies = [
+</a><a href="#h0-6-15" id="h0-6-15" class="i">+ &quot;adler32&quot;,
+</a><a href="#h0-6-16" id="h0-6-16" class="i">+ &quot;gzip-header&quot;,
+</a><a href="#h0-6-17" id="h0-6-17" class="i">+]
+</a><a href="#h0-6-18" id="h0-6-18" class="i">+
+</a><a href="#h0-6-19" id="h0-6-19" class="i">+[[package]]
+</a> name = &quot;digest&quot;
+ version = &quot;0.10.3&quot;
+ source = &quot;registry+https://github.com/rust-lang/crates.io-index&quot;
+<a href="#h0-7" id="h0-7" class="h">@@ -173,6 +290,36 @@ source = &quot;registry+https://github.com/rust-lang/crates.io-index&quot;
+</a> checksum = &quot;7360491ce676a36bf9bb3c56c1aa791658183a54d2744120f27285738d90465a&quot;
+ 
+ [[package]]
+<a href="#h0-7-3" id="h0-7-3" class="i">+name = &quot;fastrand&quot;
+</a><a href="#h0-7-4" id="h0-7-4" class="i">+version = &quot;1.8.0&quot;
+</a><a href="#h0-7-5" id="h0-7-5" class="i">+source = &quot;registry+https://github.com/rust-lang/crates.io-index&quot;
+</a><a href="#h0-7-6" id="h0-7-6" class="i">+checksum = &quot;a7a407cfaa3385c4ae6b23e84623d48c2798d06e3e6a1878f7f59f17b3f86499&quot;
+</a><a href="#h0-7-7" id="h0-7-7" class="i">+dependencies = [
+</a><a href="#h0-7-8" id="h0-7-8" class="i">+ &quot;instant&quot;,
+</a><a href="#h0-7-9" id="h0-7-9" class="i">+]
+</a><a href="#h0-7-10" id="h0-7-10" class="i">+
+</a><a href="#h0-7-11" id="h0-7-11" class="i">+[[package]]
+</a><a href="#h0-7-12" id="h0-7-12" class="i">+name = &quot;filetime&quot;
+</a><a href="#h0-7-13" id="h0-7-13" class="i">+version = &quot;0.2.17&quot;
+</a><a href="#h0-7-14" id="h0-7-14" class="i">+source = &quot;registry+https://github.com/rust-lang/crates.io-index&quot;
+</a><a href="#h0-7-15" id="h0-7-15" class="i">+checksum = &quot;e94a7bbaa59354bc20dd75b67f23e2797b4490e9d6928203fb105c79e448c86c&quot;
+</a><a href="#h0-7-16" id="h0-7-16" class="i">+dependencies = [
+</a><a href="#h0-7-17" id="h0-7-17" class="i">+ &quot;cfg-if&quot;,
+</a><a href="#h0-7-18" id="h0-7-18" class="i">+ &quot;libc&quot;,
+</a><a href="#h0-7-19" id="h0-7-19" class="i">+ &quot;redox_syscall&quot;,
+</a><a href="#h0-7-20" id="h0-7-20" class="i">+ &quot;windows-sys&quot;,
+</a><a href="#h0-7-21" id="h0-7-21" class="i">+]
+</a><a href="#h0-7-22" id="h0-7-22" class="i">+
+</a><a href="#h0-7-23" id="h0-7-23" class="i">+[[package]]
+</a><a href="#h0-7-24" id="h0-7-24" class="i">+name = &quot;form_urlencoded&quot;
+</a><a href="#h0-7-25" id="h0-7-25" class="i">+version = &quot;1.1.0&quot;
+</a><a href="#h0-7-26" id="h0-7-26" class="i">+source = &quot;registry+https://github.com/rust-lang/crates.io-index&quot;
+</a><a href="#h0-7-27" id="h0-7-27" class="i">+checksum = &quot;a9c384f161156f5260c24a097c56119f9be8c798586aecc13afbcbe7b7e26bf8&quot;
+</a><a href="#h0-7-28" id="h0-7-28" class="i">+dependencies = [
+</a><a href="#h0-7-29" id="h0-7-29" class="i">+ &quot;percent-encoding&quot;,
+</a><a href="#h0-7-30" id="h0-7-30" class="i">+]
+</a><a href="#h0-7-31" id="h0-7-31" class="i">+
+</a><a href="#h0-7-32" id="h0-7-32" class="i">+[[package]]
+</a> name = &quot;generic-array&quot;
+ version = &quot;0.14.6&quot;
+ source = &quot;registry+https://github.com/rust-lang/crates.io-index&quot;
+<a href="#h0-8" id="h0-8" class="h">@@ -194,6 +341,15 @@ dependencies = [
+</a> ]
+ 
+ [[package]]
+<a href="#h0-8-3" id="h0-8-3" class="i">+name = &quot;gzip-header&quot;
+</a><a href="#h0-8-4" id="h0-8-4" class="i">+version = &quot;0.3.0&quot;
+</a><a href="#h0-8-5" id="h0-8-5" class="i">+source = &quot;registry+https://github.com/rust-lang/crates.io-index&quot;
+</a><a href="#h0-8-6" id="h0-8-6" class="i">+checksum = &quot;0131feb3d3bb2a5a238d8a4d09f6353b7ebfdc52e77bccbf4ea6eaa751dde639&quot;
+</a><a href="#h0-8-7" id="h0-8-7" class="i">+dependencies = [
+</a><a href="#h0-8-8" id="h0-8-8" class="i">+ &quot;crc32fast&quot;,
+</a><a href="#h0-8-9" id="h0-8-9" class="i">+]
+</a><a href="#h0-8-10" id="h0-8-10" class="i">+
+</a><a href="#h0-8-11" id="h0-8-11" class="i">+[[package]]
+</a> name = &quot;hashbrown&quot;
+ version = &quot;0.12.3&quot;
+ source = &quot;registry+https://github.com/rust-lang/crates.io-index&quot;
+<a href="#h0-9" id="h0-9" class="h">@@ -212,6 +368,15 @@ dependencies = [
+</a> ]
+ 
+ [[package]]
+<a href="#h0-9-3" id="h0-9-3" class="i">+name = &quot;hermit-abi&quot;
+</a><a href="#h0-9-4" id="h0-9-4" class="i">+version = &quot;0.1.19&quot;
+</a><a href="#h0-9-5" id="h0-9-5" class="i">+source = &quot;registry+https://github.com/rust-lang/crates.io-index&quot;
+</a><a href="#h0-9-6" id="h0-9-6" class="i">+checksum = &quot;62b467343b94ba476dcb2500d242dadbb39557df889310ac77c5d99100aaac33&quot;
+</a><a href="#h0-9-7" id="h0-9-7" class="i">+dependencies = [
+</a><a href="#h0-9-8" id="h0-9-8" class="i">+ &quot;libc&quot;,
+</a><a href="#h0-9-9" id="h0-9-9" class="i">+]
+</a><a href="#h0-9-10" id="h0-9-10" class="i">+
+</a><a href="#h0-9-11" id="h0-9-11" class="i">+[[package]]
+</a> name = &quot;hmac&quot;
+ version = &quot;0.12.1&quot;
+ source = &quot;registry+https://github.com/rust-lang/crates.io-index&quot;
+<a href="#h0-10" id="h0-10" class="h">@@ -221,6 +386,35 @@ dependencies = [
+</a> ]
+ 
+ [[package]]
+<a href="#h0-10-3" id="h0-10-3" class="i">+name = &quot;httparse&quot;
+</a><a href="#h0-10-4" id="h0-10-4" class="i">+version = &quot;1.8.0&quot;
+</a><a href="#h0-10-5" id="h0-10-5" class="i">+source = &quot;registry+https://github.com/rust-lang/crates.io-index&quot;
+</a><a href="#h0-10-6" id="h0-10-6" class="i">+checksum = &quot;d897f394bad6a705d5f4104762e116a75639e470d80901eed05a860a95cb1904&quot;
+</a><a href="#h0-10-7" id="h0-10-7" class="i">+
+</a><a href="#h0-10-8" id="h0-10-8" class="i">+[[package]]
+</a><a href="#h0-10-9" id="h0-10-9" class="i">+name = &quot;iana-time-zone&quot;
+</a><a href="#h0-10-10" id="h0-10-10" class="i">+version = &quot;0.1.49&quot;
+</a><a href="#h0-10-11" id="h0-10-11" class="i">+source = &quot;registry+https://github.com/rust-lang/crates.io-index&quot;
+</a><a href="#h0-10-12" id="h0-10-12" class="i">+checksum = &quot;3bbaead50122b06e9a973ac20bc7445074d99ad9a0a0654934876908a9cec82c&quot;
+</a><a href="#h0-10-13" id="h0-10-13" class="i">+dependencies = [
+</a><a href="#h0-10-14" id="h0-10-14" class="i">+ &quot;android_system_properties&quot;,
+</a><a href="#h0-10-15" id="h0-10-15" class="i">+ &quot;core-foundation-sys&quot;,
+</a><a href="#h0-10-16" id="h0-10-16" class="i">+ &quot;js-sys&quot;,
+</a><a href="#h0-10-17" id="h0-10-17" class="i">+ &quot;wasm-bindgen&quot;,
+</a><a href="#h0-10-18" id="h0-10-18" class="i">+ &quot;winapi&quot;,
+</a><a href="#h0-10-19" id="h0-10-19" class="i">+]
+</a><a href="#h0-10-20" id="h0-10-20" class="i">+
+</a><a href="#h0-10-21" id="h0-10-21" class="i">+[[package]]
+</a><a href="#h0-10-22" id="h0-10-22" class="i">+name = &quot;idna&quot;
+</a><a href="#h0-10-23" id="h0-10-23" class="i">+version = &quot;0.3.0&quot;
+</a><a href="#h0-10-24" id="h0-10-24" class="i">+source = &quot;registry+https://github.com/rust-lang/crates.io-index&quot;
+</a><a href="#h0-10-25" id="h0-10-25" class="i">+checksum = &quot;e14ddfc70884202db2244c223200c204c2bda1bc6e0998d11b5e024d657209e6&quot;
+</a><a href="#h0-10-26" id="h0-10-26" class="i">+dependencies = [
+</a><a href="#h0-10-27" id="h0-10-27" class="i">+ &quot;unicode-bidi&quot;,
+</a><a href="#h0-10-28" id="h0-10-28" class="i">+ &quot;unicode-normalization&quot;,
+</a><a href="#h0-10-29" id="h0-10-29" class="i">+]
+</a><a href="#h0-10-30" id="h0-10-30" class="i">+
+</a><a href="#h0-10-31" id="h0-10-31" class="i">+[[package]]
+</a> name = &quot;inout&quot;
+ version = &quot;0.1.3&quot;
+ source = &quot;registry+https://github.com/rust-lang/crates.io-index&quot;
+<a href="#h0-11" id="h0-11" class="h">@@ -230,6 +424,21 @@ dependencies = [
+</a> ]
+ 
+ [[package]]
+<a href="#h0-11-3" id="h0-11-3" class="i">+name = &quot;instant&quot;
+</a><a href="#h0-11-4" id="h0-11-4" class="i">+version = &quot;0.1.12&quot;
+</a><a href="#h0-11-5" id="h0-11-5" class="i">+source = &quot;registry+https://github.com/rust-lang/crates.io-index&quot;
+</a><a href="#h0-11-6" id="h0-11-6" class="i">+checksum = &quot;7a5bbe824c507c5da5956355e86a746d82e0e1464f65d862cc5e71da70e94b2c&quot;
+</a><a href="#h0-11-7" id="h0-11-7" class="i">+dependencies = [
+</a><a href="#h0-11-8" id="h0-11-8" class="i">+ &quot;cfg-if&quot;,
+</a><a href="#h0-11-9" id="h0-11-9" class="i">+]
+</a><a href="#h0-11-10" id="h0-11-10" class="i">+
+</a><a href="#h0-11-11" id="h0-11-11" class="i">+[[package]]
+</a><a href="#h0-11-12" id="h0-11-12" class="i">+name = &quot;itoa&quot;
+</a><a href="#h0-11-13" id="h0-11-13" class="i">+version = &quot;1.0.3&quot;
+</a><a href="#h0-11-14" id="h0-11-14" class="i">+source = &quot;registry+https://github.com/rust-lang/crates.io-index&quot;
+</a><a href="#h0-11-15" id="h0-11-15" class="i">+checksum = &quot;6c8af84674fe1f223a982c933a0ee1086ac4d4052aa0fb8060c12c6ad838e754&quot;
+</a><a href="#h0-11-16" id="h0-11-16" class="i">+
+</a><a href="#h0-11-17" id="h0-11-17" class="i">+[[package]]
+</a> name = &quot;js-sys&quot;
+ version = &quot;0.3.59&quot;
+ source = &quot;registry+https://github.com/rust-lang/crates.io-index&quot;
+<a href="#h0-12" id="h0-12" class="h">@@ -265,6 +474,84 @@ dependencies = [
+</a> ]
+ 
+ [[package]]
+<a href="#h0-12-3" id="h0-12-3" class="i">+name = &quot;memchr&quot;
+</a><a href="#h0-12-4" id="h0-12-4" class="i">+version = &quot;2.5.0&quot;
+</a><a href="#h0-12-5" id="h0-12-5" class="i">+source = &quot;registry+https://github.com/rust-lang/crates.io-index&quot;
+</a><a href="#h0-12-6" id="h0-12-6" class="i">+checksum = &quot;2dffe52ecf27772e601905b7522cb4ef790d2cc203488bbd0e2fe85fcb74566d&quot;
+</a><a href="#h0-12-7" id="h0-12-7" class="i">+
+</a><a href="#h0-12-8" id="h0-12-8" class="i">+[[package]]
+</a><a href="#h0-12-9" id="h0-12-9" class="i">+name = &quot;mime&quot;
+</a><a href="#h0-12-10" id="h0-12-10" class="i">+version = &quot;0.3.16&quot;
+</a><a href="#h0-12-11" id="h0-12-11" class="i">+source = &quot;registry+https://github.com/rust-lang/crates.io-index&quot;
+</a><a href="#h0-12-12" id="h0-12-12" class="i">+checksum = &quot;2a60c7ce501c71e03a9c9c0d35b861413ae925bd979cc7a4e30d060069aaac8d&quot;
+</a><a href="#h0-12-13" id="h0-12-13" class="i">+
+</a><a href="#h0-12-14" id="h0-12-14" class="i">+[[package]]
+</a><a href="#h0-12-15" id="h0-12-15" class="i">+name = &quot;mime_guess&quot;
+</a><a href="#h0-12-16" id="h0-12-16" class="i">+version = &quot;2.0.4&quot;
+</a><a href="#h0-12-17" id="h0-12-17" class="i">+source = &quot;registry+https://github.com/rust-lang/crates.io-index&quot;
+</a><a href="#h0-12-18" id="h0-12-18" class="i">+checksum = &quot;4192263c238a5f0d0c6bfd21f336a313a4ce1c450542449ca191bb657b4642ef&quot;
+</a><a href="#h0-12-19" id="h0-12-19" class="i">+dependencies = [
+</a><a href="#h0-12-20" id="h0-12-20" class="i">+ &quot;mime&quot;,
+</a><a href="#h0-12-21" id="h0-12-21" class="i">+ &quot;unicase&quot;,
+</a><a href="#h0-12-22" id="h0-12-22" class="i">+]
+</a><a href="#h0-12-23" id="h0-12-23" class="i">+
+</a><a href="#h0-12-24" id="h0-12-24" class="i">+[[package]]
+</a><a href="#h0-12-25" id="h0-12-25" class="i">+name = &quot;multipart&quot;
+</a><a href="#h0-12-26" id="h0-12-26" class="i">+version = &quot;0.18.0&quot;
+</a><a href="#h0-12-27" id="h0-12-27" class="i">+source = &quot;registry+https://github.com/rust-lang/crates.io-index&quot;
+</a><a href="#h0-12-28" id="h0-12-28" class="i">+checksum = &quot;00dec633863867f29cb39df64a397cdf4a6354708ddd7759f70c7fb51c5f9182&quot;
+</a><a href="#h0-12-29" id="h0-12-29" class="i">+dependencies = [
+</a><a href="#h0-12-30" id="h0-12-30" class="i">+ &quot;buf_redux&quot;,
+</a><a href="#h0-12-31" id="h0-12-31" class="i">+ &quot;httparse&quot;,
+</a><a href="#h0-12-32" id="h0-12-32" class="i">+ &quot;log&quot;,
+</a><a href="#h0-12-33" id="h0-12-33" class="i">+ &quot;mime&quot;,
+</a><a href="#h0-12-34" id="h0-12-34" class="i">+ &quot;mime_guess&quot;,
+</a><a href="#h0-12-35" id="h0-12-35" class="i">+ &quot;quick-error&quot;,
+</a><a href="#h0-12-36" id="h0-12-36" class="i">+ &quot;rand&quot;,
+</a><a href="#h0-12-37" id="h0-12-37" class="i">+ &quot;safemem&quot;,
+</a><a href="#h0-12-38" id="h0-12-38" class="i">+ &quot;tempfile&quot;,
+</a><a href="#h0-12-39" id="h0-12-39" class="i">+ &quot;twoway&quot;,
+</a><a href="#h0-12-40" id="h0-12-40" class="i">+]
+</a><a href="#h0-12-41" id="h0-12-41" class="i">+
+</a><a href="#h0-12-42" id="h0-12-42" class="i">+[[package]]
+</a><a href="#h0-12-43" id="h0-12-43" class="i">+name = &quot;num-integer&quot;
+</a><a href="#h0-12-44" id="h0-12-44" class="i">+version = &quot;0.1.45&quot;
+</a><a href="#h0-12-45" id="h0-12-45" class="i">+source = &quot;registry+https://github.com/rust-lang/crates.io-index&quot;
+</a><a href="#h0-12-46" id="h0-12-46" class="i">+checksum = &quot;225d3389fb3509a24c93f5c29eb6bde2586b98d9f016636dff58d7c6f7569cd9&quot;
+</a><a href="#h0-12-47" id="h0-12-47" class="i">+dependencies = [
+</a><a href="#h0-12-48" id="h0-12-48" class="i">+ &quot;autocfg&quot;,
+</a><a href="#h0-12-49" id="h0-12-49" class="i">+ &quot;num-traits&quot;,
+</a><a href="#h0-12-50" id="h0-12-50" class="i">+]
+</a><a href="#h0-12-51" id="h0-12-51" class="i">+
+</a><a href="#h0-12-52" id="h0-12-52" class="i">+[[package]]
+</a><a href="#h0-12-53" id="h0-12-53" class="i">+name = &quot;num-traits&quot;
+</a><a href="#h0-12-54" id="h0-12-54" class="i">+version = &quot;0.2.15&quot;
+</a><a href="#h0-12-55" id="h0-12-55" class="i">+source = &quot;registry+https://github.com/rust-lang/crates.io-index&quot;
+</a><a href="#h0-12-56" id="h0-12-56" class="i">+checksum = &quot;578ede34cf02f8924ab9447f50c28075b4d3e5b269972345e7e0372b38c6cdcd&quot;
+</a><a href="#h0-12-57" id="h0-12-57" class="i">+dependencies = [
+</a><a href="#h0-12-58" id="h0-12-58" class="i">+ &quot;autocfg&quot;,
+</a><a href="#h0-12-59" id="h0-12-59" class="i">+]
+</a><a href="#h0-12-60" id="h0-12-60" class="i">+
+</a><a href="#h0-12-61" id="h0-12-61" class="i">+[[package]]
+</a><a href="#h0-12-62" id="h0-12-62" class="i">+name = &quot;num_cpus&quot;
+</a><a href="#h0-12-63" id="h0-12-63" class="i">+version = &quot;1.13.1&quot;
+</a><a href="#h0-12-64" id="h0-12-64" class="i">+source = &quot;registry+https://github.com/rust-lang/crates.io-index&quot;
+</a><a href="#h0-12-65" id="h0-12-65" class="i">+checksum = &quot;19e64526ebdee182341572e50e9ad03965aa510cd94427a4549448f285e957a1&quot;
+</a><a href="#h0-12-66" id="h0-12-66" class="i">+dependencies = [
+</a><a href="#h0-12-67" id="h0-12-67" class="i">+ &quot;hermit-abi&quot;,
+</a><a href="#h0-12-68" id="h0-12-68" class="i">+ &quot;libc&quot;,
+</a><a href="#h0-12-69" id="h0-12-69" class="i">+]
+</a><a href="#h0-12-70" id="h0-12-70" class="i">+
+</a><a href="#h0-12-71" id="h0-12-71" class="i">+[[package]]
+</a><a href="#h0-12-72" id="h0-12-72" class="i">+name = &quot;num_threads&quot;
+</a><a href="#h0-12-73" id="h0-12-73" class="i">+version = &quot;0.1.6&quot;
+</a><a href="#h0-12-74" id="h0-12-74" class="i">+source = &quot;registry+https://github.com/rust-lang/crates.io-index&quot;
+</a><a href="#h0-12-75" id="h0-12-75" class="i">+checksum = &quot;2819ce041d2ee131036f4fc9d6ae7ae125a3a40e97ba64d04fe799ad9dabbb44&quot;
+</a><a href="#h0-12-76" id="h0-12-76" class="i">+dependencies = [
+</a><a href="#h0-12-77" id="h0-12-77" class="i">+ &quot;libc&quot;,
+</a><a href="#h0-12-78" id="h0-12-78" class="i">+]
+</a><a href="#h0-12-79" id="h0-12-79" class="i">+
+</a><a href="#h0-12-80" id="h0-12-80" class="i">+[[package]]
+</a> name = &quot;once_cell&quot;
+ version = &quot;1.13.0&quot;
+ source = &quot;registry+https://github.com/rust-lang/crates.io-index&quot;
+<a href="#h0-13" id="h0-13" class="h">@@ -297,6 +584,12 @@ dependencies = [
+</a> ]
+ 
+ [[package]]
+<a href="#h0-13-3" id="h0-13-3" class="i">+name = &quot;percent-encoding&quot;
+</a><a href="#h0-13-4" id="h0-13-4" class="i">+version = &quot;2.2.0&quot;
+</a><a href="#h0-13-5" id="h0-13-5" class="i">+source = &quot;registry+https://github.com/rust-lang/crates.io-index&quot;
+</a><a href="#h0-13-6" id="h0-13-6" class="i">+checksum = &quot;478c572c3d73181ff3c2539045f6eb99e5491218eae919370993b890cdbdd98e&quot;
+</a><a href="#h0-13-7" id="h0-13-7" class="i">+
+</a><a href="#h0-13-8" id="h0-13-8" class="i">+[[package]]
+</a> name = &quot;pkg-config&quot;
+ version = &quot;0.3.25&quot;
+ source = &quot;registry+https://github.com/rust-lang/crates.io-index&quot;
+<a href="#h0-14" id="h0-14" class="h">@@ -314,6 +607,12 @@ dependencies = [
+</a> ]
+ 
+ [[package]]
+<a href="#h0-14-3" id="h0-14-3" class="i">+name = &quot;ppv-lite86&quot;
+</a><a href="#h0-14-4" id="h0-14-4" class="i">+version = &quot;0.2.16&quot;
+</a><a href="#h0-14-5" id="h0-14-5" class="i">+source = &quot;registry+https://github.com/rust-lang/crates.io-index&quot;
+</a><a href="#h0-14-6" id="h0-14-6" class="i">+checksum = &quot;eb9f9e6e233e5c4a35559a617bf40a4ec447db2e84c20b55a6f83167b7e57872&quot;
+</a><a href="#h0-14-7" id="h0-14-7" class="i">+
+</a><a href="#h0-14-8" id="h0-14-8" class="i">+[[package]]
+</a> name = &quot;proc-macro2&quot;
+ version = &quot;1.0.43&quot;
+ source = &quot;registry+https://github.com/rust-lang/crates.io-index&quot;
+<a href="#h0-15" id="h0-15" class="h">@@ -323,6 +622,12 @@ dependencies = [
+</a> ]
+ 
+ [[package]]
+<a href="#h0-15-3" id="h0-15-3" class="i">+name = &quot;quick-error&quot;
+</a><a href="#h0-15-4" id="h0-15-4" class="i">+version = &quot;1.2.3&quot;
+</a><a href="#h0-15-5" id="h0-15-5" class="i">+source = &quot;registry+https://github.com/rust-lang/crates.io-index&quot;
+</a><a href="#h0-15-6" id="h0-15-6" class="i">+checksum = &quot;a1d01941d82fa2ab50be1e79e6714289dd7cde78eba4c074bc5a4374f650dfe0&quot;
+</a><a href="#h0-15-7" id="h0-15-7" class="i">+
+</a><a href="#h0-15-8" id="h0-15-8" class="i">+[[package]]
+</a> name = &quot;quote&quot;
+ version = &quot;1.0.21&quot;
+ source = &quot;registry+https://github.com/rust-lang/crates.io-index&quot;
+<a href="#h0-16" id="h0-16" class="h">@@ -332,6 +637,27 @@ dependencies = [
+</a> ]
+ 
+ [[package]]
+<a href="#h0-16-3" id="h0-16-3" class="i">+name = &quot;rand&quot;
+</a><a href="#h0-16-4" id="h0-16-4" class="i">+version = &quot;0.8.5&quot;
+</a><a href="#h0-16-5" id="h0-16-5" class="i">+source = &quot;registry+https://github.com/rust-lang/crates.io-index&quot;
+</a><a href="#h0-16-6" id="h0-16-6" class="i">+checksum = &quot;34af8d1a0e25924bc5b7c43c079c942339d8f0a8b57c39049bef581b46327404&quot;
+</a><a href="#h0-16-7" id="h0-16-7" class="i">+dependencies = [
+</a><a href="#h0-16-8" id="h0-16-8" class="i">+ &quot;libc&quot;,
+</a><a href="#h0-16-9" id="h0-16-9" class="i">+ &quot;rand_chacha&quot;,
+</a><a href="#h0-16-10" id="h0-16-10" class="i">+ &quot;rand_core&quot;,
+</a><a href="#h0-16-11" id="h0-16-11" class="i">+]
+</a><a href="#h0-16-12" id="h0-16-12" class="i">+
+</a><a href="#h0-16-13" id="h0-16-13" class="i">+[[package]]
+</a><a href="#h0-16-14" id="h0-16-14" class="i">+name = &quot;rand_chacha&quot;
+</a><a href="#h0-16-15" id="h0-16-15" class="i">+version = &quot;0.3.1&quot;
+</a><a href="#h0-16-16" id="h0-16-16" class="i">+source = &quot;registry+https://github.com/rust-lang/crates.io-index&quot;
+</a><a href="#h0-16-17" id="h0-16-17" class="i">+checksum = &quot;e6c10a63a0fa32252be49d21e7709d4d4baf8d231c2dbce1eaa8141b9b127d88&quot;
+</a><a href="#h0-16-18" id="h0-16-18" class="i">+dependencies = [
+</a><a href="#h0-16-19" id="h0-16-19" class="i">+ &quot;ppv-lite86&quot;,
+</a><a href="#h0-16-20" id="h0-16-20" class="i">+ &quot;rand_core&quot;,
+</a><a href="#h0-16-21" id="h0-16-21" class="i">+]
+</a><a href="#h0-16-22" id="h0-16-22" class="i">+
+</a><a href="#h0-16-23" id="h0-16-23" class="i">+[[package]]
+</a> name = &quot;rand_core&quot;
+ version = &quot;0.6.3&quot;
+ source = &quot;registry+https://github.com/rust-lang/crates.io-index&quot;
+<a href="#h0-17" id="h0-17" class="h">@@ -341,6 +667,24 @@ dependencies = [
+</a> ]
+ 
+ [[package]]
+<a href="#h0-17-3" id="h0-17-3" class="i">+name = &quot;redox_syscall&quot;
+</a><a href="#h0-17-4" id="h0-17-4" class="i">+version = &quot;0.2.16&quot;
+</a><a href="#h0-17-5" id="h0-17-5" class="i">+source = &quot;registry+https://github.com/rust-lang/crates.io-index&quot;
+</a><a href="#h0-17-6" id="h0-17-6" class="i">+checksum = &quot;fb5a58c1855b4b6819d59012155603f0b22ad30cad752600aadfcb695265519a&quot;
+</a><a href="#h0-17-7" id="h0-17-7" class="i">+dependencies = [
+</a><a href="#h0-17-8" id="h0-17-8" class="i">+ &quot;bitflags&quot;,
+</a><a href="#h0-17-9" id="h0-17-9" class="i">+]
+</a><a href="#h0-17-10" id="h0-17-10" class="i">+
+</a><a href="#h0-17-11" id="h0-17-11" class="i">+[[package]]
+</a><a href="#h0-17-12" id="h0-17-12" class="i">+name = &quot;remove_dir_all&quot;
+</a><a href="#h0-17-13" id="h0-17-13" class="i">+version = &quot;0.5.3&quot;
+</a><a href="#h0-17-14" id="h0-17-14" class="i">+source = &quot;registry+https://github.com/rust-lang/crates.io-index&quot;
+</a><a href="#h0-17-15" id="h0-17-15" class="i">+checksum = &quot;3acd125665422973a33ac9d3dd2df85edad0f4ae9b00dafb1a05e43a9f5ef8e7&quot;
+</a><a href="#h0-17-16" id="h0-17-16" class="i">+dependencies = [
+</a><a href="#h0-17-17" id="h0-17-17" class="i">+ &quot;winapi&quot;,
+</a><a href="#h0-17-18" id="h0-17-18" class="i">+]
+</a><a href="#h0-17-19" id="h0-17-19" class="i">+
+</a><a href="#h0-17-20" id="h0-17-20" class="i">+[[package]]
+</a> name = &quot;ring&quot;
+ version = &quot;0.16.20&quot;
+ source = &quot;registry+https://github.com/rust-lang/crates.io-index&quot;
+<a href="#h0-18" id="h0-18" class="h">@@ -356,6 +700,31 @@ dependencies = [
+</a> ]
+ 
+ [[package]]
+<a href="#h0-18-3" id="h0-18-3" class="i">+name = &quot;rouille&quot;
+</a><a href="#h0-18-4" id="h0-18-4" class="i">+version = &quot;3.5.0&quot;
+</a><a href="#h0-18-5" id="h0-18-5" class="i">+source = &quot;registry+https://github.com/rust-lang/crates.io-index&quot;
+</a><a href="#h0-18-6" id="h0-18-6" class="i">+checksum = &quot;18b2380c42510ef4a28b5f228a174c801e0dec590103e215e60812e2e2f34d05&quot;
+</a><a href="#h0-18-7" id="h0-18-7" class="i">+dependencies = [
+</a><a href="#h0-18-8" id="h0-18-8" class="i">+ &quot;base64&quot;,
+</a><a href="#h0-18-9" id="h0-18-9" class="i">+ &quot;brotli&quot;,
+</a><a href="#h0-18-10" id="h0-18-10" class="i">+ &quot;chrono&quot;,
+</a><a href="#h0-18-11" id="h0-18-11" class="i">+ &quot;deflate&quot;,
+</a><a href="#h0-18-12" id="h0-18-12" class="i">+ &quot;filetime&quot;,
+</a><a href="#h0-18-13" id="h0-18-13" class="i">+ &quot;multipart&quot;,
+</a><a href="#h0-18-14" id="h0-18-14" class="i">+ &quot;num_cpus&quot;,
+</a><a href="#h0-18-15" id="h0-18-15" class="i">+ &quot;percent-encoding&quot;,
+</a><a href="#h0-18-16" id="h0-18-16" class="i">+ &quot;rand&quot;,
+</a><a href="#h0-18-17" id="h0-18-17" class="i">+ &quot;serde&quot;,
+</a><a href="#h0-18-18" id="h0-18-18" class="i">+ &quot;serde_derive&quot;,
+</a><a href="#h0-18-19" id="h0-18-19" class="i">+ &quot;serde_json&quot;,
+</a><a href="#h0-18-20" id="h0-18-20" class="i">+ &quot;sha1&quot;,
+</a><a href="#h0-18-21" id="h0-18-21" class="i">+ &quot;threadpool&quot;,
+</a><a href="#h0-18-22" id="h0-18-22" class="i">+ &quot;time&quot;,
+</a><a href="#h0-18-23" id="h0-18-23" class="i">+ &quot;tiny_http&quot;,
+</a><a href="#h0-18-24" id="h0-18-24" class="i">+ &quot;url&quot;,
+</a><a href="#h0-18-25" id="h0-18-25" class="i">+]
+</a><a href="#h0-18-26" id="h0-18-26" class="i">+
+</a><a href="#h0-18-27" id="h0-18-27" class="i">+[[package]]
+</a> name = &quot;rusqlite&quot;
+ version = &quot;0.28.0&quot;
+ source = &quot;registry+https://github.com/rust-lang/crates.io-index&quot;
+<a href="#h0-19" id="h0-19" class="h">@@ -370,6 +739,18 @@ dependencies = [
+</a> ]
+ 
+ [[package]]
+<a href="#h0-19-3" id="h0-19-3" class="i">+name = &quot;ryu&quot;
+</a><a href="#h0-19-4" id="h0-19-4" class="i">+version = &quot;1.0.11&quot;
+</a><a href="#h0-19-5" id="h0-19-5" class="i">+source = &quot;registry+https://github.com/rust-lang/crates.io-index&quot;
+</a><a href="#h0-19-6" id="h0-19-6" class="i">+checksum = &quot;4501abdff3ae82a1c1b477a17252eb69cee9e66eb915c1abaa4f44d873df9f09&quot;
+</a><a href="#h0-19-7" id="h0-19-7" class="i">+
+</a><a href="#h0-19-8" id="h0-19-8" class="i">+[[package]]
+</a><a href="#h0-19-9" id="h0-19-9" class="i">+name = &quot;safemem&quot;
+</a><a href="#h0-19-10" id="h0-19-10" class="i">+version = &quot;0.3.3&quot;
+</a><a href="#h0-19-11" id="h0-19-11" class="i">+source = &quot;registry+https://github.com/rust-lang/crates.io-index&quot;
+</a><a href="#h0-19-12" id="h0-19-12" class="i">+checksum = &quot;ef703b7cb59335eae2eb93ceb664c0eb7ea6bf567079d843e09420219668e072&quot;
+</a><a href="#h0-19-13" id="h0-19-13" class="i">+
+</a><a href="#h0-19-14" id="h0-19-14" class="i">+[[package]]
+</a> name = &quot;salsa20&quot;
+ version = &quot;0.10.2&quot;
+ source = &quot;registry+https://github.com/rust-lang/crates.io-index&quot;
+<a href="#h0-20" id="h0-20" class="h">@@ -412,6 +793,32 @@ dependencies = [
+</a> ]
+ 
+ [[package]]
+<a href="#h0-20-3" id="h0-20-3" class="i">+name = &quot;serde_json&quot;
+</a><a href="#h0-20-4" id="h0-20-4" class="i">+version = &quot;1.0.85&quot;
+</a><a href="#h0-20-5" id="h0-20-5" class="i">+source = &quot;registry+https://github.com/rust-lang/crates.io-index&quot;
+</a><a href="#h0-20-6" id="h0-20-6" class="i">+checksum = &quot;e55a28e3aaef9d5ce0506d0a14dbba8054ddc7e499ef522dd8b26859ec9d4a44&quot;
+</a><a href="#h0-20-7" id="h0-20-7" class="i">+dependencies = [
+</a><a href="#h0-20-8" id="h0-20-8" class="i">+ &quot;itoa&quot;,
+</a><a href="#h0-20-9" id="h0-20-9" class="i">+ &quot;ryu&quot;,
+</a><a href="#h0-20-10" id="h0-20-10" class="i">+ &quot;serde&quot;,
+</a><a href="#h0-20-11" id="h0-20-11" class="i">+]
+</a><a href="#h0-20-12" id="h0-20-12" class="i">+
+</a><a href="#h0-20-13" id="h0-20-13" class="i">+[[package]]
+</a><a href="#h0-20-14" id="h0-20-14" class="i">+name = &quot;sha1&quot;
+</a><a href="#h0-20-15" id="h0-20-15" class="i">+version = &quot;0.6.1&quot;
+</a><a href="#h0-20-16" id="h0-20-16" class="i">+source = &quot;registry+https://github.com/rust-lang/crates.io-index&quot;
+</a><a href="#h0-20-17" id="h0-20-17" class="i">+checksum = &quot;c1da05c97445caa12d05e848c4a4fcbbea29e748ac28f7e80e9b010392063770&quot;
+</a><a href="#h0-20-18" id="h0-20-18" class="i">+dependencies = [
+</a><a href="#h0-20-19" id="h0-20-19" class="i">+ &quot;sha1_smol&quot;,
+</a><a href="#h0-20-20" id="h0-20-20" class="i">+]
+</a><a href="#h0-20-21" id="h0-20-21" class="i">+
+</a><a href="#h0-20-22" id="h0-20-22" class="i">+[[package]]
+</a><a href="#h0-20-23" id="h0-20-23" class="i">+name = &quot;sha1_smol&quot;
+</a><a href="#h0-20-24" id="h0-20-24" class="i">+version = &quot;1.0.0&quot;
+</a><a href="#h0-20-25" id="h0-20-25" class="i">+source = &quot;registry+https://github.com/rust-lang/crates.io-index&quot;
+</a><a href="#h0-20-26" id="h0-20-26" class="i">+checksum = &quot;ae1a47186c03a32177042e55dbc5fd5aee900b8e0069a8d70fba96a9375cd012&quot;
+</a><a href="#h0-20-27" id="h0-20-27" class="i">+
+</a><a href="#h0-20-28" id="h0-20-28" class="i">+[[package]]
+</a> name = &quot;sha2&quot;
+ version = &quot;0.10.2&quot;
+ source = &quot;registry+https://github.com/rust-lang/crates.io-index&quot;
+<a href="#h0-21" id="h0-21" class="h">@@ -452,18 +859,112 @@ dependencies = [
+</a> ]
+ 
+ [[package]]
+<a href="#h0-21-3" id="h0-21-3" class="i">+name = &quot;tempfile&quot;
+</a><a href="#h0-21-4" id="h0-21-4" class="i">+version = &quot;3.3.0&quot;
+</a><a href="#h0-21-5" id="h0-21-5" class="i">+source = &quot;registry+https://github.com/rust-lang/crates.io-index&quot;
+</a><a href="#h0-21-6" id="h0-21-6" class="i">+checksum = &quot;5cdb1ef4eaeeaddc8fbd371e5017057064af0911902ef36b39801f67cc6d79e4&quot;
+</a><a href="#h0-21-7" id="h0-21-7" class="i">+dependencies = [
+</a><a href="#h0-21-8" id="h0-21-8" class="i">+ &quot;cfg-if&quot;,
+</a><a href="#h0-21-9" id="h0-21-9" class="i">+ &quot;fastrand&quot;,
+</a><a href="#h0-21-10" id="h0-21-10" class="i">+ &quot;libc&quot;,
+</a><a href="#h0-21-11" id="h0-21-11" class="i">+ &quot;redox_syscall&quot;,
+</a><a href="#h0-21-12" id="h0-21-12" class="i">+ &quot;remove_dir_all&quot;,
+</a><a href="#h0-21-13" id="h0-21-13" class="i">+ &quot;winapi&quot;,
+</a><a href="#h0-21-14" id="h0-21-14" class="i">+]
+</a><a href="#h0-21-15" id="h0-21-15" class="i">+
+</a><a href="#h0-21-16" id="h0-21-16" class="i">+[[package]]
+</a><a href="#h0-21-17" id="h0-21-17" class="i">+name = &quot;threadpool&quot;
+</a><a href="#h0-21-18" id="h0-21-18" class="i">+version = &quot;1.8.1&quot;
+</a><a href="#h0-21-19" id="h0-21-19" class="i">+source = &quot;registry+https://github.com/rust-lang/crates.io-index&quot;
+</a><a href="#h0-21-20" id="h0-21-20" class="i">+checksum = &quot;d050e60b33d41c19108b32cea32164033a9013fe3b46cbd4457559bfbf77afaa&quot;
+</a><a href="#h0-21-21" id="h0-21-21" class="i">+dependencies = [
+</a><a href="#h0-21-22" id="h0-21-22" class="i">+ &quot;num_cpus&quot;,
+</a><a href="#h0-21-23" id="h0-21-23" class="i">+]
+</a><a href="#h0-21-24" id="h0-21-24" class="i">+
+</a><a href="#h0-21-25" id="h0-21-25" class="i">+[[package]]
+</a><a href="#h0-21-26" id="h0-21-26" class="i">+name = &quot;time&quot;
+</a><a href="#h0-21-27" id="h0-21-27" class="i">+version = &quot;0.3.14&quot;
+</a><a href="#h0-21-28" id="h0-21-28" class="i">+source = &quot;registry+https://github.com/rust-lang/crates.io-index&quot;
+</a><a href="#h0-21-29" id="h0-21-29" class="i">+checksum = &quot;3c3f9a28b618c3a6b9251b6908e9c99e04b9e5c02e6581ccbb67d59c34ef7f9b&quot;
+</a><a href="#h0-21-30" id="h0-21-30" class="i">+dependencies = [
+</a><a href="#h0-21-31" id="h0-21-31" class="i">+ &quot;libc&quot;,
+</a><a href="#h0-21-32" id="h0-21-32" class="i">+ &quot;num_threads&quot;,
+</a><a href="#h0-21-33" id="h0-21-33" class="i">+]
+</a><a href="#h0-21-34" id="h0-21-34" class="i">+
+</a><a href="#h0-21-35" id="h0-21-35" class="i">+[[package]]
+</a><a href="#h0-21-36" id="h0-21-36" class="i">+name = &quot;tiny_http&quot;
+</a><a href="#h0-21-37" id="h0-21-37" class="i">+version = &quot;0.8.2&quot;
+</a><a href="#h0-21-38" id="h0-21-38" class="i">+source = &quot;registry+https://github.com/rust-lang/crates.io-index&quot;
+</a><a href="#h0-21-39" id="h0-21-39" class="i">+checksum = &quot;9ce51b50006056f590c9b7c3808c3bd70f0d1101666629713866c227d6e58d39&quot;
+</a><a href="#h0-21-40" id="h0-21-40" class="i">+dependencies = [
+</a><a href="#h0-21-41" id="h0-21-41" class="i">+ &quot;ascii&quot;,
+</a><a href="#h0-21-42" id="h0-21-42" class="i">+ &quot;chrono&quot;,
+</a><a href="#h0-21-43" id="h0-21-43" class="i">+ &quot;chunked_transfer&quot;,
+</a><a href="#h0-21-44" id="h0-21-44" class="i">+ &quot;log&quot;,
+</a><a href="#h0-21-45" id="h0-21-45" class="i">+ &quot;url&quot;,
+</a><a href="#h0-21-46" id="h0-21-46" class="i">+]
+</a><a href="#h0-21-47" id="h0-21-47" class="i">+
+</a><a href="#h0-21-48" id="h0-21-48" class="i">+[[package]]
+</a><a href="#h0-21-49" id="h0-21-49" class="i">+name = &quot;tinyvec&quot;
+</a><a href="#h0-21-50" id="h0-21-50" class="i">+version = &quot;1.6.0&quot;
+</a><a href="#h0-21-51" id="h0-21-51" class="i">+source = &quot;registry+https://github.com/rust-lang/crates.io-index&quot;
+</a><a href="#h0-21-52" id="h0-21-52" class="i">+checksum = &quot;87cc5ceb3875bb20c2890005a4e226a4651264a5c75edb2421b52861a0a0cb50&quot;
+</a><a href="#h0-21-53" id="h0-21-53" class="i">+dependencies = [
+</a><a href="#h0-21-54" id="h0-21-54" class="i">+ &quot;tinyvec_macros&quot;,
+</a><a href="#h0-21-55" id="h0-21-55" class="i">+]
+</a><a href="#h0-21-56" id="h0-21-56" class="i">+
+</a><a href="#h0-21-57" id="h0-21-57" class="i">+[[package]]
+</a><a href="#h0-21-58" id="h0-21-58" class="i">+name = &quot;tinyvec_macros&quot;
+</a><a href="#h0-21-59" id="h0-21-59" class="i">+version = &quot;0.1.0&quot;
+</a><a href="#h0-21-60" id="h0-21-60" class="i">+source = &quot;registry+https://github.com/rust-lang/crates.io-index&quot;
+</a><a href="#h0-21-61" id="h0-21-61" class="i">+checksum = &quot;cda74da7e1a664f795bb1f8a87ec406fb89a02522cf6e50620d016add6dbbf5c&quot;
+</a><a href="#h0-21-62" id="h0-21-62" class="i">+
+</a><a href="#h0-21-63" id="h0-21-63" class="i">+[[package]]
+</a><a href="#h0-21-64" id="h0-21-64" class="i">+name = &quot;twoway&quot;
+</a><a href="#h0-21-65" id="h0-21-65" class="i">+version = &quot;0.1.8&quot;
+</a><a href="#h0-21-66" id="h0-21-66" class="i">+source = &quot;registry+https://github.com/rust-lang/crates.io-index&quot;
+</a><a href="#h0-21-67" id="h0-21-67" class="i">+checksum = &quot;59b11b2b5241ba34be09c3cc85a36e56e48f9888862e19cedf23336d35316ed1&quot;
+</a><a href="#h0-21-68" id="h0-21-68" class="i">+dependencies = [
+</a><a href="#h0-21-69" id="h0-21-69" class="i">+ &quot;memchr&quot;,
+</a><a href="#h0-21-70" id="h0-21-70" class="i">+]
+</a><a href="#h0-21-71" id="h0-21-71" class="i">+
+</a><a href="#h0-21-72" id="h0-21-72" class="i">+[[package]]
+</a> name = &quot;typenum&quot;
+ version = &quot;1.15.0&quot;
+ source = &quot;registry+https://github.com/rust-lang/crates.io-index&quot;
+ checksum = &quot;dcf81ac59edc17cc8697ff311e8f5ef2d99fcbd9817b34cec66f90b6c3dfd987&quot;
+ 
+ [[package]]
+<a href="#h0-21-79" id="h0-21-79" class="i">+name = &quot;unicase&quot;
+</a><a href="#h0-21-80" id="h0-21-80" class="i">+version = &quot;2.6.0&quot;
+</a><a href="#h0-21-81" id="h0-21-81" class="i">+source = &quot;registry+https://github.com/rust-lang/crates.io-index&quot;
+</a><a href="#h0-21-82" id="h0-21-82" class="i">+checksum = &quot;50f37be617794602aabbeee0be4f259dc1778fabe05e2d67ee8f79326d5cb4f6&quot;
+</a><a href="#h0-21-83" id="h0-21-83" class="i">+dependencies = [
+</a><a href="#h0-21-84" id="h0-21-84" class="i">+ &quot;version_check&quot;,
+</a><a href="#h0-21-85" id="h0-21-85" class="i">+]
+</a><a href="#h0-21-86" id="h0-21-86" class="i">+
+</a><a href="#h0-21-87" id="h0-21-87" class="i">+[[package]]
+</a><a href="#h0-21-88" id="h0-21-88" class="i">+name = &quot;unicode-bidi&quot;
+</a><a href="#h0-21-89" id="h0-21-89" class="i">+version = &quot;0.3.8&quot;
+</a><a href="#h0-21-90" id="h0-21-90" class="i">+source = &quot;registry+https://github.com/rust-lang/crates.io-index&quot;
+</a><a href="#h0-21-91" id="h0-21-91" class="i">+checksum = &quot;099b7128301d285f79ddd55b9a83d5e6b9e97c92e0ea0daebee7263e932de992&quot;
+</a><a href="#h0-21-92" id="h0-21-92" class="i">+
+</a><a href="#h0-21-93" id="h0-21-93" class="i">+[[package]]
+</a> name = &quot;unicode-ident&quot;
+ version = &quot;1.0.3&quot;
+ source = &quot;registry+https://github.com/rust-lang/crates.io-index&quot;
+ checksum = &quot;c4f5b37a154999a8f3f98cc23a628d850e154479cd94decf3414696e12e31aaf&quot;
+ 
+ [[package]]
+<a href="#h0-21-100" id="h0-21-100" class="i">+name = &quot;unicode-normalization&quot;
+</a><a href="#h0-21-101" id="h0-21-101" class="i">+version = &quot;0.1.22&quot;
+</a><a href="#h0-21-102" id="h0-21-102" class="i">+source = &quot;registry+https://github.com/rust-lang/crates.io-index&quot;
+</a><a href="#h0-21-103" id="h0-21-103" class="i">+checksum = &quot;5c5713f0fc4b5db668a2ac63cdb7bb4469d8c9fed047b1d0292cc7b0ce2ba921&quot;
+</a><a href="#h0-21-104" id="h0-21-104" class="i">+dependencies = [
+</a><a href="#h0-21-105" id="h0-21-105" class="i">+ &quot;tinyvec&quot;,
+</a><a href="#h0-21-106" id="h0-21-106" class="i">+]
+</a><a href="#h0-21-107" id="h0-21-107" class="i">+
+</a><a href="#h0-21-108" id="h0-21-108" class="i">+[[package]]
+</a> name = &quot;universal-hash&quot;
+ version = &quot;0.4.1&quot;
+ source = &quot;registry+https://github.com/rust-lang/crates.io-index&quot;
+<a href="#h0-22" id="h0-22" class="h">@@ -480,6 +981,17 @@ source = &quot;registry+https://github.com/rust-lang/crates.io-index&quot;
+</a> checksum = &quot;a156c684c91ea7d62626509bce3cb4e1d9ed5c4d978f7b4352658f96a4c26b4a&quot;
+ 
+ [[package]]
+<a href="#h0-22-3" id="h0-22-3" class="i">+name = &quot;url&quot;
+</a><a href="#h0-22-4" id="h0-22-4" class="i">+version = &quot;2.3.1&quot;
+</a><a href="#h0-22-5" id="h0-22-5" class="i">+source = &quot;registry+https://github.com/rust-lang/crates.io-index&quot;
+</a><a href="#h0-22-6" id="h0-22-6" class="i">+checksum = &quot;0d68c799ae75762b8c3fe375feb6600ef5602c883c5d21eb51c09f22b83c4643&quot;
+</a><a href="#h0-22-7" id="h0-22-7" class="i">+dependencies = [
+</a><a href="#h0-22-8" id="h0-22-8" class="i">+ &quot;form_urlencoded&quot;,
+</a><a href="#h0-22-9" id="h0-22-9" class="i">+ &quot;idna&quot;,
+</a><a href="#h0-22-10" id="h0-22-10" class="i">+ &quot;percent-encoding&quot;,
+</a><a href="#h0-22-11" id="h0-22-11" class="i">+]
+</a><a href="#h0-22-12" id="h0-22-12" class="i">+
+</a><a href="#h0-22-13" id="h0-22-13" class="i">+[[package]]
+</a> name = &quot;vcpkg&quot;
+ version = &quot;0.2.15&quot;
+ source = &quot;registry+https://github.com/rust-lang/crates.io-index&quot;
+<a href="#h0-23" id="h0-23" class="h">@@ -584,6 +1096,49 @@ source = &quot;registry+https://github.com/rust-lang/crates.io-index&quot;
+</a> checksum = &quot;712e227841d057c1ee1cd2fb22fa7e5a5461ae8e48fa2ca79ec42cfc1931183f&quot;
+ 
+ [[package]]
+<a href="#h0-23-3" id="h0-23-3" class="i">+name = &quot;windows-sys&quot;
+</a><a href="#h0-23-4" id="h0-23-4" class="i">+version = &quot;0.36.1&quot;
+</a><a href="#h0-23-5" id="h0-23-5" class="i">+source = &quot;registry+https://github.com/rust-lang/crates.io-index&quot;
+</a><a href="#h0-23-6" id="h0-23-6" class="i">+checksum = &quot;ea04155a16a59f9eab786fe12a4a450e75cdb175f9e0d80da1e17db09f55b8d2&quot;
+</a><a href="#h0-23-7" id="h0-23-7" class="i">+dependencies = [
+</a><a href="#h0-23-8" id="h0-23-8" class="i">+ &quot;windows_aarch64_msvc&quot;,
+</a><a href="#h0-23-9" id="h0-23-9" class="i">+ &quot;windows_i686_gnu&quot;,
+</a><a href="#h0-23-10" id="h0-23-10" class="i">+ &quot;windows_i686_msvc&quot;,
+</a><a href="#h0-23-11" id="h0-23-11" class="i">+ &quot;windows_x86_64_gnu&quot;,
+</a><a href="#h0-23-12" id="h0-23-12" class="i">+ &quot;windows_x86_64_msvc&quot;,
+</a><a href="#h0-23-13" id="h0-23-13" class="i">+]
+</a><a href="#h0-23-14" id="h0-23-14" class="i">+
+</a><a href="#h0-23-15" id="h0-23-15" class="i">+[[package]]
+</a><a href="#h0-23-16" id="h0-23-16" class="i">+name = &quot;windows_aarch64_msvc&quot;
+</a><a href="#h0-23-17" id="h0-23-17" class="i">+version = &quot;0.36.1&quot;
+</a><a href="#h0-23-18" id="h0-23-18" class="i">+source = &quot;registry+https://github.com/rust-lang/crates.io-index&quot;
+</a><a href="#h0-23-19" id="h0-23-19" class="i">+checksum = &quot;9bb8c3fd39ade2d67e9874ac4f3db21f0d710bee00fe7cab16949ec184eeaa47&quot;
+</a><a href="#h0-23-20" id="h0-23-20" class="i">+
+</a><a href="#h0-23-21" id="h0-23-21" class="i">+[[package]]
+</a><a href="#h0-23-22" id="h0-23-22" class="i">+name = &quot;windows_i686_gnu&quot;
+</a><a href="#h0-23-23" id="h0-23-23" class="i">+version = &quot;0.36.1&quot;
+</a><a href="#h0-23-24" id="h0-23-24" class="i">+source = &quot;registry+https://github.com/rust-lang/crates.io-index&quot;
+</a><a href="#h0-23-25" id="h0-23-25" class="i">+checksum = &quot;180e6ccf01daf4c426b846dfc66db1fc518f074baa793aa7d9b9aaeffad6a3b6&quot;
+</a><a href="#h0-23-26" id="h0-23-26" class="i">+
+</a><a href="#h0-23-27" id="h0-23-27" class="i">+[[package]]
+</a><a href="#h0-23-28" id="h0-23-28" class="i">+name = &quot;windows_i686_msvc&quot;
+</a><a href="#h0-23-29" id="h0-23-29" class="i">+version = &quot;0.36.1&quot;
+</a><a href="#h0-23-30" id="h0-23-30" class="i">+source = &quot;registry+https://github.com/rust-lang/crates.io-index&quot;
+</a><a href="#h0-23-31" id="h0-23-31" class="i">+checksum = &quot;e2e7917148b2812d1eeafaeb22a97e4813dfa60a3f8f78ebe204bcc88f12f024&quot;
+</a><a href="#h0-23-32" id="h0-23-32" class="i">+
+</a><a href="#h0-23-33" id="h0-23-33" class="i">+[[package]]
+</a><a href="#h0-23-34" id="h0-23-34" class="i">+name = &quot;windows_x86_64_gnu&quot;
+</a><a href="#h0-23-35" id="h0-23-35" class="i">+version = &quot;0.36.1&quot;
+</a><a href="#h0-23-36" id="h0-23-36" class="i">+source = &quot;registry+https://github.com/rust-lang/crates.io-index&quot;
+</a><a href="#h0-23-37" id="h0-23-37" class="i">+checksum = &quot;4dcd171b8776c41b97521e5da127a2d86ad280114807d0b2ab1e462bc764d9e1&quot;
+</a><a href="#h0-23-38" id="h0-23-38" class="i">+
+</a><a href="#h0-23-39" id="h0-23-39" class="i">+[[package]]
+</a><a href="#h0-23-40" id="h0-23-40" class="i">+name = &quot;windows_x86_64_msvc&quot;
+</a><a href="#h0-23-41" id="h0-23-41" class="i">+version = &quot;0.36.1&quot;
+</a><a href="#h0-23-42" id="h0-23-42" class="i">+source = &quot;registry+https://github.com/rust-lang/crates.io-index&quot;
+</a><a href="#h0-23-43" id="h0-23-43" class="i">+checksum = &quot;c811ca4a8c853ef420abd8592ba53ddbbac90410fab6903b3e79972a631f7680&quot;
+</a><a href="#h0-23-44" id="h0-23-44" class="i">+
+</a><a href="#h0-23-45" id="h0-23-45" class="i">+[[package]]
+</a> name = &quot;zeroize&quot;
+ version = &quot;1.5.7&quot;
+ source = &quot;registry+https://github.com/rust-lang/crates.io-index&quot;
+<b>diff --git a/<a id="h1" href="../file/phora/Cargo.toml.html">phora/Cargo.toml</a> b/<a href="../file/phora/Cargo.toml.html">phora/Cargo.toml</a></b>
+<a href="#h1-0" id="h1-0" class="h">@@ -3,6 +3,10 @@ name = &quot;cyrtophora&quot;
+</a> version = &quot;0.1.0&quot;
+ edition = &quot;2021&quot;
+ 
+<a href="#h1-0-3" id="h1-0-3" class="i">+[features]
+</a><a href="#h1-0-4" id="h1-0-4" class="i">+sqlite = [&quot;dep:rusqlite&quot;]
+</a><a href="#h1-0-5" id="h1-0-5" class="i">+node = [&quot;dep:rouille&quot;, &quot;sqlite&quot;]
+</a><a href="#h1-0-6" id="h1-0-6" class="i">+
+</a> [dependencies]
+ anyhow = &quot;1.0.57&quot;
+ ring = &quot;0.16.20&quot;
+<a href="#h1-1" id="h1-1" class="h">@@ -11,5 +15,4 @@ base64 = &quot;0.13.0&quot;
+</a> scrypt = &quot;0.10.0&quot;
+ serde = { version = &quot;1.0.144&quot;, features = [&quot;derive&quot;] }
+ rusqlite = { version = &quot;0.28.0&quot;, features = [&quot;bundled&quot;], optional = true }
+<a href="#h1-1-3" id="h1-1-3" class="d">-[features]
+</a><a href="#h1-1-4" id="h1-1-4" class="d">-sqlite = [&quot;dep:rusqlite&quot;]
+</a><a href="#h1-1-5" id="h1-1-5" class="d">-\ No newline at end of file
+</a><a href="#h1-1-6" id="h1-1-6" class="i">+rouille = { version = &quot;3.5.0&quot;, optional = true }
+</a><a href="#h1-1-7" id="h1-1-7" class="i">+\ No newline at end of file
+</a><b>diff --git a/<a id="h2" href="../file/phora/src/lib.rs.html">phora/src/lib.rs</a> b/<a href="../file/phora/src/lib.rs.html">phora/src/lib.rs</a></b>
+<a href="#h2-0" id="h2-0" class="h">@@ -6,13 +6,15 @@ pub mod account;
+</a> pub mod data;
+ pub mod database;
+ pub mod endpoints;
+<a href="#h2-0-3" id="h2-0-3" class="i">+pub mod node;
+</a> pub mod validate;
+<a href="#h2-0-5" id="h2-0-5" class="i">+
+</a> /// Cyrtophora configuration
+ pub struct CyrtophoraConfig {
+<a href="#h2-0-8" id="h2-0-8" class="i">+    pub endpoints: Option&lt;Endpoints&gt;,
+</a>     #[cfg(feature = &quot;sqlite&quot;)]
+     /// Path to database
+     pub database_path: String,
+<a href="#h2-0-12" id="h2-0-12" class="d">-    pub endpoints: Option&lt;Endpoints&gt;,
+</a> }
+ 
+ pub struct Cyrtophora&lt;D&gt;
+<a href="#h2-1" id="h2-1" class="h">@@ -23,27 +25,31 @@ where
+</a>     database: Option&lt;D&gt;,
+     /// API endpoints
+     pub endpoints: Endpoints,
+<a href="#h2-1-3" id="h2-1-3" class="i">+    pub node: Option&lt;node::Node&gt;,
+</a> }
+ 
+ impl&lt;D: DB&gt; Cyrtophora&lt;D&gt; {
+<a href="#h2-1-7" id="h2-1-7" class="d">-    #[cfg(feature = &quot;sqlite&quot;)]
+</a><a href="#h2-1-8" id="h2-1-8" class="d">-    pub fn new_sqlite(
+</a><a href="#h2-1-9" id="h2-1-9" class="i">+    #[cfg(feature = &quot;node&quot;)]
+</a><a href="#h2-1-10" id="h2-1-10" class="i">+    pub fn new_sqlite_node(
+</a>         config: CyrtophoraConfig,
+     ) -&gt; Result&lt;Cyrtophora&lt;database::sqlite::SqliteDB&gt;, database::error::Error&gt; {
+         let mut db = database::sqlite::SqliteDB::new(&amp;config.database_path);
+         db.connect()?;
+ 
+<a href="#h2-1-16" id="h2-1-16" class="i">+        // setup API endpoints
+</a>         let endpoints = if let Some(e) = config.endpoints {
+             e
+         } else {
+             Endpoints::default()
+         };
+ 
+<a href="#h2-1-23" id="h2-1-23" class="d">-        let c = Cyrtophora {
+</a><a href="#h2-1-24" id="h2-1-24" class="i">+        // setup node settings
+</a><a href="#h2-1-25" id="h2-1-25" class="i">+        let node = Some(node::Node {});
+</a><a href="#h2-1-26" id="h2-1-26" class="i">+        Ok(Cyrtophora {
+</a>             database: Some(db),
+             endpoints,
+<a href="#h2-1-29" id="h2-1-29" class="d">-        };
+</a><a href="#h2-1-30" id="h2-1-30" class="d">-        Ok(c)
+</a><a href="#h2-1-31" id="h2-1-31" class="i">+            node,
+</a><a href="#h2-1-32" id="h2-1-32" class="i">+        })
+</a>     }
+ 
+     /// Create a new account
+<a href="#h2-2" id="h2-2" class="h">@@ -85,15 +91,15 @@ mod test {
+</a>     const TEST_DB_PATH: &amp;str = &quot;test-data/CYRTOPHORA.db&quot;;
+ 
+     #[test]
+<a href="#h2-2-3" id="h2-2-3" class="d">-    #[cfg(feature = &quot;sqlite&quot;)]
+</a><a href="#h2-2-4" id="h2-2-4" class="d">-    fn test_create_and_get_account_sqlite() {
+</a><a href="#h2-2-5" id="h2-2-5" class="i">+    #[cfg(feature = &quot;node&quot;)]
+</a><a href="#h2-2-6" id="h2-2-6" class="i">+    fn test_sqlite_node() {
+</a>         remove_test_db();
+         let config = CyrtophoraConfig {
+             database_path: TEST_DB_PATH.to_string(),
+             endpoints: None,
+         };
+ 
+<a href="#h2-2-13" id="h2-2-13" class="d">-        let mut cyrt = Cyrtophora::&lt;database::sqlite::SqliteDB&gt;::new_sqlite(config).unwrap();
+</a><a href="#h2-2-14" id="h2-2-14" class="i">+        let mut cyrt = Cyrtophora::&lt;database::sqlite::SqliteDB&gt;::new_sqlite_node(config).unwrap();
+</a>         let account_input = crate::data::AccountCreationInput {
+             username: &quot;testuser&quot;.to_string(),
+             password: &quot;1234567890&quot;.to_string(),
+<b>diff --git a/<a id="h3" href="../file/phora/src/node.rs.html">phora/src/node.rs</a> b/<a href="../file/phora/src/node.rs.html">phora/src/node.rs</a></b>
+<a href="#h3-0" id="h3-0" class="h">@@ -0,0 +1,17 @@
+</a><a href="#h3-0-0" id="h3-0-0" class="i">+#[cfg(feature = &quot;node&quot;)]
+</a><a href="#h3-0-1" id="h3-0-1" class="i">+use rouille::Response;
+</a><a href="#h3-0-2" id="h3-0-2" class="i">+
+</a><a href="#h3-0-3" id="h3-0-3" class="i">+/// Cyrtophora networking node
+</a><a href="#h3-0-4" id="h3-0-4" class="i">+#[cfg(feature = &quot;node&quot;)]
+</a><a href="#h3-0-5" id="h3-0-5" class="i">+pub struct Node;
+</a><a href="#h3-0-6" id="h3-0-6" class="i">+
+</a><a href="#h3-0-7" id="h3-0-7" class="i">+#[cfg(feature = &quot;node&quot;)]
+</a><a href="#h3-0-8" id="h3-0-8" class="i">+impl Node {
+</a><a href="#h3-0-9" id="h3-0-9" class="i">+    /// Startup Node to listen for incoming requests
+</a><a href="#h3-0-10" id="h3-0-10" class="i">+    pub fn http_start(&amp;self, port: Option&lt;u16&gt;) {
+</a><a href="#h3-0-11" id="h3-0-11" class="i">+        let port = if let Some(p) = port { p } else { 8080 };
+</a><a href="#h3-0-12" id="h3-0-12" class="i">+        let address = format!(&quot;localhost:{port}&quot;);
+</a><a href="#h3-0-13" id="h3-0-13" class="i">+
+</a><a href="#h3-0-14" id="h3-0-14" class="i">+        rouille::start_server(&amp;address, move |request| Response::text(&quot;hello world&quot;));
+</a><a href="#h3-0-15" id="h3-0-15" class="i">+    }
+</a><a href="#h3-0-16" id="h3-0-16" class="i">+}
+</a></pre>
+</div>
+</body>
+</html>

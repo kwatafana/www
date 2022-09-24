@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>node.rs - cyrtophora - [EXPERIMENTAL] secure web node
+</title>
+<link rel="icon" type="image/png" href="../../../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="cyrtophora Atom Feed" href="../../../atom.xml" />
+<link rel="alternate" type="application/atom+xml" title="cyrtophora Atom Feed (tags)" href="../../../tags.xml" />
+<link rel="stylesheet" type="text/css" href="/git.css" />
+</head>
+<body>
+<table><tr><td><a href="/index.html"><img src="/logo.png" alt="" width="32" height="32" /></a></td><td><h1>cyrtophora</h1><span class="desc">[EXPERIMENTAL] secure web node
+</span></td></tr><tr class="url"><td></td><td>git clone <a href="https://gitlab.com/kwatafana/cyrtophora.git">https://gitlab.com/kwatafana/cyrtophora.git</a></td></tr><tr><td></td><td>
+<a href="../../../log.html">Log</a> | <a href="../../../files.html">Files</a> | <a href="../../../refs.html">Refs</a> | <a href="../../../file/README.md.pretty.html">README</a></td></tr></table>
+<hr/>
+<div id="content">
+<p> node.rs (472B)</p><hr/><pre id="blob">
+<a href="#l1" class="line" id="l1">      1</a> #[cfg(feature = &quot;node&quot;)]
+<a href="#l2" class="line" id="l2">      2</a> use rouille::Response;
+<a href="#l3" class="line" id="l3">      3</a> 
+<a href="#l4" class="line" id="l4">      4</a> /// Cyrtophora networking node
+<a href="#l5" class="line" id="l5">      5</a> #[cfg(feature = &quot;node&quot;)]
+<a href="#l6" class="line" id="l6">      6</a> pub struct Node;
+<a href="#l7" class="line" id="l7">      7</a> 
+<a href="#l8" class="line" id="l8">      8</a> #[cfg(feature = &quot;node&quot;)]
+<a href="#l9" class="line" id="l9">      9</a> impl Node {
+<a href="#l10" class="line" id="l10">     10</a>     /// Startup Node to listen for incoming requests
+<a href="#l11" class="line" id="l11">     11</a>     pub fn http_start(&amp;self, port: Option&lt;u16&gt;) {
+<a href="#l12" class="line" id="l12">     12</a>         let port = if let Some(p) = port { p } else { 8080 };
+<a href="#l13" class="line" id="l13">     13</a>         let address = format!(&quot;localhost:{port}&quot;);
+<a href="#l14" class="line" id="l14">     14</a> 
+<a href="#l15" class="line" id="l15">     15</a>         rouille::start_server(&amp;address, move |request| Response::text(&quot;hello world&quot;));
+<a href="#l16" class="line" id="l16">     16</a>     }
+<a href="#l17" class="line" id="l17">     17</a> }
+</pre>
+</div>
+</body>
+</html>
