@@ -20,6 +20,12 @@ body {
     font-size: 1.3em;
 }
 
+img{
+    width: 100px;
+    border-radius: 5px;
+    float: right;
+}
+
 @media (max-width: 600px) {
     body {
         font-size: 0.9em;
