@@ -11,8 +11,11 @@
     div.columns{display: flex; gap: min(4vw, 1.5em);}
     div.column{flex: auto; overflow-x: auto;}
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-    ul.task-list{list-style: none;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
     ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
       width: 0.8em;
       margin: 0 0.8em 0.2em -1.6em;
       vertical-align: middle;
@@ -55,7 +58,7 @@
 <body>
 <header id="title-block-header">
 <h1 class="title">⧉ kwatafana</h1>
-<p class="subtitle">high grade systems research</p>
+<p class="subtitle">high grade systems</p>
 <p class="date">2020-2023</p>
 </header>
 <hr />
@@ -75,29 +78,6 @@ Transactions</a></li>
 Algo-Rythm</a></li>
 <li>2019-11-11: <a href="/essays/tunnel-vision.html">ISPs and Tunnel
 Vision</a></li>
-</ul>
-<h2 id="team">Team</h2>
-<ul class="incremental">
-<li><code>Jackson G. Kaindume</code> <strong>[code]</strong>
-<ul class="incremental">
-<li>email: <a href="mailto:cy6erlion@protonmail.com"
-class="email">cy6erlion@protonmail.com</a></li>
-<li>twitter: <a href="https://twitter.com/cy6erlion"
-class="uri">https://twitter.com/cy6erlion</a></li>
-<li>gitlab: <a href="https://gitlab.com/cy6erlion"
-class="uri">https://gitlab.com/cy6erlion</a></li>
-<li>github: <a href="https://github.com/cy6erlion"
-class="uri">https://github.com/cy6erlion</a></li>
-</ul></li>
-<li><code>Silas Mentos Nangolo</code> <strong>[design]</strong>
-<ul class="incremental">
-<li>email: <a href="mailto:twahafamentos@gmail.com"
-class="email">twahafamentos@gmail.com</a></li>
-<li>website: <a href="https://silasmentos.000webhostapp.com"
-class="uri">https://silasmentos.000webhostapp.com</a></li>
-<li>instragram: <a href="https://www.instagram.com/silas_twahafa_art/"
-class="uri">https://www.instagram.com/silas_twahafa_art/</a></li>
-</ul></li>
 </ul>
 <hr />
 <p><a href="https://gitlab.com/kwatafana">code</a></p>
