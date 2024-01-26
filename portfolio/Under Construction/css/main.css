@@ -1,0 +1,77 @@
+body{
+    padding: 0;
+    margin: 0;
+}
+
+.leftPanel, .rightPanel{
+    height: 95vh;
+    background: #fff;
+}
+
+.leftPanel{
+    text-align: center;
+}
+
+.rightPanel{
+    background-image: url("../img/4.jpg");
+    background-size: 100% 100%;
+    text-align: center;
+}
+
+#logo{
+    position: relative;
+    width: 80%;
+    margin: 2% auto;
+}
+
+h1{
+    margin-bottom: 5px;
+    font-family: 'Merienda', cursive;    
+}
+
+h1, form, .subtitle, footer{
+    position: relative;
+    top: 15%;
+}
+
+.subtitle{
+    color: #9e9e9e;
+    font-family: 'Comfortaa', cursive;
+    width: 85%;
+    margin: 0 auto;
+}
+
+form{
+    padding: 3%;
+}
+
+.submitBtn{
+    background: #43a047;
+    color: #ffffff;
+    border:thin solid #43a047 !important;
+}
+
+a, strong{
+    color: #fff;
+}
+
+.footer{
+    min-height: 5vh;
+    padding: .5%;
+    background: #212121;
+    color: #ffffff;
+}
+
+.slogan{
+    top: 40%;    
+    color: #ffffff;
+    font-family: 'Cinzel', serif;
+    width: 70%;
+    margin: 0 auto;
+    font-family: 'Vidaloka', serif;
+}
+
+footer a{
+    color: #e53935;
+    font-weight: bold;
+}

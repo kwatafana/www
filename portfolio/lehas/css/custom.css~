@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css?family=Patua+One&display=swap');
+
+#logo{
+    position: absolute;
+    width: 150px;
+    top: 0px !important;
+    left: 150px;
+    z-index: 100;
+}
+
+#fh5co-header nav ul li a{
+    color: #ffffff;
+}
+
+#fh5co-header nav{
+   position: absolute;
+   padding: 20px;
+   top: 0px !important;
+   right: 0;
+   text-align: right;
+   text-shadow: 1px 1px 1px #000000;
+   width: 100vw;
+   margin: 0 auto;
+   font-family: 'Patua One', cursive;
+}
+
+.btn-primary,
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active{
+    background: #0b0e3b !important;
+    border-color: #0b0e3b !important;
+}
+
+#fh5co-hero .flexslider .flex-control-nav li a.flex-active{
+    background: rgba(26,35,126,.7);
+}
+
+#fh5co-hero .flexslider .flex-control-nav li a{
+    background: rgba(26,35,126,.2);
+}
+
+#fh5co-hero .flexslider .slider-text > .slider-text-inner h2{
+    text-shadow: 1px 1px 1px #000000;
+}
+
+#fh5co-hero .flexslider .slider-text > .slider-text-inner h2,
+.fh5co-heading h2,
+.fh5co-section-with-image h2,
+h2{
+    font-family: 'Patua One', cursive;
+}
+
+.btn-primary.btn-outline{
+    color: #ffffff;
+    border-color: #0b0e3b;
+}
+
+a, .contact-info li a, .contact-info li i{
+    color: #0b0e3b;
+}
+
+/* About */
+#stuffImg{
+    width: 60%;
+    margin: 0 auto;
+}
+
+
+ul li{
+    font-family: 'Patua One', cursive;
+    font-size: 1.2em;
+    color: #212121
+}

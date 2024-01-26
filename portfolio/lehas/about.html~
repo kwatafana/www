@@ -1,0 +1,194 @@
+
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>about | Lehas Trading Enterprises</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="Lehas Trading Enterprises" />
+	<meta name="keywords" content="Lehas Trading Enterprises" />
+	<meta name="author" content="Lehas Trading Enterprises" />
+
+	<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+	<link rel="shortcut icon" href="favicon.ico">
+
+	<!-- <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,400italic,700' rel='stylesheet' type='text/css'> -->
+	
+	<!-- Animate.css -->
+	<link rel="stylesheet" href="css/animate.css">
+	<!-- Icomoon Icon Fonts-->
+	<link rel="stylesheet" href="css/icomoon.css">
+	<!-- Bootstrap  -->
+	<link rel="stylesheet" href="css/bootstrap.css">
+	<!-- Flexslider  -->
+	<link rel="stylesheet" href="css/flexslider.css">
+	<!-- Theme style  -->
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/custom.css">
+	
+	<!-- Modernizr JS -->
+	<script src="js/modernizr-2.6.2.min.js"></script>
+	<!-- FOR IE9 below -->
+	<!--[if lt IE 9]>
+	    <script src="js/respond.min.js"></script>
+	<![endif]-->
+
+    </head>
+    <body>
+	
+	
+	<div id="fh5co-page">
+	    <header id="fh5co-header" role="banner">
+		<div class="container">
+		    <div class="header-inner">
+			<h1><a href="index.html"><img src="images/logo.png" alt="logo" id="logo"></h1>
+			    <nav role="navigation">
+				<ul>
+				    <li class="active"><a href="about.html">About</a></li>
+				    <li><a href="consultancy.html">Consultancy</a></li>
+				    <li><a href="plumbing-electric.html">Plumbing & Electrical</a></li>
+				    <li><a href="waste-management.html">Waste Management & Cleaning</a></li>
+				    <li><a href="property-development.html">Property Development</a></li>
+				    <li><a href="air-conditioning.html">Air-conditioning & Refrigeration</a></li>
+				    <li><a href="information-tech.html">Information Technology</a></li>
+				    <li><a href="agribusiness.html">Agribusiness</a></li>
+				</ul>
+			    </nav>
+		    </div>
+		</div>
+	    </header>
+	    
+
+	    <aside id="fh5co-hero" clsas="js-fullheight">
+		<div class="flexslider js-fullheight">
+		    <ul class="slides">
+		   	<li style="background-image: url(images/about.jpg);">
+		   	    <div class="overlay-gradient"></div>
+		   	    <div class="container">
+		   		<div class="col-md-10 col-md-offset-1 text-center js-fullheight slider-text">
+		   		    <div class="slider-text-inner">
+		   			<h2>Who We Are</h2>
+		   		    </div>
+		   		</div>
+		   	    </div>
+		   	</li>
+		    </ul>
+	  	</div>
+	    </aside>
+
+	    <div class="fh5co-about animate-box">
+		<div class="col-md-6 col-md-offset-3 text-center fh5co-heading">
+		    <h2>Company Background</h2>
+		    <p>Lehas Trading Enterprises  CC is  a  wholly and  registered  Namibian company, registration number: CC/2016/09484.</p>
+		    <p>The  company  was  established  by  Mr.  Leevi Hafeni  Shigwedha, a previously  disadvantaged   Namibian   with   very   shrewd    entrepreneurship   skills   and extensive professional experience as further elaborated below.
+			The company was formed to empower the youth in terms of capacity building and  skills  development.  The   entity  has   various  business  interests  and will expand in the long run as the business obtains a bigger niche in the market. </p>
+
+		    <p>
+			The company is located at 7 Von Bodenhausen Street, Pioneerspark, Windhoek-Namibia.
+		    </p>
+		</div>	
+		<div class="container">
+		    <div class="col-md-12 text-center">
+			<figure>
+			    <img src="images/stuff.png" alt="Stuff" class="img-responsive" id="stuffImg">
+			</figure>
+		    </div>
+		    <div class="col-md-8 col-md-push-4">
+			<h2>Company Structure</h2>
+			<p>Lehas Trading Enterprises CC is structured on the following strategic business units:</p>
+			<figure>
+			    <img src="images/struct.png" alt="Stuff" class="img-responsive" id="stuffImg">
+			</figure>
+			<ul>
+			    <li>Consultancy services</li>
+			    <li>Plumbing and electrical services</li>
+			    <li>Waste management and cleaning services</li>
+			    <li>Property development services</li>
+			    <li>Air-conditioning and refrigeration</li>
+			    <li>Information technology services</li>
+			    <li>Agribusiness services</li>
+			</ul>
+
+			<p>
+			    The  business units  are  designed  to  be independent structures with different operational strategies.
+			    Operations  of  the  units  will  be dependent on Lehas Trading  Enterprises   CC  for  daily  operations.
+			    Expertise for the business units is vast   with   the   entity   having   employees  who  have  experience  in  all  the requirements of the business.
+			</p>
+		    </div>
+		    <div class="col-md-8 col-md-push-4">
+			<h2>Strategy</h2>
+			<p>Lehas’  strategy  is  designed  to  create  value  by  leveraging  the company’s many strengths.  These include  its expertise  and experience  in management, the  entity’s highly productive  business units and  a competent staff that is fully endowed to deliver quality services.</p>
+		    </div>
+
+		    <div class="col-md-8 col-md-push-4">
+			<h2>Vision</h2>
+			<p>To become a leader in the provision of quality services in Namibia.</p>
+		    </div>
+
+		    <div class="col-md-8 col-md-push-4">
+			<h2>Mission</h2>
+			<ul>
+			    <li>To provide customer service</li>
+			    <li>Promote professionalism and ethical conduct in all the business operations</li>
+			    <li>To build long term relationship with our clients and customers</li>
+			</ul>
+		    </div>
+
+		    <div class="col-md-8 col-md-push-4">
+			<h2>Goals And Objectives</h2>
+			<ul>
+			    <li>Gain and maintain market share</li>
+			    <li>Develop business synergies</li>
+			    <li>Become socially responsible</li>
+			    <li>Enter into long term contracts</li>
+			    <li>Apply strict financial control
+			</ul>
+		    </div>
+
+		    <div class="col-md-8 col-md-push-4">
+			<h2>Core Values</h2>
+			<ul>
+			    <li>Integrity</li>
+			    <li>Transparency</li>
+			    <li>Professionalism</li>
+			    <li>Sustainability</li>
+			    <li>Innovation</li>
+			</ul>
+		    </div>		    
+		    
+		</div>
+	    </div>
+	    
+	    <footer id="fh5co-footer" role="contentinfo">
+		
+		<div class="container">			
+		    <div class="col-md-12 fh5co-copyright text-center">
+			<p>&copy; 2019 <span>Made with <i class="icon-heart"></i> by <a href="http://afri-isp.net" target="_blank">IASP</span></p>	
+		    </div>
+		    
+		</div>
+	    </footer>
+	</div>
+	
+	
+	<!-- jQuery -->
+	<script src="js/jquery.min.js"></script>
+	<!-- jQuery Easing -->
+	<script src="js/jquery.easing.1.3.js"></script>
+	<!-- Bootstrap -->
+	<script src="js/bootstrap.min.js"></script>
+	<!-- Waypoints -->
+	<script src="js/jquery.waypoints.min.js"></script>
+	<!-- Flexslider -->
+	<script src="js/jquery.flexslider-min.js"></script>
+	
+	<!-- MAIN JS -->
+	<script src="js/main.js"></script>
+
+    </body>
+</html>
+

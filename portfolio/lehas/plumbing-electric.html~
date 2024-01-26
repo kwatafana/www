@@ -1,0 +1,152 @@
+
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title> plumbing & electrical | Lehas Trading Enterprises</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="Lehas Trading Enterprises" />
+	<meta name="keywords" content="Lehas Trading Enterprises" />
+	<meta name="author" content="Lehas Trading Enterprises" />
+
+	<link rel="shortcut icon" href="favicon.ico">
+
+	<!-- <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,400italic,700' rel='stylesheet' type='text/css'> -->
+	
+	<!-- Animate.css -->
+	<link rel="stylesheet" href="css/animate.css">
+	<!-- Icomoon Icon Fonts-->
+	<link rel="stylesheet" href="css/icomoon.css">
+	<!-- Bootstrap  -->
+	<link rel="stylesheet" href="css/bootstrap.css">
+	<!-- Flexslider  -->
+	<link rel="stylesheet" href="css/flexslider.css">
+	<!-- Theme style  -->
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/custom.css">
+	
+	<!-- Modernizr JS -->
+	<script src="js/modernizr-2.6.2.min.js"></script>
+	<!-- FOR IE9 below -->
+	<!--[if lt IE 9]>
+	    <script src="js/respond.min.js"></script>
+	<![endif]-->
+
+    </head>
+    <body>		
+	<div id="fh5co-page">
+	    <header id="fh5co-header" role="banner">
+		<div class="container">
+		    <div class="header-inner">
+			<h1><a href="index.html"><img src="images/logo.png" alt="logo" id="logo"></h1>
+			    <nav role="navigation">
+				<ul>
+				    <li><a href="about.html">About</a></li>
+				    <li><a href="consultancy.html">Consultancy</a></li>
+				    <li class="active"><a href="plumbing-electric.html">Plumbing & Electrical</a></li>
+				    <li><a href="waste-management.html">Waste Management & Cleaning</a></li>
+				    <li><a href="property-development.html">Property Development</a></li>
+				    <li><a href="air-conditioning.html">Air-conditioning & Refrigeration</a></li>
+				    <li><a href="information-tech.html">Information Technology</a></li>
+				    <li><a href="agribusiness.html">Agribusiness</a></li>
+				</ul>
+			    </nav>
+		    </div>
+		</div>
+	    </header>
+	    
+
+	    <aside id="fh5co-hero" clsas="js-fullheight">
+		<div class="flexslider js-fullheight">
+		    <ul class="slides">
+		   	<li style="background-image: url(images/plumbing-electric.jpg);">
+		   	    <div class="overlay-gradient"></div>
+		   	    <div class="container">
+		   		<div class="col-md-10 col-md-offset-1 text-center js-fullheight slider-text">
+		   		    <div class="slider-text-inner">
+		   			<h2>Plumbing & Electrical</h2>
+		   		    </div>
+		   		</div>
+		   	    </div>
+		   	</li>
+		    </ul>
+	  	</div>
+	    </aside>
+
+	    <div class="fh5co-about animate-box">
+		<div class="col-md-6 col-md-offset-3 text-center fh5co-heading">
+		    <h2>Plumbing & Electrical Unit</h2>		    
+		    <p><strong>Plumbing</strong>  and  <strong>Electrical</strong> business unit render plumbing and electrical services.Plumbing
+			and  electrical  unit  is  involved  in   the following services;</p>
+		</div>	
+		<div class="container">
+		    <div class="col-md-12 text-center">
+			<figure>
+			    <img src="images/plumber.jpg" alt="Stuff" class="img-responsive" id="stuffImg">
+			</figure>
+		    </div>
+		    <div class="col-md-8 col-md-push-4">
+			<h2>Plumbing services</h2>
+			<p>Plumbing is involved in the supply, installation, repair and maintenanceservices.</p>
+			<ul>
+			    <li>Supplying of plumbing materials and equipment</li>
+			    <li>Plumbing installations and maintenance</li>
+			    <li>Water Reticulation</li>
+			    <li>Drain inspections and trouble shooting</li>
+			    <li>Emptying of septic tanks</li>
+			    <li>24/7 Plumbing service</li>
+			</ul>
+		    </div>
+
+		    <div class="col-md-8 col-md-push-4">
+			<h2>Electrical services</h2>
+			<p>Electrical is involved in all the electrical requirements in the aspects
+			    of low voltage (LV)and medium voltage (MV) electrical needs. The business
+			    unit is involved in the installation and maintenance of low
+			    and medium voltage  electrical services.
+			</p>
+			<ul>
+			    <li>LV and MV Installations and maintenance</li>
+			    <li>Electrical fencing and CCTV security camera installations and maintenance</li>
+			    <li>Motor gate installations and maintenance</li>
+			    <li>Electrical appliance installations and maintenance</li>
+			    <li>Geyser installations and maintenance</li>
+			    <li>24/7 electrical service</li>
+			</ul>
+		    </div>
+		</div>
+	    </div>
+	    
+	    <footer id="fh5co-footer" role="contentinfo">
+		
+		<div class="container">			
+		    <div class="col-md-12 fh5co-copyright text-center">
+			<p>&copy; 2019 <span>Made with <i class="icon-heart"></i> by <a href="http://afri-isp.net" target="_blank">IASP</span></p>	
+		    </div>
+		    
+		</div>
+	    </footer>
+	</div>
+	
+	
+	<!-- jQuery -->
+	<script src="js/jquery.min.js"></script>
+	<!-- jQuery Easing -->
+	<script src="js/jquery.easing.1.3.js"></script>
+	<!-- Bootstrap -->
+	<script src="js/bootstrap.min.js"></script>
+	<!-- Waypoints -->
+	<script src="js/jquery.waypoints.min.js"></script>
+	<!-- Flexslider -->
+	<script src="js/jquery.flexslider-min.js"></script>
+	
+	<!-- MAIN JS -->
+	<script src="js/main.js"></script>
+
+    </body>
+</html>
+

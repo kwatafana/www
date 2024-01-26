@@ -1,0 +1,28 @@
+#header #logo img{
+    width: 100px;
+}
+
+.servicesImages{
+    height: 300px;
+    max-height: 300px;
+}
+
+.supplyIcons{
+    font-size: 3.3em;
+    color: #ffffff;
+    margin-bottom: 30px;
+    opacity: .8;
+}
+
+#supply h3, #supply h2{
+    color: #ffffff;
+}
+
+#supply{
+    background:#0e1b4d;
+    padding: 80px;
+}
+
+.owl-carousel .owl-item img{
+    height: 270px;
+}

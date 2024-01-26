@@ -1,0 +1,50 @@
+<html>
+
+<head>
+    <title>INTERNET (PTY) Ltd. AFRICAN SERVICE PROVIDER</title>
+</head>
+
+<body style="padding: 2%;">
+
+    <div id="preview" style="height: 500px; width: 500px; margin: 0 auto; padding: 2%; border:thin solid #ccc">
+        <h1>Header Text</h1>
+        <img alt="cover" src="https://www.afri-isp.net/wp-content/themes/inet/afri-isp-logo3_med.png" style="width: 100%">
+        <p>Description goes here!!!</p>
+    </div>
+
+    <form style="text-align: center; margin-bottom: 5%" action="sendMail.php" method="POST">
+        <input type="text" name="mailHeading" placeholder="Header Text" id="headerInput">
+        <br>
+        <br>
+        <input type="text" name="coverLink" placeholder="Cover image url" id="mailCover">
+        <br>
+        <br>
+        <textarea placeholder="Decription" id="mailDescription" name="mailDescription"></textarea>
+        <br>
+        <br>
+        <input type="submit" value="Submit">
+    </form>
+
+    <script>
+        let headerInput = document.getElementById("headerInput"),
+            mailCover = document.getElementById("mailCover"),
+            mailDescription = document.getElementById("mailDescription"),
+            headerOutput = document.getElementsByTagName("h1")[0],
+            coverImage = document.getElementsByTagName("img")[0],
+            descriptionParagraph = document.getElementsByTagName("p")[0];
+
+        headerInput.addEventListener("change", function(){
+            headerOutput.innerHTML = headerInput.value;            
+        }, false)
+
+        mailCover.addEventListener("change", function(){
+            coverImage.src = mailCover.value;
+        }, false)
+
+        mailDescription.addEventListener("change", function(){
+            descriptionParagraph.innerHTML = mailDescription.value
+        }, false);
+    </script>
+</body>
+
+</html>
