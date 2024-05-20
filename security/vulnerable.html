@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Jackson G. Kaindume" />
+  <meta name="dcterms.date" content="2022-09-04" />
+  <title>🔓</title>
+  <style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+{ counter-reset: source-line 0; }
+pre.numberSource code > span
+{ position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+{ content: counter(source-line);
+position: relative; left: -1em; text-align: right; vertical-align: baseline;
+border: none; display: inline-block;
+-webkit-touch-callout: none; -webkit-user-select: none;
+-khtml-user-select: none; -moz-user-select: none;
+-ms-user-select: none; user-select: none;
+padding: 0 4px; width: 4em;
+color: #aaaaaa;
+}
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa; padding-left: 4px; }
+div.sourceCode
+{ }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } 
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.at { color: #7d9029; } 
+code span.bn { color: #40a070; } 
+code span.bu { color: #008000; } 
+code span.cf { color: #007020; font-weight: bold; } 
+code span.ch { color: #4070a0; } 
+code span.cn { color: #880000; } 
+code span.co { color: #60a0b0; font-style: italic; } 
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.do { color: #ba2121; font-style: italic; } 
+code span.dt { color: #902000; } 
+code span.dv { color: #40a070; } 
+code span.er { color: #ff0000; font-weight: bold; } 
+code span.ex { } 
+code span.fl { color: #40a070; } 
+code span.fu { color: #06287e; } 
+code span.im { color: #008000; font-weight: bold; } 
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.kw { color: #007020; font-weight: bold; } 
+code span.op { color: #666666; } 
+code span.ot { color: #007020; } 
+code span.pp { color: #bc7a00; } 
+code span.sc { color: #4070a0; } 
+code span.ss { color: #bb6688; } 
+code span.st { color: #4070a0; } 
+code span.va { color: #19177c; } 
+code span.vs { color: #4070a0; } 
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } 
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+</style>
+  <style type="text/css">html {
+line-height: 1.5;
+font-family: Georgia, serif;
+font-size: 20px;
+color: cyan;
+background-color: #222D31;
+}
+.title{
+font-size: 1.5em;
+font-weight: bolder;
+}
+body {
+margin: 0 auto;
+max-width: 36em;
+padding-left: 50px;
+padding-right: 50px;
+padding-top: 50px;
+padding-bottom: 50px;
+hyphens: auto;
+word-wrap: break-word;
+text-rendering: optimizeLegibility;
+font-kerning: normal;
+}
+@media (max-width: 600px) {
+body {
+font-size: 0.9em;
+padding: 1em;
+}
+}
+@media print {
+body {
+background-color: transparent;
+color: black;
+font-size: 12pt;
+}
+p, h2, h3 {
+orphans: 3;
+widows: 3;
+}
+h2, h3, h4 {
+page-break-after: avoid;
+}
+}
+p {
+margin: 1em 0;
+}
+a {
+color: cyan;
+}
+a:visited {
+color: cyan;
+}
+img {
+max-width: 100%;
+}
+h1, h2, h3, h4, h5, h6 {
+margin-top: 1em;
+}
+h5, h6 {
+font-size: 1em;
+font-style: italic;
+}
+h6 {
+font-weight: normal;
+}
+ol, ul {
+padding-left: 1.7em;
+margin-top: 1em;
+}
+li > ol, li > ul {
+margin-top: 0;
+}
+blockquote {
+margin: 1em 0 1em 1.7em;
+padding-left: 1em;
+border-left: 1px dashed #606060;
+color: #606060;
+font-size: .6em;
+}
+code {
+font-family: Menlo, Monaco, 'Lucida Console', Consolas, monospace;
+font-size: 85%;
+margin: 0;
+color: teal;
+border: thin dashed teal;
+border-radius: 2px;
+}
+pre {
+margin: 1em 0;
+overflow: auto;
+border: thin dashed teal;
+border-radius: 2px;
+padding: .5em;
+}
+pre code {
+padding: 0;
+overflow: visible;
+border: none;
+}
+.sourceCode {
+background-color: transparent;
+overflow: visible;
+}
+hr {
+background-color: teal;
+border: none;
+height: 1px;
+margin: 1em 0;
+}
+table {
+margin: 1em 0;
+border-collapse: collapse;
+width: 100%;
+overflow-x: auto;
+display: block;
+font-variant-numeric: lining-nums tabular-nums;
+}
+table caption {
+margin-bottom: 0.75em;
+}
+tbody {
+margin-top: 0.5em;
+}
+tbody, tr, td{
+border: 1px solid teal;
+}
+th {
+padding: 0.25em 0.5em 0.25em 0.5em;
+border: 2px solid teal;
+}
+td {
+padding: 0.125em 0.5em 0.25em 0.5em;
+}
+header {
+margin-bottom: 4em;
+text-align: center;
+}
+#TOC li {
+list-style: none;
+}
+#TOC a:not(:hover) {
+text-decoration: none;
+}
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+</style>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">🔓</h1>
+<p class="subtitle">Vulnerable Bits | CTF writeups</p>
+<p class="author">Jackson G. Kaindume</p>
+<p class="date">2022-09-04</p>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul class="incremental">
+<li><a href="#hack-this-site" id="toc-hack-this-site">Hack This Site</a>
+<ul class="incremental">
+<li><a href="#realistic" id="toc-realistic">Realistic</a></li>
+</ul></li>
+</ul>
+</nav>
+<hr />
+<p>Writeups of hacks by <a href="https://kwatafana.org/">kwatafana.org</a>.</p>
+<p>CTFs:</p>
+<ul class="incremental">
+<li><a href="https://hackthissite.org/">Hack This Site</a></li>
+<li><a href="https://cryptopals.com/">Cryptopals</a></li>
+<li><a href="https://cryptohack.org/">CryptoHack</a></li>
+<li><a href="https://ctftime.org/event/list/">CTF time</a></li>
+<li><a href="https://ctf.hacker101.com/">Hacker101</a></li>
+<li><a href="https://crackmes.one/">Crackmes</a></li>
+<li><a href="https://overthewire.org/wargames/">Overthewire</a></li>
+</ul>
+<h1 id="hack-this-site">Hack This Site</h1>
+<h2 id="realistic">Realistic</h2>
+<ol class="incremental" type="1">
+<li><a href="https://www.hackthissite.org/missions/realistic/1/index.php">Difficulty
+rating: Easy</a></li>
+</ol>
+<blockquote>
+<p>From: HeavyMetalRyan</p>
+<p>Message: Hey man, I need a big favour from you. Remember that website
+I showed you once before? Uncle Arnold’s Band Review Page? Well, a long
+time ago I made a $500 bet with a friend that my band would be at the
+top of the list by the end of the year. Well, as you already know, two
+of my band members have died in a horrendous car accident… but this ass
+hole still insists that the bet is on! I know you’re good with computers
+and stuff, so I was wondering, is there any way for you to hack this
+website and make my band on the top of the list? My band is Raging
+Inferno. Thanks a lot, man!</p>
+</blockquote>
+<p>If we visit the challenge’s <a href="https://www.hackthissite.org/missions/realistic/1/index.php">webpage</a>
+we see a page. The interesting parts of the page are the 5 sections of
+the 5 bands, the bands are ordered the top to bottom with the best band
+being on top and the worst being at the bottom of the list.</p>
+<p>Each section contains an HTML form, here is the form for the top band
+(Imposing Republic):</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;form</span> <span class="er">action</span><span class="ot">=</span><span class="st">&quot;v.php&quot;</span> <span class="er">method</span><span class="ot">=</span><span class="st">&quot;get&quot;</span><span class="kw">&gt;</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;input</span> <span class="er">type</span><span class="ot">=</span><span class="st">&quot;hidden&quot;</span> <span class="er">name</span><span class="ot">=</span><span class="st">&quot;PHPSESSID&quot;</span> <span class="er">value</span><span class="ot">=</span><span class="st">&quot;abcaeadfc31a5c43b2534bf995c0553f&quot;</span><span class="kw">&gt;</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;input</span> <span class="er">type</span><span class="ot">=</span><span class="st">&quot;hidden&quot;</span> <span class="er">name</span><span class="ot">=</span><span class="st">&quot;id&quot;</span> <span class="er">value</span><span class="ot">=</span><span class="st">&quot;4&quot;</span><span class="kw">&gt;</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;select</span> <span class="er">name</span><span class="ot">=</span><span class="st">&quot;vote&quot;</span><span class="kw">&gt;</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;option</span> <span class="er">value</span><span class="ot">=</span><span class="st">&quot;1&quot;</span><span class="kw">&gt;</span>1<span class="kw">&lt;/option&gt;</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;option</span> <span class="er">value</span><span class="ot">=</span><span class="st">&quot;2&quot;</span><span class="kw">&gt;</span>2<span class="kw">&lt;/option&gt;</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;option</span> <span class="er">value</span><span class="ot">=</span><span class="st">&quot;3&quot;</span><span class="kw">&gt;</span>3<span class="kw">&lt;/option&gt;</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;option</span> <span class="er">value</span><span class="ot">=</span><span class="st">&quot;4&quot;</span><span class="kw">&gt;</span>4<span class="kw">&lt;/option&gt;</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;option</span> <span class="er">value</span><span class="ot">=</span><span class="st">&quot;5&quot;</span><span class="kw">&gt;</span>5<span class="kw">&lt;/option&gt;</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;/select&gt;</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;input</span> <span class="er">type</span><span class="ot">=</span><span class="st">&quot;submit&quot;</span> <span class="er">value</span><span class="ot">=</span><span class="st">&quot;vote!&quot;</span><span class="kw">&gt;</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/form&gt;</span></span></code></pre></div>
+<p>The form sends a <code>GET</code> request, this means that the form
+data will be appended to the URL in key/value pairs, this it looks for
+the first form:</p>
+<p>&lt;/v.php?PHPSESSID=abcaeadfc31a5c43b2534bf995c0553f&amp;id=4&amp;vote=1&gt;</p>
+<p>Where PHPSESSID is the session ID, id</p>
+<h4 id="analysis">Analysis</h4>
+<h5 id="confidentiality">1. Confidentiality</h5>
+<blockquote>
+<p>On this page what data should the hacker not be able to read?</p>
+</blockquote>
+<p>None.</p>
+<h5 id="integrity">2. Integrity</h5>
+<blockquote>
+<p>On this page what data should the hacker not be able to modify?</p>
+</blockquote>
+<ul class="incremental">
+<li>Band list order. What controls the band list order on the page?</li>
+</ul>
+<h5 id="availability">3. Availability</h5>
+<blockquote>
+<p>On this page what data should the hacker not be able to destroy?</p>
+</blockquote>
+<ul class="incremental">
+<li>Bands What controls the bands on the page?</li>
+</ul>
+<h5 id="doorways-angels-and-demons">4. Doorways, Angels and Demons</h5>
+<p>Door = GET v.php?PHPSESSID=<TOKEN>&amp;id=4&amp;vote=1</p>
+<p>Angel = GET
+v.php?PHPSESSID=abcaeadfc31a5c43b2534bf995c0553f&amp;id=4&amp;vote=1</p>
+</body>
+</html>
