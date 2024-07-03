@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Jackson G. Kaindume https://kwatafana.org/" />
+  <meta name="dcterms.date" content="2022-09-05" />
+  <title>🔗</title>
+  <style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+</style>
+  <style type="text/css">html {
+line-height: 1.5;
+font-family: Georgia, serif;
+font-size: 20px;
+color: cyan;
+background-color: #222D31;
+}
+.title{
+font-size: 1.5em;
+font-weight: bolder;
+}
+body {
+margin: 0 auto;
+max-width: 36em;
+padding-left: 50px;
+padding-right: 50px;
+padding-top: 50px;
+padding-bottom: 50px;
+hyphens: auto;
+word-wrap: break-word;
+text-rendering: optimizeLegibility;
+font-kerning: normal;
+}
+@media (max-width: 600px) {
+body {
+font-size: 0.9em;
+padding: 1em;
+}
+}
+@media print {
+body {
+background-color: transparent;
+color: black;
+font-size: 12pt;
+}
+p, h2, h3 {
+orphans: 3;
+widows: 3;
+}
+h2, h3, h4 {
+page-break-after: avoid;
+}
+}
+p {
+margin: 1em 0;
+}
+a {
+color: cyan;
+}
+a:visited {
+color: cyan;
+}
+img {
+max-width: 100%;
+}
+h1, h2, h3, h4, h5, h6 {
+margin-top: 1em;
+}
+h5, h6 {
+font-size: 1em;
+font-style: italic;
+}
+h6 {
+font-weight: normal;
+}
+ol, ul {
+padding-left: 1.7em;
+margin-top: 1em;
+}
+li > ol, li > ul {
+margin-top: 0;
+}
+blockquote {
+margin: 1em 0 1em 1.7em;
+padding-left: 1em;
+border-left: 1px dashed #606060;
+color: #606060;
+font-size: .6em;
+}
+code {
+font-family: Menlo, Monaco, 'Lucida Console', Consolas, monospace;
+font-size: 85%;
+margin: 0;
+color: teal;
+border: thin dashed teal;
+border-radius: 2px;
+}
+pre {
+margin: 1em 0;
+overflow: auto;
+border: thin dashed teal;
+border-radius: 2px;
+padding: .5em;
+}
+pre code {
+padding: 0;
+overflow: visible;
+border: none;
+}
+.sourceCode {
+background-color: transparent;
+overflow: visible;
+}
+hr {
+background-color: teal;
+border: none;
+height: 1px;
+margin: 1em 0;
+}
+table {
+margin: 1em 0;
+border-collapse: collapse;
+width: 100%;
+overflow-x: auto;
+display: block;
+font-variant-numeric: lining-nums tabular-nums;
+}
+table caption {
+margin-bottom: 0.75em;
+}
+tbody {
+margin-top: 0.5em;
+}
+tbody, tr, td{
+border: 1px solid teal;
+}
+th {
+padding: 0.25em 0.5em 0.25em 0.5em;
+border: 2px solid teal;
+}
+td {
+padding: 0.125em 0.5em 0.25em 0.5em;
+}
+header {
+margin-bottom: 4em;
+text-align: center;
+}
+#TOC li {
+list-style: none;
+}
+#TOC a:not(:hover) {
+text-decoration: none;
+}
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+</style>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">🔗</h1>
+<p class="subtitle">Dependable Bits | High Assurance Systems</p>
+<p class="author">Jackson G. Kaindume <a href="https://kwatafana.org/" class="uri">https://kwatafana.org/</a></p>
+<p class="date">2022-09-05</p>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul class="incremental">
+<li><a href="#dependable-software" id="toc-dependable-software">🔗
+Dependable Software</a>
+<ul class="incremental">
+<li><a href="#methodology" id="toc-methodology">Methodology</a></li>
+<li><a href="#rust" id="toc-rust">Rust</a>
+<ul class="incremental">
+<li><a href="#classes-of-bugs-stopped-by-rust" id="toc-classes-of-bugs-stopped-by-rust">Classes of Bugs Stopped by
+Rust</a></li>
+<li><a href="#specification-and-formal-verification" id="toc-specification-and-formal-verification">Specification and Formal
+Verification</a></li>
+</ul></li>
+<li><a href="#lxc" id="toc-lxc">LXC</a></li>
+<li><a href="#tla" id="toc-tla">TLA+</a></li>
+<li><a href="#cryptography" id="toc-cryptography">Cryptography</a></li>
+<li><a href="#common" id="toc-common">Common</a>
+<ul class="incremental">
+<li><a href="#git" id="toc-git">Git</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+<hr />
+<h1 id="dependable-software">🔗 Dependable Software</h1>
+<p>This document gives an overview of the core software infrastructure
+that <a href="https://kwatafana.org/">kwatafana.org</a> depends on.</p>
+<blockquote>
+<p>This is a living document that changes with the times because
+software is like that 🤪</p>
+</blockquote>
+<p>You can find allot of brilliant code on the internet, skillful
+programmers pushing computers to the limits. Some code is written as a
+form of self expression – art or simply to make a statement in the
+fabric of consciousness.</p>
+<p>The point is not all code is meant to be dependent on especially for
+safety critical applications. Dependencies should be picked with great
+care. This is an important principle for cyber-security. A rigorous
+analysis of your dependencies can be the best protection against <a href="https://en.wikipedia.org/wiki/Supply_chain_attack">supply-chain
+attacks</a>. This also means that dependencies should be simple and
+minimal with a relatively small code surface to make it possible to
+analyze/audit. Sometimes this means that you would have to rewrite some
+components instead of depending on software that does not fit our
+methodology.</p>
+<hr />
+<h2 id="methodology">Methodology</h2>
+<p>The general methodology we use to decide to depend on a piece of
+software:</p>
+<ol class="incremental" type="1">
+<li><p><strong>License</strong>: We depend on <a href="https://unlicense.org/">Public domain</a>, <a href="https://opensource.org/osd">Open Source</a> and <a href="https://www.fsf.org/about/what-is-free-software">Free
+Software</a></p></li>
+<li><p><strong>Age</strong>: The software should not be too old, because
+it might not be supported by modern platforms or have received security
+updates. The software should also not be too new and without enough
+running in the wild.</p></li>
+<li><p><strong>Code quality &amp; Auditing</strong>: We prefer to use
+audited code, the auditor should preferably be a 3rd party and not
+related to the original author. This is particularly important for
+cryptography software. The code should be of high quality and
+integrity.</p></li>
+<li><p><strong>Test Suite</strong>: The software should be well tested
+with unit tests, end-to-end tests and extensive fuzzing. It also helps
+if there is benchmarks comparing it to alternatives.</p></li>
+<li><p><strong>Documentation</strong>: Well documented software is
+preferred, software with clear APIs and interfaces, it is also plus if
+the code itself is well commented.</p></li>
+<li><p><strong>Developer</strong>: Is the project sustainable, are there
+maintainers and are they well funded or even motivated to keep the
+software up to date and stable.</p></li>
+<li><p><strong>Ecosystem</strong>: Software should have a vibrant
+community and enough resources (docs, blog, vids, example code). It also
+helps if the software can be easily integrated with other software
+especially with our other dependencies.</p></li>
+<li><p><strong>Minimalism</strong>: Software should be simple, clear,
+frugal, modular and correct. see <a href="https://en.wikipedia.org/wiki/Unix_philosophy">unix philosophy</a>
+and <a href="https://suckless.org/philosophy/">suckless</a>.</p></li>
+</ol>
+<hr />
+<h2 id="rust">Rust</h2>
+<p><a href="https://www.rust-lang.org/">Rust</a> is a modern programming
+language with built in features for safe systems programming. Rust is
+designed to eliminate classes of software bugs/vulnerabilities that have
+been historically difficult to prevent.</p>
+<p>Rust is also fast and low-level like C/C++ but drastically safer and
+more ergonomic to write, making it an ideal candidate for high
+performance and secure systems software.</p>
+<h3 id="classes-of-bugs-stopped-by-rust">Classes of Bugs Stopped by
+Rust</h3>
+<p>//TODO:</p>
+<h3 id="specification-and-formal-verification">Specification and Formal
+Verification</h3>
+<p>Rust reached v1.0 in 2015, so it is a relatively young language so at
+the time of this writing Rust is not yet formally verified, no
+specification exists and the Rust <a href="https://doc.rust-lang.org/reference/">reference</a> is incomplete.
+None the less, Rust is used being used by allot of professional
+companies from Google, Microsoft, Facebook and lots of crypto-currencies
+all of them use Rust for what is promises to bring to the table: safe,
+fast systems programming.</p>
+<p>Rust is well tested at this point just not formally verified and
+specified making it unable to be used for safety-critical environments
+that need a language to be formally specified.</p>
+<p>More info about ongoing Rust R&amp;D in formal verification
+tooling:</p>
+<ul class="incremental">
+<li><a href="https://ferrous-systems.com/blog/ferrous-systems-adacore-joining-forces/" class="uri">https://ferrous-systems.com/blog/ferrous-systems-adacore-joining-forces/</a></li>
+<li><a href="https://spec.ferrocene.dev/general.html" class="uri">https://spec.ferrocene.dev/general.html</a></li>
+<li><a href="https://www.sae.org/works/committeeHome.do?comtID=TEVEFS6" class="uri">https://www.sae.org/works/committeeHome.do?comtID=TEVEFS6</a></li>
+<li><a href="https://rust-formal-methods.github.io/tools.html#rust-verification-tools-2021" class="uri">https://rust-formal-methods.github.io/tools.html#rust-verification-tools-2021</a></li>
+</ul>
+<p>Also checkout this wonderful book <a href="https://highassurance.rs/chp1/_index.html">High Assurance
+Rust</a>, which is a great inspiration for this document and some of the
+methodologies used at <a href="https://kwatafana.org/" class="uri">https://kwatafana.org/</a></p>
+<h2 id="lxc">LXC</h2>
+<p><a href="https://gitlab.com/kwatafana/spinneret" class="uri">https://gitlab.com/kwatafana/spinneret</a> ___</p>
+<h2 id="tla">TLA+</h2>
+<p><a href="https://lamport.azurewebsites.net/tla/tla.html" class="uri">https://lamport.azurewebsites.net/tla/tla.html</a></p>
+<hr />
+<h2 id="cryptography">Cryptography</h2>
+<hr />
+<h2 id="common">Common</h2>
+<h3 id="git">Git</h3>
+</body>
+</html>
