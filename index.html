@@ -47,6 +47,17 @@
 	     color: #262626;
 	     border-color: #262626;
 	 }
+
+	 .slideBtnsCont{
+	     background-color: cyan;
+	     border: none;
+	     padding-top: 9em;
+	 }
+
+	 .slideBtnsCont i:hover{
+	     cursor: pointer;
+	     color: #ffffff;
+	 }
 	</style>
     </head>
     <body>
@@ -248,18 +259,9 @@
 
 		<div>
 		    <div class="columns">
-			<div class="card col-4">
-			    <div class="card-image">
-				<img src="img/bg1.png" class="img-responsive">
-			    </div>
-			    <div class="card-header">
-				<div class="card-title h5">Global Links CC</div>
-				<div class="card-subtitle text-gray">website, design, e-learning</div>
-			    </div>
-			    <div class="card-footer">
-				<a href="https://global-links.cc/" class="btn btn-primary">Visit Website</a>
-			    </div>
-			</div>
+			<div class="card col-1 mx-2 my-2 slideBtnsCont" id="LEFT_SLIDE"><i class="icon icon-2x icon-arrow-left"></i></div>
+			<div class="card col-9 mx-2 my-2" id="SLIDE"></div>
+			<div class="card col-1 mx-2 my-2 slideBtnsCont" id="RIGHT_SLIDE"><i class="icon icon-2x icon-arrow-right"></i></div>
 		    </div>
 		</div>
 	    </section>
@@ -271,6 +273,66 @@
 		</ul>
 	    </section>
 	</div>
-	<script src="index.js"></script>
+	<script>
+	 var slide1 = `<div class="card-image">
+				<img src="img/bg3.png" class="img-responsive">
+			    </div>
+			    <div class="card-header">
+				<div class="card-title h5">omatala.com</div>
+				<div class="card-subtitle text-gray">next-gen network</div>
+			    </div>
+			    <div class="card-footer">
+				<a href="https://omatala.com/" class="btn btn-primary">Visit Website</a>
+			    </div>`;
+	 var slide2 = `<div class="card-image">
+				<img src="img/bg1.png" class="img-responsive">
+			    </div>
+			    <div class="card-header">
+				<div class="card-title h5">Global Links CC</div>
+				<div class="card-subtitle text-gray">website, design, e-learning</div>
+			    </div>
+			    <div class="card-footer">
+				<a href="https://global-links.cc/" class="btn btn-primary">Visit Website</a>
+			    </div>`;
+	 var slide3 = `<div class="card-image">
+				<img src="img/bg2.png" class="img-responsive">
+			    </div>
+			    <div class="card-header">
+				<div class="card-title h5">Acon Contractors</div>
+				<div class="card-subtitle text-gray">website, design</div>
+			    </div>
+			    <div class="card-footer">
+				<a href="https://aconcontractors.com/" class="btn btn-primary">Visit Website</a>
+			    </div>`;
+	 var left = document.getElementById("LEFT_SLIDE");
+	 var rigth = document.getElementById("RIGHT_SLIDE");
+	 var slide = document.getElementById("SLIDE");
+	 var current = 1;
+
+	 window.addEventListener("load", () =>{
+	     slide.innerHTML = slide1;
+
+	     rigth.addEventListener("click", () =>{
+		 if (current == 1) {
+		     slide.innerHTML = slide2;
+		     current = 2;
+		 } else if (current == 2) {
+		     slide.innerHTML = slide3;
+		     current = 3;
+		 }
+	     })
+
+	     left.addEventListener("click", () =>{
+		 if (current == 3) {
+		     slide.innerHTML = slide2;
+		     current = 2;
+		 } else if (current == 2) {
+		     slide.innerHTML = slide1;
+		     current = 1;
+		 }
+	     })
+	 })
+
+	</script>
     </body>
 </html>
