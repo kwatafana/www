@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>BizKit | Registration</title>
+	<style>
+
+	</style>
+    </head>
+    <body>
+	<div>
+	    <h3>BizKit Registration</h3>
+	    <input type="text" placeholder="Username" id="USERNAME"><br>
+	    <input type="password" placeholder="Password" id="PASSWORD"><br>
+	    <input type="password" placeholder="Repeat Password" id="PASSWORD2"><br>
+	    <button id="REGISTER_BTN">Register</button>
+	</div>
+	<script>
+	 document.getElementById("REGISTER_BTN").addEventListener("click", async () =>{
+	     let usernameInput = document.getElementById("USERNAME").value;
+	     let passwordInput = document.getElementById("PASSWORD").value;
+	     let passwordInput2 = document.getElementById("PASSWORD2").value;
+
+	     console.log("📚 please wait... registering account");
+
+	     if(usernameInput == ""
+		|| passwordInput == ""
+		|| passwordInput2 == ""){
+		 console.log("🙄 Fill in all the inputs");
+	     } else if(passwordInput !== passwordInput2){
+		 console.log("🙄 Passwords don't match");
+	     }else{
+		 try {
+		     let input = {username: usernameInput, password: passwordInput};
+		     fetch("/register",{
+			 method: "POST",
+			 headers: {
+			     "Content-Type": "application/json",
+			 },
+			 body: JSON.stringify(input),
+		     })
+			 .then((response) => {
+			     switch (response.status){
+				 case 201:
+				     return response.json();
+				 case 400:
+				     throw CategoryError.InvalidInput;
+				 case 401:
+				     throw CategoryError.InvalidInput;
+				 case 500:
+				     throw CategoryError.InternalServer;
+			     }
+			 })
+			 .catch((error) => {
+			     throw error;
+			 });
+		     document.location.href = '/';
+		 } catch(e){
+		     console.log(e);
+		 }
+	     }
+	 });
+
+	</script>
+    </body>
+</html>
