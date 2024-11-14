@@ -1,28 +1,25 @@
-
 html {
     line-height: 1.5;
     font-family: Georgia, serif;
-    font-size: 1.2em;
-    color: #222D31;
-    background-color: white;
+    font-size: 20px;
+    color: cyan;
+    background-color: #222D31;
+}
+.title{
+    font-size: 1.5em;
+    font-weight: bolder;
 }
 body {
     margin: 0 auto;
     max-width: 36em;
     padding-left: 50px;
     padding-right: 50px;
-    padding-top: 0px;
-    margin-top: 0px;
+    padding-top: 50px;
     padding-bottom: 50px;
     hyphens: auto;
     word-wrap: break-word;
     text-rendering: optimizeLegibility;
     font-kerning: normal;
-}
-
-img{
-    width: 400px;
-    border-radius: 12px;
 }
 @media (max-width: 600px) {
     body {
@@ -43,28 +40,22 @@ img{
     h2, h3, h4 {
         page-break-after: avoid;
     }
-    #TOC{
-	position: relative !important;
-	width: inherit;
-	height: inherit;
-	border: none;	
-    }
 }
 p {
     margin: 1em 0;
 }
 a {
-    color: #16a085;
+    color: cyan;
 }
 a:visited {
-    color: #16a085;
+    color: cyan;
 }
 img {
     max-width: 100%;
 }
+
 h1, h2, h3, h4, h5, h6 {
-    margin-top: 1.4em;
-    color: #16a085;
+    margin-top: 1em;
 }
 h5, h6 {
     font-size: 1em;
@@ -83,21 +74,22 @@ li > ol, li > ul {
 blockquote {
     margin: 1em 0 1em 1.7em;
     padding-left: 1em;
-    border-left: 2px solid #e6e6e6;
+    border-left: 1px dashed #606060;
     color: #606060;
+    font-size: .6em;
 }
 code {
     font-family: Menlo, Monaco, 'Lucida Console', Consolas, monospace;
     font-size: 85%;
     margin: 0;
-    color: #16a085;
-    border: thin dashed #16a085;
+    color: teal;
+    border: thin dashed teal;
     border-radius: 2px;
 }
 pre {
     margin: 1em 0;
     overflow: auto;
-    border: thin dashed #16a085;
+    border: thin dashed teal;
     border-radius: 2px;
     padding: .5em;
 }
@@ -110,12 +102,11 @@ pre code {
     background-color: transparent;
     overflow: visible;
 }
-
 hr {
-    background-color: #16a085;
+    background-color: teal;
     border: none;
-    height: 2px;
-    margin: 4em 0;
+    height: 1px;
+    margin: 1em 0;
 }
 table {
     margin: 1em 0;
@@ -130,12 +121,13 @@ table caption {
 }
 tbody {
     margin-top: 0.5em;
-    border-top: 1px solid #16a085;
-    border-bottom: 1px solid #16a085;
+}
+tbody, tr, td{
+    border: 1px solid teal;
 }
 th {
-    border-top: 1px solid #16a085;
     padding: 0.25em 0.5em 0.25em 0.5em;
+    border: 2px solid teal;
 }
 td {
     padding: 0.125em 0.5em 0.25em 0.5em;
@@ -144,84 +136,16 @@ header {
     margin-bottom: 4em;
     text-align: center;
 }
-
-#TOC{
-    position: fixed;
-    width: 13vw;
-    height: 100vh;
-    left: 0;
-    top: 0;
-    border-right: thin solid #16a085;
-    padding-left: 1em;
-    overflow: auto;
-}
-
-#TOC ul {
-    padding-left: .5em;
-}
-
 #TOC li {
-    list-style: circle;
-    width: 100%
+    list-style: none;
 }
-
 #TOC a:not(:hover) {
     text-decoration: none;
 }
-
-pre{
-    padding: 1em;
-    font-family: monospace !Important;
-    font-size: 18px;
-}
-
-blockquote {
-    margin: 1em 0 1em 1.7em;
-    padding-left: 1em;
-    border-left: 1px dashed #606060;
-    color: #606060;
-    font-size: .6em;
-}
-
-@media only screen and (max-width: 1300px) {
-    #TOC{	
-	position: relative !important;
-	width: inherit;
-	height: inherit;
-	border: none;
-    }
-
-    pre{
-	font-size: 16px;
-    }
-}
-
-@media only screen and (max-width: 480px) {
-    pre{
-	font-size: 12px;
-    }
-}
-
-@media only screen and (max-width: 370px) {
-    pre{
-	font-size: 10px;
-    }
-}
-
-@media only screen and (max-width: 300px) {
-    pre{
-	font-size: 7px;
-    }
-}
-
-/** cod Syntax highlighting **/
-code span.fu{
-    color: #067e5c;
-}
-code span.cn{
-    color: #ff003c;
-}
-
-code span.kw{
-    color: #16a085;
-}
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
