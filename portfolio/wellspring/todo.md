@@ -1,2 +1,0 @@
-- [ ] Geometric Cover
-- [ ] Remove Pawif Banner

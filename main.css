@@ -1,9 +1,9 @@
 html {
     line-height: 1.5;
     font-family: Georgia, serif;
-    font-size: 20px;
-    color: #ffffff;
-    background-color: #222D31 ;
+    font-size: 12px;
+    color: #06202B;
+    background-color: #ffffff;
 }
 body {
     margin: 0 auto;
@@ -21,7 +21,7 @@ body {
 }
 
 img{
-    width: 100px;
+    width: 64px;
     border-radius: 5px;
     float: right;
 }
@@ -56,17 +56,17 @@ p {
     margin: 1em 0;
 }
 a {
-    color: cyan;
+    color: #21806a;
 }
 a:visited {
-    color: cyan;
+    color: #21806a;
 }
 img {
     max-width: 100%;
 }
 h1, h2, h3, h4, h5, h6 {
     margin-top: 1.4em;
-    color: cyan;
+    color: #21806a;
 }
 h5, h6 {
     font-size: 1em;
@@ -92,14 +92,14 @@ code {
     font-family: Menlo, Monaco, 'Lucida Console', Consolas, monospace;
     font-size: 85%;
     margin: 0;
-    color: cyan;
-    border: thin dashed cyan;
+    color: #21806a;
+    border: thin dashed #21806a;
     border-radius: 2px;
 }
 pre {
     margin: 1em 0;
     overflow: auto;
-    border: thin dashed cyan;
+    border: thin dashed #21806a;
     border-radius: 2px;
     padding: .5em;
 }
@@ -114,9 +114,9 @@ pre code {
 }
 
 hr {
-    background-color: cyan;
+    background-color: #21806a;
     border: none;
-    height: 5px;
+    height: 1px;
 }
 table {
     margin: 1em 0;
@@ -130,18 +130,18 @@ table caption {
     margin-bottom: 0.75em;
 }
 thead{
-    background: cyan;
+    background: #21806a;
 }
 tbody {
     margin-top: 0.5em;
-    border: thin solid cyan;
+    border: thin solid #21806a;
 }
 th {
-    border-top: 1px solid cyan;
+    border-top: 1px solid #21806a;
     padding: 0.25em 0.5em 0.25em 0.5em;
 }
 tr{
-    border: thin solid cyan;
+    border: thin solid #21806a;
 }
 td {
     padding: 0.125em 0.5em 0.25em 0.5em;
@@ -157,7 +157,7 @@ header {
     height: 100vh;
     left: 0;
     top: 0;
-    border-right: thin solid cyan;
+    border-right: thin solid #21806a;
     padding-left: 1em;
     overflow: auto;
 }
