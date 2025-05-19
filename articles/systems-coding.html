@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Systems Coding</title>
+  <style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+{ counter-reset: source-line 0; }
+pre.numberSource code > span
+{ position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+{ content: counter(source-line);
+position: relative; left: -1em; text-align: right; vertical-align: baseline;
+border: none; display: inline-block;
+-webkit-touch-callout: none; -webkit-user-select: none;
+-khtml-user-select: none; -moz-user-select: none;
+-ms-user-select: none; user-select: none;
+padding: 0 4px; width: 4em;
+color: #aaaaaa;
+}
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa; padding-left: 4px; }
+div.sourceCode
+{ }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } 
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.at { color: #7d9029; } 
+code span.bn { color: #40a070; } 
+code span.bu { color: #008000; } 
+code span.cf { color: #007020; font-weight: bold; } 
+code span.ch { color: #4070a0; } 
+code span.cn { color: #880000; } 
+code span.co { color: #60a0b0; font-style: italic; } 
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.do { color: #ba2121; font-style: italic; } 
+code span.dt { color: #902000; } 
+code span.dv { color: #40a070; } 
+code span.er { color: #ff0000; font-weight: bold; } 
+code span.ex { } 
+code span.fl { color: #40a070; } 
+code span.fu { color: #06287e; } 
+code span.im { color: #008000; font-weight: bold; } 
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.kw { color: #007020; font-weight: bold; } 
+code span.op { color: #666666; } 
+code span.ot { color: #007020; } 
+code span.pp { color: #bc7a00; } 
+code span.sc { color: #4070a0; } 
+code span.ss { color: #bb6688; } 
+code span.st { color: #4070a0; } 
+code span.va { color: #19177c; } 
+code span.vs { color: #4070a0; } 
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } 
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+</style>
+  <style type="text/css">html {
+line-height: 1.5;
+font-family: Georgia, serif;
+font-size: 20px;
+color: cyan;
+background-color: #222D31;
+}
+.title{
+font-size: 1.5em;
+font-weight: bolder;
+}
+body {
+margin: 0 auto;
+max-width: 36em;
+padding-left: 50px;
+padding-right: 50px;
+padding-top: 50px;
+padding-bottom: 50px;
+hyphens: auto;
+word-wrap: break-word;
+text-rendering: optimizeLegibility;
+font-kerning: normal;
+}
+@media (max-width: 600px) {
+body {
+font-size: 0.9em;
+padding: 1em;
+}
+}
+@media print {
+body {
+background-color: transparent;
+color: black;
+font-size: 12pt;
+}
+p, h2, h3 {
+orphans: 3;
+widows: 3;
+}
+h2, h3, h4 {
+page-break-after: avoid;
+}
+}
+p {
+margin: 1em 0;
+}
+a {
+color: cyan;
+}
+a:visited {
+color: cyan;
+}
+img {
+max-width: 100%;
+}
+h1, h2, h3, h4, h5, h6 {
+margin-top: 1em;
+}
+h5, h6 {
+font-size: 1em;
+font-style: italic;
+}
+h6 {
+font-weight: normal;
+}
+ol, ul {
+padding-left: 1.7em;
+margin-top: 1em;
+}
+li > ol, li > ul {
+margin-top: 0;
+}
+blockquote {
+margin: 1em 0 1em 1.7em;
+padding-left: 1em;
+border-left: 1px dashed #606060;
+color: #606060;
+font-size: .6em;
+}
+code {
+font-family: Menlo, Monaco, 'Lucida Console', Consolas, monospace;
+font-size: 85%;
+margin: 0;
+color: teal;
+border: thin dashed teal;
+border-radius: 2px;
+}
+pre {
+margin: 1em 0;
+overflow: auto;
+border: thin dashed teal;
+border-radius: 2px;
+padding: .5em;
+}
+pre code {
+padding: 0;
+overflow: visible;
+border: none;
+}
+.sourceCode {
+background-color: transparent;
+overflow: visible;
+}
+hr {
+background-color: teal;
+border: none;
+height: 1px;
+margin: 1em 0;
+}
+table {
+margin: 1em 0;
+border-collapse: collapse;
+width: 100%;
+overflow-x: auto;
+display: block;
+font-variant-numeric: lining-nums tabular-nums;
+}
+table caption {
+margin-bottom: 0.75em;
+}
+tbody {
+margin-top: 0.5em;
+}
+tbody, tr, td{
+border: 1px solid teal;
+}
+th {
+padding: 0.25em 0.5em 0.25em 0.5em;
+border: 2px solid teal;
+}
+td {
+padding: 0.125em 0.5em 0.25em 0.5em;
+}
+header {
+margin-bottom: 4em;
+text-align: center;
+}
+#TOC li {
+list-style: none;
+}
+#TOC a:not(:hover) {
+text-decoration: none;
+}
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+</style>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Systems Coding</h1>
+</header>
+<h2 id="io-syscall-buffering">IO (<code>syscall</code>) Buffering</h2>
+<blockquote>
+<p>This section has been adapted from:</p>
+<p>https://era.co/blog/unbuffered-io-slows-rust-programs</p>
+</blockquote>
+<p>Programming languages have access to OS <code>syscalls</code>, these
+are used for things such as IO.</p>
+<p><code>syscalls</code> are slow to call, when designing high
+performance code all <code>syscalls</code> should be analyzed.</p>
+<p>No buffering, slow:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode rust"><code class="sourceCode rust"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="pp">std::</span>fs<span class="op">;</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="pp">std::io::</span><span class="op">{</span><span class="kw">self</span><span class="op">,</span> <span class="bu">Write</span><span class="op">};</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> main() <span class="op">-&gt;</span> <span class="pp">io::</span><span class="dt">Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span> <span class="op">{</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> <span class="kw">mut</span> f <span class="op">=</span> <span class="pp">fs::File::</span>create(<span class="st">&quot;/tmp/unbuffered.txt&quot;</span>)<span class="op">?;</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    f<span class="op">.</span>write(<span class="st">b&quot;foo&quot;</span>)<span class="op">?;</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    f<span class="op">.</span>write(<span class="st">b&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>)<span class="op">?;</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    f<span class="op">.</span>write(<span class="st">b&quot;bar</span><span class="sc">\n</span><span class="st">baz</span><span class="sc">\n</span><span class="st">&quot;</span>)<span class="op">?;</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="cn">Ok</span>(())<span class="op">;</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>We can use the <code>strace</code> program to see the
+<code>syscalls</code> used in a program:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> strace <span class="at">--trace</span><span class="op">=</span>write ./target/release/01_unbuffered</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">write</span><span class="er">(</span><span class="ex">3,</span> <span class="st">&quot;foo&quot;</span>, 3<span class="kw">)</span>                      <span class="ex">=</span> 3</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">write</span><span class="er">(</span><span class="ex">3,</span> <span class="st">&quot;\n&quot;</span>, 1<span class="kw">)</span>                       <span class="ex">=</span> 1</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">write</span><span class="er">(</span><span class="ex">3,</span> <span class="st">&quot;bar\nbaz\n&quot;</span>, 8<span class="kw">)</span>               <span class="ex">=</span> 8</span></code></pre></div>
+<p>We should rather use buffered io like this:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode rust"><code class="sourceCode rust"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="pp">std::</span>fs<span class="op">;</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="pp">std::io::</span><span class="op">{</span><span class="kw">self</span><span class="op">,</span> BufWriter<span class="op">,</span> <span class="bu">Write</span><span class="op">};</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> main() <span class="op">-&gt;</span> <span class="pp">io::</span><span class="dt">Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span> <span class="op">{</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> <span class="kw">mut</span> f <span class="op">=</span> <span class="pp">BufWriter::</span>new(<span class="pp">fs::File::</span>create(<span class="st">&quot;x.txt&quot;</span>)<span class="op">?</span>)<span class="op">;</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    f<span class="op">.</span>write(<span class="st">b&quot;foo&quot;</span>)<span class="op">?;</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    f<span class="op">.</span>write(<span class="st">b&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>)<span class="op">?;</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    f<span class="op">.</span>write(<span class="st">b&quot;bar</span><span class="sc">\n</span><span class="st">baz</span><span class="sc">\n</span><span class="st">&quot;</span>)<span class="op">?;</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="cn">Ok</span>(())<span class="op">;</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> strace <span class="at">--trace</span><span class="op">=</span>write ./target/release/02_buffered</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">write</span><span class="er">(</span><span class="ex">3,</span> <span class="st">&quot;foo\nbar\nbaz\n&quot;</span>, 12<span class="kw">)</span>         <span class="ex">=</span> 12</span></code></pre></div>
+<h2 id="fsync"><code>fsync</code></h2>
+<blockquote>
+<p>This section has been adapted from:</p>
+<p>https://bonsaidb.io/blog/durable-writes/#What%20are%20%27durable%20writes%27%3F</p>
+</blockquote>
+<p>When writing data to a file, the data is cached in RAM by the OS, it
+is not immediately written to the file-system. This writing to the disk
+is slow, so buffered io is used. But when power is suddenly cut the data
+(in RAM) to be written to the file is lost forever.</p>
+<p>To prevent the lost of buffered/cached data, we need to flush, or
+sync the data.</p>
+<blockquote>
+<ul class="incremental">
+<li>On Linux, it’s fsync(), fdatasync(), and sync_file_range().</li>
+<li>On Windows, it’s FlushFileBuffers.</li>
+<li>On Mac/iOS, fsync() is available but does not provide the same
+guarantees as Linux. Instead, a call to fcntl with the F_FULLFSYNC
+option must be used to trigger a write to physical media.</li>
+</ul>
+</blockquote>
+<blockquote>
+<p>Rust uses the correct APIs for each platform when calling
+File::sync_all or File::sync_data to provide durable writes. The
+standard library does not provide APIs to invoke the underlying APIs
+mentioned above. Thankfully, the libc crate makes it easy to call the
+APIs we are interested in for this post.</p>
+</blockquote>
+<h2 id="codegen">Codegen</h2>
+<p>Sometimes there is read only data that is used at runtime, this data
+never changes it always the same. Instead of parsing it from a JSON file
+(or other type of file) it is better to generate it at compile time,
+removing the need for parsing which improves performance.</p>
+<p><a href="https://simplabs.com/blog/2022/06/23/the-perfect-hash-function/">see</a></p>
+<h2 id="tools">Tools</h2>
+<ul class="incremental">
+<li><code>strace</code>: It captures and records all system calls made
+by a process and the signals received by the process.</li>
+</ul>
+<hr>
+<a href="../index.html">⧉ kwatafana</a> | <em> <b>email: kwatafana (at)
+protonmail (dot) com</b> </em> <br>
+<div style="text-align: right">
+<p><small><em>updated: 2022-12-31 14:16:41.981927451 UTC</small></p>
+</div>
+</body>
+</html>
